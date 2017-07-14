@@ -5,7 +5,7 @@
 
 # build
 /build
-
+*.css
 .idea/
 .eslintcache
 npm-debug.log*
