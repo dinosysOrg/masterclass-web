@@ -10,12 +10,15 @@
 yarn install
 ```
 # Usage
-## Development 
-
+## Development
+1. Render server.min.js first for server-rendering
+```
+yarn run render
+```
+2. Start development server
 ```
 yarn run dev
 ```
-
 ## Build
 
 ```
