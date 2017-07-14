@@ -19,10 +19,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'VMA MasterClass',
     }),
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('bundle.css'),
   ],
   module: {
     loaders: [{
+      test: /\.scss$/,
+      enforce: 'pre',
+      loader: 'import-glob-loader',
+    }, {
       test: /.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/,
