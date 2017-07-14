@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
   app: path.join(__dirname, 'src'),
@@ -18,6 +19,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'VMA MasterClass',
     }),
+    new ExtractTextPlugin('styles.css'),
   ],
   module: {
     loaders: [{
@@ -30,7 +32,10 @@ module.exports = {
     }, {
       test: /\.scss$/,
       exclude: /node_modules/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader'],
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader!sass-loader',
+      }),
     }, {
       test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
       loader: 'file-loader',
