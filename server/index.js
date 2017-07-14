@@ -20,7 +20,7 @@ app.get('*', (req, res) => {
   res.send(`
       <!DOCTYPE html>
       <head>
-        <title>Universal Reacl</title>
+        <title>MasterClass Platform</title>
         <link rel="stylesheet" href="/bundle.css">
       </head>
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "render":"./node_modules/.bin/webpack",
-    "dev": "NODE_ENV=development node server.min.js",
+    "dev": "NODE_ENV=development yarn run render & node server.min.js",
     "build": "yarn run render",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore"
   },

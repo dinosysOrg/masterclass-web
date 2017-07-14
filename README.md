@@ -11,7 +11,7 @@ yarn install
 ```
 # Usage
 ## Development
-1. Render server.min.js first for server-rendering
+1. For the first time usage, you should render server.min.js
 ```
 yarn run render
 ```
