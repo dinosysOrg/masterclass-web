@@ -1,0 +1,26 @@
+#Header{
+  padding: 20px 0px 5px 0px;
+  background: #009688;
+  .logo{
+    font-size: 35px;
+    text-align: center;
+    color: #fff
+  }
+  .menu-language {
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    li{
+      display: inline;
+      padding: 10px;
+      background: #26A69A;
+      margin: 0px 10px 0px 10px;
+      &:hover{
+        background: #00695C;
+      }
+      a{
+        color: #fff;
+      }
+    }
+  }
+}

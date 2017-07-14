@@ -1,0 +1,29 @@
+.page-footer {
+  background: #009688 !important;
+  padding: 30px;
+  padding-bottom: 10px;
+  text-align: center;
+    .list-social{
+      li{
+        display: inline;
+        margin: 10px 0px 0px 10px;
+        a{
+          background: #004D40;
+          padding: 10px;
+          border-radius: 20px;
+        }
+      }
+    }
+    .menu-footer{
+      padding-top: 10px;
+      li{
+        display: inline;
+        margin: 10px 0px 0px 10px;
+        a{
+          color: #fff;
+          border-radius: 20px;
+        }
+      }
+    }
+
+}

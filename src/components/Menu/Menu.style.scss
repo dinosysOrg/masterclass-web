@@ -1,0 +1,21 @@
+#Menu {
+  padding-top: 10px;
+  li{
+    display: inline;
+    margin: 0px 10px 0px 10px;
+    color: #fff;
+    &.active{
+      border-bottom: 1px solid yellow;
+      padding-bottom: 5px;
+      a{
+        color: yellow;
+      }
+    }
+    a{
+      color: #fff;
+      &:hover{
+        color: yellow;
+      }
+    }
+  }
+}
