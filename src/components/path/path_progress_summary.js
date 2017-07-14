@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Panel from './panel';
-import DoneCount from './done_count';
+import Panel from '../shared/panel';
+import DoneCount from '../shared/done_count';
 
 export default () => {
   return (

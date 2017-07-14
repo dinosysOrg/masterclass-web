@@ -1,33 +1,21 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const PATHS = {
-  app: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'build'),
-};
-
-module.exports = {
-  entry: {
-    app: PATHS.app,
-  },
-  output: {
-    path: PATHS.build,
-    filename: '[name].js',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'VMA MasterClass',
-    }),
-    new ExtractTextPlugin('bundle.css'),
+const browserConfig = {
+  entry: [
+    './src/index.js',
   ],
+  output: {
+    path: __dirname,
+    filename: './build/bundle.js',
+  },
+  devtool: 'cheap-module-source-map',
   module: {
     loaders: [{
       test: /\.scss$/,
       enforce: 'pre',
       loader: 'import-glob-loader',
     }, {
-      test: /.jsx?$/,
+      test: /.js$/,
       loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
@@ -45,4 +33,30 @@ module.exports = {
       loader: 'file-loader',
     }],
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'build/bundle.css',
+    }),
+  ],
 };
+
+const serverConfig = {
+  entry: './server/index.js',
+  target: 'node',
+  output: {
+    path: __dirname,
+    filename: 'server.min.js',
+    libraryTarget: 'commonjs2',
+  },
+  devtool: 'cheap-module-source-map',
+  module: {
+    loaders: [{
+      test: /js$/,
+      exclude: /(node_modules)/,
+      loader: 'babel-loader',
+      query: {presets: ['react']},
+    }],
+  },
+};
+
+module.exports = [browserConfig, serverConfig];
