@@ -15,17 +15,21 @@ const browserConfig = {
   },
   devtool: 'cheap-module-source-map',
   module: {
-    loaders: [{
+    rules: [{
       test: /\.scss$/,
       enforce: 'pre',
       loader: 'import-glob-loader',
     }, {
       test: /.js$/,
-      loader: 'babel-loader',
       exclude: /node_modules/,
-      query: {
-        presets: ['es2015', 'react'],
-      },
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react'],
+          },
+        },
+      ],
     }, {
       test: /\.scss$/,
       exclude: /node_modules/,
@@ -57,11 +61,17 @@ const serverConfig = {
   },
   devtool: 'cheap-module-source-map',
   module: {
-    loaders: [{
+    rules: [{
       test: /js$/,
       exclude: /(node_modules)/,
-      loader: 'babel-loader',
-      query: {presets: ['react']},
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react'],
+          },
+        },
+      ],
     }],
   },
 };
