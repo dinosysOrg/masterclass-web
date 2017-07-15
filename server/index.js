@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
       </head>
 
       <body>
-        <div id="app">${renderToString(<App />)}</div>
+        <div id="app"><div>${renderToString(<App />)}</div></div>
         <script src="/bundle.js"></script>
       </body>
     </html>
