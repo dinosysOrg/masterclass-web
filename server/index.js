@@ -6,11 +6,12 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 import config from '../webpack.config.js';
 import App from '../src/app';
+import path from 'path';
 
 const app = express();
 const compiler = webpack(config[0]);
 
-app.use(express.static('build'));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config[0].output.publicPath,
 }));
@@ -21,12 +22,12 @@ app.get('*', (req, res) => {
       <!DOCTYPE html>
       <head>
         <title>MasterClass Platform</title>
-        <link rel="stylesheet" href="/bundle.css">
+        <link rel="stylesheet" href="assert/css/bundle.css">
       </head>
 
       <body>
         <div id="app"><div>${renderToString(<App />)}</div></div>
-        <script src="/bundle.js"></script>
+        <script src="assert/js/bundle.js"></script>
       </body>
     </html>
   `);

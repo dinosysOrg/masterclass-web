@@ -10,8 +10,8 @@ const browserConfig = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    publicPath: '/',
-    filename: 'bundle.js',
+    publicPath: '/assert/',
+    filename: 'js/bundle.js',
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -44,7 +44,7 @@ const browserConfig = {
   },
   plugins: [
     new ExtractTextPlugin({
-      filename: 'bundle.css',
+      filename: 'css/bundle.css',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

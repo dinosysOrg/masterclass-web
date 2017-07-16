@@ -11,11 +11,6 @@ yarn install
 ```
 # Usage
 ## Development
-1. For the first time usage, you should render server.min.js
-```
-yarn run render
-```
-2. Start development server
 ```
 yarn run dev
 ```
