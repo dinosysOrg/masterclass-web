@@ -13,7 +13,7 @@ const compiler = webpack(config[0]);
 app.use(express.static(path.join(__dirname)));
 app.use(
   webpackDevMiddleware(compiler, {
-    publicPath: config[0].output.publicPath
+    publicPath: config[0].output.publicPath,
   })
 );
 app.get('*', (req, res) => {
