@@ -1,12 +1,14 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
-module.exports = {
+const browserConfig = {
   entry: [
     './src/index.js',
   ],
   output: {
     path: path.join(__dirname, 'staging'),
+    publicPath: '/assets/',
     filename: 'js/bundle.js',
   },
   devtool: 'cheap-module-source-map',
@@ -44,3 +46,31 @@ module.exports = {
     }),
   ],
 };
+
+const serverConfig = {
+  entry: './server/index.staging.js',
+  target: 'node',
+  externals: [nodeExternals()],
+  output: {
+    path: path.join(__dirname, 'staging'),
+    filename: 'server.min.js',
+    libraryTarget: 'commonjs2',
+  },
+  devtool: 'cheap-module-source-map',
+  module: {
+    rules: [{
+      test: /.js$/,
+      exclude: /(node_modules)/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react'],
+          },
+        },
+      ],
+    }],
+  },
+};
+
+module.exports = [browserConfig, serverConfig];

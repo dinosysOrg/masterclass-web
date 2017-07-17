@@ -8,8 +8,8 @@
     "dev:server": "node ./development/server.min.js",
     "dev": "NODE_ENV=development yarn run dev:client && yarn run dev:server",
     "staging:client": "./node_modules/.bin/webpack --config ./webpack.config.staging.js",
-    "staging:server": "./node_modules/.bin/babel ./server/index.staging.js --out-file ./staging/server.min.js",
-    "staging": "NODE_ENV=production yarn run staging:client && yarn run staging:server && node ./staging/server.min.js",
+    "staging:server": "node ./staging/server.min.js",
+    "staging": "NODE_ENV=production yarn run staging:client && yarn run staging:server",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore"
   },
   "pre-commit": [
