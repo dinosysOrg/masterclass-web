@@ -1,12 +1,12 @@
-#Header{
+.header{
   padding: 20px 0px 5px 0px;
   background: #009688;
-  .logo{
+  &__logo{
     font-size: 35px;
     text-align: center;
     color: #fff
   }
-  .menu-language {
+  &__.nav-language {
     position: absolute;
     right: 0px;
     top: 40px;

@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import {BrowserRouter as Router} from 'react-router-dom';
 
-const divApp = document.createElement('div');
-
-divApp.setAttribute('id', 'app');
-
-document.body.appendChild(divApp);
-
-const RootHtml = ( ) => (
+ReactDOM.render(
   <Router>
     <App />
-  </Router>
+  </Router>,
+  document.getElementById('app')
 );
 
-
-ReactDOM.render(<RootHtml />, document.getElementById('app'));
+if (module.hot) {
+  module.hot.accept();
+}

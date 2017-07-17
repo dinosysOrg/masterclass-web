@@ -1,10 +1,10 @@
-import HomePage from './HomePage/HomePage.container';
+import Home from './Home/Home.container';
 import Browse from './Browse/Browse.container';
 import DashBoard from './DashBoard/Dashboard.container';
 import Profile from './Profile/Profile.container';
 
 export {
-  HomePage,
+  Home,
   Browse,
   DashBoard,
   Profile,

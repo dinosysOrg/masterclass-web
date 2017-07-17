@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import HomePage from './HomePage';
+import HomePage from './Home';
 /**
  * HomePageContainer of project
  */
 class HomePageContainer extends Component {
   /**
-   * render HomePageContainer template 
+   * render HomePageContainer template
    * @return {html} The template of HomePageContainer class
    */
   render() {

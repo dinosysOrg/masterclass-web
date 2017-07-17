@@ -2,6 +2,8 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import {Header, Footer} from './components';
 import routes from './routes';
+import './app.scss';
+
 /**
  * Main Class of project
  */

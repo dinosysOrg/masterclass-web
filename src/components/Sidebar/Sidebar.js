@@ -4,12 +4,12 @@ import React, {Component} from 'react';
  */
 class Siderbar extends Component {
   /**
-   * render Siderbar template 
+   * render Siderbar template
    * @return {html} The template of menu class
    */
   render() {
     return (
-      <div id="Sidebar">
+      <div className="sidebar">
         <ul>
           <li><a href="">Overview</a></li>
           <li><a href="">Syllabus</a></li>

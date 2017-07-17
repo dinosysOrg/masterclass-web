@@ -10,22 +10,30 @@ class Footer extends Component {
  */
   render() {
     return (
-      <footer className="page-footer">
-        <ul className="list-social">
+      <footer className="footer">
+        <ul className="footer__menu-social">
           <li>
-            <a href=""><Icon.FaFacebook size={17} color="#fff"/></a>
+            <a href="">
+              <Icon.FaFacebook size={17} color="#fff" />
+            </a>
           </li>
           <li>
-            <a href=""><Icon.FaTwitter size={17} color="#fff"/></a>
+            <a href="">
+              <Icon.FaTwitter size={17} color="#fff" />
+            </a>
           </li>
           <li>
-            <a href=""><Icon.FaPinterestP size={17} color="#fff"/></a>
+            <a href="">
+              <Icon.FaPinterestP size={17} color="#fff" />
+            </a>
           </li>
           <li>
-            <a href=""><Icon.FaGooglePlus size={17} color="#fff"/></a>
+            <a href="">
+              <Icon.FaGooglePlus size={17} color="#fff" />
+            </a>
           </li>
         </ul>
-        <ul className="menu-footer">
+        <ul className="footer__menu">
           <li>
             <a href="">About us</a>
           </li>
@@ -43,7 +51,6 @@ class Footer extends Component {
           </li>
         </ul>
       </footer>
-
     );
   }
 }

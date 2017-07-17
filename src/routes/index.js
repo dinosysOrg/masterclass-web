@@ -1,9 +1,9 @@
-import {HomePage, Browse, Profile, DashBoard} from '../containers';
+import {Home, Browse, Profile, DashBoard} from '../containers';
 
 const routes = [
   {
     path: '/',
-    component: HomePage,
+    component: Home,
     exact: true,
   },
   {

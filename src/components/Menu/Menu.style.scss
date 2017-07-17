@@ -1,19 +1,19 @@
-#Menu {
+.site-nav {
   padding-top: 10px;
-  li{
+  li {
     display: inline;
     margin: 0px 10px 0px 10px;
     color: #fff;
-    &.active{
+    &.active {
       border-bottom: 1px solid yellow;
       padding-bottom: 5px;
-      a{
+      a {
         color: yellow;
       }
     }
-    a{
+    a {
       color: #fff;
-      &:hover{
+      &:hover {
         color: yellow;
       }
     }

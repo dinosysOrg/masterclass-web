@@ -11,13 +11,17 @@ class Header extends Component {
  */
   render() {
     return (
-      <div id="Header">
-        <h1 className="logo">MASTERCLASS VIET NAM</h1>
-        <ul className="menu-language">
-          <li><a href="">Vietnamese</a></li>
-          <li><a href="">Sign up / Log in</a></li>
+      <div className="header">
+        <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
+        <ul className="header__nav-language">
+          <li>
+            <a href="">Vietnamese</a>
+          </li>
+          <li>
+            <a href="">Sign up / Log in</a>
+          </li>
         </ul>
-        <MainMenu/>
+        <MainMenu />
       </div>
     );
   }

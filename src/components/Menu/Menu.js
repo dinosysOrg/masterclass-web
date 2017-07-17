@@ -5,22 +5,28 @@ import {Link} from 'react-router-dom';
  */
 class MainMenu extends Component {
   /**
-   * render menu template 
+   * render menu template
    * @return {html} The template of menu class
    */
   render() {
     return (
-      <div className="container">
-        <ul id="Menu">
-          <li><Link to="/">HOME</Link></li>
-          <li>|</li>
-          <li><Link to="/Browse">BROWSE</Link></li>
-          <li>|</li>
-          <li><Link to="/Dashboard">MY DASHBOARD</Link></li>
-          <li>|</li>
-          <li><Link to="/Profile">PROFILE</Link></li>
-        </ul>
-      </div>
+      <ul className="site-nav">
+        <li>
+          <Link to="/">HOME</Link>
+        </li>
+        <li>|</li>
+        <li>
+          <Link to="/Browse">BROWSE</Link>
+        </li>
+        <li>|</li>
+        <li>
+          <Link to="/Dashboard">MY DASHBOARD</Link>
+        </li>
+        <li>|</li>
+        <li>
+          <Link to="/Profile">PROFILE</Link>
+        </li>
+      </ul>
     );
   }
 }
