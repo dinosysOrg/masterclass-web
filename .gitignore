@@ -4,7 +4,8 @@
 /node_modules
 
 # build
-/build
+/development
+/staging
 
 .eslintcache
 npm-debug.log*

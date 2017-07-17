@@ -1,10 +1,11 @@
 import React from 'react';
+import './app.scss';
 /**
  * Main Class of project
  */
 export default class App extends React.Component {
 /**
- * render app 
+ * render app
  * @return {html} The template of App class
  */
   render() {

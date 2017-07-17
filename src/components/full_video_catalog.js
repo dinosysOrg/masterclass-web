@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Panel from './panel';
+import Panel from './shared/panel';
 import VideoLink from './video_link';
 
 /**
