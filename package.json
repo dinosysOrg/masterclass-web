@@ -4,10 +4,12 @@
   "description": "platform for learning online",
   "main": "index.js",
   "scripts": {
-    "render":"./node_modules/.bin/webpack",
-    "dev:server": "node server.min.js",
-    "dev": "NODE_ENV=development yarn run render && yarn run dev:server",
-    "build": "NODE_ENV=production yarn run render",
+    "dev:client": "./node_modules/.bin/webpack --config ./webpack.config.dev.js",
+    "dev:server": "node ./development/server.min.js",
+    "dev": "NODE_ENV=development yarn run dev:client && yarn run dev:server",
+    "staging:client": "./node_modules/.bin/webpack --config ./webpack.config.staging.js",
+    "staging:server": "./node_modules/.bin/babel ./server/index.staging.js --out-file ./staging/server.min.js",
+    "staging": "NODE_ENV=production yarn run staging:client && yarn run staging:server && node ./staging/server.min.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore"
   },
   "pre-commit": [
@@ -33,6 +35,7 @@
     "redux": "^3.7.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",

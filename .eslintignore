@@ -1,6 +1,5 @@
 # /node_modules/* and /bower_components/* ignored by default
 
 # Ignore built files except build/index.js
-/build
-server.min.js
-server.min.js.map
+/development
+/staging

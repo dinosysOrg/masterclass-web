@@ -4,11 +4,10 @@
 /node_modules
 
 # build
-/build
+/development
+/staging
 
 .eslintcache
-server.min.js
-server.min.js.map
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

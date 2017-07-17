@@ -9,8 +9,8 @@ const browserConfig = {
     './src/index.js',
   ],
   output: {
-    path: path.join(__dirname, 'build'),
-    publicPath: '/assert/',
+    path: path.join(__dirname, 'development'),
+    publicPath: '/assets/',
     filename: 'js/bundle.js',
   },
   devtool: 'cheap-module-source-map',
@@ -51,18 +51,18 @@ const browserConfig = {
 };
 
 const serverConfig = {
-  entry: './server/index.js',
+  entry: './server/index.dev.js',
   target: 'node',
   externals: [nodeExternals()],
   output: {
-    path: path.join(__dirname),
+    path: path.join(__dirname, 'development'),
     filename: 'server.min.js',
     libraryTarget: 'commonjs2',
   },
   devtool: 'cheap-module-source-map',
   module: {
     rules: [{
-      test: /js$/,
+      test: /.js$/,
       exclude: /(node_modules)/,
       use: [
         {
