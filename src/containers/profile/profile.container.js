@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Profile from './Profile';
+import Profile from './profile';
 /**
  * ProfileContainer of project
  */
 class ProfileContainer extends Component {
   /**
-   * render ProfileContainer template 
+   * render ProfileContainer template
    * @return {html} The template of ProfileContainer class
    */
   render() {

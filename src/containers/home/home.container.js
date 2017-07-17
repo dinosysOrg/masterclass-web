@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import HomePage from './Home';
+import HomePage from './home';
 /**
  * HomePageContainer of project
  */

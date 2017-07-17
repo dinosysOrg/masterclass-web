@@ -1,7 +1,7 @@
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import MainMenu from './Menu/Menu';
-import Sidebar from './Sidebar/Sidebar';
+import Header from './header/header';
+import Footer from './footer/footer';
+import MainMenu from './menu/menu';
+import Sidebar from './sidebar/sidebar';
 
 export
 {

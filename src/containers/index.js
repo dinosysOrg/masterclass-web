@@ -1,7 +1,7 @@
-import Home from './Home/Home.container';
-import Browse from './Browse/Browse.container';
-import DashBoard from './DashBoard/Dashboard.container';
-import Profile from './Profile/Profile.container';
+import Home from './home/home.container';
+import Browse from './browse/browse.container';
+import DashBoard from './dashBoard/dashboard.container';
+import Profile from './profile/profile.container';
 
 export {
   Home,

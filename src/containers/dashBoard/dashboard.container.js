@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import DashBoard from './Dashboard';
+import DashBoard from './dashboard';
 /**
  * DashBoardContainer of project
  */
 class DashBoardContainer extends Component {
   /**
-   * render DashBoardContainer template 
+   * render DashBoardContainer template
    * @return {html} The template of DashBoardContainer class
    */
   render() {
