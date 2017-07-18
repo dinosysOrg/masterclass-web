@@ -69,6 +69,9 @@ const serverConfig = {
           },
         },
       ],
+    }, {
+      test: /\.scss$/,
+      loader: 'ignore-loader',
     }],
   },
 };
