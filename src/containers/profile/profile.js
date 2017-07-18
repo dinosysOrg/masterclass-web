@@ -11,7 +11,7 @@ class Profile extends Component {
     return (
       <div className="profile-page">
         <div className="container">
-          <Section>
+          <section>
             <div className="row">
               <div className="col center s12">
                 <h3>
@@ -52,7 +52,7 @@ class Profile extends Component {
                 </p>
               </div>
             </div>
-          </Section>
+          </section>
         </div>
       </div>
     );

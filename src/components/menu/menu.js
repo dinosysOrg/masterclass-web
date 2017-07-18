@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 /**
  * Main menu of header
  */
@@ -9,21 +9,22 @@ class MainMenu extends Component {
    * @return {html} The template of menu class
    */
   render() {
+    const {pathname} = this.props.location;
     return (
       <ul className="site-nav">
-        <li>
+        <li className={pathname === '/' ? 'active' : null}>
           <Link to="/">HOME</Link>
         </li>
         <li>|</li>
-        <li>
+        <li className={pathname === '/Browse' ? 'active' : null}>
           <Link to="/Browse">BROWSE</Link>
         </li>
         <li>|</li>
-        <li>
+        <li className={pathname === '/Dashboard' ? 'active' : null}>
           <Link to="/Dashboard">MY DASHBOARD</Link>
         </li>
         <li>|</li>
-        <li>
+        <li className={pathname === '/Profile' ? 'active' : null}>
           <Link to="/Profile">PROFILE</Link>
         </li>
       </ul>
@@ -31,4 +32,5 @@ class MainMenu extends Component {
   }
 }
 
-export default MainMenu;
+
+export default withRouter(MainMenu);
