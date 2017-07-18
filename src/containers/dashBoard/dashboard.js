@@ -16,7 +16,7 @@ class Dashboard extends Component {
             <Sidebar />
           </div>
           <div className="col s12 m10 dashboard-content">
-            <Section>
+            <section>
               <h3>
                 <i className="mdi-content-send brown-text" />
               </h3>
@@ -39,7 +39,7 @@ class Dashboard extends Component {
                 eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et
                 ultrices posuere cubilia Curae;
               </p>
-            </Section>
+            </section>
           </div>
         </div>
       </div>
