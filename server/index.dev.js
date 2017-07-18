@@ -12,11 +12,9 @@ const app = express();
 const compiler = webpack(config[0]);
 
 app.use(express.static(path.join(__dirname, 'development')));
-app.use(
-  webpackDevMiddleware(compiler, {
-    publicPath: config[0].output.publicPath,
-  })
-);
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: config[0].output.publicPath,
+}));
 app.use(webpackHotMiddleware(compiler));
 app.get('*', (req, res) => {
   res.send(`
