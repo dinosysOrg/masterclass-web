@@ -1,0 +1,14 @@
+.sidebar {
+  li{
+    margin: 10px 10px;
+    a{
+      display: block;
+      background-color: #00695c;
+      padding: 10px;
+      color: #fff;
+      &:hover{
+        background-color: #004d40;
+      }
+    }
+  }
+}
