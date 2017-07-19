@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
-import {Sidebar} from '../../components/';
+import {Link} from 'react-router-dom';
+
+import VideoPanel from '../../components/shared/video_panel';
+import PathProgressSummary from '../../components/shared/path_progress_summary';
+import ProgressList from '../../components/shared/progress_list';
+
 /**
  * Dashboard of project
  */
@@ -11,36 +16,28 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard-page">
-        <div className="row dashboard-row">
-          <div className="col s12 m2 sidebar-column">
-            <Sidebar />
-          </div>
-          <div className="col s12 m10 dashboard-content">
-            <section>
-              <h3>
-                <i className="mdi-content-send brown-text" />
-              </h3>
-              <h4>Dashboard Page</h4>
-              <p className="left-align light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros
-                justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget,
-                bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla
-                imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam
-                eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et
-                ultrices posuere cubilia Curae;
-              </p>
-              <p className="left-align light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros
-                justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget,
-                bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla
-                imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam
-                eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et
-                ultrices posuere cubilia Curae;
-              </p>
-            </section>
-          </div>
+        <div className="container">
+          <Link to="Dashboard">My Dashboard</Link>
+          <form>
+            <input type="text" placeholder="search" />
+          </form>
+          <p>*Hover on each path to see how far it takes you on your musical journey</p>
+
+          <VideoPanel title="In Progress" />
+          <VideoPanel title="Saved" />
+          <VideoPanel title="Completed" />
+          <PathProgressSummary />
+
+          <ul>
+            <li>
+              <ProgressList title="Trinity" />
+              <ProgressList title="Strumming" />
+              <ProgressList title="Chords" />
+              <ProgressList title="Finger Style" />
+            </li>
+          </ul>
+
+          <a className="btn" href="#">Resume This Path</a>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 /* @flow */
-import {applyMiddleware, compose, createStore} from 'redux';
-import {devToolsExtension} from 'redux-devtools-extension';
+import {compose, createStore} from 'redux';
 import reducers from './reducer.config';
 /**
  * config store redux

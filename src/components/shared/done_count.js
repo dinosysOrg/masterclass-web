@@ -1,15 +1,15 @@
 import React from 'react';
 
 export default (props) => {
-  const {scoreText, description} = props;
+  const {done, total, description} = props;
 
   return (
     <div>
-      <h3>
-        {scoreText}
-      </h3>
       <p>
-        {description}
+        {Math.round(done/total*100)} %
+      </p>
+      <p>
+        {done}/{total} {description}
       </p>
     </div>
   );

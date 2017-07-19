@@ -42,14 +42,14 @@ class FullVideoCatalog extends Component {
           <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
         </form>
 
-        <ul>
-          <li>
+        <ul className="row">
+          <li className="col s12 m4">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
-          <li>
+          <li className="col s12 m4">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
-          <li>
+          <li className="col s12 m4">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
         </ul>
