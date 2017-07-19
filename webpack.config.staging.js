@@ -1,6 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const browserConfig = {
   entry: [
@@ -43,6 +44,12 @@ const browserConfig = {
   plugins: [
     new ExtractTextPlugin({
       filename: 'css/bundle.css',
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {discardComments: {removeAll: true}},
+      canPrint: true,
     }),
   ],
 };
