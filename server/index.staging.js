@@ -28,6 +28,7 @@ app.get('*', (req, res) => {
   res.send(`
       <!DOCTYPE html>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MasterClass Platform</title>
         <link rel="stylesheet" href="assets/css/bundle.css">
       </head>

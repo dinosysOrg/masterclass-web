@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import HomePage from './home';
+
 /**
  * HomePageContainer of project
  */
@@ -14,5 +15,5 @@ class HomePageContainer extends Component {
     );
   }
 }
-export default HomePageContainer;
 
+export default HomePageContainer;

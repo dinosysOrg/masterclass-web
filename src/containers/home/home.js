@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+
+import HowItWorks from '../../components/shared/how_it_works';
+import FullVideoCatalog from '../../components/shared/full_video_catalog';
+
 /**
  * HomePage of project
  */
@@ -11,10 +15,12 @@ class HomePage extends Component {
     return (
       <div className="home-page">
         <div className="container">
-          <p>this is a home page</p>
+          <HowItWorks />
+          <FullVideoCatalog />
         </div>
       </div>
     );
   }
 }
+
 export default HomePage;
