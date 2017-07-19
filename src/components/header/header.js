@@ -11,7 +11,7 @@ class Header extends Component {
  */
   render() {
     return (
-      <div className="header">
+      <header className="header">
         <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
         <ul className="header__nav-language">
           <li>
@@ -22,7 +22,7 @@ class Header extends Component {
           </li>
         </ul>
         <MainMenu />
-      </div>
+      </header>
     );
   }
 }

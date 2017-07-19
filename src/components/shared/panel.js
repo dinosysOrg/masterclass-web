@@ -3,9 +3,9 @@ import React from 'react';
 export default ({title, children}) => {
   return (
     <div>
-      <h2>
+      <h4>
         {title}
-      </h2>
+      </h4>
       {children}
     </div>
   );
