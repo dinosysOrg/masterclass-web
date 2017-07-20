@@ -1,0 +1,18 @@
+.ReactModal__Content {
+  transition: all 300ms ease-in-out;
+  transform: translateY(10px);
+  opacity: 0;
+
+  &--after-open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &--before-close {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+.ReactModal__Overlay {
+    background: red;
+}

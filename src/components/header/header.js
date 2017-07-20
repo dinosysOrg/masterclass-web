@@ -1,14 +1,33 @@
 import React, {Component} from 'react';
-import {MainMenu} from '../../components';
+import {MainMenu, Modal} from '../../components';
 
 /**
- * Header of project
- */
+* Header of project
+*/
 class Header extends Component {
   /**
- * render Header
- * @return {html} The template of Header class
- */
+  * render Header
+  * @param {any} props
+  */
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+    this.handleModalLogin = this.handleModalLogin.bind(this);
+  }
+  /**
+  * render Header
+  * @param {any} e
+  */
+  handleModalLogin(e) {
+    e.preventDefault();
+    this.setState({showModal: !this.state.showModal});
+  }
+  /**
+  * render Header
+  * @return {html} The template of Header class
+  */
   render() {
     return (
       <header className="header">
@@ -18,9 +37,14 @@ class Header extends Component {
             <a href="">Vietnamese</a>
           </li>
           <li>
-            <a href="">Sign up / Log in</a>
+            <a href="#" onClick={this.handleModalLogin}>
+              Sign up / Log in
+            </a>
           </li>
         </ul>
+        <Modal isOpen={this.state.showModal} contentLabel="onRequestClose Example" onRequestClose={this.handleModalLogin}>
+          <p>this is a modal</p>
+        </Modal>
         <MainMenu />
       </header>
     );
