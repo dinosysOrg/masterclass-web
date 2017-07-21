@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {MainMenu, Modal} from '../../components';
-
+import {MainMenu, ModalAuth} from '../../components';
 /**
 * Header of project
 */
@@ -42,9 +41,7 @@ class Header extends Component {
             </a>
           </li>
         </ul>
-        <Modal isOpen={this.state.showModal} contentLabel="onRequestClose Example" onRequestClose={this.handleModalLogin}>
-          <p>this is a modal</p>
-        </Modal>
+        <ModalAuth onRequestClose={this.handleModalLogin} isOpen={this.state.showModal} />
         <MainMenu />
       </header>
     );

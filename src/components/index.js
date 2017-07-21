@@ -2,7 +2,7 @@ import Header from './header/header';
 import Footer from './footer/footer';
 import MainMenu from './menu/menu';
 import Sidebar from './sidebar/sidebar';
-import Modal from './modal/modal';
+import ModalAuth from './modal_auth/modal_auth';
 
 export
 {
@@ -10,5 +10,5 @@ export
   Footer,
   MainMenu,
   Sidebar,
-  Modal,
+  ModalAuth,
 };

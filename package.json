@@ -38,6 +38,7 @@
     "react-modal": "^2.2.2",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
+    "react-tabs": "^1.1.0",
     "redux": "^3.7.0",
     "redux-devtools-extension": "^2.13.2"
   },

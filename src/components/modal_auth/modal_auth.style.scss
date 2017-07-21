@@ -1,0 +1,94 @@
+.ReactModal__Content {
+  transition: all 300ms ease-in-out;
+  opacity: 0;
+  transform: scaleX(0.7);
+  padding: 0px !important;
+  background: none !important;
+  border-radius: 0px !important;
+  border: 0px !important;
+  &--after-open {
+    opacity: 1;
+    transform: scaleX(1);
+    width: 55%;
+    left: 0px !important;
+    top: 20% !important;
+    bottom: initial !important;
+    right: 0px !important;
+    margin: auto;
+    max-height: 60%;
+  }
+
+  &--before-close {
+    opacity: 0;
+    transform: scaleX(0.7);
+  }
+}
+.ReactModal__Overlay {
+    background: rgba(0,0,0,0.7) !important;
+}
+.ReactModal__Body--open{
+  overflow: hidden;
+}
+.modal-content{
+  text-align: center;
+}
+
+.react-tabs {
+  &__tab-list {
+    border-bottom: 1px solid #aaa;
+    padding: 0;
+    margin: 0px;
+    background: none;
+    text-align: center;
+  }
+
+  &__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    background: #999;
+    min-width: 120px;
+    padding: 12px 15px;
+    cursor: pointer;
+
+    &--selected {
+      background: #fff;
+      border-color: #aaa;
+      padding: 12px 15px;
+      color: black;
+    }
+    &:focus {
+      box-shadow: 0 0 5px hsl(208, 99%, 50%);
+      border-color: hsl(208, 99%, 50%);
+      outline: none;
+
+      &:after {
+        content: "";
+        position: absolute;
+        height: 5px;
+        left: -4px;
+        right: -4px;
+        bottom: -5px;
+        background: #fff;
+      }
+    }
+  }
+
+  &__tab-panel {
+    display: none;
+    text-align: center;
+    &--selected {
+      display: block;
+      background: #fff;
+      padding: 30px;
+    }
+
+    &--disabled {
+      color: GrayText;
+      cursor: default;
+    }
+  }
+}
