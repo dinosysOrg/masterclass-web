@@ -8,7 +8,7 @@ export default ({title}) => {
       <ul className="row">
         <li className="col s4">
           <div>
-            <img src="#" alt="video thumbnail" />
+            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>
             <p>Intermediate Guitar</p>
             <p>MR. JONNY</p>
@@ -17,7 +17,7 @@ export default ({title}) => {
 
         <li className="col s4">
           <div>
-            <img src="#" alt="video thumbnail" />
+            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>
             <p>Intermediate Guitar</p>
             <p>MR. JONNY</p>
@@ -26,7 +26,7 @@ export default ({title}) => {
 
         <li className="col s4">
           <div>
-            <img src="#" alt="video thumbnail" />
+            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>
             <p>Intermediate Guitar</p>
             <p>MR. JONNY</p>
