@@ -8,6 +8,10 @@ import webpack from 'webpack';
 import config from '../webpack.config.dev.js';
 import App from '../src/app';
 import path from 'path';
+import {Provider} from 'react-redux';
+import configureStore from '../src/configs/store.config';
+
+const store = configureStore();
 
 const app = express();
 const compiler = webpack(config[0]);
@@ -20,9 +24,11 @@ app.use(webpackHotMiddleware(compiler));
 app.get('*', (req, res) => {
   const context = {};
   const html = renderToString(
-    <StaticRouter location={req.url} context={context}>
-      <App/>
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App/>
+      </StaticRouter>
+    </Provider>
   );
 
   if (context.url) res.redirect(context.url);
@@ -45,3 +51,4 @@ app.get('*', (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is listening');
 });
+

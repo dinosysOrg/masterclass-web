@@ -38,7 +38,9 @@
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.0",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-observable": "^0.14.1",
+    "rxjs": "^5.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
