@@ -11,48 +11,41 @@ class Profile extends Component {
     return (
       <div className="profile-page">
         <div className="container">
-          <section>
-            <div className="row">
-              <div className="col center s12">
-                <h3>
-                  <i className="mdi-content-send brown-text" />
-                </h3>
-                <h4>Profile Page</h4>
-                <p className="left-align light">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                  pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
-                  ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin
-                  lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi
-                  massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                </p>
-                <p className="left-align light">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                  pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
-                  ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin
-                  lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi
-                  massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                </p>
-                <p className="left-align light">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                  pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
-                  ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin
-                  lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi
-                  massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                </p>
-                <p className="left-align light">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
-                  pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
-                  ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin
-                  lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi
-                  massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                </p>
-              </div>
+          <img src="http://via.placeholder.com/150?text=avatart" />
+          <a href="#" className="btn">Edit</a>
+          <form>
+            <input type="text" placeholder="First name" />
+            <input type="text" placeholder="Last name" />
+            <input type="date" />
+            <div className="input-field col s12">
+              <select className="browser-default">
+                <option value="m" selected>Male</option>
+                <option value="f">Female</option>
+              </select>
             </div>
-          </section>
+            <input type="email" placeholder="Email" />
+            <input type="tel" placeholder="Phone" />
+            <input type="text" placeholder="School" />
+            <input type="text" placeholder="Occupation" />
+
+            <textarea rows="10" className="materialize-textarea">
+              Tell us anything about your personal interests.
+            </textarea>
+
+            <input type="text" placeholder="Instruments" />
+            <textarea rows="10" className="materialize-textarea">
+              Tell us anything about your musical instruments.
+            </textarea>
+          </form>
+
+          <form>
+            <input type="text" placeholder="Name in Card" />
+            <input type="text" placeholder="Card Type" />
+            <input type="number" placeholder="Card Number" />
+            <input type="month" />
+            <input type="text" placeholder="CCV" />
+            <input className="btn" type="submit" value="Save" />
+          </form>
         </div>
       </div>
     );

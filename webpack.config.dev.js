@@ -2,6 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const browserConfig = {
   entry: [
@@ -45,6 +46,12 @@ const browserConfig = {
   plugins: [
     new ExtractTextPlugin({
       filename: 'css/bundle.css',
+    }),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: {discardComments: {removeAll: true}},
+      canPrint: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

@@ -34,7 +34,6 @@ app.get('*', (req, res) => {
       </head>
       <body>
         <div id="app">${html}</div>
-        <script src="assets/js/bundle.js"></script>
       </body>
     </html>
   `);

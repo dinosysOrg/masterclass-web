@@ -1,7 +1,6 @@
-import initReducer from './init/init.reducers';
+import {userReducer, fetchUserEpic} from './user';
 
 export {
-  initReducer,
+  userReducer,
+  fetchUserEpic,
 };
-
-

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import HomePage from './home';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as initAction from '../../redux/init/init.action';
+import * as userAction from '../../redux/user/user.action';
 /**
  * HomePageContainer of project
  */
@@ -12,13 +12,14 @@ class HomePageContainer extends Component {
    * @return {html} The template of HomePageContainer class
    */
   render() {
+    console.log(this.props);
     return <HomePage />;
   }
   /**
  * componentDidMount of HomePageContainer
  */
   componentDidMount() {
-    this.props.InitAction.initAction();
+    this.props.userAction.fetchUser();
   }
 }
 const mapStateToProps = (rootState) => {
@@ -28,7 +29,7 @@ const mapStateToProps = (rootState) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    InitAction: bindActionCreators(initAction, dispatch),
+    userAction: bindActionCreators(userAction, dispatch),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);
