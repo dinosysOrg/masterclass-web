@@ -14,6 +14,7 @@ class Header extends Component {
       showModal: false,
     };
     this.handleModalLogin = this.handleModalLogin.bind(this);
+    this.onCloseModal = this.onCloseModal.bind(this);
   }
   /**
   * render Header
@@ -22,6 +23,13 @@ class Header extends Component {
   handleModalLogin(e) {
     e.preventDefault();
     this.setState({showModal: !this.state.showModal});
+  }
+  /**
+  * render Header
+  * @param {any} modal
+  */
+  onCloseModal(modal) {
+    this.setState({showModal: modal});
   }
   /**
   * render Header
@@ -41,7 +49,7 @@ class Header extends Component {
             </a>
           </li>
         </ul>
-        <ModalAuth onRequestClose={this.handleModalLogin} isOpen={this.state.showModal} />
+        <ModalAuth onCloseModal={this.onCloseModal} onRequestClose={this.handleModalLogin} isOpen={this.state.showModal} />
         <MainMenu />
       </header>
     );

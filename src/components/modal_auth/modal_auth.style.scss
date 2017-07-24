@@ -22,6 +22,9 @@
     opacity: 0;
     transform: scaleX(0.7);
   }
+  .btn-fb{
+    margin-top: 15px;
+  }
 }
 .ReactModal__Overlay {
     background: rgba(0,0,0,0.7) !important;
@@ -40,6 +43,17 @@
     margin: 0px;
     background: none;
     text-align: center;
+  }
+
+  .tabContent{
+    width: 70%;
+    margin: auto;
+  }
+  .lineModal{
+    width: 100%;
+    height: 2px;
+    background: #000;
+    margin: 30px 0px;
   }
 
   &__tab {
@@ -83,7 +97,7 @@
     &--selected {
       display: block;
       background: #fff;
-      padding: 30px;
+      padding: 40px 30px;
     }
 
     &--disabled {

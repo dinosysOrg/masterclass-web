@@ -4905,6 +4905,10 @@ react-dom@^15.6.1:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
+react-facebook-login@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-3.6.2.tgz#1965f6af54cc90341b788d0752185cfd25a14d30"
+
 react-form@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-form/-/react-form-1.3.0.tgz#d679b43ba896c8010a942f65119649537e1a0f4b"
