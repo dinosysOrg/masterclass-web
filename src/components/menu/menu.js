@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 /**
  * Main menu of header
  */
@@ -31,6 +32,9 @@ class MainMenu extends Component {
     );
   }
 }
-
-
-export default withRouter(MainMenu);
+const mapStateToProps = (rootState) => {
+  return {
+    payload: rootState,
+  };
+};
+export default withRouter(connect(mapStateToProps)(MainMenu));

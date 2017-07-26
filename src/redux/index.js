@@ -1,6 +1,8 @@
-import {userReducer, fetchUserEpic} from './user';
+import {userReducer, loginRequestEpic} from './user';
+import {loadingReducer} from './loading';
 
 export {
   userReducer,
-  fetchUserEpic,
+  loadingReducer,
+  loginRequestEpic,
 };

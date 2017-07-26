@@ -1,6 +1,6 @@
 import {combineEpics} from 'redux-observable';
-import {fetchUserEpic} from '../redux';
+import {loginRequestEpic} from '../redux';
 export default combineEpics(
-  fetchUserEpic
+  loginRequestEpic,
 );
 
