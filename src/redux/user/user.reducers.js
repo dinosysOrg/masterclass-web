@@ -9,23 +9,25 @@ const initialState = {};
 */
 export default function init(state = initialState, action) {
   switch (action.type) {
-  case types.FETCHING_USER:
-    return {
-      ...state,
-      data: [],
-      isFetching: true,
-    };
   case types.FETCHING_USER_SUCCESS:
     return {
       ...state,
-      isFetching: false,
       data: action.payload.results,
     };
   case types.FETCHING_USER_FAILURE:
     return {
       ...state,
-      isFetching: false,
       error: true,
+    };
+  case types.LOGIN_REQUEST_SUCCESS:
+    return {
+      ...state,
+      userInfo: action.payload,
+    };
+  case types.LOGIN_REQUEST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
     };
   default:
     return state;

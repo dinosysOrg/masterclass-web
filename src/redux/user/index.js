@@ -1,9 +1,9 @@
 import userReducer from './user.reducers';
-import {fetchUserEpic} from './user.epic';
+import {loginRequestEpic} from './user.epic';
 
 export {
   userReducer,
-  fetchUserEpic,
+  loginRequestEpic,
 };
 
 
