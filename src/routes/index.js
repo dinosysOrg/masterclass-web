@@ -22,9 +22,9 @@ const routes = [
     exact: true,
   },
   {
-    path: '/path',
+    path: '/Path',
     component: Path,
-    exact: true,
+    exact: false,
   },
 ];
 
