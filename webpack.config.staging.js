@@ -12,7 +12,7 @@ const browserConfig = {
     publicPath: '/assets/',
     filename: 'js/bundle.js',
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [{
       test: /\.scss$/,
