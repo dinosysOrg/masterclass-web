@@ -3,6 +3,7 @@ import ModalAuth from './modal_auth';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
+import * as initAction from '../../redux/init/init.action';
 /**
 * Modal of project
 */
@@ -20,12 +21,9 @@ class ModalAuthContainer extends Component {
    * @return {html} The template of Footer class
    */
   render() {
-    const {userAction} = this.props;
     return (
       <ModalAuth
         {...this.props}
-        payload={this.props.payload}
-        userAction={userAction}
       />
     );
   }
@@ -38,6 +36,7 @@ const mapStateToProps = (rootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     userAction: bindActionCreators(userAction, dispatch),
+    initAction: bindActionCreators(initAction, dispatch),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ModalAuthContainer);

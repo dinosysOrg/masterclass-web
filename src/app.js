@@ -20,7 +20,7 @@ class App extends React.Component {
   * check loading fuc
   */
   checkLoading() {
-    if (this.props.payload.loadingReducer.showLoading) {
+    if (this.props.payload.initReducer.showLoading) {
       return (
         <div className="loading-content">
           <div className="loading-center">
@@ -38,7 +38,7 @@ class App extends React.Component {
    * @return {html} The template of App class
    */
   render() {
-    // console.log(this.props.payload);
+    console.log(this.props.payload);
     return (
       <div>
         <Header/>

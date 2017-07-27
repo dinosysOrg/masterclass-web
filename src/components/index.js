@@ -1,4 +1,4 @@
-import Header from './header/header';
+import Header from './header/header.container';
 import Footer from './footer/footer';
 import MainMenu from './menu/menu';
 import Sidebar from './sidebar/sidebar';

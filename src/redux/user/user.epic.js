@@ -3,11 +3,10 @@ import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
 import {loginAPI} from './user.api';
-import * as typesLoading from '../loading/loading.types';
+import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
-import {of as of$} from 'rxjs/observable/of';
+import {of} from 'rxjs/observable/of';
 import {from as from$} from 'rxjs/observable/from';
-import * as actionModal from '../loading/loading.action';
 /**
  * action fetch data
  * @param {any} action$
@@ -16,12 +15,11 @@ import * as actionModal from '../loading/loading.action';
 const loginRequestEpic = (action$) =>
   action$.ofType(types.LOGIN_REQUEST).mergeMap((data) =>
     concat$(
-      of$({type: typesLoading.SHOW_LOADING}),
+      of(actionInit.showLoading()),
       from$(ajax.post(loginAPI, {}, data.payload))
-        .map((response) => actions.loginRequestSuccess(response))
-        .map(() => actionModal.hideModal())
-        .catch((error) => of$({type: types.LOGIN_REQUEST_FAILURE, payload: error.xhr.response.errors[0]})),
-      of$({type: typesLoading.HIDE_LOADING}),
+        .mergeMap((response) => of(actions.loginRequestSuccess(response), actionInit.hideModal('modalAuth')))
+        .catch((error) => of(actions.loginRequestFailure(error))),
+      of(actionInit.hideLoading()),
     )
   );
 export {

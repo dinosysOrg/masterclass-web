@@ -33,15 +33,13 @@ class Modal extends Component {
    * @param {object} response
    */
   responseFacebook(response) {
-    // console.log(response);
-    this.props.onCloseModal(false);
+    console.log(response);
   }
   /**
    * Submit Login
    * @param {object} values
    */
   onSubmitLogin(values) {
-    this.props.onCloseModal(false);
     this.props.userAction.loginRequest(values);
   }
   /**
@@ -56,11 +54,15 @@ class Modal extends Component {
    * @return {html} The template of Footer class
    */
   render() {
-    // console.log(this.props);
+    const {error} = this.props.payload.userReducer;
+    const {modalAuth} = this.props.payload.initReducer;
+    const {hideModal} = this.props.initAction;
     return (
       <ReactModal
+        isOpen={modalAuth}
+        onCloseModal={()=> hideModal('modalAuth')}
+        onRequestClose={()=> hideModal('modalAuth')}
         contentLabel="login Modal"
-        {...this.props}
       >
         <Tabs selectedIndex={this.state.tabIndex} onSelect={(tabIndex) => this.setState({tabIndex})}>
           <TabList>
@@ -86,9 +88,9 @@ class Modal extends Component {
                 {({submitForm}) => {
                   return (
                     <form onSubmit={submitForm}>
-                      <Text required field="email" placeholder="Email" />
-                      <Text required field="password" placeholder="Password" />
-                      <Text required field="confirmPassword" placeholder="Confirm Password" />
+                      <Text type="text" required field="email" placeholder="Email" />
+                      <Text type="text" required field="password" placeholder="Password" />
+                      <Text type="text" required field="confirmPassword" placeholder="Confirm Password" />
                       <button className="btn waves-effect waves-light" type="submit" name="action">
                         Create Account
                       </button>
@@ -107,8 +109,9 @@ class Modal extends Component {
                 {({submitForm}) => {
                   return (
                     <form onSubmit={submitForm}>
-                      <Text required field="email" placeholder="Email" />
+                      <Text type="text" required field="email" placeholder="Email" />
                       <Text required field="password" placeholder="Password" />
+                      {error ? <div style={{marginBottom: 10, color: 'red'}}>{error}</div> : null}
                       <button className="btn waves-effect waves-light" type="submit" name="action">
                         Login
                       </button>

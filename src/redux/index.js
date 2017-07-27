@@ -1,8 +1,8 @@
+import {initReducer} from './init';
 import {userReducer, loginRequestEpic} from './user';
-import {loadingReducer} from './loading';
 
 export {
   userReducer,
-  loadingReducer,
+  initReducer,
   loginRequestEpic,
 };
