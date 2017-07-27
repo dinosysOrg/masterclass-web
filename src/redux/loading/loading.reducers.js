@@ -1,6 +1,7 @@
 import * as types from './loading.types';
 
 const initialState = {
+  modalStatus: false,
 };
 /**
  * init reducer redux
@@ -20,7 +21,16 @@ export default function init(state = initialState, action) {
       ...state,
       showLoading: false,
     };
-
+  case types.SHOW_MODAL:
+    return {
+      ...state,
+      modalStatus: true,
+    };
+  case types.HIDE_MODAL:
+    return {
+      ...state,
+      modalStatus: false,
+    };
   default:
     return state;
   }

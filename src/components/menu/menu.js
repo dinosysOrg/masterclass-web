@@ -11,6 +11,7 @@ class MainMenu extends Component {
    */
   render() {
     const {pathname} = this.props.location;
+    // console.log(pathname);
     return (
       <ul className="site-nav">
         <li className={pathname === '/' ? 'active' : null}>

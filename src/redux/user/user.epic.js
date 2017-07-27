@@ -7,6 +7,7 @@ import * as typesLoading from '../loading/loading.types';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of as of$} from 'rxjs/observable/of';
 import {from as from$} from 'rxjs/observable/from';
+import * as actionModal from '../loading/loading.action';
 /**
  * action fetch data
  * @param {any} action$
@@ -18,8 +19,9 @@ const loginRequestEpic = (action$) =>
       of$({type: typesLoading.SHOW_LOADING}),
       from$(ajax.post(loginAPI, {}, data.payload))
         .map((response) => actions.loginRequestSuccess(response))
-        .catch((error) => actions.loginRequestFailure(error)),
-      of$({type: typesLoading.HIDE_LOADING})
+        .map(() => actionModal.hideModal())
+        .catch((error) => of$({type: types.LOGIN_REQUEST_FAILURE, payload: error.xhr.response.errors[0]})),
+      of$({type: typesLoading.HIDE_LOADING}),
     )
   );
 export {

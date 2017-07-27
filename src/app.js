@@ -14,27 +14,13 @@ class App extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      loadingStatus: false,
-    };
-  }
-  /**
-   * render contructor
-   * @param {any} nextProps
-   */
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.payload.loadingReducer.showLoading) {
-      this.setState({loadingStatus: true});
-    } else {
-      this.setState({loadingStatus: false});
-    }
   }
   /**
   * @return {html}
   * check loading fuc
   */
   checkLoading() {
-    if (this.state.loadingStatus) {
+    if (this.props.payload.loadingReducer.showLoading) {
       return (
         <div className="loading-content">
           <div className="loading-center">
@@ -52,7 +38,7 @@ class App extends React.Component {
    * @return {html} The template of App class
    */
   render() {
-    console.log(this.props.payload);
+    // console.log(this.props.payload);
     return (
       <div>
         <Header/>
