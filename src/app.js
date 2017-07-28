@@ -38,7 +38,7 @@ class App extends React.Component {
    * @return {html} The template of App class
    */
   render() {
-    console.log(this.props.payload);
+    console.log(this.props);
     return (
       <div>
         <Header/>

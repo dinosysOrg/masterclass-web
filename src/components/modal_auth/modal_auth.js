@@ -50,18 +50,29 @@ class Modal extends Component {
     console.log(values);
   }
   /**
+   * Check Modal
+   * @return {any} values
+   */
+  checkModal() {
+    const {modalName} = this.props.payload.initReducer;
+    if (modalName === 'modalAuth') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  /**
    * render Footer
    * @return {html} The template of Footer class
    */
   render() {
     const {error} = this.props.payload.userReducer;
-    const {modalAuth} = this.props.payload.initReducer;
     const {hideModal} = this.props.initAction;
     return (
       <ReactModal
-        isOpen={modalAuth}
-        onCloseModal={()=> hideModal('modalAuth')}
-        onRequestClose={()=> hideModal('modalAuth')}
+        isOpen={this.checkModal()}
+        onCloseModal={()=> hideModal()}
+        onRequestClose={()=> hideModal()}
         contentLabel="login Modal"
       >
         <Tabs selectedIndex={this.state.tabIndex} onSelect={(tabIndex) => this.setState({tabIndex})}>

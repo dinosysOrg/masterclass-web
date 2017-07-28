@@ -17,7 +17,7 @@ const loginRequestEpic = (action$) =>
     concat$(
       of(actionInit.showLoading()),
       from$(ajax.post(loginAPI, {}, data.payload))
-        .mergeMap((response) => of(actions.loginRequestSuccess(response), actionInit.hideModal('modalAuth')))
+        .mergeMap((response) => of(actions.loginRequestSuccess(response), actionInit.hideModal()))
         .catch((error) => of(actions.loginRequestFailure(error))),
       of(actionInit.hideLoading()),
     )

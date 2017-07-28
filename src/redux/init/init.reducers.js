@@ -1,7 +1,7 @@
 import * as types from './init.types';
 
 const initialState = {
-  modalAuth: false,
+  modalName: null,
 };
 /**
  * init reducer redux
@@ -24,12 +24,12 @@ export default function init(state = initialState, action) {
   case types.SHOW_MODAL:
     return {
       ...state,
-      [action.payload]: true,
+      modalName: action.payload,
     };
   case types.HIDE_MODAL:
     return {
       ...state,
-      [action.payload]: false,
+      modalName: null,
     };
   default:
     return state;
