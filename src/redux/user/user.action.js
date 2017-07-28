@@ -18,7 +18,7 @@ export function loginRequest(response) {
 export function loginRequestSuccess(json) {
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
-    payload: {...json},
+    payload: json,
   };
 }
 /**
