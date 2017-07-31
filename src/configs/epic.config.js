@@ -1,6 +1,7 @@
 import {combineEpics} from 'redux-observable';
-import {fetchUserEpic} from '../redux';
+import {fetchUserEpic, fetchPathEpic} from '../redux';
 export default combineEpics(
-  fetchUserEpic
+  fetchUserEpic,
+  fetchPathEpic,
 );
 

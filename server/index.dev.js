@@ -15,15 +15,16 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 app.get('*', (req, res) => {
   res.send(`
-      <!DOCTYPE html>
+    <!DOCTYPE html>
+    <html>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MasterClass Platform</title>
-        <link rel="stylesheet" href="assets/css/bundle.css">
+        <link rel="stylesheet" href="/assets/css/bundle.css">
       </head>
       <body>
         <div id="app"></div>
-        <script src="assets/js/bundle.js"></script>
+        <script src="/assets/js/bundle.js"></script>
       </body>
     </html>
   `);
