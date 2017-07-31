@@ -4,6 +4,10 @@ import {Header, Footer} from './components';
 import routes from './routes';
 import './app.scss';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as initAction from './redux/init/init.action';
+import * as userAction from './redux/user/user.action';
+import storeConfig from './configs/storage.config';
 /**
  * Main Class of project
  */
@@ -14,6 +18,17 @@ class App extends React.Component {
    */
   constructor(props) {
     super(props);
+  }
+  /**
+   * render will mount
+   */
+  componentWillMount() {
+    const dataUser = storeConfig.getUserLocal();
+    if (dataUser) {
+      this.props.initAction.checkAuth(dataUser);
+    } else {
+      console.log('chua dang nhap');
+    }
   }
   /**
   * @return {html}
@@ -49,9 +64,15 @@ class App extends React.Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    initAction: bindActionCreators(initAction, dispatch),
+    userAction: bindActionCreators(userAction, dispatch),
+  };
+};
 const mapStateToProps = (rootState) => {
   return {
     payload: rootState,
   };
 };
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -1,12 +1,21 @@
-exports.setUserLocal = (xhr) => {
+exports.setUserLocal = (xhr, json) => {
   let userLocal = {
-    'Access-Token': xhr.getResponseHeader('Access-Token'),
-    'Client': xhr.getResponseHeader('Client'),
-    'Expiry': xhr.getResponseHeader('Expiry'),
-    'Token-Type': xhr.getResponseHeader('Token-Type'),
-    'Uid': xhr.getResponseHeader('Uid'),
+    token: xhr.getResponseHeader('Access-Token'),
+    client: xhr.getResponseHeader('Client'),
+    expiry: xhr.getResponseHeader('Expiry'),
+    tokenType: xhr.getResponseHeader('Token-Type'),
+    Uid: xhr.getResponseHeader('Uid'),
+    userName: json.response.data.name,
+    provider: json.response.data.provider,
+    active: json.response.data.active,
   };
-  localStorage.setItem('userLocal', JSON.stringify(userLocal));
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    localStorage.setItem('userLocal', JSON.stringify(userLocal));
+  }
 };
 
-exports.getUserLocal = () => localStorage.getItem('userLocal');
+exports.getUserLocal = () => {
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    return JSON.parse(localStorage.getItem('userLocal'));
+  }
+};

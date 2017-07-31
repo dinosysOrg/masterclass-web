@@ -12,14 +12,11 @@ export default function init(state = initialState, action) {
   case types.LOGIN_REQUEST:
     return {
       ...state,
-      userInfo: null,
       error: null,
     };
   case types.LOGIN_REQUEST_SUCCESS:
     return {
       ...state,
-      userInfo: action.payload.response.data,
-      token: action.payload.xhr.getResponseHeader('Access-Token'),
     };
   case types.LOGIN_REQUEST_FAILURE:
     return {

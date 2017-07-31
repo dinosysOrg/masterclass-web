@@ -19,7 +19,7 @@ class Profile extends Component {
             <input type="date" />
             <div className="input-field col s12">
               <select className="browser-default">
-                <option value="m" selected>Male</option>
+                <option value="m">Male</option>
                 <option value="f">Female</option>
               </select>
             </div>
@@ -28,12 +28,12 @@ class Profile extends Component {
             <input type="text" placeholder="School" />
             <input type="text" placeholder="Occupation" />
 
-            <textarea rows="10" className="materialize-textarea">
+            <textarea value="" rows="10" className="materialize-textarea">
               Tell us anything about your personal interests.
             </textarea>
 
             <input type="text" placeholder="Instruments" />
-            <textarea rows="10" className="materialize-textarea">
+            <textarea value="" rows="10" className="materialize-textarea">
               Tell us anything about your musical instruments.
             </textarea>
           </form>

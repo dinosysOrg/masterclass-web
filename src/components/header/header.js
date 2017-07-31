@@ -20,6 +20,25 @@ class Header extends Component {
     e.preventDefault();
     this.props.initAction.showModal('modalAuth');
   }
+  checkLogin() {
+    if (this.props.payload.initReducer.loginStatus === true) {
+      return (
+        <li>
+          <a href="#">
+              Chao Hoan Nguyen
+          </a>
+        </li>
+      );
+    } else {
+      return (
+        <li>
+          <a href="#" onClick={this.handleModalLogin}>
+              Sign up / Log in
+          </a>
+        </li>
+      );
+    }
+  }
   /**
   * render Header
   * @return {html} The template of Header class
@@ -32,11 +51,7 @@ class Header extends Component {
           <li>
             <a href="">Vietnamese</a>
           </li>
-          <li>
-            <a href="#" onClick={this.handleModalLogin}>
-              Sign up / Log in
-            </a>
-          </li>
+          {this.checkLogin()}
         </ul>
         <ModalAuth />
         <MainMenu />
