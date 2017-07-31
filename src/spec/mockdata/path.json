@@ -1,0 +1,101 @@
+{
+  "id": 1,
+  "name": "Strumming Beginner Guitar",
+  "description": "Blanditiis vitae et maxime eos illum. Repellat voluptate aspernatur est labore non. Assumenda autem ducimus eum voluptatem qui sint non. Qui itaque architecto et blanditiis ullam.",
+  "teacher": {
+    "id": 9,
+    "provider": "email",
+    "uid": "laurice.howe@collierkris.biz",
+    "name": "Laurice",
+    "nickname": "laurice power",
+    "image": "https://randomuser.me/api/portraits/women/3.jpg",
+    "email": "laurice.howe@collierkris.biz",
+    "created_at": "2017-07-24T10:10:25.881Z",
+    "updated_at": "2017-07-24T10:10:25.881Z",
+    "first_name": null,
+    "active": true,
+    "facebook_uid": null,
+    "facebook_credentials": null,
+    "bio": "Porro non quos voluptatem fuga qui. Sed maiores corporis ipsum consequatur natus eos. Recusandae ea reprehenderit enim adipisci soluta eum. Deleniti doloribus qui placeat quidem molestiae aut."
+  },
+  "overview_video": {
+    "id": 1,
+    "uploader_id": 9,
+    "parent_id": null,
+    "name": "video_0",
+    "video_type": "overview",
+    "url": "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_stereo.ogg",
+    "created_at": "2017-07-24T10:10:25.908Z",
+    "updated_at": "2017-07-24T10:10:25.908Z"
+  },
+  "total_sheets": 3,
+  "total_exercises": 5,
+  "total_syllabuses": 7,
+  "syllabuses": [
+    {
+      "id": 1,
+      "title": "Lesson 0",
+      "description": "Consequatur fuga consequuntur qui dolorem ipsam. Omnis animi sit est sint expedita. Nihil consequatur sequi minus nobis quas eaque iste.",
+      "video": {
+        "id": 3,
+        "uploader_id": 9,
+        "parent_id": null,
+        "name": "Syllabus video_0",
+        "video_type": "syllabus",
+        "url": "https://www.w3schools.com/tags/movie.ogg",
+        "created_at": "2017-07-24T10:10:26.059Z",
+        "updated_at": "2017-07-24T10:10:26.059Z"
+      },
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/v1/paths/1"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Lesson 1",
+      "description": "Eaque hic voluptatem id sed ea occaecati. Eum dignissimos totam at omnis. Quas commodi omnis natus nostrum delectus.",
+      "video": {
+        "id": 5,
+        "uploader_id": 9,
+        "parent_id": null,
+        "name": "Syllabus video_1",
+        "video_type": "syllabus",
+        "url": "https://www.w3schools.com/tags/movie.ogg",
+        "created_at": "2017-07-24T10:10:26.141Z",
+        "updated_at": "2017-07-24T10:10:26.141Z"
+      },
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/v1/paths/1"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Lesson 2",
+      "description": "Aliquam eos omnis aliquid eveniet modi. Omnis delectus illum quibusdam quis omnis. Dicta officiis expedita natus placeat sit sed mollitia provident. Eum dicta saepe minus cupiditate amet quidem. Et error sint modi et.",
+      "video": {
+        "id": 7,
+        "uploader_id": 9,
+        "parent_id": null,
+        "name": "Syllabus video_2",
+        "video_type": "syllabus",
+        "url": "https://www.w3schools.com/tags/movie.ogg",
+        "created_at": "2017-07-24T10:10:26.199Z",
+        "updated_at": "2017-07-24T10:10:26.199Z"
+      },
+      "_links": {
+        "self": {
+          "href": "http://localhost:3000/api/v1/paths/1"
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "http://localhost:3000/api/v1/paths/1"
+    }
+  }
+}
