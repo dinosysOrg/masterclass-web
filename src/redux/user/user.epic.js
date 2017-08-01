@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI} from './user.api';
+import {loginAPI, signUpAPI} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
@@ -18,18 +18,33 @@ const loginRequestEpic = (action$) =>
     .mergeMap((data) =>
       concat$(
         of(actionInit.showLoading()),
-        ajax.post(loginAPI, {}, data.payload)
-          .mergeMap( (response) =>
-            of(
-              actionInit.saveAuth(response),
-              actionInit.hideModal()
-            )
+        ajax.post(loginAPI, data.payload, {})
+          .mergeMap((response) =>
+            of(actionInit.saveAuth(response), actionInit.hideModal())
               .do(storeConfig.setUserLocal(response.xhr, response))
           )
           .catch((error) => of(actions.loginRequestFailure(error))),
         of(actionInit.hideLoading())
       )
     );
+/**
+ * action fetch data
+ * @param {any} action$
+ * @return {Object}
+*/
+const signupRequestEpic = (action$) =>
+  action$.ofType(types.SIGNUP_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.post(signUpAPI, data.payload, {})
+          .map((response) => actions.signupRequestSuccess(response))
+          .catch((error) => of(actions.signupRequestFailure(error.xhr.response.errors.full_messages))),
+        of(actionInit.hideLoading())
+      )
+    );
+
 export {
   loginRequestEpic,
+  signupRequestEpic,
 };

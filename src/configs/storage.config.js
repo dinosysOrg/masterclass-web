@@ -19,3 +19,10 @@ exports.getUserLocal = () => {
     return JSON.parse(localStorage.getItem('userLocal'));
   }
 };
+
+exports.clearUserLocal = () => {
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    return localStorage.clear();
+  }
+};
+

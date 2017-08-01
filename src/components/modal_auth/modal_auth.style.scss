@@ -1,4 +1,8 @@
 .ReactModal__Content {
+  .label-error {
+    color: red;
+    margin-bottom: 10px;
+  }
   transition: all 300ms ease-in-out;
   opacity: 0;
   transform: scaleX(0.7);

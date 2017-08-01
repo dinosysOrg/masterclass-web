@@ -47,7 +47,7 @@ class Modal extends Component {
    * @param {object} values
    */
   onSubmitRegister(values) {
-    console.log(values);
+    this.props.userAction.signupRequest(values);
   }
   /**
    * Check Modal
@@ -62,11 +62,22 @@ class Modal extends Component {
     }
   }
   /**
+   * login error
+   * @return {any} values
+   */
+  loginError() {
+    const {signUpError} = this.props.payload.userReducer;
+    return signUpError.map((data, i) =>
+      <li style={{color: 'red'}} key={i}>- {data}</li>
+    );
+  }
+  /**
    * render Footer
    * @return {html} The template of Footer class
    */
   render() {
-    const {error} = this.props.payload.userReducer;
+    const {loginError, signUpError} = this.props.payload.userReducer;
+    console.log(signUpError);
     const {hideModal} = this.props.initAction;
     return (
       <ReactModal
@@ -88,20 +99,14 @@ class Modal extends Component {
               </a>
               <Form
                 onSubmit={(values) => this.onSubmitRegister(values)}
-                validate={(values) => {
-                  return {
-                    email: !values.email ? 'Email is required' : undefined,
-                    password: !values.password ? 'Password required' : undefined,
-                    confirmPassword: !values.confirmPassword ? 'Password is required' : undefined,
-                  };
-                }}
               >
                 {({submitForm}) => {
                   return (
                     <form onSubmit={submitForm}>
                       <Text type="text" required field="email" placeholder="Email" />
                       <Text type="text" required field="password" placeholder="Password" />
-                      <Text type="text" required field="confirmPassword" placeholder="Confirm Password" />
+                      <Text type="text" required field="password_confirmation" placeholder="Confirm Password" />
+                      {signUpError ? <ul>{this.loginError()}</ul> : null}
                       <button className="btn waves-effect waves-light" type="submit" name="action">
                         Create Account
                       </button>
@@ -122,7 +127,7 @@ class Modal extends Component {
                     <form onSubmit={submitForm}>
                       <Text type="text" required field="email" placeholder="Email" />
                       <Text required field="password" placeholder="Password" />
-                      {error ? <div style={{marginBottom: 10, color: 'red'}}>{error}</div> : null}
+                      {signUpError ? <div style={{marginBottom: 10, color: 'red'}}>{loginError}</div> : null}
                       <button className="btn waves-effect waves-light" type="submit" name="action">
                         Login
                       </button>

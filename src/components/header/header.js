@@ -20,22 +20,32 @@ class Header extends Component {
     e.preventDefault();
     this.props.initAction.showModal('modalAuth');
   }
+  /**
+  * render Header
+  * @return {any}
+  */
   checkLogin() {
     if (this.props.payload.initReducer.loginStatus === true) {
       return (
-        <li>
-          <a href="#">
-              Chao Hoan Nguyen
-          </a>
-        </li>
+        <ul className="header__nav-language">
+          <li><a href="">Vietnamese</a></li>
+          <li>
+            <a href="#">
+              {this.props.payload.initReducer.userInfo.Uid}
+            </a>
+          </li>
+          <li><a href="#" onClick={()=>this.props.userAction.signOut()}>Đăng xuất</a></li>
+        </ul>
       );
     } else {
       return (
-        <li>
-          <a href="#" onClick={this.handleModalLogin}>
-              Sign up / Log in
-          </a>
-        </li>
+        <ul className="header__nav-language">
+          <li>
+            <a href="#" onClick={this.handleModalLogin}>
+                Sign up / Log in
+            </a>
+          </li>
+        </ul>
       );
     }
   }
@@ -47,12 +57,7 @@ class Header extends Component {
     return (
       <header className="header">
         <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
-        <ul className="header__nav-language">
-          <li>
-            <a href="">Vietnamese</a>
-          </li>
-          {this.checkLogin()}
-        </ul>
+        {this.checkLogin()}
         <ModalAuth />
         <MainMenu />
       </header>

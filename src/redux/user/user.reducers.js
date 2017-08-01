@@ -21,7 +21,26 @@ export default function init(state = initialState, action) {
   case types.LOGIN_REQUEST_FAILURE:
     return {
       ...state,
-      error: action.payload,
+      loginError: action.payload,
+    };
+  case types.SIGNUP_REQUEST:
+    return {
+      ...state,
+      signUpError: null,
+    };
+  case types.SIGNUP_REQUEST_SUCCESS:
+    return {
+      ...state,
+      registerSuccess: true,
+    };
+  case types.SIGNUP_REQUEST_FAILURE:
+    return {
+      ...state,
+      signUpError: action.payload,
+    };
+  case types.SIGN_OUT:
+    return {
+      payload: null,
     };
   default:
     return state;

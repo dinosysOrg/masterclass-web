@@ -1,5 +1,5 @@
 import {initReducer} from './init';
-import {userReducer, loginRequestEpic} from './user';
+import {userReducer, loginRequestEpic, signupRequestEpic} from './user';
 import {pathReducer, pathEpic} from './path';
 
 const {fetchPathEpic} = pathEpic;
@@ -10,4 +10,5 @@ export {
   initReducer,
   loginRequestEpic,
   fetchPathEpic,
+  signupRequestEpic,
 };

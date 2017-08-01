@@ -1,9 +1,10 @@
 import userReducer from './user.reducers';
-import {loginRequestEpic} from './user.epic';
+import {loginRequestEpic, signupRequestEpic} from './user.epic';
 
 export {
   userReducer,
   loginRequestEpic,
+  signupRequestEpic,
 };
 
 
