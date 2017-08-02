@@ -1,8 +1,4 @@
-// import {ajax} from 'rxjs/observable/dom/ajax';
-
-import types from './types';
-// import {getPathAPI} from './api';
-
+import * as types from './path.types';
 import data from '../../spec/mockdata/path';
 
 /**
@@ -14,25 +10,12 @@ import data from '../../spec/mockdata/path';
  * @return {Object} action stream
  */
 const fetchPathEpic = (action$, store, dependencies) => {
-  // return action$.ofType(types.FETCH_PATH).mergeMap((action) =>
-  //   ajax
-  //     .getJSON('shoule_be_api_path')
-  //     .map((response) => ({
-  //       type: types.FETCH_PATH_SUCCESS,
-  //       payload: response,
-  //     }))
-  //     .catch((error) => ({
-  //       type: types.FETCH_PATH_FAILED,
-  //       payload: error,
-  //     }))
-  // );
-
   return action$.ofType(types.FETCH_PATH).delay(500).mapTo({
     type: types.FETCH_PATH_SUCCESS,
     payload: data,
   });
 };
 
-export default {
+export {
   fetchPathEpic,
 };

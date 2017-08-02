@@ -1,9 +1,0 @@
-const FETCH_PATH = 'path/FETCH_PATH';
-const FETCH_PATH_SUCCESS = '/path/FETCH_PATH_SUCCESS';
-const FETCH_PATH_FAILED = 'path/FECTH_PATH_FAILED';
-
-export default {
-  FETCH_PATH,
-  FETCH_PATH_SUCCESS,
-  FETCH_PATH_FAILED,
-};
