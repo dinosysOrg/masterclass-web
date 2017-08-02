@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import ReactModal from 'react-modal';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
-import {Form, Text} from 'react-form';
 import FacebookLogin from 'react-facebook-login';
+import SignUpForm from './signup_form';
+import LoginForm from './login_form';
 /**
 * Modal of project
 */
@@ -34,6 +35,7 @@ class Modal extends Component {
    */
   responseFacebook(response) {
     console.log(response);
+    alert('Đăng nhập FB thanh cong');
   }
   /**
    * Submit Login
@@ -62,22 +64,33 @@ class Modal extends Component {
     }
   }
   /**
-   * login error
+   * sign up success
    * @return {any} values
    */
-  loginError() {
-    const {signUpError} = this.props.payload.userReducer;
-    return signUpError.map((data, i) =>
-      <li style={{color: 'red'}} key={i}>- {data}</li>
-    );
+  checkSignUpSuccess() {
+    const {registerSuccess} = this.props.payload.userReducer;
+    if (registerSuccess) {
+      return (
+        <div className="tabContent">
+          An email has been sent to you for verification<br/>
+          Please check your mailbox and verify your account.
+        </div>
+      );
+    } else {
+      return (
+        <div className="tabContent">
+          Alredy have an account.{' '}
+          <a onClick={() => this.onChangeTab(1)} href="#">Log in</a>
+          <SignUpForm {...this.props} onSubmit={(values)=> this.onSubmitRegister(values)}/>
+        </div>
+      );
+    }
   }
   /**
    * render Footer
    * @return {html} The template of Footer class
    */
   render() {
-    const {loginError, signUpError} = this.props.payload.userReducer;
-    console.log(signUpError);
     const {hideModal} = this.props.initAction;
     return (
       <ReactModal
@@ -92,49 +105,12 @@ class Modal extends Component {
             <Tab>LOGIN</Tab>
           </TabList>
           <TabPanel>
-            <div className="tabContent">
-              Alredy have an account.{' '}
-              <a onClick={() => this.onChangeTab(1)} href="#">
-                Log in
-              </a>
-              <Form
-                onSubmit={(values) => this.onSubmitRegister(values)}
-              >
-                {({submitForm}) => {
-                  return (
-                    <form onSubmit={submitForm}>
-                      <Text type="text" required field="email" placeholder="Email" />
-                      <Text type="text" required field="password" placeholder="Password" />
-                      <Text type="text" required field="password_confirmation" placeholder="Confirm Password" />
-                      {signUpError ? <ul>{this.loginError()}</ul> : null}
-                      <button className="btn waves-effect waves-light" type="submit" name="action">
-                        Create Account
-                      </button>
-                    </form>
-                  );
-                }}
-              </Form>
-            </div>
+            {this.checkSignUpSuccess()}
           </TabPanel>
           <TabPanel>
             <div className="tabContent">
               No account yet? <a onClick={() => this.onChangeTab(0)} href="#">Sign up</a>
-              <Form
-                onSubmit={(values) => this.onSubmitLogin(values)}
-              >
-                {({submitForm}) => {
-                  return (
-                    <form onSubmit={submitForm}>
-                      <Text type="text" required field="email" placeholder="Email" />
-                      <Text required field="password" placeholder="Password" />
-                      {signUpError ? <div style={{marginBottom: 10, color: 'red'}}>{loginError}</div> : null}
-                      <button className="btn waves-effect waves-light" type="submit" name="action">
-                        Login
-                      </button>
-                    </form>
-                  );
-                }}
-              </Form>
+              <LoginForm {...this.props} onSubmit={(values)=> this.onSubmitLogin(values)} />
               <div className="lineModal" />
               <h5>SIGN UP WITH FACEBOOK</h5>
               <FacebookLogin

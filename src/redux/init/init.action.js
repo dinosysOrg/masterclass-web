@@ -39,33 +39,4 @@ export function hideModal(response) {
     payload: response,
   };
 }
-/**
- * action hide modal.
- * @param {Object} response
- * @return {Object} response
- */
-export function checkAuth(response) {
-  return {
-    type: types.AUTHORIZED,
-    payload: response,
-  };
-}
-/**
- * action save Auth.
- * @param {Object} json
- * @return {Object} response
- */
-export function saveAuth(json) {
-  const token = json.xhr.getResponseHeader('Access-Token');
-  const client = json.xhr.getResponseHeader('Client');
-  const expiry = json.xhr.getResponseHeader('Expiry');
-  const tokenType = json.xhr.getResponseHeader('Token-Type');
-  const Uid = json.xhr.getResponseHeader('Uid');
-  const userName = json.response.data.name;
-  const provider = json.response.data.provider;
-  const active = json.response.data.active;
-  return {
-    type: types.SAVE_AUTHORIZED,
-    payload: {token, client, expiry, tokenType, Uid, userName, provider, active},
-  };
-}
+

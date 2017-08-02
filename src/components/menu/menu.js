@@ -11,7 +11,7 @@ class MainMenu extends Component {
    */
   checkMenu() {
     const {pathname} = this.props.location;
-    const {loginStatus} = this.props.payload.initReducer;
+    const {loginStatus} = this.props.payload.userReducer;
     if (loginStatus) {
       return (
         <ul className="site-nav">

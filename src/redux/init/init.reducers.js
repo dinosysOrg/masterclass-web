@@ -2,7 +2,6 @@ import * as types from './init.types';
 
 const initialState = {
   modalName: null,
-  loginStatus: false,
 };
 /**
  * init reducer redux
@@ -31,18 +30,6 @@ export default function init(state = initialState, action) {
     return {
       ...state,
       modalName: null,
-    };
-  case types.AUTHORIZED:
-    return {
-      ...state,
-      loginStatus: true,
-      userInfo: action.payload,
-    };
-  case types.SAVE_AUTHORIZED:
-    return {
-      ...state,
-      loginStatus: true,
-      userInfo: action.payload,
     };
   default:
     return state;

@@ -25,13 +25,13 @@ class Header extends Component {
   * @return {any}
   */
   checkLogin() {
-    if (this.props.payload.initReducer.loginStatus === true) {
+    if (this.props.payload.userReducer.loginStatus === true) {
       return (
         <ul className="header__nav-language">
           <li><a href="">Vietnamese</a></li>
           <li>
             <a href="#">
-              {this.props.payload.initReducer.userInfo.Uid}
+              {this.props.payload.userReducer.userInfo.Uid}
             </a>
           </li>
           <li><a href="#" onClick={()=>this.props.userAction.signOut()}>Đăng xuất</a></li>

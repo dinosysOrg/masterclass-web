@@ -1,4 +1,4 @@
-import types from './path.types';
+import * as types from './path.types';
 
 /**
  * An action creator - fetching started

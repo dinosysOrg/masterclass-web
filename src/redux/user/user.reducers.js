@@ -12,11 +12,13 @@ export default function init(state = initialState, action) {
   case types.LOGIN_REQUEST:
     return {
       ...state,
-      error: null,
+      loginError: null,
     };
   case types.LOGIN_REQUEST_SUCCESS:
     return {
       ...state,
+      loginStatus: true,
+      userInfo: action.payload,
     };
   case types.LOGIN_REQUEST_FAILURE:
     return {
@@ -40,7 +42,13 @@ export default function init(state = initialState, action) {
     };
   case types.SIGN_OUT:
     return {
-      payload: null,
+      signOut: true,
+    };
+  case types.AUTHORIZED:
+    return {
+      ...state,
+      loginStatus: true,
+      userInfo: action.payload,
     };
   default:
     return state;

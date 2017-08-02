@@ -1,8 +1,8 @@
-import {initReducer} from './init';
-import {userReducer, loginRequestEpic, signupRequestEpic} from './user';
-import {pathReducer, pathEpic} from './path';
-
-const {fetchPathEpic} = pathEpic;
+import initReducer from './init/init.reducers';
+import userReducer from './user/user.reducers';
+import {loginRequestEpic, signupRequestEpic, signOutEpic} from './user/user.epic';
+import pathReducer from './path/path.reducer';
+import {fetchPathEpic} from './path/path.epic';
 
 export {
   pathReducer,
@@ -11,4 +11,5 @@ export {
   loginRequestEpic,
   fetchPathEpic,
   signupRequestEpic,
+  signOutEpic,
 };

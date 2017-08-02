@@ -18,6 +18,7 @@ class App extends React.Component {
    */
   constructor(props) {
     super(props);
+    this.state = {};
   }
   /**
    * render will mount
@@ -25,9 +26,9 @@ class App extends React.Component {
   componentWillMount() {
     const dataUser = storeConfig.getUserLocal();
     if (dataUser) {
-      this.props.initAction.checkAuth(dataUser);
+      this.props.userAction.checkAuth(dataUser);
     } else {
-      console.log('chua dang nhap');
+      console.log('chưa đăng nhập !');
     }
   }
   /**

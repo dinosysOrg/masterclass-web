@@ -16,9 +16,17 @@ export function loginRequest(response) {
  * @return {Object}
 */
 export function loginRequestSuccess(json) {
+  const token = json.xhr.getResponseHeader('Access-Token');
+  const client = json.xhr.getResponseHeader('Client');
+  const expiry = json.xhr.getResponseHeader('Expiry');
+  const tokenType = json.xhr.getResponseHeader('Token-Type');
+  const Uid = json.xhr.getResponseHeader('Uid');
+  const userName = json.response.data.name;
+  const provider = json.response.data.provider;
+  const active = json.response.data.active;
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
-    payload: json,
+    payload: {token, client, expiry, tokenType, Uid, userName, provider, active},
   };
 }
 /**
@@ -73,5 +81,16 @@ export function signupRequestFailure(error) {
 export function signOut() {
   return {
     type: types.SIGN_OUT,
+  };
+}
+/**
+ * action hide modal.
+ * @param {Object} response
+ * @return {Object} response
+ */
+export function checkAuth(response) {
+  return {
+    type: types.AUTHORIZED,
+    payload: response,
   };
 }
