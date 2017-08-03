@@ -22,11 +22,9 @@ export function loginRequestSuccess(json) {
   const tokenType = json.xhr.getResponseHeader('Token-Type');
   const Uid = json.xhr.getResponseHeader('Uid');
   const userName = json.response.data.name;
-  const provider = json.response.data.provider;
-  const active = json.response.data.active;
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
-    payload: {token, client, expiry, tokenType, Uid, userName, provider, active},
+    payload: {token, client, expiry, tokenType, Uid, userName},
   };
 }
 /**
@@ -92,5 +90,54 @@ export function checkAuth(response) {
   return {
     type: types.AUTHORIZED,
     payload: response,
+  };
+}
+/**
+ * action hide modal.
+ * @param {Object} response
+ * @return {Object} response
+ */
+export function clearError() {
+  return {
+    type: types.CLEAR_ERROR,
+  };
+}
+/**
+ * action FB request
+ * @param {Object} response
+ * @return {Object}
+*/
+export function fbRequest(response) {
+  return {
+    type: types.LOGIN_FB_REQUEST,
+    payload: response,
+  };
+}
+/**
+ * action FB success
+ * @param {Object} json
+ * @return {Object}
+*/
+export function fbRequestSuccess(json) {
+  const token = json.xhr.getResponseHeader('Access-Token');
+  const client = json.xhr.getResponseHeader('Client');
+  const expiry = json.xhr.getResponseHeader('Expiry');
+  const tokenType = json.xhr.getResponseHeader('Token-Type');
+  const Uid = json.xhr.getResponseHeader('Uid');
+  const userName = json.response.name;
+  return {
+    type: types.LOGIN_FB_REQUEST_SUCCESS,
+    payload: {token, client, expiry, tokenType, Uid, userName},
+  };
+}
+/**
+ * action FB fail
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fbRequestFailure(error) {
+  return {
+    type: types.LOGIN_FB_REQUEST_FAILURE,
+    payload: error,
   };
 }

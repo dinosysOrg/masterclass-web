@@ -25,6 +25,7 @@ class Modal extends Component {
    * @param {number} tabIndex
    */
   onChangeTab(tabIndex) {
+    this.props.userAction.clearError();
     this.setState({
       tabIndex,
     });
@@ -34,8 +35,9 @@ class Modal extends Component {
    * @param {object} response
    */
   responseFacebook(response) {
-    console.log(response);
-    alert('Đăng nhập FB thanh cong');
+    if (response.accessToken) {
+      this.props.userAction.fbRequest(response.accessToken);
+    }
   }
   /**
    * Submit Login
@@ -73,7 +75,10 @@ class Modal extends Component {
       return (
         <div className="tabContent">
           An email has been sent to you for verification<br/>
-          Please check your mailbox and verify your account.
+          Please check your mailbox and verify your account.<br/>
+          <a target="_blank" href="https://www.google.com.vn/search?q=mail" className="waves-effect waves-light btn" style={{marginTop: 15}}>
+          Got it
+          </a>
         </div>
       );
     } else {
@@ -87,19 +92,25 @@ class Modal extends Component {
     }
   }
   /**
+   * hide Modal
+   */
+  onHideModal() {
+    this.props.initAction.hideModal();
+    this.props.userAction.clearError();
+  }
+  /**
    * render Footer
    * @return {html} The template of Footer class
    */
   render() {
-    const {hideModal} = this.props.initAction;
     return (
       <ReactModal
         isOpen={this.checkModal()}
-        onCloseModal={()=> hideModal()}
-        onRequestClose={()=> hideModal()}
+        onCloseModal={()=> this.onHideModal()}
+        onRequestClose={()=> this.onHideModal()}
         contentLabel="login Modal"
       >
-        <Tabs selectedIndex={this.state.tabIndex} onSelect={(tabIndex) => this.setState({tabIndex})}>
+        <Tabs selectedIndex={this.state.tabIndex} onSelect={(tabIndex) => this.onChangeTab(tabIndex)}>
           <TabList>
             <Tab>SIGN UP</Tab>
             <Tab>LOGIN</Tab>

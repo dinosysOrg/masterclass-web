@@ -30,8 +30,8 @@ class Header extends Component {
         <ul className="header__nav-language">
           <li><a href="">Vietnamese</a></li>
           <li>
-            <a href="#">
-              {this.props.payload.userReducer.userInfo.Uid}
+            <a>
+              xin chào {this.props.payload.userReducer.userInfo.userName}
             </a>
           </li>
           <li><a href="#" onClick={()=>this.props.userAction.signOut()}>Đăng xuất</a></li>

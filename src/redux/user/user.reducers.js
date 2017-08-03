@@ -50,6 +50,26 @@ export default function init(state = initialState, action) {
       loginStatus: true,
       userInfo: action.payload,
     };
+  case types.CLEAR_ERROR:
+    return {
+      ...state,
+      loginError: null,
+      signUpError: null,
+    };
+  case types.LOGIN_FB_REQUEST:
+    return {
+      ...state,
+    };
+  case types.LOGIN_FB_REQUEST_SUCCESS:
+    return {
+      ...state,
+      loginStatus: true,
+      userInfo: action.payload,
+    };
+  case types.LOGIN_FB_REQUEST_FAILURE:
+    return {
+      ...state,
+    };
   default:
     return state;
   }

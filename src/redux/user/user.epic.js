@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI} from './user.api';
+import {loginAPI, signUpAPI, loginFB} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
@@ -19,9 +19,9 @@ const loginRequestEpic = (action$) =>
       concat$(
         of(actionInit.showLoading()),
         ajax.post(loginAPI, data.payload)
-          .mergeMap((response) =>
-            of(actions.loginRequestSuccess(response), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(response.xhr, response))
+          .mergeMap((json) =>
+            of(actions.loginRequestSuccess(json), actionInit.hideModal())
+              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name))
           )
           .catch((error) => of(actions.loginRequestFailure(error))),
         of(actionInit.hideLoading())
@@ -56,8 +56,28 @@ const signupRequestEpic = (action$) =>
         of(actionInit.hideLoading())
       )
     );
+/**
+ * action FB request
+ * @param {any} action$
+ * @return {Object}
+*/
+const fbRequestEpic = (action$) =>
+  action$.ofType(types.LOGIN_FB_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.post(`${loginFB}?access_token=${data.payload}`)
+          .mergeMap((json) =>
+            of(actions.fbRequestSuccess(json), actionInit.hideModal())
+              .do(storeConfig.setUserLocal(json.xhr, json.response.name))
+          )
+          .catch((error) => of(actions.fbRequestFailure(error.xhr.response.errors))),
+        of(actionInit.hideLoading())
+      )
+    );
 export {
   loginRequestEpic,
   signOutEpic,
   signupRequestEpic,
+  fbRequestEpic,
 };
