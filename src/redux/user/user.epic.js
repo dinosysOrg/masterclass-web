@@ -7,6 +7,7 @@ import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import storeConfig from '../../configs/storage.config';
+import {push} from 'react-router-redux';
 /**
  * action fetch data
  * @param {any} action$
@@ -29,13 +30,15 @@ const loginRequestEpic = (action$) =>
 /**
  * action sign out
  * @param {any} action$
+ * @param {any} store
  * @return {Object}
 */
-const signOutEpic = (action$) =>
+const signOutEpic = (action$, store) =>
   action$.ofType(types.SIGN_OUT)
     .mergeMap(() =>
       of(actionInit.hideModal())
         .do(storeConfig.clearUserLocal())
+        .do(store.dispatch(push('/')))
     );
 /**
  * action sign up request

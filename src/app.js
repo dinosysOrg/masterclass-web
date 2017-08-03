@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Switch} from 'react-router-dom';
 import {Header, Footer} from './components';
 import routes from './routes';
 import './app.scss';
@@ -27,8 +27,6 @@ class App extends React.Component {
     const dataUser = storeConfig.getUserLocal();
     if (dataUser) {
       this.props.userAction.checkAuth(dataUser);
-    } else {
-      console.log('chưa đăng nhập !');
     }
   }
   /**
@@ -58,7 +56,9 @@ class App extends React.Component {
     return (
       <div>
         <Header/>
-        {routes.map((route) => <Route key={route.path} {...route} />)}
+        <Switch>
+          {routes.map((route) => <Route key={route.path} {...route} />)}
+        </Switch>
         <Footer/>
         {this.checkLoading()}
       </div>

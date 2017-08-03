@@ -3,6 +3,11 @@ import {compose, createStore, applyMiddleware} from 'redux';
 import {createEpicMiddleware} from 'redux-observable';
 import reducer from './reducer.config';
 import initEpic from './epic.config';
+import createHistory from 'history/createBrowserHistory';
+import {routerMiddleware} from 'react-router-redux';
+
+const history = createHistory();
+const routerReduxMiddleware = routerMiddleware(history);
 const epicMiddleware = createEpicMiddleware(initEpic);
 /**
  * config store redux
@@ -16,6 +21,7 @@ function configureStore(initialState) {
     initialState,
     composeEnhancers(
       applyMiddleware(
+        routerReduxMiddleware,
         epicMiddleware,
       )
     )
