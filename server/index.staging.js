@@ -7,6 +7,10 @@ import config from '../webpack.config.staging.js';
 import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import webpack from 'webpack';
+import {Provider} from 'react-redux';
+import configureStore from '../src/configs/store.config';
+
+const store = configureStore();
 
 const app = express();
 const compiler = webpack(config[0]);
@@ -18,9 +22,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.get('*', (req, res) => {
   const context = {};
   const html = renderToString(
-    <StaticRouter location={req.url} context={context}>
-      <App/>
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <App/>
+      </StaticRouter>
+    </Provider>
   );
 
   if (context.url) res.redirect(context.url);
@@ -34,6 +40,7 @@ app.get('*', (req, res) => {
       </head>
       <body>
         <div id="app">${html}</div>
+        <script src="assets/js/bundle.js"></script>
       </body>
     </html>
   `);

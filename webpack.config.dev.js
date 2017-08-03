@@ -1,10 +1,9 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const browserConfig = {
+module.exports = {
   entry: [
     'webpack-hot-middleware/client',
     './src/index.js',
@@ -14,7 +13,7 @@ const browserConfig = {
     publicPath: '/assets/',
     filename: 'js/bundle.js',
   },
-  devtool: 'cheap-module-source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [{
       test: /\.scss$/,
@@ -56,34 +55,3 @@ const browserConfig = {
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
-
-const serverConfig = {
-  entry: './server/index.dev.js',
-  target: 'node',
-  externals: [nodeExternals()],
-  output: {
-    path: path.join(__dirname, 'development'),
-    filename: 'server.min.js',
-    libraryTarget: 'commonjs2',
-  },
-  devtool: 'cheap-module-source-map',
-  module: {
-    rules: [{
-      test: /.js$/,
-      exclude: /(node_modules)/,
-      use: [
-        {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015', 'react'],
-          },
-        },
-      ],
-    }, {
-      test: /\.scss$/,
-      loader: 'ignore-loader',
-    }],
-  },
-};
-
-module.exports = [browserConfig, serverConfig];
