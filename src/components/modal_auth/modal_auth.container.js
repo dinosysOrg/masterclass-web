@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ModalAuth from './modal_auth';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
 import * as initAction from '../../redux/init/init.action';
@@ -40,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
     initAction: bindActionCreators(initAction, dispatch),
   };
 };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ModalAuthContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(ModalAuthContainer);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import {Header, Footer} from './components';
 import routes from './routes';
 import './app.scss';
@@ -76,4 +76,4 @@ const mapStateToProps = (rootState) => {
     payload: rootState,
   };
 };
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default connect(mapStateToProps, mapDispatchToProps)(App);
