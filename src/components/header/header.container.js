@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as initAction from '../../redux/init/init.action';
 import * as userAction from '../../redux/user/user.action';
@@ -38,4 +39,4 @@ const mapDispatchToProps = (dispatch) => {
     userAction: bindActionCreators(userAction, dispatch),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HeaderContainer));
