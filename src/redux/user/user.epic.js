@@ -35,11 +35,11 @@ const loginRequestEpic = (action$) =>
 */
 const signOutEpic = (action$, store) =>
   action$.ofType(types.SIGN_OUT)
-    .mergeMap(() =>
-      of(actionInit.hideModal())
-        .do(storeConfig.clearUserLocal())
-        .do(store.dispatch(push('/')))
-    );
+    .do(() => {
+      storeConfig.clearUserLocal();
+      store.dispatch(push('/'));
+    })
+    .ignoreElements();
 /**
  * action sign up request
  * @param {any} action$

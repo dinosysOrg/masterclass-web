@@ -12,7 +12,6 @@ class HomePageContainer extends Component {
    * @return {html} The template of HomePageContainer class
    */
   render() {
-    // console.log(this.props);
     return <HomePage />;
   }
   /**
