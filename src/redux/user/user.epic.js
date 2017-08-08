@@ -2,12 +2,28 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import storeConfig from '../../configs/storage.config';
 import {push} from 'react-router-redux';
+/**
+ * action fetch user path
+ * @param {any} action$
+ * @return {Object}
+*/
+const myPathRequestEpic = (action$) =>
+  action$.ofType(types.FETCH_PATH_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.get(getUserPath, storeConfig.setHeader())
+          .map((json) => actions.fetchPathRequestSuccess(json.response))
+          .catch((error) => of(actions.loginRequestFailure(error))),
+        of(actionInit.hideLoading())
+      )
+    );
 /**
  * action fetch data
  * @param {any} action$
@@ -76,6 +92,7 @@ const fbRequestEpic = (action$) =>
       )
     );
 export {
+  myPathRequestEpic,
   loginRequestEpic,
   signOutEpic,
   signupRequestEpic,

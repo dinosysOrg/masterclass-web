@@ -4,7 +4,7 @@ exports.setUserLocal = (xhr, name) => {
     client: xhr.getResponseHeader('Client'),
     expiry: xhr.getResponseHeader('Expiry'),
     tokenType: xhr.getResponseHeader('Token-Type'),
-    Uid: xhr.getResponseHeader('Uid'),
+    uid: xhr.getResponseHeader('Uid'),
     userName: name,
   };
   if (typeof localStorage !== 'undefined' && localStorage) {
@@ -18,9 +18,22 @@ exports.getUserLocal = () => {
   }
 };
 
+exports.setHeader = () => {
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    let userLocal = JSON.parse(localStorage.getItem('userLocal'));
+    return {
+      'access-token': userLocal.token,
+      'client': userLocal.client,
+      'expiry': userLocal.expiry,
+      'token-type': userLocal.tokenType,
+      'uid': userLocal.uid,
+    };
+  }
+};
+
 exports.clearUserLocal = () => {
   if (typeof localStorage !== 'undefined' && localStorage) {
-    return localStorage.clear();
+    localStorage.clear();
   }
 };
 

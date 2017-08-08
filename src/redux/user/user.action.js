@@ -16,15 +16,10 @@ export function loginRequest(response) {
  * @return {Object}
 */
 export function loginRequestSuccess(json) {
-  const token = json.xhr.getResponseHeader('Access-Token');
-  const client = json.xhr.getResponseHeader('Client');
-  const expiry = json.xhr.getResponseHeader('Expiry');
-  const tokenType = json.xhr.getResponseHeader('Token-Type');
-  const Uid = json.xhr.getResponseHeader('Uid');
   const userName = json.response.data.name;
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
-    payload: {token, client, expiry, tokenType, Uid, userName},
+    payload: {userName},
   };
 }
 /**
@@ -119,15 +114,10 @@ export function fbRequest(response) {
  * @return {Object}
 */
 export function fbRequestSuccess(json) {
-  const token = json.xhr.getResponseHeader('Access-Token');
-  const client = json.xhr.getResponseHeader('Client');
-  const expiry = json.xhr.getResponseHeader('Expiry');
-  const tokenType = json.xhr.getResponseHeader('Token-Type');
-  const Uid = json.xhr.getResponseHeader('Uid');
   const userName = json.response.name;
   return {
     type: types.LOGIN_FB_REQUEST_SUCCESS,
-    payload: {token, client, expiry, tokenType, Uid, userName},
+    payload: {userName},
   };
 }
 /**
@@ -138,6 +128,41 @@ export function fbRequestSuccess(json) {
 export function fbRequestFailure(error) {
   return {
     type: types.LOGIN_FB_REQUEST_FAILURE,
+    payload: error,
+  };
+}
+
+/**
+ * action FETCH PATH THAT USER REGISTERED
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchPathRequest() {
+  return {
+    type: types.FETCH_PATH_REQUEST,
+  };
+}
+
+/**
+ * action FETCH PATH REQUEST SUCCESS
+ * @param {Object} response
+ * @return {Object}
+*/
+export function fetchPathRequestSuccess(response) {
+  return {
+    type: types.FETCH_PATH_REQUEST_SUCCESS,
+    payload: response,
+  };
+}
+
+/**
+ * action FETCH PATH REQUEST FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchPathRequestFailure(error) {
+  return {
+    type: types.FETCH_PATH_REQUEST_FAILURE,
     payload: error,
   };
 }
