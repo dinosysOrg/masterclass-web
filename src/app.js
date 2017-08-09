@@ -8,6 +8,8 @@ import {bindActionCreators} from 'redux';
 import * as initAction from './redux/init/init.action';
 import * as userAction from './redux/user/user.action';
 import storeConfig from './configs/storage.config';
+import I18n from 'redux-i18n';
+import {translations} from './localization/';
 /**
  * Main Class of project
  */
@@ -53,14 +55,16 @@ class App extends React.Component {
    */
   render() {
     return (
-      <div>
-        <Header/>
-        <Switch>
-          {routes.map((route) => <Route key={route.path} {...route} />)}
-        </Switch>
-        <Footer/>
-        {this.checkLoading()}
-      </div>
+      <I18n translations={translations} initialLang='en'>
+        <div>
+          <Header/>
+          <Switch>
+            {routes.map((route) => <Route key={route.path} {...route} />)}
+          </Switch>
+          <Footer/>
+          {this.checkLoading()}
+        </div>
+      </I18n >
     );
   }
 }

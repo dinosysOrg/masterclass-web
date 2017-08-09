@@ -39,4 +39,21 @@ export function hideModal(response) {
     payload: response,
   };
 }
-
+/**
+ * Change language to en.
+ * @return {Object} response
+ */
+export function changeLanguageEN() {
+  return {
+    type: types.CHANGELANGUAGE_TO_EN,
+  };
+}
+/**
+ * Change language to vi.
+ * @return {Object} response
+ */
+export function changeLanguageVI() {
+  return {
+    type: types.CHANGELANGUAGE_TO_VI,
+  };
+}
