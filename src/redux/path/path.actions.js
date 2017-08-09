@@ -1,4 +1,4 @@
-import types from './types';
+import * as types from './path.types';
 
 /**
  * An action creator - fetching started
@@ -35,7 +35,7 @@ const fetchPathFailed = (error) => {
   };
 };
 
-export default {
+export {
   fetchPath,
   fetchPathSuccess,
   fetchPathFailed,

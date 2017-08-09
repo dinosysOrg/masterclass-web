@@ -1,0 +1,5 @@
+export const FETCH_PATH = 'FETCH_PATH';
+export const FETCH_PATH_SUCCESS = 'FETCH_PATH_SUCCESS';
+export const FETCH_PATH_FAILED = 'FETCH_PATH_FAILED';
+
+

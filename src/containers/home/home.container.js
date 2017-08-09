@@ -12,14 +12,13 @@ class HomePageContainer extends Component {
    * @return {html} The template of HomePageContainer class
    */
   render() {
-    console.log(this.props);
     return <HomePage />;
   }
   /**
  * componentDidMount of HomePageContainer
  */
   componentDidMount() {
-    this.props.userAction.fetchUser();
+    // this.props.userAction.fetchUser();
   }
 }
 const mapStateToProps = (rootState) => {

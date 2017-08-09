@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-
-import VideoPanel from '../../components/shared/video_panel';
-import PromoPanel from '../../components/shared/promo_panel';
-
+// import VideoPanel from '../../components/shared/video_panel';
+// import PromoPanel from '../../components/shared/promo_panel';
 /**
  * 
  */
@@ -11,19 +9,18 @@ class PathPage extends Component {
    * 
    */
   componentDidMount() {
-    const {fetchPath} = this.props;
-    fetchPath();
+    // const {fetchPath} = this.props;
+    // fetchPath();
   }
 
   /**
    * @return {Component} - the rendered component
    */
   render() {
-    const {path} = this.props;
-
     return (
       <div className="path-page">
-        <div className="container">
+        path page
+        {/* <div className="container">
           {Object.keys(path).length === 0 && path.constructor === Object
             ? <h4>LOADING--------------->>>></h4>
             : <div className="row">
@@ -61,7 +58,6 @@ class PathPage extends Component {
                 <ul className="row">
                   {path.syllabuses.map((lesson) =>
                     <li className="col s12 m4" key={lesson.id}>
-                      {/* <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />*/}
                       <video width="90%" height="90%" src="https://www.w3schools.com/tags/movie.ogg" />
                       <p>{lesson.title}</p>
                     </li>
@@ -87,7 +83,7 @@ class PathPage extends Component {
                 <PromoPanel />
               </div>
             </div>}
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -1,23 +1,14 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-
 import PathPage from './path';
-import {pathActions} from '../../redux/path';
+// import * as pathAction from '../../redux/path/actions';
 
-const {fetchPath} =pathActions;
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    path: state.path,
-  };
-};
-
+{/* <Route path={`${match.url}/:id`} component={connect(mapStateToProps, {fetchPath})(PathPage)} /> */}
 /**
  * This component is responsible for connecting Path Intro page component to
  * redux store and router
  * This component should be the component of <Route> component
- * By this, it can receive the "match" for 
+ * By this, it can receive the "match" for
  */
 class PathPageContainer extends Component {
   /**
@@ -25,14 +16,16 @@ class PathPageContainer extends Component {
    * @return { Component } - the component
    */
   render() {
-    const {match} = this.props;
     return (
-      <div>
-        <Route path={`${match.url}/:id`} component={connect(mapStateToProps, {fetchPath})(PathPage)} />
-      </div>
+      <PathPage
+        {...this.props}
+      />
     );
   }
 }
-
-
-export default PathPageContainer;
+const mapStateToProps = (rootState) => {
+  return {
+    payload: rootState,
+  };
+};
+export default connect(mapStateToProps)(PathPageContainer);
