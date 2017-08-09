@@ -1,4 +1,5 @@
 export default {
-  'Translate this text': 'Traduce este texto',
-  'Hello {n}!': 'Hola {n}!',
+  'Sign In': 'Sign In',
+  'Sign Out': 'Sign Out',
+  'Hello {name}!': 'Hello {name}',
 };

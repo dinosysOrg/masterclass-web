@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {MainMenu, ModalAuth} from '../../components';
+import PropTypes from 'prop-types';
 /**
 * Header of project
 */
@@ -21,6 +22,18 @@ class Header extends Component {
     this.props.initAction.showModal('modalAuth');
   }
   /**
+  * Change language to Vi
+  */
+  changeLanguageToVi() {
+    this.props.initAction.changeLanguageVI();
+  }
+  /**
+  * Change language to En
+  */
+  changeLanguageToEn() {
+    this.props.initAction.changeLanguageEN();
+  }
+  /**
   * render Header
   * @return {any}
   */
@@ -28,13 +41,14 @@ class Header extends Component {
     if (this.props.payload.userReducer.loginStatus === true) {
       return (
         <ul className="header__nav-language">
-          <li><a href="">Vietnamese</a></li>
+          {this.props.lang === 'en' ? <li><a onClick={() => this.changeLanguageToVi()}>Vietnamese</a></li>
+            : <li><a onClick={() => this.changeLanguageToEn()}>English</a></li>}
           <li>
             <a>
-              xin chào {this.props.payload.userReducer.userInfo.userName}
+              {this.context.t('Hello {name}!', {name: this.props.payload.userReducer.userInfo.userName})}
             </a>
           </li>
-          <li><a href="#" onClick={()=>this.props.userAction.signOut()}>Đăng xuất</a></li>
+          <li><a href="#" onClick={()=>this.props.userAction.signOut()}>{this.context.t('Sign Out')}</a></li>
         </ul>
       );
     } else {
@@ -42,7 +56,7 @@ class Header extends Component {
         <ul className="header__nav-language">
           <li>
             <a href="#" onClick={this.handleModalLogin}>
-                Sign up / Log in
+              {this.context.t('Sign In')}
             </a>
           </li>
         </ul>
@@ -64,5 +78,9 @@ class Header extends Component {
     );
   }
 }
+
+Header.contextTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default Header;

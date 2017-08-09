@@ -31,6 +31,7 @@ class HeaderContainer extends Component {
 const mapStateToProps = (rootState) => {
   return {
     payload: rootState,
+    lang: rootState.i18nState.lang,
   };
 };
 const mapDispatchToProps = (dispatch) => {

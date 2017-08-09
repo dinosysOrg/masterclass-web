@@ -1,4 +1,5 @@
 export default {
-  'Translate this text': 'Xin Chao',
-  'Hello {n}!': 'Hola {n}!',
+  'Sign In': 'Đăng Nhập',
+  'Sign Out': 'Đăng Xuất',
+  'Hello {name}!': 'Xin chào {name}!',
 };
