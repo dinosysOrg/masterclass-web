@@ -70,6 +70,27 @@ export default function init(state = initialState, action) {
     return {
       ...state,
     };
+  case types.FETCH_PATH_REQUEST:
+    return {
+      ...state,
+      myPath: {
+        completed: [],
+        in_progress: [],
+      },
+    };
+  case types.FETCH_PATH_REQUEST_SUCCESS:
+    return {
+      ...state,
+      myPath: {
+        completed: action.payload.completed,
+        in_progress: action.payload.in_progress,
+      },
+    };
+  case types.FETCH_PATH_REQUEST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+    };
   default:
     return state;
   }

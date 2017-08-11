@@ -1,6 +1,7 @@
 import initReducer from './init/init.reducers';
 import userReducer from './user/user.reducers';
-import {loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic} from './user/user.epic';
+import {loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic, myPathRequestEpic} from './user/user.epic';
+import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
 import {fetchPathEpic} from './path/path.epic';
 
@@ -13,4 +14,7 @@ export {
   signupRequestEpic,
   signOutEpic,
   fbRequestEpic,
+  myPathRequestEpic,
+  changeViEpic,
+  changeEnEpic,
 };

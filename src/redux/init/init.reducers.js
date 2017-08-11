@@ -31,6 +31,14 @@ export default function init(state = initialState, action) {
       ...state,
       modalName: null,
     };
+  case types.CHANGELANGUAGE_TO_EN:
+    return {
+      ...state,
+    };
+  case types.CHANGELANGUAGE_TO_VI:
+    return {
+      ...state,
+    };
   default:
     return state;
   }
