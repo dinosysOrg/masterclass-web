@@ -76,6 +76,7 @@ export default function init(state = initialState, action) {
       myPath: {
         completed: [],
         in_progress: [],
+        saved: [],
       },
     };
   case types.FETCH_PATH_REQUEST_SUCCESS:
@@ -84,6 +85,7 @@ export default function init(state = initialState, action) {
       myPath: {
         completed: action.payload.completed,
         in_progress: action.payload.in_progress,
+        saved: action.payload.saved,
       },
     };
   case types.FETCH_PATH_REQUEST_FAILURE:
