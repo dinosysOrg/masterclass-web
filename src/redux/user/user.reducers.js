@@ -91,6 +91,20 @@ export default function init(state = initialState, action) {
       ...state,
       error: action.payload,
     };
+  case types.FETCH_USERINFO_REQUEST:
+    return {
+      ...state,
+    };
+  case types.FETCH_USERINFO_REQUEST_SUCCESS:
+    return {
+      ...state,
+      userInfo: Object.assign({}, state.userInfo, action.payload),
+    };
+  case types.FETCH_USERINFO_REQUEST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+    };
   default:
     return state;
   }
