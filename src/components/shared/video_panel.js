@@ -6,7 +6,7 @@ export default ({title}) => {
   return (
     <Panel title={title}>
       <ul className="row">
-        <li className="col s4">
+        <li className="col">
           <div>
             <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>
@@ -15,7 +15,7 @@ export default ({title}) => {
           </div>
         </li>
 
-        <li className="col s4">
+        <li className="col">
           <div>
             <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>
@@ -24,7 +24,7 @@ export default ({title}) => {
           </div>
         </li>
 
-        <li className="col s4">
+        <li className="col">
           <div>
             <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
             <p>Strumming</p>

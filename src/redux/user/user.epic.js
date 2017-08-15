@@ -20,7 +20,7 @@ const myPathRequestEpic = (action$) =>
         of(actionInit.showLoading()),
         ajax.get(getUserPath, storeConfig.setHeader())
           .map((json) => actions.fetchPathRequestSuccess(json.response))
-          .catch((error) => of(actions.loginRequestFailure(error))),
+          .catch((error) => of(actions.fetchPathRequestFailure(error))),
         of(actionInit.hideLoading())
       )
     );

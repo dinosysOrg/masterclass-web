@@ -17,7 +17,7 @@ class Profile extends Component {
             <input type="text" placeholder="First name" />
             <input type="text" placeholder="Last name" />
             <input type="date" />
-            <div className="input-field col s12">
+            <div className="input-field col">
               <select className="browser-default">
                 <option value="m">Male</option>
                 <option value="f">Female</option>

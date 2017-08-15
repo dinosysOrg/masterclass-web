@@ -76,7 +76,7 @@ class Modal extends Component {
         <div className="tabContent">
           An email has been sent to you for verification<br/>
           Please check your mailbox and verify your account.<br/>
-          <a target="_blank" href="https://www.google.com.vn/search?q=mail" className="waves-effect waves-light btn" style={{marginTop: 15}}>
+          <a target="_blank" href="https://www.google.com.vn/search?q=mail" className="btn" style={{marginTop: 15}}>
           Got it
           </a>
         </div>
@@ -128,7 +128,7 @@ class Modal extends Component {
                 appId="1977674025820465"
                 fields="name,email,picture"
                 callback={this.responseFacebook}
-                cssClass="btn waves-effect waves-light btn-fb"
+                cssClass="btn btn-fb btn-primary rounded-0"
               />
             </div>
           </TabPanel>

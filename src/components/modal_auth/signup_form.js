@@ -24,11 +24,17 @@ class SignUpForm extends React.Component {
     const {handleSubmit} = this.props;
     return (
       <form onSubmit={handleSubmit}>
-        <Field name="email" component="input" required type="text" placeholder="Email" />
-        <Field name="password" component="input" required type="password" placeholder="Password" />
-        <Field name="password_confirmation" component="input" required type="password" placeholder="Confirm Password" />
-        {signUpError ? <ul>{this.loginError()}</ul> : null}
-        <button className="btn waves-effect waves-light" type="submit">Create Account</button>
+        <div className="form-group mt-md-3">
+          <Field className="form-control" name="email" component="input" required type="text" placeholder="Email" />
+        </div>
+        <div className="form-group">
+          <Field className="form-control" name="password" component="input" required type="password" placeholder="Password" />
+        </div>
+        <div className="form-group">
+          <Field className="form-control" name="password_confirmation" component="input" required type="password" placeholder="Confirm Password" />
+        </div>
+        {signUpError ? <ul className="list-unstyled">{this.loginError()}</ul> : null}
+        <button className="btn btn-primary rounded-0" type="submit">Create Account</button>
       </form>
     );
   }
