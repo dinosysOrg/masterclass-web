@@ -23,9 +23,9 @@ class Dashboard extends Component {
             <input type="text" placeholder="search" />
           </form>
           <p>*Hover on each path to see how far it takes you on your musical journey</p>
-          {myPath.in_progress.length !== 0 ? <VideoPanel title="In Progress" videoList={this.props.payload.userReducer.myPath.in_progress} /> : null}
-          {myPath.completed.length !== 0 ? <VideoPanel title="Completed" videoList={this.props.payload.userReducer.myPath.completed} /> : null}
-          {myPath.saved.length !== 0 ? <VideoPanel title="Saved" videoList={this.props.payload.userReducer.myPath.Saved} /> : null}
+          {myPath.in_progress.length !== 0 ? <VideoPanel title="In Progress" videoList={myPath.in_progress} /> : null}
+          {myPath.completed.length !== 0 ? <VideoPanel title="Completed" videoList={myPath.completed} /> : null}
+          {myPath.saved.length !== 0 ? <VideoPanel title="Saved" videoList={myPath.Saved} /> : null}
           <PathProgressSummary />
 
           <ul>
