@@ -20,10 +20,14 @@ app.get('*', (req, res) => {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>MasterClass Platform</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"d>
         <link rel="stylesheet" href="/assets/css/bundle.css">
       </head>
       <body>
         <div id="app"></div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" ></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" ></script>
         <script src="/assets/js/bundle.js"></script>
       </body>
     </html>
