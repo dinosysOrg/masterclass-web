@@ -23,6 +23,7 @@ class Dashboard extends Component {
             <input type="text" placeholder="search" />
           </form>
           <p>*Hover on each path to see how far it takes you on your musical journey</p>
+          {myPath.recommended.length !== 0 ? <VideoPanel title="Recommended" videoList={myPath.recommended} /> : null}
           {myPath.in_progress.length !== 0 ? <VideoPanel title="In Progress" videoList={myPath.in_progress} /> : null}
           {myPath.completed.length !== 0 ? <VideoPanel title="Completed" videoList={myPath.completed} /> : null}
           {myPath.saved.length !== 0 ? <VideoPanel title="Saved" videoList={myPath.Saved} /> : null}

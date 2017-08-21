@@ -74,6 +74,7 @@ export default function init(state = initialState, action) {
     return {
       ...state,
       myPath: {
+        recommended: [],
         completed: [],
         in_progress: [],
         saved: [],
@@ -83,6 +84,7 @@ export default function init(state = initialState, action) {
     return {
       ...state,
       myPath: {
+        recommended: action.payload.recommended,
         completed: action.payload.completed,
         in_progress: action.payload.in_progress,
         saved: action.payload.saved,
