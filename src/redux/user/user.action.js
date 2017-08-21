@@ -166,3 +166,38 @@ export function fetchPathRequestFailure(error) {
     payload: error,
   };
 }
+
+/**
+ * action FETCH USER INFO THAT USER LOGGED IN
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchUserInfoRequest() {
+  return {
+    type: types.FETCH_USERINFO_REQUEST,
+  };
+}
+
+/**
+ * action FETCH USER INFO REQUEST SUCCESS
+ * @param {Object} response
+ * @return {Object}
+*/
+export function fetchUserInfoRequestSuccess(response) {
+  return {
+    type: types.FETCH_USERINFO_REQUEST_SUCCESS,
+    payload: response,
+  };
+}
+
+/**
+ * action FETCH USER INFO REQUEST SUCCESS FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchUserInfoRequestFailure(error) {
+  return {
+    type: types.FETCH_USERINFO_REQUEST_FAILURE,
+    payload: error,
+  };
+}

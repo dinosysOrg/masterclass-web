@@ -74,19 +74,37 @@ export default function init(state = initialState, action) {
     return {
       ...state,
       myPath: {
+        recommended: [],
         completed: [],
         in_progress: [],
+        saved: [],
       },
     };
   case types.FETCH_PATH_REQUEST_SUCCESS:
     return {
       ...state,
       myPath: {
+        recommended: action.payload.recommended,
         completed: action.payload.completed,
         in_progress: action.payload.in_progress,
+        saved: action.payload.saved,
       },
     };
   case types.FETCH_PATH_REQUEST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+    };
+  case types.FETCH_USERINFO_REQUEST:
+    return {
+      ...state,
+    };
+  case types.FETCH_USERINFO_REQUEST_SUCCESS:
+    return {
+      ...state,
+      userInfo: Object.assign({}, state.userInfo, action.payload),
+    };
+  case types.FETCH_USERINFO_REQUEST_FAILURE:
     return {
       ...state,
       error: action.payload,

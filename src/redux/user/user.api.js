@@ -1,5 +1,5 @@
 module.exports = {
-  'getUserAPI': '../../spec/mockdata/user.json',
+  'getUserAPI': 'http://masterclass-staging.herokuapp.com/api/v1/users/',
   'postUserAPI': '',
   'putUserAPI': '',
   'deleteUserAPI': '',
