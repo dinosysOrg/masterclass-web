@@ -1,0 +1,49 @@
+.quiz-loading {
+  .loading {
+    // position: fixed;
+    // left: 0px;
+    // top: 0px;
+    // width: 100%;
+    // height: 100%;
+    // background-color: #000;
+      width: 1000px;
+      height: 40px;
+      position: relative;
+    .loader {
+      position: absolute;
+      left: 45%;
+      top: 90%;
+      transform: translate(-45%, -90%);
+      .Bar {
+        background: #f8dc17;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        width: 10px;
+        border-radius: 2px;
+        @for $i from 0 through 6 {
+          &:nth-child(#{$i}) {
+            left: ($i * 15px) - 15px;
+            animation: bottom-top 2s infinite ease-in-out ($i * 0.2s);
+          }
+        }
+      }
+    }
+  }
+  @keyframes bottom-top {
+    0% {
+      height: 0;
+      opacity: 0;
+    }
+
+    50% {
+      height: 30px;
+      opacity: 1;
+    }
+
+    100% {
+      height: 0;
+      opacity: 0;
+    }
+  }
+}
