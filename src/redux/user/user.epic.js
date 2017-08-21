@@ -2,12 +2,28 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB, getUserPath} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath, getUserAPI} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import storeConfig from '../../configs/storage.config';
 import {push} from 'react-router-redux';
+/**
+ * action fetch user info
+ * @param {any} action$
+ * @return {Object}
+*/
+const getUserInfoRequestEpic = (action$) =>
+  action$.ofType(types.FETCH_USERINFO_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.get(`${getUserAPI}${storeConfig.getUserLocal().id}`, storeConfig.setHeader())
+          .map((json) => actions.fetchUserInfoRequestSuccess(json.response))
+          .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
+        of(actionInit.hideLoading())
+      )
+    );
 /**
  * action fetch user path
  * @param {any} action$
@@ -37,7 +53,7 @@ const loginRequestEpic = (action$) =>
         ajax.post(loginAPI, data.payload)
           .mergeMap((json) =>
             of(actions.loginRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name))
+              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name, json.response.data.id))
           )
           .catch((error) => of(actions.loginRequestFailure(error))),
         of(actionInit.hideLoading())
@@ -97,4 +113,5 @@ export {
   signOutEpic,
   signupRequestEpic,
   fbRequestEpic,
+  getUserInfoRequestEpic,
 };
