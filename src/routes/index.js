@@ -1,11 +1,6 @@
-import {Home, Browse, Profile, DashBoard, Path, Quiz} from '../containers';
+import {Browse, Profile, DashBoard, Path, Quiz} from '../containers';
 
 const routes = [
-  {
-    path: '/',
-    component: Home,
-    exact: true,
-  },
   {
     path: '/Browse',
     component: Browse,
