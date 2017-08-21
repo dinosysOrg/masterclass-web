@@ -30,6 +30,10 @@ class MainMenu extends Component {
           <li className={pathname === '/Profile' ? 'active' : null}>
             <Link to="/Profile">PROFILE</Link>
           </li>
+          <li>|</li>
+          <li className={pathname === '/Quiz' ? 'active' : null}>
+            <Link to="/Quiz">QUIZ</Link>
+          </li>
         </ul>
       );
     } else {
@@ -41,9 +45,7 @@ class MainMenu extends Component {
    * @return {html} The template of menu class
    */
   render() {
-    return (
-      this.checkMenu()
-    );
+    return this.checkMenu();
   }
 }
 const mapStateToProps = (rootState) => {
