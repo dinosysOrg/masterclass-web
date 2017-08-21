@@ -14,7 +14,7 @@ class Dashboard extends Component {
       <div className="dashboard-page">
         <div className="container">
           <div className="row">
-            <div className="col s12">
+            <div className="col">
               <div className="card-panel grey lighten-5">
                 <h5 className="center-align">You haven't had any path added to your dashboard to your dashboard. Let's fill
                   in a short form to find one (or some) of them quickly!

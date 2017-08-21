@@ -14,10 +14,14 @@ class LoginForm extends React.Component {
     const {handleSubmit} = this.props;
     return (
       <form onSubmit={handleSubmit}>
-        <Field name="email" component="input" required type="text" placeholder="Email" />
-        <Field name="password" component="input" required type="password" placeholder="Password" />
+        <div className="form-group mt-md-3">
+          <Field className="form-control" name="email" component="input" required type="text" placeholder="Email" />
+        </div>
+        <div className="form-group">
+          <Field className="form-control" name="password" component="input" required type="password" placeholder="Password" />
+        </div>
         {loginError ? <div style={{marginBottom: 10, color: 'red'}}>{loginError}</div> : null}
-        <button className="btn waves-effect waves-light" type="submit">Login</button>
+        <button className="btn btn-primary rounded-0" type="submit">Login</button>
       </form>
     );
   }

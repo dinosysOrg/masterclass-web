@@ -3,6 +3,7 @@ import Footer from './footer/footer';
 import MainMenu from './menu/menu';
 import Sidebar from './sidebar/sidebar';
 import ModalAuth from './modal_auth/modal_auth.container';
+import Button from './button/button';
 import QuizLoading from './quizLoading/quizLoading';
 
 export
@@ -13,4 +14,5 @@ export
   Sidebar,
   ModalAuth,
   QuizLoading,
+  Button,
 };

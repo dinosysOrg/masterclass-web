@@ -43,13 +43,13 @@ class FullVideoCatalog extends Component {
         </form>
 
         <ul className="row">
-          <li className="col s12 m4">
+          <li className="col">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
-          <li className="col s12 m4">
+          <li className="col">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
-          <li className="col s12 m4">
+          <li className="col">
             <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
           </li>
         </ul>

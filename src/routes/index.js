@@ -1,4 +1,4 @@
-import {Home, Browse, Profile, DashBoard, Path} from '../containers';
+import {Home, Browse, Profile, DashBoard, Path, Quiz} from '../containers';
 
 const routes = [
   {
@@ -9,22 +9,22 @@ const routes = [
   {
     path: '/Browse',
     component: Browse,
-    exact: true,
   },
   {
     path: '/Profile',
     component: Profile,
-    exact: true,
   },
   {
     path: '/Dashboard',
     component: DashBoard,
-    exact: true,
   },
   {
     path: '/Path',
     component: Path,
-    exact: false,
+  },
+  {
+    path: '/Quiz',
+    component: Quiz,
   },
 ];
 
