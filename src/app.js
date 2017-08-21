@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import {Header, Footer} from './components';
 import routes from './routes';
 import './app.scss';
@@ -10,6 +10,7 @@ import * as userAction from './redux/user/user.action';
 import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
+import {Home} from './containers';
 /**
  * Main Class of project
  */
@@ -50,6 +51,14 @@ class App extends React.Component {
     } else return null;
   }
   /**
+  * @param {html} component
+  * @return {html} 
+  * check loading fuc
+  */
+  checkAuthenticate(component) {
+    return storeConfig.getUserLocal() ? React.createElement(component) : <Redirect to='/' />;
+  }
+  /**
    * render app
    * @return {html} The template of App class
    */
@@ -59,7 +68,8 @@ class App extends React.Component {
         <div>
           <Header/>
           <Switch>
-            {routes.map((route) => <Route key={route.path} {...route} />)}
+            <Route exact path="/" component={Home} />
+            {routes.map((route) => <Route key={route.path} path={route.path} render={() => this.checkAuthenticate(route.component)} />)}
           </Switch>
           <Footer/>
           {this.checkLoading()}
