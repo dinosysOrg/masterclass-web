@@ -2,39 +2,21 @@ import React from 'react';
 
 import Panel from './panel';
 
-export default ({title}) => {
+export default ({title, videoList}) => {
   return (
     <Panel title={title}>
       <ul className="row">
-        <li className="col s4">
-          <div>
-            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
-            <p>Strumming</p>
-            <p>Intermediate Guitar</p>
-            <p>MR. JONNY</p>
-          </div>
-        </li>
-
-        <li className="col s4">
-          <div>
-            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
-            <p>Strumming</p>
-            <p>Intermediate Guitar</p>
-            <p>MR. JONNY</p>
-          </div>
-        </li>
-
-        <li className="col s4">
-          <div>
-            <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
-            <p>Strumming</p>
-            <p>Intermediate Guitar</p>
-            <p>MR. JONNY</p>
-          </div>
-        </li>
+        {videoList.map((video, index) => (
+          <li key={index} className="col s4">
+            <div>
+              <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
+              <p>Strumming</p>
+              <p>Intermediate Guitar</p>
+              <p>MR. JONNY</p>
+            </div>
+          </li>
+        ))}
       </ul>
-
-      <a href="#">View all paths</a>
     </Panel>
   );
 };

@@ -29,7 +29,9 @@ class DashBoardContainer extends Component {
         );
       } else {
         return (
-          <DashBoard />
+          <DashBoard
+            {...this.props}
+          />
         );
       }
     };
