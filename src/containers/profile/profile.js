@@ -28,17 +28,14 @@ class Profile extends Component {
               <input type="tel" placeholder="Phone" />
               <input type="text" placeholder="School" />
               <input type="text" placeholder="Occupation" />
-
               <textarea value="" rows="10" className="materialize-textarea">
                 Tell us anything about your personal interests.
               </textarea>
-
               <input type="text" placeholder="Instruments" />
               <textarea value="" rows="10" className="materialize-textarea">
                 Tell us anything about your musical instruments.
               </textarea>
             </form>
-
             <form>
               <input type="text" placeholder="Name in Card" />
               <input type="text" placeholder="Card Type" />

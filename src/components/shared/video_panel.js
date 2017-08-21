@@ -6,7 +6,7 @@ export default ({title, videoList}) => {
   return (
     <Panel title={title}>
       <ul className="row">
-        {videoList.map((video, index) => (
+        {videoList.map((video, index) =>
           <li key={index} className="col s4">
             <div>
               <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
@@ -15,7 +15,7 @@ export default ({title, videoList}) => {
               <p>MR. JONNY</p>
             </div>
           </li>
-        ))}
+        )}
       </ul>
     </Panel>
   );

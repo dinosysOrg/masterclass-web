@@ -70,10 +70,12 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
-        {this.checkLogin()}
-        <ModalAuth />
-        <MainMenu />
+        <div className="container">
+          <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
+          {this.checkLogin()}
+          <ModalAuth />
+          <MainMenu />
+        </div>
       </header>
     );
   }
