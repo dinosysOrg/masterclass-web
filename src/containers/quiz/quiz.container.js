@@ -1,16 +1,39 @@
 import React, {Component} from 'react';
 import Quiz from './quiz';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as userAction from '../../redux/user/user.action';
 /**
- * BrowseContainer of project
+ * QuizContainer of project
  */
 class QuizContainer extends Component {
   /**
-   * render BrowseContainer template
-   * @return {html} The template of BrowseContainer class
+   * render QuizContainer template
+   */
+  componentWillMount() {
+    this.props.userAction.fetchQuizRequest();
+  }
+  /**
+   * render QuizContainer template
+   * @return {html} The template of HomePageContainer class
    */
   render() {
-    return <Quiz />;
+    console.log(this.props);
+    return (
+      !this.props.payload.userReducer.quiz ? null : <Quiz {...this.props} />
+    );
   }
 }
 
-export default QuizContainer;
+const mapStateToProps = (rootState) => {
+  return {
+    payload: rootState,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userAction: bindActionCreators(userAction, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizContainer);

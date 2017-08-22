@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB, getUserPath, getUserAPI} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath, getUserAPI, getQuizAPI} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
@@ -107,6 +107,24 @@ const fbRequestEpic = (action$) =>
         of(actionInit.hideLoading())
       )
     );
+
+/**
+ * action get Quiz
+ * @param {any} action$
+ * @return {Object}
+*/
+const getQuizRequestEpic = (action$) =>
+  action$.ofType(types.FETCH_QUIZ_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.get(`${getQuizAPI}`, storeConfig.setHeader())
+          .map((json) => actions.fetchQuizSuccess(json.xhr.response))
+          .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
+        of(actionInit.hideLoading())
+      )
+    );
+
 export {
   myPathRequestEpic,
   loginRequestEpic,
@@ -114,4 +132,5 @@ export {
   signupRequestEpic,
   fbRequestEpic,
   getUserInfoRequestEpic,
+  getQuizRequestEpic,
 };

@@ -201,3 +201,35 @@ export function fetchUserInfoRequestFailure(error) {
     payload: error,
   };
 }
+/**
+ * action FETCH QUIZ REQUEST
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchQuizRequest() {
+  return {
+    type: types.FETCH_QUIZ_REQUEST,
+  };
+}
+/**
+ * action FETCH QUIZ REQUEST SUCCESS
+ * @param {Object} response
+ * @return {Object}
+*/
+export function fetchQuizSuccess(response) {
+  return {
+    type: types.FETCH_QUIZ_REQUEST_SUCCESS,
+    payload: response,
+  };
+}
+/**
+ * action FETCH QUIZ REQUEST FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchQuizFailure(error) {
+  return {
+    type: types.FETCH_QUIZ_REQUEST_FAILURE,
+    payload: error,
+  };
+}

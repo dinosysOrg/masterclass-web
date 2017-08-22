@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import QuizForm from './quiz_form';
 
 /**
  * Quiz of project
@@ -19,37 +20,8 @@ class Quiz extends Component {
             <li>PIANO</li>
             <li>VOICE</li>
           </ul>
-          <p>2. Choose your level (optional):</p>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
-              Beginner
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-              Intermediate
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-              Advanced
-            </label>
-          </div>
-          <p>3. Choose your preferred learning method (choose all that applies):</p>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" /> Techniques
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" /> Through songs
-            </label>
-          </div>
-          <button>FIND PATH</button>
+
+          <QuizForm onSubmit={(values) => console.log(values)} />
         </div>
       </div>
     );

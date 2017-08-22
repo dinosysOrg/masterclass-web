@@ -30,10 +30,6 @@ class MainMenu extends Component {
           <li className={pathname === '/Profile' ? 'active' : null}>
             <Link to="/Profile">PROFILE</Link>
           </li>
-          <li>|</li>
-          <li className={pathname === '/Quiz' ? 'active' : null}>
-            <Link to="/Quiz">QUIZ</Link>
-          </li>
         </ul>
       );
     } else {
