@@ -1,21 +1,31 @@
+import 'rxjs';
+import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './path.types';
-import data from '../../spec/mockdata/path';
+import * as actions from './path.actions';
+import {getBrowsePathAPI} from './path.api';
+import * as actionInit from '../init/init.action';
+import {concat as concat$} from 'rxjs/observable/concat';
+import {of} from 'rxjs/observable/of';
+import storeConfig from '../../configs/storage.config';
 
 /**
  * This epic defines the whole operation of fetching path from server
  * include 3 phases: start fetching, fetching success of fetching failed
  * @param {Object} action$ - action stream
- * @param {Object} store 
- * @param {Object} dependencies
  * @return {Object} action stream
  */
-const fetchPathEpic = (action$, store, dependencies) => {
-  return action$.ofType(types.FETCH_PATH).delay(500).mapTo({
-    type: types.FETCH_PATH_SUCCESS,
-    payload: data,
-  });
-};
+const getBrowsePath = (action$) =>
+  action$.ofType(types.FETCH_BROWSE_PATH)
+    .mergeMap((data) =>
+      concat$(
+        of(actionInit.showLoading()),
+        ajax.get(`${getBrowsePathAPI}`, storeConfig.setHeader())
+          .map((json) => actions.fetchBrowsePathRequestSuccess(json.response))
+          .catch((error) => of(actions.fetchBrowsePathRequestFailure(error))),
+        of(actionInit.hideLoading())
+      )
+    );
 
 export {
-  fetchPathEpic,
+  getBrowsePath,
 };

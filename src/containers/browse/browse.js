@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import VideoPanel from '../../components/shared/video_panel';
 import PromoPanel from '../../components/shared/promo_panel';
 
@@ -9,19 +8,35 @@ import PromoPanel from '../../components/shared/promo_panel';
  */
 class Browse extends Component {
   /**
+   * check loading status
+   * @return {html} html code 
+   */
+  checkLoading() {
+    if (this.props.payload.initReducer.showLoading === false) {
+      let browsePath = this.props.payload.pathReducer.browsePath;
+      return (
+        <div className="browse-page">
+          <div className="container">
+            <PromoPanel />
+            {browsePath.recommend.length !== 0 ? <VideoPanel title="Recommended" videoList={browsePath.recommend} /> : null}
+            {browsePath.popular.length !== 0 ? <VideoPanel title="Popular Path" videoList={browsePath.popular} /> : null}
+            {browsePath.latest.length !== 0 ? <VideoPanel title="Latest Path" videoList={browsePath.latest} /> : null}
+            {browsePath.guitar.length !== 0 ? <VideoPanel title="Guitar Path" videoList={browsePath.guitar} /> : null}
+            {browsePath.vocals.length !== 0 ? <VideoPanel title="Vocal Path" videoList={browsePath.vocals} /> : null}
+            <PromoPanel />
+          </div>
+        </div>
+      );
+    }
+  }
+  /**
    * render Browse template
    * @return {html} The template of Browse class
    */
   render() {
     return (
-      <div className="browse-page">
-        <div className="container">
-          <PromoPanel />
-          <FullVideoCatalog />
-          <VideoPanel title="Popular Paths" />
-          <VideoPanel title="Lastest Paths" />
-          <PromoPanel />
-        </div>
+      <div>
+        {this.checkLoading()}
       </div>
     );
   }
