@@ -6,44 +6,33 @@ import {Field, reduxForm} from 'redux-form';
 */
 class QuizForm extends React.Component {
   /**
-   * render Footer
-   * @return {html} The template of Footer class
+   * render QuizForm
+   * @return {html} The template of QuizForm class
    */
   render() {
     const {handleSubmit} = this.props;
+    const {quiz} = this.props.payload.userReducer;
     return (
       <form onSubmit={handleSubmit}>
         <p>2. Choose your level (optional):</p>
-        {/* <label className="form-check-label">
-          <Field className="form-check-input" name="exampleRadios" id="exampleRadios1" component="input" type="radio" value="male" />
-          Male
-        </label>
-        <label className="form-check-label">
-          <Field className="form-check-input" name="exampleRadios" id="exampleRadios1" component="input" type="radio" value="female" />
-          Female
-        </label> */}
-        <div className="form-check form-check-inline">
-          <label className="form-check-label">
-            <Field className="form-check-input" name="exampleRadios" id="exampleRadios1" component="input" type="radio" value="male"/> Beginner
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
-          <label className="form-check-label">
-            <Field className="form-check-input" name="exampleRadios" id="exampleRadios2" component="input" type="radio" value="fmale" /> Intermediate
-          </label>
-        </div>
+        {quiz.levels.map((quizLevel, index) =>
+          <div key={index} className="form-check form-check-inline">
+            <label className="form-check-label">
+              <Field className="form-check-input" name="quizLevelRadio" id={`quizLevelRadio${index}`}
+                component="input" type="radio" value={quizLevel.name}/> {quizLevel.name}
+            </label>
+          </div>
+        )}
         <p>3. Choose your preferred learning method (choose all that applies):</p>
-        <div className="form-check form-check-inline">
-          <label className="form-check-label">
-            <Field className="form-check-input" name="checkbox" id="checkbox1" component="input" type="checkbox"/> Techniques
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
-          <label className="form-check-label">
-            <Field className="form-check-input" name="checkbox2" id="checkbox2" component="input" type="checkbox"/> abc
-          </label>
-        </div>
-        <button>FIND PATH</button>
+        {quiz.learning_methods.map((quizMethod, index) =>
+          <div key={index} className="form-check form-check-inline">
+            <label className="form-check-label">
+              <Field className="form-check-input" name={quizMethod.name} id={`quizMethod${index}`}
+                component="input" type="checkbox"/> {quizMethod.name}
+            </label>
+          </div>
+        )}
+        <div><button>FIND PATH</button></div>
       </form>
     );
   }
@@ -51,5 +40,5 @@ class QuizForm extends React.Component {
 
 export default reduxForm({
   form: 'quizForm', // a unique identifier for this form
-  initialValues: {checkbox: true, exampleRadios: 'fmale'},
+  initialValues: {quizLevelRadio: 'Beginner'},
 })(QuizForm);
