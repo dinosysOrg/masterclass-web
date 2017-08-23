@@ -4178,6 +4178,10 @@ normalize-url@^1.4.0:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+
 nth-check@~1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
@@ -5156,6 +5160,12 @@ redux-i18n@^1.5.4:
     optimist "^0.6.1"
     prop-types "^15.5.8"
     react-deep-force-update "^2.0.1"
+
+redux-nprogress@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/redux-nprogress/-/redux-nprogress-1.0.2.tgz#e4c78a5247428caa17f46c5e895ed42e8346c5c7"
+  dependencies:
+    prop-types "^15.5.10"
 
 redux-observable@^0.14.1:
   version "0.14.1"
