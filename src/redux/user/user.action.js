@@ -233,3 +233,34 @@ export function fetchQuizFailure(error) {
     payload: error,
   };
 }
+/**
+ * action SAVE QUIZ REQUEST
+ * @param {Object} data
+ * @return {Object}
+*/
+export function saveQuizRequest(data) {
+  return {
+    type: types.SAVE_QUIZ_REQUEST,
+    payload: data,
+  };
+}
+/**
+ * action SAVE QUIZ REQUEST SUCCESS
+ * @return {Object}
+*/
+export function saveQuizSuccess() {
+  return {
+    type: types.SAVE_QUIZ_REQUEST_SUCCESS,
+  };
+}
+/**
+ * action SAVE QUIZ REQUEST FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function saveQuizFailure(error) {
+  return {
+    type: types.SAVE_QUIZ_REQUEST_FAILURE,
+    payload: error,
+  };
+}

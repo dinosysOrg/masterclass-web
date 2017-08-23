@@ -6,40 +6,30 @@ import QuizForm from './quiz_form';
  */
 class Quiz extends Component {
   /**
-   * constructor QuizForm
-   * @param {any} props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      color: 'Guitar',
-    };
-  }
-  /**
    * render onSubmit template
    * @param {any} values
    */
   onSubmit(values) {
-    const data = Object.assign({mot: this.state.color}, {instruments: this.state.color}, {checkbox: [values]});
-    console.log(data);
+    const quizMethod = Object.keys(values).map((value) => {
+      if (value.startsWith('quizMethod')) {
+        return parseInt(value.split('_')[1]);
+      }
+    }).filter((value) => {
+      return value !== undefined;
+    });
+    const data = Object.assign({}, {instrument_id: parseInt(values.quizInstruments)},
+      {level_id: parseInt(values.quizLevelRadio)}, {learning_method_ids: quizMethod});
+    this.props.userAction.saveQuizRequest(data);
   }
   /**
    * render Quiz template
    * @return {html} The template of Quiz class
    */
   render() {
-    const {quiz} = this.props.payload.userReducer;
-    console.log(quiz);
     return (
       <div className="quiz-page">
         <div className="container">
           <h3 className="text-center">Choose one answer in each of the following question to find your own path of learning music. </h3>
-          <p>1. Choose your preferred instrument:</p>
-          <ul>
-            {quiz.instruments.map((quizIntruments, index) =>
-              <li key={index}>{quizIntruments.name}</li>
-            )}
-          </ul>
           <QuizForm {...this.props} onSubmit={(values)=>this.onSubmit(values)} />
         </div>
       </div>

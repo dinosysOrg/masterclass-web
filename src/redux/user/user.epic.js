@@ -133,6 +133,24 @@ const getQuizRequestEpic = (action$, store) =>
       )
     );
 
+  /**
+   * action save Quiz
+   * @param {any} action$
+   * @param {any} store
+   * @return {Object}
+  */
+const saveQuizEpic = (action$, store) =>
+  action$.ofType(types.SAVE_QUIZ_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        ajax.post(`${getQuizAPI}`, data.payload, storeConfig.setHeader())
+          .map(() => actions.saveQuizSuccess())
+          .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
+        of(store.dispatch(endTask()))
+      )
+    );
+
 export {
   myPathRequestEpic,
   loginRequestEpic,
@@ -141,4 +159,5 @@ export {
   fbRequestEpic,
   getUserInfoRequestEpic,
   getQuizRequestEpic,
+  saveQuizEpic,
 };

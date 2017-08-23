@@ -14,12 +14,21 @@ class QuizForm extends React.Component {
     const {quiz} = this.props.payload.userReducer;
     return (
       <form onSubmit={handleSubmit}>
+        <p>1. Choose your preferred instrument:</p>
+        {quiz.instruments.map((quizInstruments, index) =>
+          <div key={index} className="form-check form-check-inline">
+            <label className="form-check-label">
+              <Field className="form-check-input" name="quizInstruments" id={`Intruments${index}`}
+                component="input" type="radio" value={String(quizInstruments.id)}/> {quizInstruments.name}
+            </label>
+          </div>
+        )}
         <p>2. Choose your level (optional):</p>
         {quiz.levels.map((quizLevel, index) =>
           <div key={index} className="form-check form-check-inline">
             <label className="form-check-label">
               <Field className="form-check-input" name="quizLevelRadio" id={`quizLevelRadio${index}`}
-                component="input" type="radio" value={quizLevel.name}/> {quizLevel.name}
+                component="input" type="radio" value={String(quizLevel.id)}/> {quizLevel.name}
             </label>
           </div>
         )}
@@ -27,8 +36,8 @@ class QuizForm extends React.Component {
         {quiz.learning_methods.map((quizMethod, index) =>
           <div key={index} className="form-check form-check-inline">
             <label className="form-check-label">
-              <Field className="form-check-input" name={quizMethod.name} id={`quizMethod${index}`}
-                component="input" type="checkbox"/> {quizMethod.name}
+              <Field className="form-check-input" name={`quizMethod_${quizMethod.id}`} id={`quizMethod${index}`}
+                component="input" type="checkbox" /> {quizMethod.name}
             </label>
           </div>
         )}
@@ -40,5 +49,5 @@ class QuizForm extends React.Component {
 
 export default reduxForm({
   form: 'quizForm', // a unique identifier for this form
-  initialValues: {quizLevelRadio: 'Beginner'},
+  initialValues: {quizLevelRadio: '1', quizInstruments: '1'},
 })(QuizForm);

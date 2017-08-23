@@ -28,6 +28,7 @@ exports.setHeader = () => {
       'expiry': userLocal.expiry,
       'token-type': userLocal.tokenType,
       'uid': userLocal.uid,
+      'Content-Type': 'application/json',
     };
   }
 };
