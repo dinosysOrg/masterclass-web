@@ -1,9 +1,26 @@
 import React, {Component} from 'react';
+import QuizForm from './quiz_form';
 
 /**
  * Quiz of project
  */
 class Quiz extends Component {
+  /**
+   * render onSubmit template
+   * @param {any} values
+   */
+  onSubmit(values) {
+    const quizMethod = Object.keys(values).map((value) => {
+      if (value.startsWith('quizMethod')) {
+        return parseInt(value.split('_')[1]);
+      }
+    }).filter((value) => {
+      return value !== undefined;
+    });
+    const data = Object.assign({}, {instrument_id: parseInt(values.quizInstruments)},
+      {level_id: parseInt(values.quizLevelRadio)}, {learning_method_ids: quizMethod});
+    this.props.userAction.saveQuizRequest(data);
+  }
   /**
    * render Quiz template
    * @return {html} The template of Quiz class
@@ -13,43 +30,7 @@ class Quiz extends Component {
       <div className="quiz-page">
         <div className="container">
           <h3 className="text-center">Choose one answer in each of the following question to find your own path of learning music. </h3>
-          <p>1. Choose your preferred instrument:</p>
-          <ul>
-            <li>GUITAR</li>
-            <li>PIANO</li>
-            <li>VOICE</li>
-          </ul>
-          <p>2. Choose your level (optional):</p>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
-              Beginner
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-              Intermediate
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
-              Advanced
-            </label>
-          </div>
-          <p>3. Choose your preferred learning method (choose all that applies):</p>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" /> Techniques
-            </label>
-          </div>
-          <div className="form-check form-check-inline">
-            <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" /> Through songs
-            </label>
-          </div>
-          <button>FIND PATH</button>
+          <QuizForm {...this.props} onSubmit={(values)=>this.onSubmit(values)} />
         </div>
       </div>
     );

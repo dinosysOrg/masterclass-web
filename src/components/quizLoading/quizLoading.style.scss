@@ -1,14 +1,11 @@
 .quiz-loading {
+  padding: 100px 0px;
+  text-align: center;
   .loading {
-    // position: fixed;
-    // left: 0px;
-    // top: 0px;
-    // width: 100%;
-    // height: 100%;
-    // background-color: #000;
       width: 1000px;
       height: 40px;
       position: relative;
+      margin: auto;
     .loader {
       position: absolute;
       left: 45%;
@@ -29,6 +26,9 @@
         }
       }
     }
+  }
+  p{
+    margin-top: 30px;
   }
   @keyframes bottom-top {
     0% {

@@ -10,6 +10,7 @@ import * as userAction from './redux/user/user.action';
 import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
+import {NProgress} from 'redux-nprogress';
 import {Home} from './containers';
 /**
  * Main Class of project
@@ -66,6 +67,7 @@ class App extends React.Component {
     return (
       <I18n translations={translations} initialLang='en'>
         <div>
+          <NProgress color="yellow"/>
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />

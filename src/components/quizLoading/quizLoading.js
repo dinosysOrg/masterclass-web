@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 /**
  * QuizLoading of project
  */
 class QuizLoading extends Component {
+  /**
+   * render QuizLoading template
+   */
+  componentDidMount() {
+    setTimeout(() => {
+      this.props.history.push('/');
+    }, 3000);
+  }
   /**
    * render QuizLoading template
    * @return {html} The template of menu class
@@ -29,4 +38,4 @@ class QuizLoading extends Component {
   }
 }
 
-export default QuizLoading;
+export default withRouter(QuizLoading);

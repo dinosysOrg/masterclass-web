@@ -5,6 +5,7 @@ import reducer from './reducer.config';
 import initEpic from './epic.config';
 import createHistory from 'history/createBrowserHistory';
 import {routerMiddleware} from 'react-router-redux';
+import {nprogressMiddleware} from 'redux-nprogress';
 
 const history = createHistory();
 const routerReduxMiddleware = routerMiddleware(history);
@@ -21,6 +22,7 @@ function configureStore(initialState) {
     initialState,
     composeEnhancers(
       applyMiddleware(
+        nprogressMiddleware(),
         routerReduxMiddleware,
         epicMiddleware,
       )

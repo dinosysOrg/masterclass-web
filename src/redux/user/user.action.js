@@ -201,3 +201,66 @@ export function fetchUserInfoRequestFailure(error) {
     payload: error,
   };
 }
+/**
+ * action FETCH QUIZ REQUEST
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchQuizRequest() {
+  return {
+    type: types.FETCH_QUIZ_REQUEST,
+  };
+}
+/**
+ * action FETCH QUIZ REQUEST SUCCESS
+ * @param {Object} response
+ * @return {Object}
+*/
+export function fetchQuizSuccess(response) {
+  return {
+    type: types.FETCH_QUIZ_REQUEST_SUCCESS,
+    payload: response,
+  };
+}
+/**
+ * action FETCH QUIZ REQUEST FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function fetchQuizFailure(error) {
+  return {
+    type: types.FETCH_QUIZ_REQUEST_FAILURE,
+    payload: error,
+  };
+}
+/**
+ * action SAVE QUIZ REQUEST
+ * @param {Object} data
+ * @return {Object}
+*/
+export function saveQuizRequest(data) {
+  return {
+    type: types.SAVE_QUIZ_REQUEST,
+    payload: data,
+  };
+}
+/**
+ * action SAVE QUIZ REQUEST SUCCESS
+ * @return {Object}
+*/
+export function saveQuizSuccess() {
+  return {
+    type: types.SAVE_QUIZ_REQUEST_SUCCESS,
+  };
+}
+/**
+ * action SAVE QUIZ REQUEST FAILURE
+ * @param {Object} error
+ * @return {Object}
+*/
+export function saveQuizFailure(error) {
+  return {
+    type: types.SAVE_QUIZ_REQUEST_FAILURE,
+    payload: error,
+  };
+}

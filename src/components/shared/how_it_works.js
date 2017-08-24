@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 import Panel from '../shared/panel';
 
 export default () => {
@@ -23,8 +23,7 @@ export default () => {
           <p>Get feedback directly from accredited teachers</p>
         </li>
       </ul>
-
-      <a className="btn" href="#">Discovery Now</a>
+      <Link className="btn" to="/Quiz">Discovery Now</Link>
     </Panel>
   );
 };

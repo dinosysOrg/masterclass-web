@@ -109,6 +109,16 @@ export default function init(state = initialState, action) {
       ...state,
       error: action.payload,
     };
+  case types.FETCH_QUIZ_REQUEST_SUCCESS:
+    return {
+      ...state,
+      quiz: action.payload,
+    };
+  case types.SAVE_QUIZ_REQUEST_SUCCESS:
+    return {
+      ...state,
+      quizLoading: true,
+    };
   default:
     return state;
   }
