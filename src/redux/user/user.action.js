@@ -264,3 +264,14 @@ export function saveQuizFailure(error) {
     payload: error,
   };
 }
+
+/**
+ * action HIDE QUIZ LOADING
+ * @param {Object} error
+ * @return {Object}
+*/
+export function hideLoadingQuiz() {
+  return {
+    type: types.HIDE_LOADING_QUIZ,
+  };
+}

@@ -119,6 +119,11 @@ export default function init(state = initialState, action) {
       ...state,
       quizLoading: true,
     };
+  case types.HIDE_LOADING_QUIZ:
+    return {
+      ...state,
+      quizLoading: false,
+    };
   default:
     return state;
   }
