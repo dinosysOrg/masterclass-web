@@ -3,14 +3,14 @@ import userReducer from './user/user.reducers';
 import {loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic, myPathRequestEpic, getUserInfoRequestEpic} from './user/user.epic';
 import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
-import {fetchPathEpic} from './path/path.epic';
+import {getBrowsePath} from './path/path.epic';
 
 export {
   pathReducer,
   userReducer,
   initReducer,
   loginRequestEpic,
-  fetchPathEpic,
+  getBrowsePath,
   signupRequestEpic,
   signOutEpic,
   fbRequestEpic,
