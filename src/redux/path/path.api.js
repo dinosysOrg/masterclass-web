@@ -1,3 +1,3 @@
 module.exports = {
-  'getPathAPI': '../../spec/mockdata/path.json',
+  'getBrowsePathAPI': 'http://masterclass-staging.herokuapp.com/api/v1/paths',
 };

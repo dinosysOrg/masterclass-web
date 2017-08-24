@@ -3,7 +3,7 @@ import {fetchPathEpic, loginRequestEpic, signupRequestEpic, signOutEpic, fbReque
   myPathRequestEpic, changeEnEpic, changeViEpic, getUserInfoRequestEpic, getQuizRequestEpic, saveQuizEpic} from '../redux';
 export default combineEpics(
   loginRequestEpic,
-  fetchPathEpic,
+  getBrowsePath,
   signupRequestEpic,
   signOutEpic,
   fbRequestEpic,

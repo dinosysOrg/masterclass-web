@@ -6,13 +6,13 @@ export default ({title, videoList}) => {
   return (
     <Panel title={title}>
       <ul className="row">
-        {videoList.map((video, index) =>
+        {videoList.map((object, index) =>
           <li key={index} className="col s4">
             <div>
               <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
-              <p>Strumming</p>
+              <p>{object.name}</p>
               <p>Intermediate Guitar</p>
-              <p>MR. JONNY</p>
+              <p>{object.teacher.name === null ? 'Default' : object.teacher.name}</p>
             </div>
           </li>
         )}
