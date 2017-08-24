@@ -20,7 +20,7 @@ const path = (state = initPathState, action) => {
         popular: [],
         latest: [],
         guitar: [],
-        vocal: [],
+        vocals: [],
       },
     };
   case types.FETCH_BROWSE_PATH_SUCCESS:
