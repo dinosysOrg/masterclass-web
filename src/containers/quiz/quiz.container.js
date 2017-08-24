@@ -23,7 +23,7 @@ class QuizContainer extends Component {
       return <Quiz {...this.props} />;
     }
     if (this.props.payload.userReducer.quizLoading) {
-      return <QuizLoading></QuizLoading>;
+      return <QuizLoading {...this.props}></QuizLoading>;
     } else return null;
   }
   /**

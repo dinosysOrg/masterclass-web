@@ -10,6 +10,7 @@ class QuizLoading extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.history.push('/');
+      this.props.userAction.hideLoadingQuiz();
     }, 3000);
   }
   /**
