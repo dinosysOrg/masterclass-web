@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
 /**
  * QuizLoading of project
  */
@@ -39,4 +38,4 @@ class QuizLoading extends Component {
   }
 }
 
-export default withRouter(QuizLoading);
+export default QuizLoading;
