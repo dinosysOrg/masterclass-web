@@ -3,6 +3,8 @@ import Profile from './profile';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
+import {Loading, Sidebar} from '../../components';
+import {withRouter} from 'react-router-dom';
 /**
  * ProfileContainer of project
  */
@@ -14,14 +16,36 @@ class ProfileContainer extends Component {
     this.props.userAction.fetchUserInfoRequest();
   }
   /**
+   * Call api before loading component
+   * @return {html} The template of ProfileContainer class
+   */
+  checkLoading() {
+    if (this.props.payload.nprogress.tasks === 0) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <Sidebar {...this.props} />
+            </div>
+            <div className="col-md-9">
+              <Profile {...this.props}/>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <Loading/>
+      );
+    }
+  }
+  /**
    * render ProfileContainer template
    * @return {html} The template of ProfileContainer class
    */
   render() {
     return (
-      <Profile
-        {...this.props}
-      />
+      this.checkLoading()
     );
   }
 }
@@ -36,5 +60,5 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileContainer));
 
