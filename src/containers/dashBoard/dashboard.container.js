@@ -21,9 +21,8 @@ class DashBoardContainer extends Component {
    */
   checkMyPath() {
     if (this.props.payload.userReducer.hasOwnProperty('myPath')) {
-      let completed = this.props.payload.userReducer.myPath.completed;
-      let inProgress = this.props.payload.userReducer.myPath.in_progress;
-      if (completed.length == 0 && inProgress.length == 0) {
+      let recommended = this.props.payload.userReducer.myPath.recommended;
+      if (recommended.length == 0) {
         return (
           <NoPath />
         );
