@@ -95,10 +95,6 @@ export default function init(state = initialState, action) {
       ...state,
       error: action.payload,
     };
-  case types.FETCH_USERINFO_REQUEST:
-    return {
-      ...state,
-    };
   case types.FETCH_USERINFO_REQUEST_SUCCESS:
     return {
       ...state,
@@ -123,6 +119,11 @@ export default function init(state = initialState, action) {
     return {
       ...state,
       quizLoading: false,
+    };
+  case types.SAVE_USERINFO_REQUEST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
     };
   default:
     return state;

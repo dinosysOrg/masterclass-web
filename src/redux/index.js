@@ -1,7 +1,7 @@
 import initReducer from './init/init.reducers';
 import userReducer from './user/user.reducers';
 import {loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic, myPathRequestEpic, getUserInfoRequestEpic,
-  getQuizRequestEpic, saveQuizEpic} from './user/user.epic';
+  getQuizRequestEpic, saveQuizEpic, putUserInfoRequestEpic} from './user/user.epic';
 import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
 import {getBrowsePath} from './path/path.epic';
@@ -21,4 +21,5 @@ export {
   getUserInfoRequestEpic,
   getQuizRequestEpic,
   saveQuizEpic,
+  putUserInfoRequestEpic,
 };

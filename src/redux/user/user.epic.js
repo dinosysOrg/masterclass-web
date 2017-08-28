@@ -2,13 +2,31 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB, getUserPath, getUserAPI, getQuizAPI} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath, getQuizAPI, userAPI} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import storeConfig from '../../configs/storage.config';
 import {push} from 'react-router-redux';
 import {beginTask, endTask} from 'redux-nprogress';
+
+/**
+ * action save user info
+ * @param {any} action$
+ * @param {any} store
+ * @return {Object}
+*/
+const putUserInfoRequestEpic = (action$, store) =>
+  action$.ofType(types.SAVE_USERINFO_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        ajax.put(`${userAPI}${storeConfig.getUserLocal().id}`, data.payload, storeConfig.setHeader())
+          .map((json) => actions.fetchUserInfoRequest())
+          .catch((error) => of(actions.saveUserInfoFailure(error))),
+        of(store.dispatch(endTask())),
+      )
+    );
 
 /**
  * action fetch user info
@@ -21,7 +39,7 @@ const getUserInfoRequestEpic = (action$, store) =>
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.get(`${getUserAPI}${storeConfig.getUserLocal().id}`, storeConfig.setHeader())
+        ajax.get(`${userAPI}${storeConfig.getUserLocal().id}`, storeConfig.setHeader())
           .map((json) => actions.fetchUserInfoRequestSuccess(json.response))
           .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
         of(store.dispatch(endTask())),
@@ -128,7 +146,7 @@ const getQuizRequestEpic = (action$, store) =>
         of(store.dispatch(beginTask())),
         ajax.get(`${getQuizAPI}`, storeConfig.setHeader())
           .map((json) => actions.fetchQuizSuccess(json.xhr.response))
-          .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
+          .catch((error) => of(actions.fetchQuizFailure(error))),
         of(store.dispatch(endTask())),
       )
     );
@@ -143,11 +161,9 @@ const saveQuizEpic = (action$, store) =>
   action$.ofType(types.SAVE_QUIZ_REQUEST)
     .mergeMap((data) =>
       concat$(
-        of(store.dispatch(beginTask())),
         ajax.post(`${getQuizAPI}`, data.payload, storeConfig.setHeader())
           .map(() => actions.saveQuizSuccess())
-          .catch((error) => of(actions.fetchUserInfoRequestFailure(error))),
-        of(store.dispatch(endTask()))
+          .catch((error) => of(actions.saveQuizFailure(error))),
       )
     );
 
@@ -160,4 +176,5 @@ export {
   getUserInfoRequestEpic,
   getQuizRequestEpic,
   saveQuizEpic,
+  putUserInfoRequestEpic,
 };

@@ -3,7 +3,8 @@ import Quiz from './quiz';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
-import {QuizLoading} from '../../components';
+import {Loading, QuizLoading} from '../../components';
+import {withRouter} from 'react-router-dom';
 /**
  * QuizContainer of project
  */
@@ -19,12 +20,18 @@ class QuizContainer extends Component {
    * @return {html} The template of HomePageContainer class
    */
   checkQuizLoad() {
-    if (this.props.payload.userReducer.quiz && !this.props.payload.userReducer.quizLoading) {
-      return <Quiz {...this.props} />;
+    const {quiz, quizLoading} = this.props.payload.userReducer;
+    const loading = this.props.payload.nprogress.tasks;
+    if (loading === 0 && quiz && !quizLoading) {
+      return (
+        <Quiz {...this.props}/>
+      );
     }
-    if (this.props.payload.userReducer.quizLoading) {
-      return <QuizLoading {...this.props}></QuizLoading>;
-    } else return null;
+    if (loading === 0 && quizLoading) {
+      return (
+        <QuizLoading {...this.props}/>
+      );
+    } else return (<Loading></Loading>);
   }
   /**
    * render QuizContainer template
@@ -32,9 +39,7 @@ class QuizContainer extends Component {
    */
   render() {
     return (
-      <div>
-        {this.checkQuizLoad()}
-      </div>
+      this.checkQuizLoad()
     );
   }
 }
@@ -50,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuizContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(QuizContainer));

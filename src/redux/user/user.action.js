@@ -275,3 +275,27 @@ export function hideLoadingQuiz() {
     type: types.HIDE_LOADING_QUIZ,
   };
 }
+
+/**
+ * save unserinfo
+ * @param {Object} data
+ * @return {Object}
+*/
+export function saveUserInfoRequest(data) {
+  return {
+    type: types.SAVE_USERINFO_REQUEST,
+    payload: data,
+  };
+}
+
+/**
+ * save unserinfo
+ * @param {Object} error
+ * @return {Object}
+*/
+export function saveUserInfoFailure(error) {
+  return {
+    type: types.SAVE_USERINFO_REQUEST_FAILURE,
+    payload: error,
+  };
+}
