@@ -39,7 +39,6 @@ class Siderbar extends Component {
    * @return {html} The template of menu class
    */
   render() {
-    console.log(this.props);
     return (
       this.checkSidebar()
     );

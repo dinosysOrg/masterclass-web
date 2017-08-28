@@ -9,7 +9,7 @@ class Profile extends Component {
    * @param {object} values
    */
   onSubmit(values) {
-    console.log(values);
+    this.props.userAction.saveUserInfoRequest(values);
   }
   /**
    * render Profile template
