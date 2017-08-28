@@ -21,7 +21,7 @@ const putUserInfoRequestEpic = (action$, store) =>
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.post(`${userAPI}${storeConfig.getUserLocal().id}`, data.payload, storeConfig.setHeader())
+        ajax.put(`${userAPI}${storeConfig.getUserLocal().id}`, data.payload, storeConfig.setHeader())
           .map((json) => actions.fetchUserInfoRequest())
           .catch((error) => of(actions.saveUserInfoFailure(error))),
         of(store.dispatch(endTask())),

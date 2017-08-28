@@ -17,9 +17,16 @@ class Profile extends Component {
    */
   render() {
     const {email} = this.props.payload.userReducer.userInfo;
+    const {first_name} = this.props.payload.userReducer.userInfo;
+    const {last_name} = this.props.payload.userReducer.userInfo;
+    const {gender} = this.props.payload.userReducer.userInfo;
+    const {birthday} = this.props.payload.userReducer.userInfo;
+    const {phone} = this.props.payload.userReducer.userInfo;
+    const {school} = this.props.payload.userReducer.userInfo;
+    const {occupation} = this.props.payload.userReducer.userInfo;
     const formValue = {
       initialValues: {
-        email,
+        email, first_name, last_name, gender, birthday, phone, school, occupation,
       },
     };
     return (
