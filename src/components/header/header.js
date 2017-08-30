@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {MainMenu, ModalAuth} from '../../components';
 import PropTypes from 'prop-types';
+import * as IMG from '../../assets/images';
 /**
 * Header of project
 */
@@ -71,7 +72,29 @@ class Header extends Component {
     return (
       <header className="header">
         <div className="container">
-          <h1 className="header__logo">MASTERCLASS VIET NAM</h1>
+          <nav className="navbar navbar-expand-md">
+            <a className="navbar-brand header__logo" href="/">
+              <img src={IMG.default.logo} alt=""/>
+            </a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+              aria-controls="navbarsExampleDefault"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+              <div className="mr-auto"/>
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    Link
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
           {this.checkLogin()}
           <ModalAuth />
           <MainMenu />

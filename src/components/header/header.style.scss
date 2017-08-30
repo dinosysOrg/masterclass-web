@@ -1,10 +1,7 @@
 .header{
-  padding: 20px 0px 5px 0px;
-  background: #009688;
+  background: $black;
   &__logo{
-    font-size: 35px;
-    text-align: center;
-    color: #fff
+    width: 130px;
   }
   &__nav-language{
     position: absolute;
