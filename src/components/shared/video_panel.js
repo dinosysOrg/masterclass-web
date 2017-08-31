@@ -11,7 +11,7 @@ export default ({title, videoList}) => {
             <div>
               <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
               <p>{object.name}</p>
-              <p>Intermediate Guitar</p>
+              <p>{object.level.name} {object.instrument.name}</p>
               <p>{object.teacher.name === null ? 'Default' : object.teacher.name}</p>
             </div>
           </li>
