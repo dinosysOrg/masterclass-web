@@ -22,13 +22,15 @@ class ProfileContainer extends Component {
   checkLoading() {
     if (this.props.payload.nprogress.tasks === 0) {
       return (
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <Sidebar {...this.props} />
-            </div>
-            <div className="col-md-9">
-              <Profile {...this.props}/>
+        <div className="profile-page">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <Sidebar {...this.props} />
+              </div>
+              <div className="col-md-9">
+                <Profile {...this.props}/>
+              </div>
             </div>
           </div>
         </div>

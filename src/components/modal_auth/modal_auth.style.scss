@@ -46,7 +46,7 @@
     padding: 0;
     margin: 0px;
     background: none;
-    text-align: center;
+    // text-align: center;
   }
 
   .tabContent{
@@ -71,6 +71,7 @@
     min-width: 120px;
     padding: 12px 15px;
     cursor: pointer;
+    text-align: center;
 
     &--selected {
       background: #fff;
