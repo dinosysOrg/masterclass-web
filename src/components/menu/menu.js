@@ -9,7 +9,6 @@ class MainMenu extends Component {
    * @return {html} The template of menu class
    */
   checkMenu() {
-    console.log(this.props);
     const {pathname} = this.props.location;
     const {loginStatus} = this.props.payload.userReducer;
     if (loginStatus) {
