@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import Carousel from './carousel';
 import HowItWorks from '../../components/shared/how_it_works';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
 
@@ -14,6 +14,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
+        <Carousel/>
         <div className="container">
           <HowItWorks />
           <FullVideoCatalog />
