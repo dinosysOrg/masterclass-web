@@ -1,23 +1,15 @@
 .header{
-  background: $black;
+  background: #000;
+  border-bottom: 1px solid #1e2124;
   &__logo{
     width: 130px;
   }
-  &__nav-language{
-    position: absolute;
-    right: 0px;
-    top: 40px;
-    li{
-      display: inline;
-      padding: 10px;
-      background: #26A69A;
-      margin: 0px 10px 0px 10px;
-      &:hover{
-        background: #00695C;
-      }
-      a{
-        color: #fff;
-      }
+  .navbar-nav {
+    .nav-link{
+      color: $yellow1;
+    }
+    .nav-link-lang{
+      color: $whiteF5;
     }
   }
 }
