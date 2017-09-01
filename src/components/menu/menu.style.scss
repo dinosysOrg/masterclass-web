@@ -1,21 +1,45 @@
-.site-nav {
-  padding-top: 10px;
-  li {
-    display: inline;
-    margin: 0px 10px 0px 10px;
-    color: #fff;
-    &.active {
-      border-bottom: 1px solid yellow;
-      padding-bottom: 5px;
-      a {
-        color: yellow;
-      }
+.main-menu{
+  background-color: #000;
+  li.nav-item{
+    color: $yellow1;
+    min-width: 140px;
+    position: relative;
+    text-align: center;
+    padding: 5px 0px;
+    transition: all 0.4s ease;
+    &:after{
+      position: absolute;
+      right: 0px;
+      top: 17%;
+      content: '';
+      width: 1px;
+      height: 65%;
+      background: #d8d8d8;
     }
-    a {
-      color: #fff;
-      &:hover {
-        color: yellow;
-      }
+    &:before{
+      position: absolute;
+      bottom: 0px;
+      left: 5%;
+      content: '';
+      width: 0%;
+      height: 4px;
+      background: transparent;
+    }
+    &.active:before{
+      background: $yellow1;
+      width: 90%;
+    }
+    &:last-child:after{
+      background: transparent;
+    }
+    &:hover:before{
+      background: $yellow1;
+      width: 90%;
+      transition: all 0.4s ease;
+    }
+    .nav-link{
+      display: block;
+      color: $yellow1;
     }
   }
 }

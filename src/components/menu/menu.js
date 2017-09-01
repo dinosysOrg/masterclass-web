@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 /**
  * Main menu of header
  */
@@ -14,23 +13,24 @@ class MainMenu extends Component {
     const {loginStatus} = this.props.payload.userReducer;
     if (loginStatus) {
       return (
-        <ul className="site-nav">
-          <li className={pathname === '/' ? 'active' : null}>
-            <Link to="/">HOME</Link>
-          </li>
-          <li>|</li>
-          <li className={pathname === '/Browse' ? 'active' : null}>
-            <Link to="/Browse">BROWSE</Link>
-          </li>
-          <li>|</li>
-          <li className={pathname === '/Dashboard' ? 'active' : null}>
-            <Link to="/Dashboard">MY DASHBOARD</Link>
-          </li>
-          <li>|</li>
-          <li className={pathname === '/Profile' ? 'active' : null}>
-            <Link to="/Profile">PROFILE</Link>
-          </li>
-        </ul>
+        <div className="main-menu">
+          <div className="container">
+            <ul className="nav nav-main-menu">
+              <li className={`nav-item ${pathname === '/' ? 'active' : null}`}>
+                <Link className="nav-link text-uppercase" to="/">Home</Link>
+              </li>
+              <li className={`nav-item ${pathname === '/Browse' ? 'active' : null}`}>
+                <Link className="nav-link text-uppercase" to="/Browse">Browse</Link>
+              </li>
+              <li className={`nav-item ${pathname === '/Path' ? 'active' : null}`}>
+                <Link className="nav-link text-uppercase" to="/Path">My Paths</Link>
+              </li>
+              <li className={`nav-item ${pathname === '/Profile' ? 'active' : null}`}>
+                <Link className="nav-link text-uppercase" to="/Profile">Profile</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
       );
     } else {
       return null;
@@ -44,9 +44,4 @@ class MainMenu extends Component {
     return this.checkMenu();
   }
 }
-const mapStateToProps = (rootState) => {
-  return {
-    payload: rootState,
-  };
-};
-export default withRouter(connect(mapStateToProps)(MainMenu));
+export default MainMenu;

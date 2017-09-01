@@ -11,45 +11,45 @@ class Footer extends Component {
   render() {
     return (
       <footer className="footer">
-        <ul className="footer__menu-social">
-          <li>
-            <a href="">
-              <Icon.FaFacebook size={17} color="#fff" />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <Icon.FaTwitter size={17} color="#fff" />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <Icon.FaPinterestP size={17} color="#fff" />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <Icon.FaGooglePlus size={17} color="#fff" />
-            </a>
-          </li>
-        </ul>
-        <ul className="footer__menu">
-          <li>
-            <a href="">About us</a>
-          </li>
-          <li>
-            <a href="">|</a>
-          </li>
-          <li>
-            <a href="">Contact</a>
-          </li>
-          <li>
-            <a href="">|</a>
-          </li>
-          <li>
-            <a href="">FAQ</a>
-          </li>
-        </ul>
+        <div className="container clearfix">
+          <div className="float-left">
+            <ul className="footer__menu-social">
+              <li className="nav-item">
+                <a target="_blank" href="">
+                  <Icon.FaFacebook size={17} color="#fff" />
+                </a>
+              </li>
+              <li className="nav-item">
+                <a target="_blank" href="">
+                  <Icon.FaTwitter size={17} color="#fff" />
+                </a>
+              </li>
+              <li className="nav-item">
+                <a target="_blank" href="">
+                  <Icon.FaPinterestP size={17} color="#fff" />
+                </a>
+              </li>
+              <li className="nav-item">
+                <a target="_blank" href="">
+                  <Icon.FaGooglePlus size={17} color="#fff" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="float-right">
+            <ul className="footer__menu">
+              <li>
+                <a href="#">About us</a>
+              </li>
+              <li>
+                <a href="#">Contact</a>
+              </li>
+              <li>
+                <a href="#">FAQ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </footer>
     );
   }
