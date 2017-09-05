@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import PropTypes from 'prop-types';
 
 /**
 * Modal of project
@@ -13,7 +14,7 @@ class SignUpForm extends React.Component {
     const {signUpError} = this.props.payload.userReducer;
     if(signUpError.status === 500) {
       return (
-        <li style={{color: 'red'}}> Have some errors, Please try again!</li>
+        <li style={{color: 'red'}}>{this.context.t('server_error')}</li>
       )
     } else {
       return signUpError.response.errors.full_messages.map((data, i) =>
@@ -44,6 +45,10 @@ class SignUpForm extends React.Component {
       </form>
     );
   }
+};
+
+SignUpForm.contextTypes = {
+  t: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
