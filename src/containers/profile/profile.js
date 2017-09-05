@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ProfileForm from './profile_form';
+import './profile.style.css';
 /**
  * Profile of project
  */

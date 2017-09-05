@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as Icon from 'react-icons/lib/fa/';
+import './footer.style.css';
 /**
  * Footer of project
  */

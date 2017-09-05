@@ -14,18 +14,6 @@ yarn install
 ```
 yarn run dev
 ```
-# Development in running port 3000
-```
-http://localhost:3000
-```
-## staging
 
-```
-yarn run staging
-```
-# Staging in running port 5000
-```
-http://localhost:5000
-```
 # License
 MIT

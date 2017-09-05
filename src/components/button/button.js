@@ -1,21 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './button.style.css';
 /**
  * Button of project
  */
-class Button extends Component {
-  /**
- * render Button
- * @return {html} The template of Button class
- */
-  render() {
-    return (
-      <div className="button-VMA">
-        <a href="#">
-          {child}
-        </a>
-      </div>
-    );
-  }
-}
-
-export default Button;
+export default ({children}) => {
+  return (
+    <div className="button-VMA">
+      <a href="#">
+        {children}
+      </a>
+    </div>
+  );
+};

@@ -11,13 +11,6 @@ import Header from './header';
 class HeaderContainer extends Component {
   /**
   * render Header
-  * @param {any} props
-  */
-  constructor(props) {
-    super(props);
-  }
-  /**
-  * render Header
   * @return {html} The template of Header class
   */
   render() {

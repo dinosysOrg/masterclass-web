@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import VideoPanel from '../../components/shared/video_panel';
 import PathProgressSummary from '../../components/shared/path_progress_summary';
 import ProgressList from '../../components/shared/progress_list';
+import './dashboard.style.css';
 
 /**
  * Dashboard of project

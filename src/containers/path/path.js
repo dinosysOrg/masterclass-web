@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './path.style.css';
 // import VideoPanel from '../../components/shared/video_panel';
 // import PromoPanel from '../../components/shared/promo_panel';
 /**

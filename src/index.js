@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import App from './App';
 import {Provider} from 'react-redux';
 import configureStore from './configs/store.config';
 import createHistory from 'history/createBrowserHistory';
 import {ConnectedRouter} from 'react-router-redux';
+import registerServiceWorker from './registerServiceWorker';
 
 const history = createHistory();
 const store = configureStore();
@@ -15,9 +16,6 @@ ReactDOM.render(
       <App />
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('root')
 );
-
-if (module.hot) {
-  module.hot.accept();
-}
+registerServiceWorker();

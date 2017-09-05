@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {MainMenu, ModalAuth} from '../../components';
+import PropTypes from 'prop-types';
 import * as IMG from '../../assets/images';
+import './header.style.css';
 /**
 * Menu list
 * @return {any}
@@ -17,13 +19,6 @@ const ListMenu = (props) => (
 * Header of project
 */
 class Header extends Component {
-  /**
-  * render Header
-  * @param {any} props
-  */
-  constructor(props) {
-    super(props);
-  }
   /**
   * render Header
   * @param {any} e
@@ -107,7 +102,7 @@ class Header extends Component {
 }
 
 Header.contextTypes = {
-  t: React.PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -22,7 +22,7 @@ class DashBoardContainer extends Component {
   checkMyPath() {
     if (this.props.payload.userReducer.hasOwnProperty('myPath')) {
       let recommended = this.props.payload.userReducer.myPath.recommended;
-      if (recommended.length == 0) {
+      if (recommended.length === 0) {
         return (
           <NoPath />
         );
