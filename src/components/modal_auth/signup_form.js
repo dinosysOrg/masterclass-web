@@ -11,9 +11,15 @@ class SignUpForm extends React.Component {
    */
   loginError() {
     const {signUpError} = this.props.payload.userReducer;
-    return signUpError.map((data, i) =>
-      <li style={{color: 'red'}} key={i}>- {data}</li>
-    );
+    if(signUpError.status === 500) {
+      return (
+        <li style={{color: 'red'}}> Have some errors, Please try again!</li>
+      )
+    } else {
+      return signUpError.response.errors.full_messages.map((data, i) =>
+        <li style={{color: 'red'}} key={i}>- {data}</li>
+      );
+    }
   }
   /**
    * render Footer

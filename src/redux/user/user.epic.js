@@ -108,7 +108,7 @@ const signupRequestEpic = (action$, store) =>
         of(store.dispatch(beginTask())),
         ajax.post(signUpAPI, data.payload)
           .map((response) => actions.signupRequestSuccess(response))
-          .catch((error) => of(actions.signupRequestFailure(error.xhr.response.errors.full_messages))),
+          .catch((error) => of(actions.signupRequestFailure(error.xhr))),
         of(store.dispatch(endTask())),
       )
     );
@@ -126,7 +126,7 @@ const fbRequestEpic = (action$, store) =>
         ajax.post(`${loginFB}?access_token=${data.payload}`)
           .mergeMap((json) =>
             of(actions.fbRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.name))
+              .do(storeConfig.setUserLocal(json.xhr, json.response.name, json.response.id))
           )
           .catch((error) => of(actions.fbRequestFailure(error.xhr.response.errors))),
         of(store.dispatch(endTask())),
