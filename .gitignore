@@ -3,15 +3,24 @@
 # dependencies
 /node_modules
 
-# build
+# testing
+/coverage
 
-*.css
-.idea/
+# production
+/build
 
-/development
-/staging
+# css
+/src/**/*.css
 
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 .eslintcache
+.DS_Store
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

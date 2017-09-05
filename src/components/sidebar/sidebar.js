@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './sidebar.style.css';
 /**
  * Siderbar of project
  */

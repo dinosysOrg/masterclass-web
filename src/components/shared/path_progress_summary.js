@@ -17,10 +17,10 @@ export default () => {
           <p>Awards Earned</p>
           <ul>
             <li>
-              <img src="#" /> 5 hours of pracice
+              <img alt="" src="#" /> 5 hours of pracice
             </li>
             <li>
-              <img src="#" /> All lesson video completed
+              <img alt="" src="#" /> All lesson video completed
             </li>
           </ul>
         </li>

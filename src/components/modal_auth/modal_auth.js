@@ -4,6 +4,7 @@ import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import FacebookLogin from 'react-facebook-login';
 import SignUpForm from './signup_form';
 import LoginForm from './login_form';
+import './modal_auth.style.css';
 /**
 * Modal of project
 */
@@ -15,8 +16,8 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabIndex: 0,
-    },
+      tabIndex: 0
+    };
     this.onSubmitRegister = this.onSubmitRegister.bind(this);
     this.responseFacebook = this.responseFacebook.bind(this);
   }
@@ -76,7 +77,7 @@ class Modal extends Component {
         <div className="tabContent">
           An email has been sent to you for verification<br/>
           Please check your mailbox and verify your account.<br/>
-          <a target="_blank" href="https://www.google.com.vn/search?q=mail" className="btn" style={{marginTop: 15}}>
+          <a target="_blank" rel="noopener noreferrer" href="https://www.google.com.vn/search?q=mail" className="btn" style={{marginTop: 15}}>
           Got it
           </a>
         </div>

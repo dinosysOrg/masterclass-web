@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './quizLoading.style.css';
 /**
  * QuizLoading of project
  */

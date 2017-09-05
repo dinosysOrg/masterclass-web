@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PathPage from './path';
 // import * as pathAction from '../../redux/path/actions';
 
-{/* <Route path={`${match.url}/:id`} component={connect(mapStateToProps, {fetchPath})(PathPage)} /> */}
+// {/* <Route path={`${match.url}/:id`} component={connect(mapStateToProps, {fetchPath})(PathPage)} /> */}
 /**
  * This component is responsible for connecting Path Intro page component to
  * redux store and router

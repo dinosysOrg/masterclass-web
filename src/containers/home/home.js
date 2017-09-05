@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Carousel from './carousel';
 import HowItWorks from '../../components/shared/how_it_works';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
+import './home.style.css';
 
 /**
  * HomePage of project
