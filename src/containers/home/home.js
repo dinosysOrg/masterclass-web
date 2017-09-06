@@ -2,12 +2,22 @@ import React, {Component} from 'react';
 import Carousel from './carousel';
 import HowItWorks from '../../components/shared/how_it_works';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
+import $ from 'jquery';
 import './home.style.css';
 
 /**
  * HomePage of project
  */
 class HomePage extends Component {
+  /**
+   * render componentDidMount template
+   */
+  componentDidMount() {
+    $('.carousel-item').each(function() {
+      let bgIMG = $(this).attr('data-img');
+      $(this).attr('style', 'background-image: url('+bgIMG+')');
+    });
+  }
   /**
    * render HomePage template
    * @return {html} The template of HomePage class
@@ -16,10 +26,8 @@ class HomePage extends Component {
     return (
       <div className="home-page">
         <Carousel/>
-        <div className="container">
-          <HowItWorks />
-          <FullVideoCatalog />
-        </div>
+        <HowItWorks />
+        <FullVideoCatalog/>
       </div>
     );
   }

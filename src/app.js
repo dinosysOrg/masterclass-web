@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import {Header, Footer} from './components';
 import routes from './routes';
-import './app.scss';
+import './assets/stylesheets/style.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as initAction from './redux/init/init.action';
