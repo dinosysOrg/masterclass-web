@@ -1,5 +1,6 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+import PropTypes from 'prop-types';
 
 /**
 * Modal of project
@@ -11,9 +12,15 @@ class SignUpForm extends React.Component {
    */
   loginError() {
     const {signUpError} = this.props.payload.userReducer;
-    return signUpError.map((data, i) =>
-      <li style={{color: 'red'}} key={i}>- {data}</li>
-    );
+    if(signUpError.status === 500) {
+      return (
+        <li style={{color: 'red'}}>{this.context.t('server_error')}</li>
+      )
+    } else {
+      return signUpError.response.errors.full_messages.map((data, i) =>
+        <li style={{color: 'red'}} key={i}>- {data}</li>
+      );
+    }
   }
   /**
    * render Footer
@@ -38,6 +45,10 @@ class SignUpForm extends React.Component {
       </form>
     );
   }
+};
+
+SignUpForm.contextTypes = {
+  t: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
