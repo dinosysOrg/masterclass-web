@@ -1,5 +1,4 @@
-@import '../../assets/stylesheets/style.scss';
-
+@import '../../assets/stylesheets/common';
 .header{
   background: #000;
   border-bottom: 1px solid #1e2124;
@@ -9,6 +8,7 @@
   .navbar-nav {
     .nav-link{
       color: $yellow1;
+      font-size: 14px;
     }
     .nav-link-lang{
       color: $whiteF5;

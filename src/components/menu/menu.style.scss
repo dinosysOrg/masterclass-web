@@ -1,5 +1,4 @@
-@import '../../assets/stylesheets/style.scss';
-
+@import '../../assets/stylesheets/common';
 .main-menu{
   background-color: #000;
   li.nav-item{
@@ -42,6 +41,7 @@
     .nav-link{
       display: block;
       color: $yellow1;
+      font-size: 15px;
     }
   }
 }

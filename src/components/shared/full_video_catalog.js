@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Panel from '../shared/panel';
 import VideoLink from './video_link';
+import VideoPanel from './video_slide';
 
 /**
  * Full Video Catalog
@@ -37,25 +38,22 @@ class FullVideoCatalog extends Component {
    */
   render() {
     return (
-      <Panel title="Full Video Catalog">
-        <form>
-          <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
-        </form>
-
-        <ul className="row">
-          <li className="col">
-            <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
-          </li>
-          <li className="col">
-            <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
-          </li>
-          <li className="col">
-            <VideoLink href="#" imgSrc="http://via.placeholder.com/327x184?text=>" text="JONNY - WALK THE LINE - GUITAR BEGINNER" />
-          </li>
-        </ul>
-
-        <a href="#">View all</a>
-      </Panel>
+      <div className="popularPath">
+        <div className="container mb-4">
+          <h3 className="mb-3 popularPath__title">POPULAR PATH</h3>
+          <div className="row">
+            <div className="col-md-4">
+              <form>
+                <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
+              </form>
+            </div>
+            <div className="col-md-8 text-right popularPath__viewall">
+              <a href="#">View all paths</a>
+            </div>
+          </div>
+        </div>
+        <VideoPanel/>
+      </div>
     );
   }
 }
