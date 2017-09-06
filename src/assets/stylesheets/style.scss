@@ -1,6 +1,7 @@
 // color 
 @import "common";
-*{color: $whiteF6; font-family: $f-regular;}
+
+*{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
 
 .btn{
@@ -12,7 +13,7 @@ body{background-color: #1e2124;}
 
 .btn-primary{
   background-color: $yellow1;
-  color: #000;
+  color: #191919;
 }
 .btn-second{
   background-color: #fff;
@@ -106,9 +107,6 @@ input{
   -webkit-transition: all .3s;
   transition: all .3s;
 }
-
-
-
 
 // Loading css
 .loading-content {

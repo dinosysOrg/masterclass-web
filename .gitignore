@@ -9,6 +9,9 @@
 # production
 /build
 
+# idea folder
+.idea
+
 # css
 /src/**/*.css
 
