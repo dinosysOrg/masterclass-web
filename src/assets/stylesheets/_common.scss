@@ -6,6 +6,17 @@ $yellow1: #FBDD10;
 $yellow2: #FFEB00;
 $blue: #1959FF;
 $prune: #7F00FF;
+// rem mixins
+$baseFontSize : 16;
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
 
 //fonts
 @font-face {
