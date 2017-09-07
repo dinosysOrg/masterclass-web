@@ -150,10 +150,10 @@ class videoSlide extends React.Component {
     let settings = {
       infinite: true,
       speed: 500,
-      focusOnSelect: true,
-      slidesToShow: 4,
+      slidesToShow: 5,
       slidesToScroll: 1,
       centerMode: true,
+      focusOnSelect: true,
     };
     return (
       <div>

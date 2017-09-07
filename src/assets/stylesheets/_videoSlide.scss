@@ -1,0 +1,74 @@
+
+.slick-slider{
+  .slideWrapper{
+    .slideBox{
+      margin: rem(15);
+      &__title{
+        margin-bottom: rem(2);
+        margin-top: rem(7);
+        font-size: rem(21);
+      }
+      &__level{
+        font-size: rem(12);
+        color: #9b9b9b;
+        padding-bottom: rem(5);
+      }
+      &__author{
+        font-size: rem(15);
+      }
+    }
+  }
+  .slide-selected{
+    opacity: 1;
+    transform: scale(1.11);
+    transition: 300ms;
+  }
+  .slide-unselect{
+    opacity: 0.4;
+  }
+  .slick-next, .slick-prev {
+    width: 60px;
+    height: 100%;
+  }
+  .slick-prev{
+    left: 0px;
+    z-index: 4;
+  }
+  .slick-next{
+    right: 0px;
+  }
+}
+
+.slideDetail{
+    transition: 300ms;
+    margin: rem(5) 0px;
+    width: 100%;
+    padding: rem(50) 0px;
+    // height: 500px;
+    background-size: cover;
+    &__title{
+      font-size: rem(37);
+      margin-bottom: 0px;
+    }
+    &__level{
+      font-size: rem(22);
+      color: $yellow1;
+    }
+    &__author{
+      font-size: rem(30);
+      margin-top: rem(10);
+      margin-bottom: rem(40);
+    }
+    &__colRight{
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .recharts-text{
+      fill: #fff;
+    }
+    .recharts-wrapper{
+      margin: auto
+    }
+    .recharts-polar-radius-axis-line, .recharts-polar-radius-axis-tick-value {
+      stroke: $yellow1;
+    }
+  }
