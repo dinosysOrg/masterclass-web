@@ -26,12 +26,16 @@
   .slide-unselect{
     opacity: 0.4;
   }
+  .slick-next, .slick-prev {
+    width: 60px;
+    height: 100%;
+  }
   .slick-prev{
-    left: rem(25);
+    left: 0px;
     z-index: 4;
   }
   .slick-next{
-    right: rem(25);
+    right: 0px;
   }
 }
 
