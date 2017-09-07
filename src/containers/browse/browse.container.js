@@ -13,7 +13,7 @@ class BrowseContainer extends Component {
    * Call api before loading component
    */
   componentWillMount() {
-    this.props.pathAction.fetchBrowsePathRequest();
+    this.props.pathAction.fetchPath();
   }
   /**
    * Call api before loading component

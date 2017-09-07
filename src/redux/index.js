@@ -4,7 +4,7 @@ import {loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic, myPathR
   getQuizRequestEpic, saveQuizEpic, putUserInfoRequestEpic} from './user/user.epic';
 import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
-import {getBrowsePath} from './path/path.epic';
+import {getBrowsePath, getHomePath} from './path/path.epic';
 
 export {
   pathReducer,
@@ -22,4 +22,5 @@ export {
   getQuizRequestEpic,
   saveQuizEpic,
   putUserInfoRequestEpic,
+  getHomePath,
 };
