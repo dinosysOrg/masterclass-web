@@ -10,9 +10,7 @@ const initPathState = {};
  */
 const path = (state = initPathState, action) => {
   switch (action.type) {
-  case types.FETCH_PATH_SUCCESS:
-    return action.payload;
-  case types.FETCH_BROWSE_PATH:
+  case types.FETCH_PATH:
     return {
       ...state,
       browsePath: {
@@ -23,7 +21,7 @@ const path = (state = initPathState, action) => {
         vocals: [],
       },
     };
-  case types.FETCH_BROWSE_PATH_SUCCESS:
+  case types.FETCH_PATH_SUCCESS:
     return {
       ...state,
       browsePath: {
@@ -34,7 +32,7 @@ const path = (state = initPathState, action) => {
         vocals: action.payload.vocals,
       },
     };
-  case types.FETCH_BROWSE_PATH_FAILED:
+  case types.FETCH_PATH_FAILED:
     return {
       ...state,
       error: action.payload,

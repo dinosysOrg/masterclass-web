@@ -14,7 +14,7 @@ class Browse extends Component {
    */
   checkLoading() {
     let browsePath = this.props.payload.pathReducer.browsePath;
-    if (browsePath) {
+    if (browsePath !== undefined) {
       return (
         <div className="browse-page">
           <div className="container">

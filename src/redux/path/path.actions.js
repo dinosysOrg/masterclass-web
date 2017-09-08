@@ -2,10 +2,9 @@ import * as types from './path.types';
 
 /**
  * An action creator - fetching started
- * @param {string} id - identify of the path
  * @return {Object} action - with type FETCH_PATH
  */
-export function fetchPath(id) {
+export function fetchPath() {
   return {
     type: types.FETCH_PATH,
   };
@@ -34,38 +33,3 @@ export function fetchPathFailed(error) {
     payload: error,
   };
 };
-
-/**
- * action FETCH BROWSE PATH
- * @param {Object} error
- * @return {Object}
-*/
-export function fetchBrowsePathRequest() {
-  return {
-    type: types.FETCH_BROWSE_PATH,
-  };
-}
-
-/**
- * action FETCH BROWSE PATH SUCCESS
- * @param {Object} response
- * @return {Object}
-*/
-export function fetchBrowsePathRequestSuccess(response) {
-  return {
-    type: types.FETCH_BROWSE_PATH_SUCCESS,
-    payload: response,
-  };
-}
-
-/**
- * action FETCH BROWSE PATH FAILURE
- * @param {Object} error
- * @return {Object}
-*/
-export function fetchBrowsePathRequestFailure(error) {
-  return {
-    type: types.FETCH_BROWSE_PATH_FAILED,
-    payload: error,
-  };
-}
