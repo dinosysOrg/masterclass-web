@@ -6,3 +6,97 @@
 @import "videoSlide";
 *{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
+
+
+//component video
+.video-player {
+  background-color: #000000;
+  margin: 20px 100px;
+  padding: 55px 50px 30px 50px;
+  position: relative;
+  &__content {
+    position: relative;
+    height: 0;
+    padding-bottom: 40%;
+    .progress {
+      height: 3px;
+      background-color: #707070;
+      margin-bottom: 10px;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      .progress-bar {
+        background-color: #fbdd10;
+      }
+    }
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    &__first {
+      position: absolute;
+      z-index: 100;
+      top: 0px;
+      left: 30px;
+      width: 25%;
+      border: solid 2px #000000;
+    }
+    &__second {
+      position: absolute;
+      width: 48%;
+      left: 0;
+      bottom: 25px;
+    }
+    &__third {
+      position: absolute;
+      width: 48%;
+      right: 0;
+      bottom: 25px;
+    }
+  }
+  &__controls {
+    overflow: hidden;
+    width: 100%;
+    ul {
+      padding: 0 20px;
+    }
+    &__left {
+      li {
+        margin-right: 25px;
+      }
+    }
+    &__right {
+      li {
+        margin-left: 25px;
+        font-weight: 600;
+        &:first-child{
+          margin-right: 35px;
+        }
+      }
+    }
+    li {
+      display: inline-block;
+      list-style: none;
+      vertical-align: baseline;
+    }
+  }
+  &__setting {
+    overflow: auto;
+    white-space:nowrap;
+    padding: 45px 20px 20px 40px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 18px 15px 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: -15px;
+    right: -15px;
+    bottom: 75px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    &__item {
+      display: inline-block;
+      margin: 10px;
+    }
+  }
+}
