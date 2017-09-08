@@ -14,7 +14,6 @@ class Quiz extends Component {
     const quizMethod = Object.keys(values)
       .filter((value) => value.startsWith('quizMethod'))
       .map((value) => parseInt(value.split('_')[1], 10));
-    console.log(quizMethod);
     const data = Object.assign({}, {instrument_id: parseInt(values.quizInstruments, 10)},
       {level_id: parseInt(values.quizLevelRadio, 10)}, {learning_method_ids: quizMethod});
     this.props.userAction.saveQuizRequest(data);

@@ -23,6 +23,5 @@ export default function formatDataResponse (data) {
       skill: skill
     }
   })
-  console.log(dataReformat);
   return dataReformat;
 }
