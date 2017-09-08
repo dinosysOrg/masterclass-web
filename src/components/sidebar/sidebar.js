@@ -9,6 +9,7 @@ class Siderbar extends Component {
    * @return {html} The template of menu class
   */
   checkSidebar() {
+    console.log(this.props)
     const {pathname} = this.props.location;
     if (pathname === '/Profile') {
       return (
@@ -16,6 +17,19 @@ class Siderbar extends Component {
           <ul className="nav nav-pills flex-column">
             <li className="nav-item"><a href="">General Information</a></li>
             <li className="nav-item"><a href="">Settings</a></li>
+          </ul>
+        </div>
+      );
+    }
+    if (pathname === '/Path/Overview') {
+      return (
+        <div className="sidebar">
+          <ul className="nav nav-pills flex-column">
+            <li className="nav-item"><a href="">OVERVIEW</a></li>
+            <li className="nav-item"><a href="">SYLLABUS</a></li>
+            <li className="nav-item"><a href="">MATERIALS</a></li>
+            <li className="nav-item"><a href="">PRATIVE</a></li>
+            <li className="nav-item"><a href="">TUNNER</a></li>
           </ul>
         </div>
       );
@@ -33,7 +47,7 @@ class Siderbar extends Component {
           </ul>
         </div>
       );
-    }
+    } else return null
   }
   /**
    * render Siderbar template

@@ -11,7 +11,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home} from './containers';
+import {Home, Browse, Profile, DashBoard, Path, Quiz, Overview} from './containers';
 /**
  * Main Class of project
  */
@@ -52,6 +52,7 @@ class App extends React.Component {
     } else return null;
   }
   /**
+   * 
   * @param {html} component
   * @return {html} 
   * check loading fuc
@@ -71,7 +72,18 @@ class App extends React.Component {
           <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
-            {routes.map((route) => <Route key={route.path} path={route.path} render={() => this.checkAuthenticate(route.component)} />)}
+            <Route key="/Browse" path="/Browse" render={() => this.checkAuthenticate(Browse)} />
+            <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
+            <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
+            <Switch>
+              <Route exact key="/Path" path="/Path" render={() => this.checkAuthenticate(Path)} />
+              <Route key="/Path/Overview" path="/Path/Overview" component={Overview} />
+              <Route key="/Syllabus" path="/Syllabus" render={() => this.checkAuthenticate()} />
+              <Route key="/Materials" path="/Materials" render={() => this.checkAuthenticate()} />
+              <Route key="/Practice" path="/Practice" render={() => this.checkAuthenticate()} />
+              <Route key="/Tuner" path="/Tuner" render={() => this.checkAuthenticate()} />
+            </Switch>
+            <Route key="/Quiz" path="/Quiz" render={() => this.checkAuthenticate(Quiz)} />
           </Switch>
           <Footer/>
           {this.checkLoading()}

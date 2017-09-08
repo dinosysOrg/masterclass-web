@@ -1,24 +1,27 @@
 import React, {Component} from 'react';
-import './path.style.css';
-import {Link} from 'react-router-dom';
+import './overview.style.css';
 /**
- * PathPage
+ * OverviewPage
  */
-class PathPage extends Component {
+class OverviewNoLoginPage extends Component {
+  /**
+   * 
+   */
   componentDidMount() {
   }
+
   /**
    * @return {Component} - the rendered component
    */
   render() {
     return (
-      <div className="path-page">
+      <div className="overview-page">
         <div className="container">
-          <Link to="/Path/Overview">go to over view</Link>
+          over view no login
         </div>
       </div>
     );
   }
 }
 
-export default PathPage;
+export default OverviewNoLoginPage;
