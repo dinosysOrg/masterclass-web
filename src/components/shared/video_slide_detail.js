@@ -11,7 +11,7 @@ export default (props) => {
             <div className="slideDetail__title">{props.title}</div>
             <div className="slideDetail__level">{props.level}</div>
             <div className="slideDetail__author">{props.instructor}</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a tellus nisi. Praesent ante nibh, efficitur non dignissim vel, bibendum eu urna. Aenean auctor est eu risus rutrum feugiat. Maecenas id purus nisl. Sed sed nunc in mauris fringilla laoreet tincidunt lacinia urna.</p>
+            <p>{props.description}</p>
             <div className="list-inline">
               <button type="button" className="btn btn-primary text-uppercase"><Icon.FaAlignLeft size={16} fill="#000" /> View path</button>
               <button type="button" className="btn btn-second text-uppercase ml-3"><Icon.FaPlusCircle size={18} fill="#000" /> ADD to my path</button>

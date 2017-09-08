@@ -10,26 +10,23 @@ const initPathState = {};
  */
 const path = (state = initPathState, action) => {
   switch (action.type) {
-  case types.FETCH_PATH:
+  case types.FETCH_HOME_PATH:
     return {
       ...state,
-      browsePath: {
-        recommend: [],
-        popular: [],
-        latest: [],
-        guitar: [],
-        vocals: [],
-      },
+    };
+  case types.FETCH_BROWSE_PATH:
+    return {
+      ...state,
     };
   case types.FETCH_PATH_SUCCESS:
     return {
       ...state,
-      browsePath: {
-        recommend: action.payload.recommend,
-        popular: action.payload.popular,
-        latest: action.payload.latest,
-        guitar: action.payload.guitar,
-        vocals: action.payload.vocals,
+      paths: {
+        recommend: action.payload.recommend || [],
+        popular: action.payload.popular || [],
+        latest: action.payload.latest || [],
+        guitar: action.payload.guitar || [],
+        vocals: action.payload.vocals || [],
       },
     };
   case types.FETCH_PATH_FAILED:
