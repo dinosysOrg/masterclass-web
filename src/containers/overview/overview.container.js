@@ -13,11 +13,15 @@ class OverviewContainer extends Component {
     if (loginStatus) {
       return (
         <div className="container">
-            <div className="row">
-              <div className="col-md-3">
+            <div className="pageTitle">
+              <h2 className="pageTitle__title">PATH NAME</h2>
+              <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
+            </div>
+            <div className="row card-group">
+              <div className="col-md-3 col-sidebar pb-5">
                 <Sidebar {...this.props} />
               </div>
-              <div className="col-md-9">
+              <div className="col-md-9 col-pagecontent pb-5">
                 <Overview {...this.props}/>
               </div>
             </div>

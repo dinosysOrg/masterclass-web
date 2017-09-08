@@ -17,7 +17,7 @@ class OverviewPage extends Component {
   render() {
     return (
       <div className="overview-page">
-        over view page
+        over view page Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit impedit nesciunt, tempore, doloribus unde sed praesentium animi libero veniam quidem quaerat, ducimus aspernatur alias? Magnam neque optio voluptas nobis dolores.
       </div>
     );
   }

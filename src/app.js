@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import {Header, Footer} from './components';
-import routes from './routes';
 import './assets/stylesheets/style.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -11,7 +10,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home, Browse, Profile, DashBoard, Path, Quiz, Overview} from './containers';
+import {Home, Browse, Profile, DashBoard, Quiz, Overview, MyPath} from './containers';
 /**
  * Main Class of project
  */
@@ -75,15 +74,8 @@ class App extends React.Component {
             <Route key="/Browse" path="/Browse" render={() => this.checkAuthenticate(Browse)} />
             <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
             <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
-            <Switch>
-              <Route exact key="/Path" path="/Path" render={() => this.checkAuthenticate(Path)} />
-              <Route key="/Path/Overview" path="/Path/Overview" component={Overview} />
-              <Route key="/Syllabus" path="/Syllabus" render={() => this.checkAuthenticate()} />
-              <Route key="/Materials" path="/Materials" render={() => this.checkAuthenticate()} />
-              <Route key="/Practice" path="/Practice" render={() => this.checkAuthenticate()} />
-              <Route key="/Tuner" path="/Tuner" render={() => this.checkAuthenticate()} />
-            </Switch>
-            <Route key="/Quiz" path="/Quiz" render={() => this.checkAuthenticate(Quiz)} />
+            <Route key="/MyPath" path="/MyPath" render={() => this.checkAuthenticate(MyPath)} />
+            <Route key="/Overview" path="/Path/:id/Overview" render={() => this.checkAuthenticate(Overview)} />
           </Switch>
           <Footer/>
           {this.checkLoading()}
