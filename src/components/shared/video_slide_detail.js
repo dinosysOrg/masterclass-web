@@ -1,8 +1,10 @@
 import React from 'react';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis} from 'recharts';
 import * as Icon from 'react-icons/lib/fa/';
+import storageConfig from '../../configs/storage.config';
 
 export default (props) => {
+  console.log(storageConfig.getUserLocal());
   return (
     <div className="slideDetail" style={{backgroundImage: `url(${props.imgSrc})`}}>
       <div className="container">
@@ -20,7 +22,7 @@ export default (props) => {
           <div className="col slideDetail__colRight">
             <RadarChart cx={250} cy={200} outerRadius={150} width={500} height={450} data={props.skill}>
               <Radar name="Path skill" dataKey="A" stroke="#fff" fill="#fff" fillOpacity={0.4}/>
-              <Radar name="My skill" dataKey="B" stroke="#ff4d04" fill="#ff4d04" fillOpacity={0.6}/>
+              {storageConfig.getUserLocal() ? <Radar name="My skill" dataKey="B" stroke="#ff4d04" fill="#ff4d04" fillOpacity={0.6}/> : null }
               <PolarGrid gridType="circle" />
               <Legend />
               <PolarAngleAxis fill="#fff" dataKey="subject" />

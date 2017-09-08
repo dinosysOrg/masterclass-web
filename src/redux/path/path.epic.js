@@ -37,7 +37,7 @@ const getHomePath = (action$, store) =>
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.get(`${getPathAPI}`, storeConfig.setHeader())
+        ajax.get(`${getPathAPI}`)
           .map((json) => actions.fetchPathSuccess(json.response))
           .catch((error) => of(actions.fetchPathFailed(error))),
         of(store.dispatch(endTask())),
