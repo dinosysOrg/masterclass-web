@@ -1,5 +1,11 @@
 
 .slick-slider{
+  img {
+    max-width: 100%;
+  }
+  img[type=width] img[type=height] {
+    max-width: none;
+  }
   .slideWrapper{
     .slideBox{
       margin: rem(15);
@@ -62,13 +68,5 @@
     &__colRight{
       background-color: rgba(0, 0, 0, 0.5);
     }
-    .recharts-text{
-      fill: #fff;
-    }
-    .recharts-wrapper{
-      margin: auto
-    }
-    .recharts-polar-radius-axis-line, .recharts-polar-radius-axis-tick-value {
-      stroke: $yellow1;
-    }
+  
   }
