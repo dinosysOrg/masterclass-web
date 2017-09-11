@@ -102,7 +102,7 @@ class PathPage extends Component {
                 <tr>
                   <td>Lorem Ipsum</td>
                   <td>83%</td>
-                  <td><Link to="/Path/10/Overview">Continue learning</Link></td>
+                  <td><Link to="/Path/10">Continue learning</Link></td>
                 </tr>
               </tbody>
             </table>
