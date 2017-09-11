@@ -20,7 +20,6 @@ let data = [
 class PathPage extends Component {
   /**
    * @return {Component} - the rendered component
-   * <Link to="/Path/Overview">go to over view</Link>
    */
   render() {
     return (
@@ -53,6 +52,7 @@ class PathPage extends Component {
                 </div>
               </div>
             </div>
+            {/* End col */}
             <div className="col-md-3">
               <div className="colProcess p-3">
                 <div>
@@ -69,6 +69,7 @@ class PathPage extends Component {
                 </div>
               </div>
             </div>
+            {/* End col */}
             <div className="col-md-5">
               <div className="colSkill p-3">
                 <div className="chart">
@@ -81,10 +82,86 @@ class PathPage extends Component {
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>
-                
               </div>
             </div>
+            {/* End col */}
           </div>
+          {/* End card */}
+          <h4 className="pt-5 pb-3">PATH ENROLLMENT</h4>
+          <div className="boxPath">
+            <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
+            <table className="table w-100 tb-last-path">
+              <thead>
+                <tr>
+                  <th>Path name</th>
+                  <th>Progress</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td><Link to="/Path/10/Overview">Continue learning</Link></td>
+                </tr>
+              </tbody>
+            </table>
+            {/* End table */}
+            <p className="pl-3 pt-1 mb-0 boxPath__title">All others</p>
+            <table className="table w-100 tb-path">
+              <thead>
+                <tr>
+                  <th>Path name</th>
+                  <th>Progress</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+                <tr>
+                  <td>Lorem Ipsum</td>
+                  <td>83%</td>
+                  <td>Continue learning</td>
+                </tr>
+              </tbody>
+            </table>
+            {/* End table */}
+            <nav aria-label="Page navigation example" className="pb-1">
+              <ul className="pagination justify-content-center">
+                <li className="page-item active"><a className="page-link" href="#">1</a></li>
+                <li className="page-item"><a className="page-link" href="#">2</a></li>
+                <li className="page-item"><a className="page-link" href="#">3</a></li>
+                <li className="page-item"><a className="page-link" href="#">4</a></li>
+                <li className="page-item"><a className="page-link" href="#">5</a></li>
+              </ul>
+            </nav>
+            {/* navigation */}
+          </div>
+
         </div>
       </div>
     );

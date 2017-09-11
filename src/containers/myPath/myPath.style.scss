@@ -65,4 +65,74 @@
             }
         }
     }
+    .boxPath{
+        background-color: #2e3235;
+        &__title{
+            font-size: rem(24);
+        }
+        .tb-last-path{
+            background-color: $yellow1;
+            a{
+                color: #000;
+            }
+            thead{
+                th{
+                    border: 0px;
+                    font-size: rem(11);
+                    color: #000;
+                    text-transform: uppercase;
+                }
+            }
+            tbody{
+                tr, td{
+                    color: #000;
+                    border: 0px;
+                    font-size: rem(14);
+                    border-bottom: 1px solid #000;
+                }
+            }
+        }
+        .tb-path{
+            a{
+                color: $cl-primary;
+            }
+            thead{
+                th{
+                    border: 0px;
+                    font-size: rem(11);
+                    color: $cl-primary;
+                    text-transform: uppercase;
+                }
+            }
+            tbody{
+                tr, td{
+                    color: $cl-primary;
+                    border: 0px;
+                    font-size: rem(14);
+                    border-bottom: 1px solid #979797;
+                }
+                tr:last-child td{
+                    border-bottom: 1px solid transparent;
+                }
+            }
+        }
+        .pagination{
+            li{
+                a.page-link{
+                    background: transparent;
+                    color: #fff;
+                    border: 0px;
+                    font-size: rem(17);
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                &.active{
+                    a.page-link{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
 }
