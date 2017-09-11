@@ -89,7 +89,6 @@ class VideoPlayer extends Component {
       let videoContent = this.refs.videoContent,
           value = parseFloat(e.target.textContent);
       this.setState({currentSpeed: value});
-      console.log(value)
       videoContent.handleChangeSpeed(value);
     }
 
@@ -100,7 +99,6 @@ class VideoPlayer extends Component {
 
     openSpeedControl(e) {
       e.preventDefault();
-      console.log('sdsdsdsd');
       this.setState({speedOpened: !this.state.speedOpened});
     }
 
@@ -179,10 +177,6 @@ class VideoPlayer extends Component {
                 onChange={this.handleChangeVolume.bind(this)} 
                 defaultValue={this.state.volume}/>
             </li> : null,
-          speed = this.state.speedOpened ? 
-            <div className="video-player__speed">
-              {this._generateSpeedMultipliers()}
-            </div> : null,
           date = new Date(null);
           date.setSeconds(this.state.currentTime);
       let currentTime = date.toISOString().substr(11,8);
@@ -232,7 +226,7 @@ class VideoPlayer extends Component {
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                       {this.state.currentSpeed + 'x'}</a>
                         <ul className="dropdown-menu">
-                          {speed}
+                         {this._generateSpeedMultipliers()}
                         </ul>
                     </li>
                     {
