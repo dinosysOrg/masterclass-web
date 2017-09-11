@@ -21,7 +21,7 @@ class PathPage extends Component {
   render() {
     return (
       <div className="path-page">
-        <VideoPlayer />
+        path page
       </div>
     );
   }
