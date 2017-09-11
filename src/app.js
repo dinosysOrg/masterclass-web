@@ -10,7 +10,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home, Browse, Profile, DashBoard, Quiz, Overview, MyPath} from './containers';
+import {Home, Browse, Profile, DashBoard, Quiz, Overview, MyPath, Syllabus} from './containers';
 /**
  * Main Class of project
  */
@@ -75,7 +75,8 @@ class App extends React.Component {
             <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
             <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
             <Route key="/MyPath" path="/MyPath" render={() => this.checkAuthenticate(MyPath)} />
-            <Route key="/Overview" path="/Path/:id/Overview" render={() => this.checkAuthenticate(Overview)} />
+            <Route exact key="/Overview" path="/Path/:path_Id/" component={Overview}/>
+            <Route key="/Syllabus" path="/Path/:path_Id/syllabus" render={() => this.checkAuthenticate(Syllabus)} />
           </Switch>
           <Footer/>
           {this.checkLoading()}
