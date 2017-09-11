@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './sidebar.style.css';
+import {Link} from 'react-router-dom';
 /**
  * Siderbar of project
  */
@@ -9,7 +10,6 @@ class Siderbar extends Component {
    * @return {html} The template of menu class
   */
   checkSidebar() {
-    console.log(this.props.match.path)
     const {path} = this.props.match;
     if (path === '/Profile') {
       return (
@@ -25,8 +25,8 @@ class Siderbar extends Component {
       return (
         <div className="sidebar">
           <ul className="nav nav-pills flex-column">
-            <li className={`nav-item ${path === '/Path/:id/Overview' ? 'active' : null}`}><a href="">OVERVIEW</a></li>
-            <li className="nav-item"><a href="">SYLLABUS</a></li>
+            <li className={`nav-item ${path === '/Path/:path_Id/' ? 'active' : null}`}><Link to="/Path/10">OVERVIEW</Link></li>
+            <li className={`nav-item ${path === '/Path/:path_Id/syllabus' ? 'active' : null}`}><Link to="/Path/10/syllabus">SYLLABUS</Link></li>
             <li className="nav-item"><a href="">MATERIALS</a></li>
             <li className="nav-item"><a href="">PRATIVE</a></li>
             <li className="nav-item"><a href="">TUNNER</a></li>
