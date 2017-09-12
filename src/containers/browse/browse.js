@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
-import VideoPanel from '../../components/shared/video_panel';
+import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import PromoPanel from '../../components/shared/promo_panel';
+import formatDataResponse from '../../configs/data.config';
 import './browse.style.css';
+
 
 /**
  * Browse of project
@@ -19,11 +21,11 @@ class Browse extends Component {
         <div className="browse-page">
           <div className="container">
             <PromoPanel />
-            {browsePath.recommend.length !== 0 ? <VideoPanel title="Recommended" videoList={browsePath.recommend} /> : null}
-            {browsePath.popular.length !== 0 ? <VideoPanel title="Popular Path" videoList={browsePath.popular} /> : null}
-            {browsePath.latest.length !== 0 ? <VideoPanel title="Latest Path" videoList={browsePath.latest} /> : null}
-            {browsePath.guitar.length !== 0 ? <VideoPanel title="Guitar Path" videoList={browsePath.guitar} /> : null}
-            {browsePath.vocals.length !== 0 ? <VideoPanel title="Vocal Path" videoList={browsePath.vocals} /> : null}
+            {browsePath.recommend.length !== 0 ? <FullVideoCatalog title="RECOMMEND" data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
+            {browsePath.popular.length !== 0 ? <FullVideoCatalog title="POPULAR" data={formatDataResponse(browsePath.popular)} location={this.props.location} /> : null}
+            {browsePath.latest.length !== 0 ? <FullVideoCatalog title="LATEST" data={formatDataResponse(browsePath.latest)} location={this.props.location} /> : null}
+            {browsePath.guitar.length !== 0 ? <FullVideoCatalog title="GUITAR" data={formatDataResponse(browsePath.guitar)} location={this.props.location} /> : null}
+            {browsePath.vocals.length !== 0 ? <FullVideoCatalog title="VOCALS" data={formatDataResponse(browsePath.vocals)} location={this.props.location} /> : null}
             <PromoPanel />
           </div>
         </div>

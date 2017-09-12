@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import HomePage from './home';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
 import * as pathAction from '../../redux/path/path.actions';
@@ -36,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
     pathAction: bindActionCreators(pathAction, dispatch),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(HomePageContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePageContainer));

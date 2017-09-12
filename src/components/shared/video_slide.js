@@ -1,8 +1,6 @@
 import React from 'react';
 import Slick from 'react-slick';
 import SlideDetail from './video_slide_detail';
-import formatDataResponse from '../../configs/data.config';
-
 /**
  * Video Slide Catalog
  */
@@ -69,11 +67,10 @@ class videoSlide extends React.Component {
       centerMode: true,
       focusOnSelect: true,
     };
-    let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
     return (
       <div>
         <Slick {...settings}>
-          {data.map((data, index) =>
+          {this.props.data.map((data, index) =>
             <div key={index}
               className={`slideWrapper ${this.checkActiveSlide(index)}`}
               onClick={this.onClickSlide.bind(this, data, index)}

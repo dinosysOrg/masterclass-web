@@ -55,13 +55,11 @@ class VideoThree extends Component {
   }
 
   handleChangeSpeed(speed) {
-    console.log(speed)
     let refs = this.refs;
     this.setState({playing: true});
     Object.keys(refs).forEach(function (key) {
       let obj = refs[key];
       obj.playbackRate = speed;
-      console.log(obj.playbackRate);
     });
   }
 
