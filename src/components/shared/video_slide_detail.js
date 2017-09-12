@@ -4,7 +4,6 @@ import * as Icon from 'react-icons/lib/fa/';
 import storageConfig from '../../configs/storage.config';
 
 export default (props) => {
-  console.log(storageConfig.getUserLocal());
   return (
     <div className="slideDetail" style={{backgroundImage: `url(${props.imgSrc})`}}>
       <div className="container">
