@@ -10,7 +10,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home, Browse, Profile, DashBoard, Quiz, Overview, MyPath, Syllabus} from './containers';
+import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus} from './containers';
 /**
  * Main Class of project
  */
@@ -59,6 +59,9 @@ class App extends React.Component {
   checkAuthenticate(component) {
     return storeConfig.getUserLocal() ? React.createElement(component) : <Redirect to='/' />;
   }
+  checkRedirectBrowse(component) {
+    return storeConfig.getUserLocal() ? <Redirect to='/Browse' /> : React.createElement(component);
+  }
   /**
    * render app
    * @return {html} The template of App class
@@ -70,7 +73,7 @@ class App extends React.Component {
           <NProgress color="yellow"/>
           <Header/>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => this.checkRedirectBrowse(Home)} />
             <Route key="/Browse" path="/Browse" render={() => this.checkAuthenticate(Browse)} />
             <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
             <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
