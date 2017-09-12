@@ -17,9 +17,6 @@ class MainMenu extends Component {
         <div className="main-menu">
           <div className="container">
             <ul className="nav nav-main-menu">
-              <li className={`nav-item ${pathname === '/' ? 'active' : null}`}>
-                <Link className="nav-link text-uppercase" to="/">Home</Link>
-              </li>
               <li className={`nav-item ${pathname === '/Browse' ? 'active' : null}`}>
                 <Link className="nav-link text-uppercase" to="/Browse">Browse</Link>
               </li>

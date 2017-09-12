@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Syllabus from './syllabus';
-import {Loading, Sidebar} from '../../components';
+import {Sidebar} from '../../components';
 /**
  * Syllabus of project
  */

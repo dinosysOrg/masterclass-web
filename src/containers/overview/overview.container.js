@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import Overview from './overview';
 import OverviewNoLogin from './overviewNoLogin';
-import {Loading, Sidebar} from '../../components';
+import {Sidebar} from '../../components';
 /**
  * OverviewContainer of project
  */

@@ -46,7 +46,7 @@ class OverviewPage extends Component {
         <div className="row pl-3 pt-3">
           <h4 className="title-overview pb-1">TEACHER</h4>
           <div className="media">
-              <img className="d-flex mr-3" src="http://via.placeholder.com/170x170"/> 
+              <img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/170x170"/> 
               <div className="media-body">
                 <h5 className="mt-0 teacher-name">Teacher Name</h5>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.

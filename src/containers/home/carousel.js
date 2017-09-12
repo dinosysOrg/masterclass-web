@@ -15,7 +15,7 @@ const Carousel = (props) => (
             FILLING OUT A QUICK FORM.
           </p>
           <p className="mb-0">
-            <a className="btn btn-lg btn-primary text-uppercase" href="#" role="button">
+            <a className="btn btn-lg btn-primary text-uppercase" href="" role="button">
               Browse gallery
             </a>
           </p>
@@ -29,7 +29,7 @@ const Carousel = (props) => (
             FILLING OUT A QUICK FORM.
           </p>
           <p className="mb-0">
-            <a className="btn btn-lg btn-primary text-uppercase" href="#" role="button">
+            <a className="btn btn-lg btn-primary text-uppercase" href="" role="button">
               Browse gallery
             </a>
           </p>
@@ -43,7 +43,7 @@ const Carousel = (props) => (
             FILLING OUT A QUICK FORM.
           </p>
           <p className="mb-0">
-            <a className="btn btn-lg btn-primary text-uppercase" href="#" role="button">
+            <a className="btn btn-lg btn-primary text-uppercase" href="" role="button">
               Browse gallery
             </a>
           </p>

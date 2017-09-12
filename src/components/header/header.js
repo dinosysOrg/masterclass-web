@@ -10,7 +10,7 @@ import './header.style.css';
 */
 const ListMenu = (props) => (
   <li className="nav-item">
-    <a className={`nav-link text-uppercase ${props.className}`} href="#" onClick={props.onClick}>
+    <a className={`nav-link text-uppercase ${props.className}`} href="" onClick={props.onClick}>
       {props.children}
     </a>
   </li>
