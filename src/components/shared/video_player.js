@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as Icon from 'react-icons/lib/fa/';
 import VideoThree from './video_three_style';
+import * as IMG from '../../assets/images';
 
 /*
 Video Player Component
@@ -16,7 +17,6 @@ class VideoPlayer extends Component {
         this.state = {
           playing: false,
           settingOpened: false,
-          speedOpened: false,
           volumeOpened: false,
           fullScreen: false,
           progress: 0,
@@ -25,15 +25,12 @@ class VideoPlayer extends Component {
           volume: 100
         }
 
-        this.placeHolderImage = [
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105',
-          'http://via.placeholder.com/215x105'
+        this.layoutImage = [
+          IMG.default.layoutVideo1,
+          IMG.default.layoutVideo2,
+          IMG.default.layoutVideo3,
+          IMG.default.layoutVideo4,
+          IMG.default.layoutVideo5
         ]
     }
 
@@ -48,6 +45,12 @@ class VideoPlayer extends Component {
       let video = document.getElementsByTagName('video')[0];
       video.removeEventListener('timeupdate', this._updateTime.bind(this));
       document.removeEventListener("keydown", this._closePopUp.bind(this));
+    }
+
+    componentDidUpdate() {
+      if(this.state.settingOpened) {
+        this.refs.settingPopup.focus();
+      }
     }
 
     handleBackwardClick(e) {
@@ -97,11 +100,6 @@ class VideoPlayer extends Component {
       this.setState({settingOpened: !this.state.settingOpened});
     }
 
-    openSpeedControl(e) {
-      e.preventDefault();
-      this.setState({speedOpened: !this.state.speedOpened});
-    }
-
     openVolumeControl(e) {
       e.preventDefault();
       this.setState({volumeOpened: !this.state.volumeOpened});
@@ -128,10 +126,13 @@ class VideoPlayer extends Component {
     _closePopUp() {
       this.setState({
         settingOpened: false,
-        speedOpened: false,
         volumeOpened: false,
         fullScreen: false
       })
+    }
+
+    _closeSettingPopup() {
+      this.setState({settingOpened: false});
     }
 
     _updateTime() {
@@ -146,7 +147,7 @@ class VideoPlayer extends Component {
         if (this.state.currentSpeed === value) {
           return (
             <li key={index} className="speed-item checked" >
-              <div onClick={this.handleChangeSpeed.bind(this)}>{value}</div>
+              <div>{value}</div>
             </li>
           );
         } else {
@@ -160,14 +161,15 @@ class VideoPlayer extends Component {
     }
 
     render() {
-      let image = this.placeHolderImage.map((value,index) =>{
+      let image = this.layoutImage.map((value,index) =>{
         return <div key={index} className="video-player__setting__item" onClick={this.selectLayout.bind(this)}>
           <img src={value} alt="Layout"/>
         </div>
       }),
           className = this.state.fullScreen ? 'video-player fullscreen' : 'video-player',
           setting = this.state.settingOpened ? 
-            <div className="video-player__setting">
+            <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+              onBlur={this._closeSettingPopup.bind(this)}>
               {image}
             </div> : null,
           volume  = this.state.volumeOpened ? 
@@ -177,7 +179,16 @@ class VideoPlayer extends Component {
                 onChange={this.handleChangeVolume.bind(this)} 
                 defaultValue={this.state.volume}/>
             </li> : null,
-          date = new Date(null);
+          date = new Date(null),
+          settingIcon = this.state.settingOpened ? 
+            <li className="nav-item setting-opened" 
+              onClick={this.handleSettingClick.bind(this)}>
+              <Icon.FaCog size={20} color="#fbdd10" />
+              <div>Choose Screen Layout</div>
+            </li> : 
+            <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
+              <Icon.FaCog size={20} color="#fff" />
+            </li>; 
           date.setSeconds(this.state.currentTime);
       let currentTime = date.toISOString().substr(11,8);
       return (
@@ -219,11 +230,10 @@ class VideoPlayer extends Component {
               </div>
               <div className="float-right">
                 <ul className="video-player__controls__right">              
-                    <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-                      <Icon.FaCog size={20} color="#fff" />
-                    </li>
-                    <li className="nav-item dropup" onClick={this.openSpeedControl.bind(this)}>
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                    {settingIcon}
+                    <li className="nav-item dropup">
+                      <a href="#" className="dropdown-toggle" 
+                        data-toggle="dropdown">
                       {this.state.currentSpeed + 'x'}</a>
                         <ul className="dropdown-menu">
                          {this._generateSpeedMultipliers()}

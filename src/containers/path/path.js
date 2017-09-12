@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './path.style.css';
-import VideoPlayer from '../../components/shared/video_player';
 // import VideoPanel from '../../components/shared/video_panel';
 // import PromoPanel from '../../components/shared/promo_panel';
 /**
@@ -21,7 +20,7 @@ class PathPage extends Component {
   render() {
     return (
       <div className="path-page">
-        path page
+
       </div>
     );
   }
