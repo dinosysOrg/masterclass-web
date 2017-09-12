@@ -20,7 +20,6 @@ class OverviewPage extends Component {
    */
   componentDidMount() {
   }
-
   /**
    * @return {Component} - the rendered component
    */
@@ -37,10 +36,10 @@ class OverviewPage extends Component {
           </div>
           <div className="col">
             <h4 className="title-overview pb-1">OVERVIEW</h4>
-            <ul className="list-group">
-              <li>asdasd</li>
-              <li>asdasd</li>
-              <li>asdasd</li>
+            <ul className="list-inline list-overview">
+              <li className="list-inline-item"><span className="list-overview-number">6</span>LESSONS</li>
+              <li className="list-inline-item"><span className="list-overview-number">10</span>SHEETS</li>
+              <li className="list-inline-item"><span className="list-overview-number">1</span>EXERCISES</li>
             </ul>
           </div>
         </div>
