@@ -161,41 +161,49 @@ class VideoPlayer extends Component {
     }
 
     _renderImage() {
-      return this.layoutImage.map((value,index) =>{
-        return <div key={index} className="video-player__setting__item" onClick={this.selectLayout.bind(this)}>
-          <img src={value} alt="Layout"/>
-        </div>
+      return this.layoutImage.map((value,index) => {
+        return (
+          <div key={index} className="video-player__setting__item" onClick={this.selectLayout.bind(this)}>
+            <img src={value} alt="Layout"/>
+          </div>
+        )
       });
     }
 
     _renderSetting() {
-      return this.state.settingOpened ? 
-      <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
-        onBlur={this._closeSettingPopup.bind(this)}>
-        {this._renderImage()}
-      </div> : null;
+      return (
+        this.state.settingOpened ? 
+        <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+          onBlur={this._closeSettingPopup.bind(this)}>
+          {this._renderImage()}
+        </div> : null
+      )
     }
 
     _renderVolume() {
-      return this.state.volumeOpened ? 
-      <li className="video-player__volume">
-        <input className="video-player__volume__slider"
-          type="range" min="0" max="100" 
-          onChange={this.handleChangeVolume.bind(this)} 
-          defaultValue={this.state.volume}/>
-      </li> : null;
+      return (
+        this.state.volumeOpened ? 
+        <li className="video-player__volume">
+          <input className="video-player__volume__slider"
+            type="range" min="0" max="100" 
+            onChange={this.handleChangeVolume.bind(this)} 
+            defaultValue={this.state.volume}/>
+        </li> : null
+      )
     }
 
     _renderSettingIcon() {
-      return this.state.settingOpened ? 
-      <li className="nav-item setting-opened" 
-        onClick={this.handleSettingClick.bind(this)}>
-        <Icon.FaCog size={20} color="#fbdd10" />
-        <div>Choose Screen Layout</div>
-      </li> : 
-      <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-        <Icon.FaCog size={20} color="#fff" />
-      </li>;
+      return (
+        this.state.settingOpened ? 
+        <li className="nav-item setting-opened" 
+          onClick={this.handleSettingClick.bind(this)}>
+          <Icon.FaCog size={20} color="#fbdd10" />
+          <div>Choose Screen Layout</div>
+        </li> : 
+        <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
+          <Icon.FaCog size={20} color="#fff" />
+        </li>
+      )
     }
 
     _renderTime() {
@@ -216,7 +224,8 @@ class VideoPlayer extends Component {
               <div className="progress">
                 <div className="progress-bar" role="progressbar"
                   style={{width: this.state.progress + "%"}}
-                  aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100"></div>
+                  aria-valuenow={this.state.progress} aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
               <div className="float-left">
                 <ul className="video-player__controls__left">
@@ -246,25 +255,25 @@ class VideoPlayer extends Component {
               </div>
               <div className="float-right">
                 <ul className="video-player__controls__right">              
-                    {this._renderSettingIcon()}
-                    <li className="nav-item dropup">
-                      <a href="#" className="dropdown-toggle" 
-                        data-toggle="dropdown">
-                      {this.state.currentSpeed + 'x'}</a>
-                        <ul className="dropdown-menu">
-                         {this._generateSpeedMultipliers()}
-                        </ul>
-                    </li>
-                    {
-                      this.state.fullScreen ?
-                      <li className="nav-item" onClick={this._closePopUp.bind(this)}>
-                        <Icon.FaCompress size={20} color="#fff" />
-                      </li> :
-                      <li className="nav-item" onClick={this.handleFullscreen.bind(this)}>
+                  {this._renderSettingIcon()}
+                  <li className="nav-item dropup">
+                    <a href="#" className="dropdown-toggle" 
+                      data-toggle="dropdown">
+                    {this.state.currentSpeed + 'x'}</a>
+                      <ul className="dropdown-menu">
+                        {this._generateSpeedMultipliers()}
+                      </ul>
+                  </li>
+                  {
+                    this.state.fullScreen ?
+                    <li className="nav-item" onClick={this._closePopUp.bind(this)}>
+                      <Icon.FaCompress size={20} color="#fff" />
+                    </li> :
+                    <li className="nav-item" onClick={this.handleFullscreen.bind(this)}>
                       <Icon.FaArrowsAlt size={20} color="#fff" />
                     </li>
-                    }
-                  </ul>
+                  }
+                </ul>
               </div>
             </div>
           </div>
