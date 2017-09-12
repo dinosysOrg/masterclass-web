@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import './menu.style.css';
 /**
  * Main menu of header
@@ -17,14 +17,11 @@ class MainMenu extends Component {
         <div className="main-menu">
           <div className="container">
             <ul className="nav nav-main-menu">
-              <li className={`nav-item ${pathname === '/' ? 'active' : null}`}>
-                <Link className="nav-link text-uppercase" to="/">Home</Link>
-              </li>
               <li className={`nav-item ${pathname === '/Browse' ? 'active' : null}`}>
                 <Link className="nav-link text-uppercase" to="/Browse">Browse</Link>
               </li>
-              <li className={`nav-item ${pathname === '/Path' ? 'active' : null}`}>
-                <Link className="nav-link text-uppercase" to="/Path">My Paths</Link>
+              <li className={`nav-item ${pathname.includes('Path') === true ? 'active' : null}`}>
+                <Link className="nav-link text-uppercase" to="/MyPath">My Paths</Link>
               </li>
               <li className={`nav-item ${pathname === '/Profile' ? 'active' : null}`}>
                 <Link className="nav-link text-uppercase" to="/Profile">Profile</Link>
@@ -45,4 +42,4 @@ class MainMenu extends Component {
     return this.checkMenu();
   }
 }
-export default MainMenu;
+export default withRouter(MainMenu);

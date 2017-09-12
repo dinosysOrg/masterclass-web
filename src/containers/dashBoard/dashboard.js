@@ -39,7 +39,7 @@ class Dashboard extends Component {
             </li>
           </ul>
 
-          <a className="btn" href="#">Resume This Path</a>
+          <a className="btn" href="">Resume This Path</a>
         </div>
       </div>
     );

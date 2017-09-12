@@ -1,214 +1,55 @@
 // style 
+@import "./bootstrap/bootstrap.scss";
 @import "common";
 @import "button";
 @import "form";
 @import "loading";
 @import "videoSlide";
+@import "videoplayer";
 *{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
 
-
-//component video
-.video-player {
-  background-color: #000000;
-  margin: 20px 100px;
-  padding: 55px 50px 30px 50px;
-  position: relative;
-  &.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: 0;
-    z-index: 1000;
-    .content-wrapper {
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+.bg_red{background-color: red;}
+.bg_blue{background-color: blue;}
+.bg_yellow{background-color: yellow;}
+.recharts-text{fill: #fff;}
+.recharts-wrapper{margin: auto}
+.recharts-polar-radius-axis-line, .recharts-polar-radius-axis-tick-value {stroke: $yellow1;}
+.recharts-polar-angle-axis-tick{font-size: 12px;}
+.pageTitle{
+    &__title{
+        margin-top: rem(40);
+        font-size: rem(36)
     }
-  }
-  &__three {
-    position: relative;
-    height: 0;
-    padding-bottom: 40%;
-    video {
-      display: block;
-      width: 100%;
-      height: auto;
+    &__sub{
+        margin-bottom: rem(30);
+        font-size: rem(16);
     }
-    &__first {
-      position: absolute;
-      z-index: 100;
-      top: 0px;
-      left: 30px;
-      width: 25%;
-      border: solid 2px #000000;
-    }
-    &__second {
-      position: absolute;
-      width: 48%;
-      left: 0;
-      bottom: 25px;
-    }
-    &__third {
-      position: absolute;
-      width: 48%;
-      right: 0;
-      bottom: 25px;
-    }
-  }
-  &__controls {
-    .progress {
-      height: 3px;
-      background-color: #707070;
-      margin-bottom: 10px;
-      width: 100%;
-      .progress-bar {
-        background-color: #fbdd10;
-      }
-    }
-    ul {
-      padding: 0 20px;
-    }
-    &__left {
-      li {
-        margin-right: 25px;
-        list-style: none;
-        vertical-align: baseline;
-        display: inline-block;
-      }
-    }
-    &__right {
-      li {
-        margin-left: 25px;
-        font-weight: 600;
-        list-style: none;
-        vertical-align: baseline;
-        display: inline-block;
-        &:first-child{
-          margin-right: 35px;
-        }
-        div {
-          margin-left: 5px;
-        }
-      }
-      .dropdown-toggle {
-        color: #FFFFFF;
-        &:hover {
-          color: #FFFFFF;
-          text-decoration: none;
-        }
-        &:after {
-          border: none;
-        }
-      }
-      .dropdown-menu {
-        background-color: #1e2124;
-        min-width: 0;
-        li {
-          display: block;
-          margin: 0;
-          div {
-            padding: 0 20px;
-            cursor: pointer;
-          }
-          &:hover {
-            background-color: #707070;
-          }
-        }
-        .checked{
-          position: relative;
-          &::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 12px;
-            border: solid #ffffff;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            position: absolute;
-            left: 10px;
-            bottom: 5px;
-          }
-        }
-      }
-      .dropup {
-        ul {
-          padding: 0;
-        }
-      }
-      .setting-opened {
-        position: relative;
-        div {
-          position: absolute;
-          white-space: nowrap;
-          left: -5rem;
-          color: #fbdd10;
-        }
-      }
-    }
-  }
-  &__setting {
-    overflow: auto;
-    white-space:nowrap;
-    padding: 45px 20px 20px 40px;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 18px 15px 0 rgba(0, 0, 0, 0.5);
-    position: absolute;
-    left: -15px;
-    right: -15px;
-    bottom: 75px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    height: 205px;
-    &__item {
-      display: inline-block;
-      margin: 10px;
-      max-width:20%;
-      max-height:100%;
-      img {
-        max-width:100%;
-        max-height:100%;
-      }
-    }
-  }
-  &__volume {
-    display: inline-block;
-    margin-right: 25px;
-    border-bottom: none;
-    &__slider {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      width: 100px;
-      height: 3px;
-      border-radius: 50%;
-      background: #707070;
-      outline: none;
-      padding: 0;
-      margin: 3px 0;
-      border-bottom: none;
-      &::-webkit-slider-thumb {
-        appearance: none;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #fbdd10;
-        cursor: pointer;
-        transition: background .15s ease-in-out;
-      }   
-      &::-moz-range-thumb {
-        width: 10px;
-        height: 10px;
-        border: 0;
-        border-radius: 50%;
-        background: #fbdd10;
-        cursor: pointer;
-        transition: background .15s ease-in-out;
-      }
-    }
-  }
 }
+.col-pagecontent{
+    border-left: 2px solid #707070;
+}
+
+.CircularProgressbar {
+    width: 100%;
+  }
+.CircularProgressbar .CircularProgressbar-path {
+    stroke: #1959FF;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease 0s;
+  }
+  
+  .CircularProgressbar .CircularProgressbar-trail {
+    stroke: #000;
+  }
+  
+  .CircularProgressbar .CircularProgressbar-text {
+    fill: #fff;
+    font-size: 20px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+  .iframe-video{
+      border: 0px;
+      width: 100%;
+  }

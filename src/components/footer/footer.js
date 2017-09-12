@@ -40,13 +40,13 @@ class Footer extends Component {
           <div className="float-right">
             <ul className="footer__menu">
               <li>
-                <a href="#">About us</a>
+                <a href="">About us</a>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <a href="">Contact</a>
               </li>
               <li>
-                <a href="#">FAQ</a>
+                <a href="">FAQ</a>
               </li>
             </ul>
           </div>

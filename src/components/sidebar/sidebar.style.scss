@@ -1,13 +1,23 @@
+@import '../../assets/stylesheets/common';
 .sidebar {
   li{
-    margin: 10px 10px;
+    margin: rem(7) 0px;
     a{
       display: block;
-      background-color: #00695c;
-      padding: 10px;
+      padding: rem(10);
+      padding-left: rem(20);
+      font-size: rem(14);
       color: #fff;
       &:hover{
-        background-color: #004d40;
+        background-color: $yellow1;
+        color:#222;
+        text-decoration: none;
+      }
+    }
+    &.active{
+      background-color: $yellow1;
+      a{
+        color:#222;
       }
     }
   }

@@ -27,7 +27,7 @@ class HomePage extends Component {
       <div className="home-page">
         <Carousel/>
         <HowItWorks />
-        <FullVideoCatalog/>
+        <FullVideoCatalog {...this.props}/>
       </div>
     );
   }

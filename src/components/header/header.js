@@ -10,7 +10,7 @@ import './header.style.css';
 */
 const ListMenu = (props) => (
   <li className="nav-item">
-    <a className={`nav-link text-uppercase ${props.className}`} href="#" onClick={props.onClick}>
+    <a className={`nav-link text-uppercase ${props.className}`} href="" onClick={props.onClick}>
       {props.children}
     </a>
   </li>
@@ -77,7 +77,7 @@ class Header extends Component {
           <div className="container">
             <nav className="navbar navbar-expand-md">
               <a className="navbar-brand header__logo" href="/">
-                <img src={IMG.default.logo} alt=""/>
+                <img className="img-fluid" src={IMG.default.logo} alt=""/>
               </a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                 aria-controls="navbarsExampleDefault"
@@ -86,7 +86,6 @@ class Header extends Component {
               >
                 <span className="navbar-toggler-icon" />
               </button>
-
               <div className="collapse navbar-collapse" id="navbarsExampleDefault">
                 <div className="mr-auto"/>
                 {this.checkLogin()}
