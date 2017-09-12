@@ -55,13 +55,11 @@ class VideoThree extends Component {
   }
 
   handleChangeSpeed(speed) {
-    console.log(speed)
     let refs = this.refs;
     this.setState({playing: true});
     Object.keys(refs).forEach(function (key) {
       let obj = refs[key];
       obj.playbackRate = speed;
-      console.log(obj.playbackRate);
     });
   }
 
@@ -78,17 +76,17 @@ class VideoThree extends Component {
     return (
       <div className="video-player__three">
         <div className="video-player__three__first">
-          <video ref="firstVid">
+          <video ref="firstVid" onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
             <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>
         <div className="video-player__three__second">
-          <video ref="secondVid">
-            <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
+          <video ref="secondVid" onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
+            <source  src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>
         <div className="video-player__three__third">
-          <video ref="thirdVid" onEnded={this.props.onVideoEnded}>
+          <video ref="thirdVid" onEnded={this.props.onVideoEnded} onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
             <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>

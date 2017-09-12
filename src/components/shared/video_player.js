@@ -18,6 +18,7 @@ class VideoPlayer extends Component {
           playing: false,
           settingOpened: false,
           volumeOpened: false,
+          angleOpened: false,
           fullScreen: false,
           progress: 0,
           currentTime: 0,
@@ -31,6 +32,16 @@ class VideoPlayer extends Component {
           IMG.default.layoutVideo3,
           IMG.default.layoutVideo4,
           IMG.default.layoutVideo5
+        ]
+
+        this.angleImage = [
+          'http://cdo.seymourduncan.com/blog/wp-content/uploads/The-Bonamassa-pickups-in-action.jpg',
+          'https://i1.wp.com/www.songwritingmagazine.co.uk/wp-content/uploads/guitar-tips-MAIN.jpg?resize=650%2C366',
+          'http://www.guitaradventures.com/wp-content/uploads/2014/01/9.jpg',
+          'http://wwwcmuseorg-lvzm5mr0z.stackpathdns.com/wp-content/uploads/2017/03/guitar_hurdles.jpg',
+          'https://cdn.shutterstock.com/shutterstock/videos/1135024/thumb/1.jpg',
+          'http://www.ipextv.tv/wp-content/uploads/2017/07/carousel-image1.jpg'
+
         ]
     }
 
@@ -100,6 +111,11 @@ class VideoPlayer extends Component {
       this.setState({settingOpened: !this.state.settingOpened});
     }
 
+    openAngleSelector(e) {
+      e.preventDefault();
+      this.setState({angleOpened: !this.state.angleOpened});
+    }
+
     openVolumeControl(e) {
       e.preventDefault();
       this.setState({volumeOpened: !this.state.volumeOpened});
@@ -132,7 +148,15 @@ class VideoPlayer extends Component {
     }
 
     _closeSettingPopup() {
-      this.setState({settingOpened: false});
+      if(this.state.settingOpened) {
+        this.setState({settingOpened: false});
+      }
+    }
+
+    closeAnglePopup() {
+      if (this.state.angleOpened) {
+        this.setState({angleOpened: false});
+      }
     }
 
     _updateTime() {
@@ -170,14 +194,34 @@ class VideoPlayer extends Component {
       });
     }
 
+    _renderAngle() {
+      return this.angleImage.map((value, index) => {
+        return (
+          <div key={index} className="video-player__setting__item" onClick={this.selectVideo.bind(this)}>
+            <img src={value} alt="Angle"/>
+          </div>
+        );
+      });
+    }
+
     _renderSetting() {
-      return (
-        this.state.settingOpened ? 
-        <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
-          onBlur={this._closeSettingPopup.bind(this)}>
-          {this._renderImage()}
-        </div> : null
-      )
+      if (this.state.settingOpened) {
+        return (
+          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+            onBlur={this._closeSettingPopup.bind(this)}>
+            {this._renderImage()}
+          </div>
+        );
+      }
+      if (this.state.angleOpened) {
+        return (
+          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+            onBlur={this._closeSettingPopup.bind(this)}>
+            {this._renderAngle()}
+          </div>
+        );
+      }
+      return null;
     }
 
     _renderVolume() {
@@ -218,7 +262,10 @@ class VideoPlayer extends Component {
       return (
         <div className={className}>
           <div className="content-wrapper">
-            <VideoThree ref="videoContent" onVideoEnded={this.handleOnVideoEnded.bind(this)} />
+            <VideoThree ref="videoContent" 
+              onVideoEnded={this.handleOnVideoEnded.bind(this)}
+              openAngleSelector={this.openAngleSelector.bind(this)}
+              closeAnglePopup={this.closeAnglePopup.bind(this)} />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
               <div className="progress">
