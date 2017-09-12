@@ -2,11 +2,21 @@ import * as types from './path.types';
 
 /**
  * An action creator - fetching started
- * @return {Object} action - with type FETCH_PATH
+ * @return {Object} action - with type FETCH_HOME_PATH
  */
-export function fetchPath() {
+export function fetchHomePath() {
   return {
-    type: types.FETCH_PATH,
+    type: types.FETCH_HOME_PATH,
+  };
+};
+
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_BROWSE_PATH
+ */
+export function fetchBrowsePath() {
+  return {
+    type: types.FETCH_BROWSE_PATH,
   };
 };
 

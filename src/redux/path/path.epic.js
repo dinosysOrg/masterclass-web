@@ -15,7 +15,7 @@ import {beginTask, endTask} from 'redux-nprogress';
  * @return {Object} action stream
  */
 const getBrowsePath = (action$, store) =>
-  action$.ofType(types.FETCH_PATH)
+  action$.ofType(types.FETCH_BROWSE_PATH)
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
@@ -33,11 +33,11 @@ const getBrowsePath = (action$, store) =>
  * @return {Object} action stream
  */
 const getHomePath = (action$, store) =>
-  action$.ofType(types.FETCH_PATH)
+  action$.ofType(types.FETCH_HOME_PATH)
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.get(`${getPathAPI}`, storeConfig.setHeader())
+        ajax.get(`${getPathAPI}`)
           .map((json) => actions.fetchPathSuccess(json.response))
           .catch((error) => of(actions.fetchPathFailed(error))),
         of(store.dispatch(endTask())),
