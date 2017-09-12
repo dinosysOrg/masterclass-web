@@ -4,4 +4,9 @@ export default {
   'Sign Out': 'Đăng Xuất',
   'Hello {name}!': 'Xin chào {name}!',
   'server_error': 'Có lỗi server, Làm phiền bạn thử vào lúc khác',
+  'popular': 'POPULAR',
+  'lastest': 'LASTEST',
+  'recommend': 'RECOMMEND',
+  'vocals': 'VOCALS',
+  'guitar': 'GUITAR',  
 };

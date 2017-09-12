@@ -23,7 +23,7 @@ class HomePage extends Component {
     if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
       let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
       return (
-        <FullVideoCatalog title="POPULAR" data={data} location={this.props.location}/>
+        <FullVideoCatalog title={this.context.t('popular')} data={data} location={this.props.location}/>
       )
     } else {
       return null;
