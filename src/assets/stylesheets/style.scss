@@ -1,4 +1,5 @@
 // style 
+@import "./bootstrap/bootstrap.scss";
 @import "common";
 @import "button";
 @import "form";
@@ -6,3 +7,47 @@
 @import "videoSlide";
 *{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
+.bg_red{background-color: red;}
+.bg_blue{background-color: blue;}
+.bg_yellow{background-color: yellow;}
+.recharts-text{fill: #fff;}
+.recharts-wrapper{margin: auto}
+.recharts-polar-radius-axis-line, .recharts-polar-radius-axis-tick-value {stroke: $yellow1;}
+.recharts-polar-angle-axis-tick{font-size: 12px;}
+.pageTitle{
+    &__title{
+        margin-top: rem(40);
+        font-size: rem(36)
+    }
+    &__sub{
+        margin-bottom: rem(30);
+        font-size: rem(16);
+    }
+}
+.col-pagecontent{
+    border-left: 2px solid #707070;
+}
+
+.CircularProgressbar {
+    width: 100%;
+  }
+.CircularProgressbar .CircularProgressbar-path {
+    stroke: #1959FF;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease 0s;
+  }
+  
+  .CircularProgressbar .CircularProgressbar-trail {
+    stroke: #000;
+  }
+  
+  .CircularProgressbar .CircularProgressbar-text {
+    fill: #fff;
+    font-size: 20px;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+  .iframe-video{
+      border: 0px;
+      width: 100%;
+  }

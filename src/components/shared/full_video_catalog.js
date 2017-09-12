@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-
-import Panel from '../shared/panel';
-import VideoLink from './video_link';
 import VideoSlide from './video_slide';
 
 /**
@@ -47,7 +44,7 @@ class FullVideoCatalog extends Component {
                 </form>
               </div>
               <div className="col-md-8 text-right popularPath__viewall">
-                <a href="#">View all paths</a>
+                <a href="">View all paths</a>
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@ class videoSlide extends React.Component {
       return 'slide-selected';
     } else if (this.state.slideSelectStatus) {
       return 'slide-unselect';
-    } else null;
+    } else return null;
   }
   /**
   * renderDetail slide
@@ -79,7 +79,7 @@ class videoSlide extends React.Component {
               onClick={this.onClickSlide.bind(this, data, index)}
             >
               <div className="slideBox">
-                <div className="slideBox__img"><img src={data.imgSrc}/></div>
+                <div className="slideBox__img"><img alt="video slide" src={data.imgSrc}/></div>
                 <div className="slideBox__info">
                   <h3 className="slideBox__title">{data.title}</h3>
                   <div className="slideBox__level">{data.level}</div>

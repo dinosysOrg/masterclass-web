@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, withRouter, Switch, Redirect} from 'react-router-dom';
 import {Header, Footer} from './components';
-import routes from './routes';
 import './assets/stylesheets/style.css';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -11,7 +10,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home} from './containers';
+import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus} from './containers';
 /**
  * Main Class of project
  */
@@ -52,12 +51,16 @@ class App extends React.Component {
     } else return null;
   }
   /**
+   * 
   * @param {html} component
   * @return {html} 
   * check loading fuc
   */
   checkAuthenticate(component) {
     return storeConfig.getUserLocal() ? React.createElement(component) : <Redirect to='/' />;
+  }
+  checkRedirectBrowse(component) {
+    return storeConfig.getUserLocal() ? <Redirect to='/Browse' /> : React.createElement(component);
   }
   /**
    * render app
@@ -70,8 +73,13 @@ class App extends React.Component {
           <NProgress color="yellow"/>
           <Header/>
           <Switch>
-            <Route exact path="/" component={Home} />
-            {routes.map((route) => <Route key={route.path} path={route.path} render={() => this.checkAuthenticate(route.component)} />)}
+            <Route exact path="/" render={() => this.checkRedirectBrowse(Home)} />
+            <Route key="/Browse" path="/Browse" render={() => this.checkAuthenticate(Browse)} />
+            <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
+            <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
+            <Route key="/MyPath" path="/MyPath" render={() => this.checkAuthenticate(MyPath)} />
+            <Route exact key="/Overview" path="/Path/:path_Id/" component={Overview}/>
+            <Route key="/Syllabus" path="/Path/:path_Id/syllabus" render={() => this.checkAuthenticate(Syllabus)} />
           </Switch>
           <Footer/>
           {this.checkLoading()}

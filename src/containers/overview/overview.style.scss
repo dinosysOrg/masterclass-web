@@ -1,0 +1,55 @@
+@import '../../assets/stylesheets/common';
+.overview-page{
+  .iframe-video{
+      height: 400px;
+  }
+  .video-box-demo{
+    .iframe-video{
+          height: 500px;
+      }
+  }
+  .title-overview{
+      font-size: rem(16)
+  }
+  .teacher-name{
+      color: $yellow1
+  }
+  .chartBox{
+      height: 500px;
+      background-color: rgba(0, 0, 0, 0.75);
+      .chart{
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          width: 400px;
+          height: 400px;
+          margin: auto;
+          width: 100%;
+      }
+  }
+  .list-overview{
+      display: inline;
+      li{
+          text-align: center;
+          padding: 0px rem(20);
+          position: relative;
+          &:after{
+              content: '';
+              width: 1px;
+              height: 100%;
+              background: #9b9b9b;
+              position: absolute;
+              top: 0px;
+              right: 0px;
+          }
+          &:last-child:after{
+            width: 0px;
+          }
+          .list-overview-number{
+              display: block;
+              color: $yellow1;
+              font-size: rem(38);
+          }
+      }
+  }
+}

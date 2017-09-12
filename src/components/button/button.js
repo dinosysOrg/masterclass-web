@@ -6,7 +6,7 @@ import './button.style.css';
 export default ({children}) => {
   return (
     <div className="button-VMA">
-      <a href="#">
+      <a href="">
         {children}
       </a>
     </div>
