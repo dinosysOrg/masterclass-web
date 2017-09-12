@@ -5,8 +5,10 @@
 @import "form";
 @import "loading";
 @import "videoSlide";
+@import "videoplayer";
 *{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
+
 .bg_red{background-color: red;}
 .bg_blue{background-color: blue;}
 .bg_yellow{background-color: yellow;}
