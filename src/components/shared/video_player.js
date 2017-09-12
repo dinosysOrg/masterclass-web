@@ -160,42 +160,58 @@ class VideoPlayer extends Component {
       });
     }
 
-    render() {
-      let image = this.layoutImage.map((value,index) =>{
+    _renderImage() {
+      return this.layoutImage.map((value,index) =>{
         return <div key={index} className="video-player__setting__item" onClick={this.selectLayout.bind(this)}>
           <img src={value} alt="Layout"/>
         </div>
-      }),
-          className = this.state.fullScreen ? 'video-player fullscreen' : 'video-player',
-          setting = this.state.settingOpened ? 
-            <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
-              onBlur={this._closeSettingPopup.bind(this)}>
-              {image}
-            </div> : null,
-          volume  = this.state.volumeOpened ? 
-            <li className="video-player__volume">
-              <input className="video-player__volume__slider"
-                type="range" min="0" max="100" 
-                onChange={this.handleChangeVolume.bind(this)} 
-                defaultValue={this.state.volume}/>
-            </li> : null,
-          date = new Date(null),
-          settingIcon = this.state.settingOpened ? 
-            <li className="nav-item setting-opened" 
-              onClick={this.handleSettingClick.bind(this)}>
-              <Icon.FaCog size={20} color="#fbdd10" />
-              <div>Choose Screen Layout</div>
-            </li> : 
-            <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-              <Icon.FaCog size={20} color="#fff" />
-            </li>; 
-          date.setSeconds(this.state.currentTime);
-      let currentTime = date.toISOString().substr(11,8);
+      });
+    }
+
+    _renderSetting() {
+      return this.state.settingOpened ? 
+      <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+        onBlur={this._closeSettingPopup.bind(this)}>
+        {this._renderImage()}
+      </div> : null;
+    }
+
+    _renderVolume() {
+      return this.state.volumeOpened ? 
+      <li className="video-player__volume">
+        <input className="video-player__volume__slider"
+          type="range" min="0" max="100" 
+          onChange={this.handleChangeVolume.bind(this)} 
+          defaultValue={this.state.volume}/>
+      </li> : null;
+    }
+
+    _renderSettingIcon() {
+      return this.state.settingOpened ? 
+      <li className="nav-item setting-opened" 
+        onClick={this.handleSettingClick.bind(this)}>
+        <Icon.FaCog size={20} color="#fbdd10" />
+        <div>Choose Screen Layout</div>
+      </li> : 
+      <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
+        <Icon.FaCog size={20} color="#fff" />
+      </li>;
+    }
+
+    _renderTime() {
+      let date = new Date(null);
+      date.setSeconds(this.state.currentTime);
+      return date.toISOString().substr(11,8);
+    }
+
+    render() {
+      let className = this.state.fullScreen ? 'video-player fullscreen' : 'video-player';
+          
       return (
         <div className={className}>
           <div className="content-wrapper">
             <VideoThree ref="videoContent" onVideoEnded={this.handleOnVideoEnded.bind(this)} />
-            {setting}
+            {this._renderSetting()}
             <div className="video-player__controls clearfix">
               <div className="progress">
                 <div className="progress-bar" role="progressbar"
@@ -222,15 +238,15 @@ class VideoPlayer extends Component {
                   <li className="nav-item" onClick={this.openVolumeControl.bind(this)}>
                     <Icon.FaVolumeUp size={20} color="#fff" />
                   </li>
-                  {volume}
+                  {this._renderVolume()}
                   <li className="nav-item">
-                    <span className="video-player__timestamp">{currentTime}</span>
+                    <span className="video-player__timestamp">{this._renderTime()}</span>
                   </li>
                 </ul>
               </div>
               <div className="float-right">
                 <ul className="video-player__controls__right">              
-                    {settingIcon}
+                    {this._renderSettingIcon()}
                     <li className="nav-item dropup">
                       <a href="#" className="dropdown-toggle" 
                         data-toggle="dropdown">
