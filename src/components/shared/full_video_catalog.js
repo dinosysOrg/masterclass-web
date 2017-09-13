@@ -20,7 +20,29 @@ class FullVideoCatalog extends Component {
 
     this._handleChange = this._handleChange.bind(this);
   }
-
+  /**
+   * Handle Input Change
+   * @param {Event} e - the event object
+   */
+  checkAuthorized() {
+    if (this.props.location.pathname === '/') {
+      return (
+        <div className="row">
+          <div className="col-md-4">
+            <form>
+              <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
+            </form>
+          </div>
+          <div className="col-md-8 text-right popularPath__viewall">
+            <a href="">View all paths</a>
+          </div>
+        </div>
+      )
+    } else return null;
+  }
+  /**
+   * Check data popular
+   */
   /**
    * Handle Input Change
    * @param {Event} e - the event object
@@ -32,28 +54,15 @@ class FullVideoCatalog extends Component {
    * Check data popular
    */
   checkDataPopular() {
-    if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
-      return (
-        <div className="popularPath">
-          <div className="container mb-4">
-            <h3 className="mb-3 popularPath__title">POPULAR PATH</h3>
-            <div className="row">
-              <div className="col-md-4">
-                <form>
-                  <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
-                </form>
-              </div>
-              <div className="col-md-8 text-right popularPath__viewall">
-                <a href="">View all paths</a>
-              </div>
-            </div>
-          </div>
-          <VideoSlide {...this.props}/>
+    return (
+      <div className="popularPath">
+        <div className="container mb-4">
+          <h3 className="mb-3 popularPath__title">{this.props.title} PATH</h3>
+          {this.checkAuthorized()}
         </div>
-      );
-    } else {
-      return null
-    }
+        <VideoSlide data={this.props.data}/>
+      </div>
+    );
   }
   /**
    * Render this component

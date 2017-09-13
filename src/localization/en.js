@@ -4,4 +4,9 @@ export default {
   'Sign Out': 'Sign Out',
   'Hello {name}!': 'Hello {name}',
   'server_error': 'Have some errors, Please try again!',
+  'popular': 'POPULAR',
+  'lastest': 'LASTEST',
+  'recommend': 'RECOMMEND',
+  'vocals': 'VOCALS',
+  'guitar': 'GUITAR',  
 };

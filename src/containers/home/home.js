@@ -4,6 +4,7 @@ import HowItWorks from '../../components/shared/how_it_works';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import $ from 'jquery';
 import './home.style.css';
+import formatDataResponse from '../../configs/data.config';
 
 /**
  * HomePage of project
@@ -18,6 +19,16 @@ class HomePage extends Component {
       $(this).attr('style', 'background-image: url('+bgIMG+')');
     });
   }
+  renderFullVideoCatalog() {
+    if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
+      let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
+      return (
+        <FullVideoCatalog title={this.context.t('popular')} data={data} location={this.props.location}/>
+      )
+    } else {
+      return null;
+    }
+  }
   /**
    * render HomePage template
    * @return {html} The template of HomePage class
@@ -27,7 +38,7 @@ class HomePage extends Component {
       <div className="home-page">
         <Carousel/>
         <HowItWorks />
-        <FullVideoCatalog {...this.props}/>
+        {this.renderFullVideoCatalog()}
       </div>
     );
   }
