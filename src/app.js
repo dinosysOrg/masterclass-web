@@ -10,7 +10,10 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus} from './containers';
+import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus, SyllabusDetail} from './containers';
+import $ from 'jquery';
+window.jQuery = $
+require('bootstrap')
 /**
  * Main Class of project
  */
@@ -79,7 +82,8 @@ class App extends React.Component {
             <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
             <Route key="/MyPath" path="/MyPath" render={() => this.checkAuthenticate(MyPath)} />
             <Route exact key="/Overview" path="/Path/:path_Id/" component={Overview}/>
-            <Route key="/Syllabus" path="/Path/:path_Id/syllabus" render={() => this.checkAuthenticate(Syllabus)} />
+            <Route exact key="/Syllabus" path="/Path/:path_Id/Syllabus" render={() => this.checkAuthenticate(Syllabus)} />
+            <Route key="/SyllabusDetail" path="/Path/:path_Id/Syllabus/:syllabus_Id" render={() => this.checkAuthenticate(SyllabusDetail)} />
           </Switch>
           <Footer/>
           {this.checkLoading()}

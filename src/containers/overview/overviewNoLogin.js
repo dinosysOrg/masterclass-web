@@ -1,7 +1,34 @@
 import React, {Component} from 'react';
 import './overview.style.css';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer} from 'recharts';
-
+import Syllabus from '../../components/shared/syllabus';
+import $ from 'jquery';
+let syllabusData = [
+  {
+    title: "Lesson 1 - Lesson name Lesson 1",
+    time: "1:30",
+    images: "",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.",
+  },
+  {
+    title: "Lesson 2 - Lesson name Lesson 2",
+    time: "2:30",
+    images: "",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.",
+  },
+  {
+    title: "Lesson 3 - Lesson name Lesson 3",
+    time: "3:30",
+    images: "",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.",
+  },
+  {
+    title: "Lesson 4 - Lesson name Lesson 4",
+    time: "4:30",
+    images: "",
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.",
+  }
+]
 let data = [
   { subject: 'Skill 1', A: 120, B: 110, fullMark: 150 },
   { subject: 'Skill 2', A: 98, B: 130, fullMark: 150 },
@@ -18,6 +45,11 @@ class OverviewNoLoginPage extends Component {
    * 
    */
   componentDidMount() {
+  $('.collapse').on('shown.bs.collapse', function(){
+    $(this).parent().find(".iconList").removeClass('.iconList').addClass("active");
+  }).on('hidden.bs.collapse', function(){
+    $(this).parent().find(".iconList").removeClass('.iconList').removeClass("active");
+  });
   }
 
   /**
@@ -48,55 +80,17 @@ class OverviewNoLoginPage extends Component {
               </ul>
             </div>
           </div>
-          <div className="row">
+          <div className="row pb-5">
             <div className="col">
               <h4 className="title-overview pb-1">SYLLABUS</h4>
-
-                <div id="accordion" role="tablist">
-                  <div className="card">
-                    <div className="card-header" role="tab" id="headingOne">
-                      <h5 className="mb-0">
-                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Collapsible Group Item #1
-                        </a>
-                      </h5>
-                    </div>
-                    <div id="collapseOne" className="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div className="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="card-header" role="tab" id="headingTwo">
-                      <h5 className="mb-0">
-                        <a className="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Collapsible Group Item #2
-                        </a>
-                      </h5>
-                    </div>
-                    <div id="collapseTwo" className="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                      <div className="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card">
-                    <div className="card-header" role="tab" id="headingThree">
-                      <h5 className="mb-0">
-                        <a className="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                          Collapsible Group Item #3
-                        </a>
-                      </h5>
-                    </div>
-                    <div id="collapseThree" className="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                      <div className="card-body">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique temporibus atque seq.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+                <div id="accordion" className="syllabusList" role="tablist">
+                  {
+                    syllabusData.map((data, index) => 
+                      <Syllabus key={index} id={index} {...data} />
+                    )
+                  }
+                </div> 
+                {/* End list */}
             </div>
             <div className="col">
               <div className="teacher">

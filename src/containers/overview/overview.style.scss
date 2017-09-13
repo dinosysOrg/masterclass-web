@@ -52,4 +52,53 @@
           }
       }
   }
+  .syllabusList{
+    &__title{
+        font-size: rem(18);
+    }
+    &__time{
+        font-size: rem(14);
+        color: #9b9b9b;
+    }
+      .card{
+          background: transparent;
+          .card-header{
+              background: rgba(255, 255, 255, 0.25);
+              padding: 0px;
+              position: relative;
+              .media-body{
+                  padding: 10px 0px;
+              }
+              .iconList:after{
+                font-family: 'FontAwesome';
+                content: "\f105";
+                position: absolute;
+                top: 20%;
+                right: 5%;
+                color: #fff;
+                font-size: rem(35);
+                transition: 300ms;
+              }
+              .active:after{
+                transition: 300ms;
+                font-family: 'FontAwesome';
+                content: "\f107";
+                position: absolute;
+                top: 20%;
+                right: 5%;
+                color: #fff;
+                font-size: rem(35);
+              }
+              a{color: #f6f6f6}
+              .list-inline-item{
+                  vertical-align: middle;
+              }
+          }
+          .card-body{
+              background-color: rgba(74, 76, 79, 0.38);
+              margin-top: 2px;
+          }
+      }
+  }
 }
+
