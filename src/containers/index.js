@@ -6,5 +6,6 @@ import MyPath from './myPath/myPath.container';
 import Quiz from './quiz/quiz.container';
 import Overview from './overview/overview.container';
 import Syllabus from './syllabus/syllabus.container';
+import SyllabusDetail from './syllabusDetail/syllabusDetail.container';
 
-export {Home, Browse, DashBoard, Profile, Quiz, Overview, MyPath, Syllabus};
+export {Home, Browse, DashBoard, Profile, Quiz, Overview, MyPath, Syllabus, SyllabusDetail};
