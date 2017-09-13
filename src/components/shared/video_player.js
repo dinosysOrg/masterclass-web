@@ -59,7 +59,7 @@ class VideoPlayer extends Component {
     }
 
     componentDidUpdate() {
-      if(this.state.settingOpened) {
+      if(this.state.settingOpened || this.state.angleOpened) {
         this.refs.settingPopup.focus();
       }
     }
@@ -113,7 +113,6 @@ class VideoPlayer extends Component {
 
     openAngleSelector(e) {
       e.preventDefault();
-      e.target.focus();
       e.target.parentElement.classList.add('video-active');
       this.setState({angleOpened: !this.state.angleOpened});
     }
@@ -155,8 +154,11 @@ class VideoPlayer extends Component {
       }
     }
 
-    closeAnglePopup(e) {
-      e.target.parentElement.classList.remove('video-active');
+    _closeAnglePopup() {
+      let videoWrapper = document.getElementsByClassName('video-active')[0];
+      if (videoWrapper) {
+        videoWrapper.classList.remove('video-active');
+      }
       if (this.state.angleOpened) {
         this.setState({angleOpened: false});
       }
@@ -218,7 +220,8 @@ class VideoPlayer extends Component {
       }
       if (this.state.angleOpened) {
         return (
-          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" >
+          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
+            onBlur={this._closeAnglePopup.bind(this)}>
             {this._renderAngle()}
           </div>
         );
@@ -266,8 +269,7 @@ class VideoPlayer extends Component {
           <div className="content-wrapper">
             <VideoThree ref="videoContent" 
               onVideoEnded={this.handleOnVideoEnded.bind(this)}
-              openAngleSelector={this.openAngleSelector.bind(this)}
-              closeAnglePopup={this.closeAnglePopup.bind(this)} />
+              openAngleSelector={this.openAngleSelector.bind(this)} />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
               <div className="progress">

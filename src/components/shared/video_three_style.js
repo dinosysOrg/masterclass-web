@@ -76,17 +76,17 @@ class VideoThree extends Component {
     return (
       <div className="video-player__three">
         <div className="video-player__three__first">
-          <video tabIndex={-1} ref="firstVid" onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
+          <video tabIndex={-1} ref="firstVid" onClick={this.props.openAngleSelector}>
             <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>
         <div className="video-player__three__second">
-          <video tabIndex={-1}  ref="secondVid" onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
+          <video tabIndex={-1}  ref="secondVid" onClick={this.props.openAngleSelector}>
             <source  src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>
         <div className="video-player__three__third">
-          <video tabIndex={-1}  ref="thirdVid" onEnded={this.props.onVideoEnded} onClick={this.props.openAngleSelector} onBlur={this.props.closeAnglePopup}>
+          <video tabIndex={-1}  ref="thirdVid" onEnded={this.props.onVideoEnded} onClick={this.props.openAngleSelector}>
             <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
           </video>
         </div>
