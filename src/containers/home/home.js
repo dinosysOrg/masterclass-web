@@ -5,6 +5,7 @@ import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import $ from 'jquery';
 import './home.style.css';
 import formatDataResponse from '../../configs/data.config';
+import PropTypes from 'prop-types';
 
 /**
  * HomePage of project
@@ -43,5 +44,9 @@ class HomePage extends Component {
     );
   }
 }
+
+HomePage.contextTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default HomePage;
