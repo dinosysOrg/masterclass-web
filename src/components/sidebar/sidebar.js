@@ -26,7 +26,7 @@ class Siderbar extends Component {
         <div className="sidebar">
           <ul className="nav nav-pills flex-column">
             <li className={`nav-item ${path === '/Path/:path_Id/' ? 'active' : null}`}><Link to="/Path/10">OVERVIEW</Link></li>
-            <li className={`nav-item ${path === '/Path/:path_Id/syllabus' ? 'active' : null}`}><Link to="/Path/10/syllabus">SYLLABUS</Link></li>
+            <li className={`nav-item ${path === '/Path/:path_Id/Syllabus' ? 'active' : null}`}><Link to="/Path/10/Syllabus">SYLLABUS</Link></li>
             <li className="nav-item"><a href="">MATERIALS</a></li>
             <li className="nav-item"><a href="">PRATIVE</a></li>
             <li className="nav-item"><a href="">TUNNER</a></li>
