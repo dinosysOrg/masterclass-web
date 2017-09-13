@@ -113,6 +113,8 @@ class VideoPlayer extends Component {
 
     openAngleSelector(e) {
       e.preventDefault();
+      e.target.focus();
+      e.target.parentElement.classList.add('video-active');
       this.setState({angleOpened: !this.state.angleOpened});
     }
 
@@ -153,7 +155,9 @@ class VideoPlayer extends Component {
       }
     }
 
-    closeAnglePopup() {
+    closeAnglePopup(e) {
+      console.log('aaaa')
+      e.target.parentElement.classList.remove('video-active');
       if (this.state.angleOpened) {
         this.setState({angleOpened: false});
       }
@@ -215,8 +219,7 @@ class VideoPlayer extends Component {
       }
       if (this.state.angleOpened) {
         return (
-          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" 
-            onBlur={this._closeSettingPopup.bind(this)}>
+          <div tabIndex={-1} ref='settingPopup' className="video-player__setting" >
             {this._renderAngle()}
           </div>
         );
@@ -241,11 +244,11 @@ class VideoPlayer extends Component {
         this.state.settingOpened ? 
         <li className="nav-item setting-opened" 
           onClick={this.handleSettingClick.bind(this)}>
-          <Icon.FaCog size={20} color="#fbdd10" />
+          <Icon.FaCog size={20} fill="#fbdd10" />
           <div>Choose Screen Layout</div>
         </li> : 
         <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-          <Icon.FaCog size={20} color="#fff" />
+          <Icon.FaCog size={20} fill="#fff" />
         </li>
       )
     }
@@ -277,22 +280,22 @@ class VideoPlayer extends Component {
               <div className="float-left">
                 <ul className="video-player__controls__left">
                   <li className="nav-item" onClick={this.handleBackwardClick.bind(this)}>
-                    <Icon.FaBackward size={20} color="#fff" />
+                    <Icon.FaBackward size={20} fill="#fff" />
                   </li>
                     {
                       this.state.playing ?
                       <li className="nav-item" onClick={this.handlePauseClick.bind(this)}>
-                        <Icon.FaPause size={20} color="#fff"/>
+                        <Icon.FaPause size={20} fill="#fff"/>
                       </li> :
                       <li className="nav-item" onClick={this.handlePlayClick.bind(this)}>
-                        <Icon.FaPlay size={20} color="#fff"/>
+                        <Icon.FaPlay size={20} fill="#fff"/>
                       </li>
                     }
                   <li className="nav-item" onClick={this.handleForwardClick.bind(this)}>
-                    <Icon.FaForward size={20} color="#fff" />
+                    <Icon.FaForward size={20} fill="#fff" />
                   </li>
                   <li className="nav-item" onClick={this.openVolumeControl.bind(this)}>
-                    <Icon.FaVolumeUp size={20} color="#fff" />
+                    <Icon.FaVolumeUp size={20} fill="#fff" />
                   </li>
                   {this._renderVolume()}
                   <li className="nav-item">
