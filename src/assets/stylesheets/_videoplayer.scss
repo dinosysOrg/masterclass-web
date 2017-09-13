@@ -1,7 +1,9 @@
+@import '../../assets/stylesheets/common';
+
 //component video
 .video-player {
   background-color: #000000;
-  margin: 20px 100px;
+  margin-bottom: 20px;
   padding: 55px 50px 30px 50px;
   position: relative;
   &.fullscreen {
@@ -121,11 +123,15 @@
             transform: rotate(45deg);
             position: absolute;
             left: 10px;
-            bottom: 5px;
+            bottom: 8px;
           }
         }
       }
       .dropup {
+        a {
+          position: relative;
+          top: 2px;
+        }
         ul {
           padding: 0;
         }
@@ -175,16 +181,16 @@
       -moz-appearance: none;
       width: 100px;
       height: 3px;
-      border-radius: 50%;
       background: #707070;
       outline: none;
       padding: 0;
-      margin: 3px 0;
       border-bottom: none;
+      position: relative;
+      bottom: 3px;
       &::-webkit-slider-thumb {
         appearance: none;
-        width: 5px;
-        height: 5px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
         background: #fbdd10;
         cursor: pointer;
@@ -199,6 +205,32 @@
         cursor: pointer;
         transition: background .15s ease-in-out;
       }
+    }
+  }
+  &__timestamp {
+    position: relative;
+    top: 2px;
+  }
+  .video-active {
+    &::before {
+      font-family: FontAwesome;
+      content: '\f03d';
+      color: #fbdd10;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: rem(40);
+      transform: translate(-50%, -50%);
+    }
+    &::after {
+      content: 'Choose video angle';
+      color: #fbdd10;
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      font-size: rem(14);
     }
   }
 }

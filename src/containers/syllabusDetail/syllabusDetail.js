@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './syllabusDetail.style.css';
+import VideoPlayer from '../../components/shared/video_player';
 /**
  * SyllabusPage
  */
@@ -22,7 +23,7 @@ class SyllabusDetail extends Component {
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
           </div>
           <div className="video-box">
-            {/* video is here */}
+            <VideoPlayer/>
           </div>
         </div>
       </div>
