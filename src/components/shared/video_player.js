@@ -156,7 +156,6 @@ class VideoPlayer extends Component {
     }
 
     closeAnglePopup(e) {
-      console.log('aaaa')
       e.target.parentElement.classList.remove('video-active');
       if (this.state.angleOpened) {
         this.setState({angleOpened: false});
