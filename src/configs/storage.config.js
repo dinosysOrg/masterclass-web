@@ -1,4 +1,4 @@
-exports.setUserLocal = (xhr, name, id) => {
+exports.setUserLocal = (xhr, name, id, layoutId) => {
   let userLocal = {
     token: xhr.getResponseHeader('Access-Token'),
     client: xhr.getResponseHeader('Client'),
@@ -7,6 +7,7 @@ exports.setUserLocal = (xhr, name, id) => {
     uid: xhr.getResponseHeader('Uid'),
     userName: name,
     id: id,
+    layout_id: layoutId, 
   };
   if (typeof localStorage !== 'undefined' && localStorage) {
     localStorage.setItem('userLocal', JSON.stringify(userLocal));

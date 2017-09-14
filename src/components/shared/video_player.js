@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as Icon from "react-icons/lib/fa/";
-import VideoThree from "./video_three_style";
+import VideoContent from "./video_content";
 import * as IMG from "../../assets/images";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -15,8 +15,8 @@ provide various screen layout to arrange them
 const SPEED_MULTIPLIERS = [2, 1.5, 1, 0.5];
 
 class VideoPlayer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       playing: false,
       settingOpened: false,
@@ -26,7 +26,9 @@ class VideoPlayer extends Component {
       progress: 0,
       currentTime: 0,
       currentSpeed: 1,
-      volume: 100
+      volume: 100,
+      currentLayout: 3,
+      didInitTimeEvent: false
     };
 
     this.layoutImage = [
@@ -46,10 +48,11 @@ class VideoPlayer extends Component {
       "http://www.ipextv.tv/wp-content/uploads/2017/07/carousel-image1.jpg"
     ];
   }
+  componentWillMount() {
+    //this.setState({currentLayout: this.props.payload.userReducer.userInfo.layout_id});
+  }
 
   componentDidMount() {
-    let video = document.getElementsByTagName("video")[0];
-    video.addEventListener("timeupdate", this._updateTime.bind(this));
     document.addEventListener("keydown", this._closePopUp.bind(this));
   }
 
@@ -62,6 +65,11 @@ class VideoPlayer extends Component {
   componentDidUpdate() {
     if (this.state.settingOpened || this.state.angleOpened) {
       this.refs.settingPopup.focus();
+    }
+    if (!this.state.didInitTimeEvent) {
+      let video = document.getElementsByTagName("video")[0];
+      video.addEventListener("timeupdate", this._updateTime.bind(this));
+      this.setState({didInitTimeEvent: true});
     }
   }
 
@@ -130,6 +138,7 @@ class VideoPlayer extends Component {
   }
 
   selectLayout(id) {
+    this.setState({currentLayout: id, settingOpened: false});
     this.props.userAction.putUserLayout({layout_id: id});
   }
 
@@ -145,7 +154,8 @@ class VideoPlayer extends Component {
     this.setState({
       settingOpened: false,
       volumeOpened: false,
-      fullScreen: false
+      fullScreen: false,
+      angleOpened: false
     });
   }
 
@@ -287,12 +297,12 @@ class VideoPlayer extends Component {
     let className = this.state.fullScreen
       ? "video-player fullscreen"
       : "video-player";
-
     return (
       <div className={className}>
         <div className="content-wrapper">
-          <VideoThree
+          <VideoContent
             ref="videoContent"
+            layoutID={this.state.currentLayout}
             onVideoEnded={this.handleOnVideoEnded.bind(this)}
             openAngleSelector={this.openAngleSelector.bind(this)}
           />
