@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {bindActionCreators} from 'redux';
 import * as pathAction from '../../redux/path/path.actions';
+import * as initAction from '../../redux/init/init.action';
 import {Loading} from '../../components';
 
 /**
@@ -50,6 +51,7 @@ const mapStateToProps = (rootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     pathAction: bindActionCreators(pathAction, dispatch),
+    initAction: bindActionCreators(initAction, dispatch),
   };
 };
 

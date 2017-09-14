@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import VideoSlide from './video_slide';
+import {Link} from 'react-router-dom';
 
 /**
  * Full Video Catalog
@@ -28,12 +29,9 @@ class FullVideoCatalog extends Component {
       return (
         <div className="row mb-4">
           <div className="col-md-4">
-            <form>
-              <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
-            </form>
           </div>
           <div className="col-md-8 text-right popularPath__viewall">
-            <a href="">View all paths</a>
+            <Link to="/ViewAll">View all paths</Link>
           </div>
         </div>
       )
