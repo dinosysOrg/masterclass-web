@@ -14,6 +14,26 @@ exports.setUserLocal = (xhr, name, id, layoutId) => {
   }
 };
 
+exports.changeLayoutID = (store) => {
+  let currentStorage;
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    currentStorage = JSON.parse(localStorage.getItem('userLocal'));
+  }
+  let userLocal = {
+    token: currentStorage.token,
+    client: currentStorage.client,
+    expiry: currentStorage.expiry,
+    tokenType: currentStorage.tokenType,
+    uid: currentStorage.uid,
+    userName: currentStorage.userName,
+    id: currentStorage.id,
+    layout_id: store.getState().userReducer.userInfo.layout_id, 
+  };
+  if (typeof localStorage !== 'undefined' && localStorage) {
+    localStorage.setItem('userLocal', JSON.stringify(userLocal));
+  }
+};
+
 exports.getUserLocal = () => {
   if (typeof localStorage !== 'undefined' && localStorage) {
     return JSON.parse(localStorage.getItem('userLocal'));

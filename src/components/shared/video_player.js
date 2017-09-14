@@ -5,6 +5,7 @@ import * as IMG from "../../assets/images";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userAction from "../../redux/user/user.action";
+import storageConfig from "../../configs/storage.config";
 
 /*
 Video Player Component
@@ -49,7 +50,7 @@ class VideoPlayer extends Component {
     ];
   }
   componentWillMount() {
-    this.setState({currentLayout: this.props.payload.userReducer.userInfo.layout_id});
+    this.setState({currentLayout: storageConfig.getUserLocal().layout_id});
   }
 
   componentDidMount() {
@@ -371,7 +372,7 @@ class VideoPlayer extends Component {
                 {this._renderSettingIcon()}
                 <li className="nav-item dropup">
                   <a
-                    href="#"
+                    href=""
                     className="dropdown-toggle"
                     data-toggle="dropdown"
                   >

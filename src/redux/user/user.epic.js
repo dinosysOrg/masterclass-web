@@ -178,7 +178,10 @@ const putUserLayoutEpic = (action$, store) =>
         concat$(
           of(store.dispatch(beginTask())),
           ajax.put(`${putUserLayout}`, data.payload, storeConfig.setHeader())
-            .map(() => actions.fetchUserInfoRequest())
+            .mergeMap(() => 
+              of(actions.putUserLayoutSuccess())
+              .do(storeConfig.changeLayoutID(store))
+            )
             .catch((error) => of(actions.putUserLayoutFailure(error))),
           of(store.dispatch(endTask())),
       )
