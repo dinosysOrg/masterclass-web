@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './myPath.style.css';
 import {Link} from 'react-router-dom';
 import * as Icon from 'react-icons/lib/fa/';
+import PropTypes from 'prop-types';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer} from 'recharts';
 import CircularProgressbar from 'react-circular-progressbar';
 
@@ -187,10 +188,7 @@ class PathPage extends Component {
     );
   }
 }
-
 PathPage.contextTypes = {
-  t: React.PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
-
-
 export default PathPage;

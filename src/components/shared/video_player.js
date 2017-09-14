@@ -308,7 +308,7 @@ class VideoPlayer extends Component {
                 <ul className="video-player__controls__right">              
                   {this._renderSettingIcon()}
                   <li className="nav-item dropup">
-                    <a href="#" className="dropdown-toggle" 
+                    <a href="" className="dropdown-toggle" 
                       data-toggle="dropdown">
                     {this.state.currentSpeed + 'x'}</a>
                       <ul className="dropdown-menu">
