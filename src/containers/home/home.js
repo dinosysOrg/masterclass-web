@@ -20,11 +20,11 @@ class HomePage extends Component {
       $(this).attr('style', 'background-image: url('+bgIMG+')');
     });
   }
-  renderFullVideoCatalog() {
+   renderFullVideoCatalog() {
     if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
       let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
       return (
-        <FullVideoCatalog title={this.context.t('popular')} data={data} location={this.props.location}/>
+        <FullVideoCatalog slideShow={5} title={this.context.t('popular')} data={data} location={this.props.location}/>
       )
     } else {
       return null;

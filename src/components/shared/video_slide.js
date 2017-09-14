@@ -62,11 +62,12 @@ class videoSlide extends React.Component {
     let settings = {
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: this.props.slideShow,
       slidesToScroll: 1,
       centerMode: true,
       focusOnSelect: true,
     };
+    console.log(this.props)
     return (
       <div>
         <Slick {...settings}>
