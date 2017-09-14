@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class VideoThree extends Component {
   constructor() {
@@ -7,13 +7,13 @@ class VideoThree extends Component {
       speed: 1,
       fullscreen: false,
       currentTime: 0
-    }
+    };
   }
 
   handleBackwardClick() {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
       if (obj.currentTime >= 10) {
         obj.currentTime -= 10;
@@ -25,8 +25,8 @@ class VideoThree extends Component {
 
   handlePlayClick() {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
       obj.play();
     });
@@ -34,8 +34,8 @@ class VideoThree extends Component {
 
   handleForwardClick() {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
       if (obj.duration - obj.currentTime >= 10) {
         obj.currentTime += 10;
@@ -47,17 +47,17 @@ class VideoThree extends Component {
 
   handleChangeVolume(value) {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
-      obj.volume = value/100;
+      obj.volume = value / 100;
     });
   }
 
   handleChangeSpeed(speed) {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
       obj.playbackRate = speed;
     });
@@ -65,8 +65,8 @@ class VideoThree extends Component {
 
   handlePauseClick() {
     let refs = this.refs;
-    this.setState({playing: true});
-    Object.keys(refs).forEach(function (key) {
+    this.setState({ playing: true });
+    Object.keys(refs).forEach(function(key) {
       let obj = refs[key];
       obj.pause();
     });
@@ -76,24 +76,36 @@ class VideoThree extends Component {
     return (
       <div className="video-player__three">
         <div className="video-player__three__first">
-          <video tabIndex={-1} ref="firstVid" onClick={this.props.openAngleSelector}>
-            <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
+          <video
+            tabIndex={-1}
+            ref="firstVid"
+            onClick={this.props.openAngleSelector}
+          >
+            <source src="http://techslides.com/demos/sample-videos/small.webm" />
           </video>
         </div>
         <div className="video-player__three__second">
-          <video tabIndex={-1}  ref="secondVid" onClick={this.props.openAngleSelector}>
-            <source  src="http://techslides.com/demos/sample-videos/small.webm"></source>
+          <video
+            tabIndex={-1}
+            ref="secondVid"
+            onClick={this.props.openAngleSelector}
+          >
+            <source src="http://techslides.com/demos/sample-videos/small.webm" />
           </video>
         </div>
         <div className="video-player__three__third">
-          <video tabIndex={-1}  ref="thirdVid" onEnded={this.props.onVideoEnded} onClick={this.props.openAngleSelector}>
-            <source src="http://techslides.com/demos/sample-videos/small.webm"></source>
+          <video
+            tabIndex={-1}
+            ref="thirdVid"
+            onEnded={this.props.onVideoEnded}
+            onClick={this.props.openAngleSelector}
+          >
+            <source src="http://techslides.com/demos/sample-videos/small.webm" />
           </video>
         </div>
       </div>
     );
   }
-
 }
 
 export default VideoThree;

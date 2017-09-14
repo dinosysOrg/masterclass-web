@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB, getUserPath, getQuizAPI, userAPI} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath, getQuizAPI, userAPI, putUserLayout} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
@@ -166,6 +166,23 @@ const saveQuizEpic = (action$, store) =>
           .catch((error) => of(actions.saveQuizFailure(error))),
       )
     );
+  /**
+   * action put user layout
+   * @param {any} action$
+   * @param {any} store
+   * @return {Object}
+  */
+const putUserLayoutEpic = (action$, store) => 
+    action$.ofType(types.PUT_USER_LAYOUT)
+      .mergeMap((data) => 
+      concat$(
+          of(store.dispatch(beginTask())),
+          ajax.put(`${putUserLayout}`, data.payload, storeConfig.setHeader())
+            .map(() => actions.fetchUserInfoRequest())
+            .catch((error) => of(actions.putUserLayoutFailure(error))),
+          of(store.dispatch(endTask())),
+      )
+    );
 
 export {
   myPathRequestEpic,
@@ -177,4 +194,5 @@ export {
   getQuizRequestEpic,
   saveQuizEpic,
   putUserInfoRequestEpic,
+  putUserLayoutEpic
 };
