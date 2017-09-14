@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './user.types';
 import * as actions from './user.action';
-import {loginAPI, signUpAPI, loginFB, getUserPath, getQuizAPI, userAPI} from './user.api';
+import {loginAPI, signUpAPI, loginFB, getUserPath, getQuizAPI, userAPI, putUserLayout} from './user.api';
 import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
@@ -76,7 +76,7 @@ const loginRequestEpic = (action$, store) =>
         ajax.post(loginAPI, data.payload)
           .mergeMap((json) =>
             of(actions.loginRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name, json.response.data.id))
+              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name, json.response.data.id, json.response.data.layout_id))
           )
           .catch((error) => of(actions.loginRequestFailure(error))),
         of(store.dispatch(endTask())),
@@ -126,7 +126,7 @@ const fbRequestEpic = (action$, store) =>
         ajax.post(`${loginFB}?access_token=${data.payload}`)
           .mergeMap((json) =>
             of(actions.fbRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.name, json.response.id))
+              .do(storeConfig.setUserLocal(json.xhr, json.response.name, json.response.id, json.response.data.layout_id))
           )
           .catch((error) => of(actions.fbRequestFailure(error.xhr.response.errors))),
         of(store.dispatch(endTask())),
@@ -166,6 +166,26 @@ const saveQuizEpic = (action$, store) =>
           .catch((error) => of(actions.saveQuizFailure(error))),
       )
     );
+  /**
+   * action put user layout
+   * @param {any} action$
+   * @param {any} store
+   * @return {Object}
+  */
+const putUserLayoutEpic = (action$, store) => 
+    action$.ofType(types.PUT_USER_LAYOUT)
+      .mergeMap((data) => 
+        concat$(
+          of(store.dispatch(beginTask())),
+          ajax.put(`${putUserLayout}`, data.payload, storeConfig.setHeader())
+            .mergeMap(() => 
+              of(actions.putUserLayoutSuccess())
+              .do(storeConfig.changeLayoutID(store))
+            )
+            .catch((error) => of(actions.putUserLayoutFailure(error))),
+          of(store.dispatch(endTask())),
+      )
+    );
 
 export {
   myPathRequestEpic,
@@ -177,4 +197,5 @@ export {
   getQuizRequestEpic,
   saveQuizEpic,
   putUserInfoRequestEpic,
+  putUserLayoutEpic
 };

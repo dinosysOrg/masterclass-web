@@ -299,3 +299,38 @@ export function saveUserInfoFailure(error) {
     payload: error,
   };
 }
+
+/**
+ * put user layout
+ * @param {Object} data
+ * @return {Object}
+*/
+export function putUserLayout(data) {
+  return {
+    type: types.PUT_USER_LAYOUT,
+    payload: data,
+  };
+}
+
+/**
+ * put user layout
+ * @param {Object} data
+ * @return {Object}
+*/
+export function putUserLayoutSuccess(json) {
+  return {
+    type: types.PUT_USER_LAYOUT_SUCCESS,
+  };
+}
+
+/**
+ * put user layout
+ * @param {Object} error
+ * @return {Object}
+*/
+export function putUserLayoutFailure(error) {
+  return {
+    type: types.PUT_USER_LAYOUT_FAILURE,
+    payload: error,
+  };
+}

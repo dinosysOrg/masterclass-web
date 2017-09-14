@@ -125,6 +125,20 @@ export default function init(state = initialState, action) {
       ...state,
       error: action.payload,
     };
+  case types.PUT_USER_LAYOUT:
+    return {
+      ...state,
+      userInfo: Object.assign({}, state.userInfo, action.payload),
+    };
+  case types.PUT_USER_LAYOUT_SUCCESS:
+    return {
+      ...state
+    };
+  case types.PUT_USER_LAYOUT_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+    };
   default:
     return state;
   }

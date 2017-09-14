@@ -8,4 +8,5 @@ module.exports = {
   'loginFB': 'http://masterclass-staging.herokuapp.com/api/v1/auth/sign_in_with_facebook',
   'getUserPath': 'http://masterclass-staging.herokuapp.com/api/v1/users/courses',
   'getQuizAPI': 'http://masterclass-staging.herokuapp.com/api/v1/users/quiz',
+  'putUserLayout': 'http://masterclass-staging.herokuapp.com/api/v1/users/layout'
 };
