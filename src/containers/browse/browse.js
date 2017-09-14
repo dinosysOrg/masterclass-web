@@ -6,7 +6,6 @@ import formatDataResponse from '../../configs/data.config';
 import PropTypes from 'prop-types';
 import './browse.style.css';
 
-
 /**
  * Browse of project
  */
@@ -20,10 +19,10 @@ class Browse extends Component {
       return (
         <div className="container">
           <PromoPanel />
-            {browsePath.popular.length !== 0 ? <FullVideoCatalog title={this.context.t('popular')} data={formatDataResponse(browsePath.popular)} location={this.props.location} /> : null}
-            {browsePath.latest.length !== 0 ? <FullVideoCatalog title={this.context.t('lastest')} data={formatDataResponse(browsePath.latest)} location={this.props.location} /> : null}
-            {browsePath.guitar.length !== 0 ? <FullVideoCatalog title={this.context.t('guitar')} data={formatDataResponse(browsePath.guitar)} location={this.props.location} /> : null}
-            {browsePath.vocals.length !== 0 ? <FullVideoCatalog title={this.context.t('vocals')} data={formatDataResponse(browsePath.vocals)} location={this.props.location} /> : null}
+            {browsePath.popular.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('popular')} data={formatDataResponse(browsePath.popular)} location={this.props.location} /> : null}
+            {browsePath.latest.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('lastest')} data={formatDataResponse(browsePath.latest)} location={this.props.location} /> : null}
+            {browsePath.guitar.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('guitar')} data={formatDataResponse(browsePath.guitar)} location={this.props.location} /> : null}
+            {browsePath.vocals.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('vocals')} data={formatDataResponse(browsePath.vocals)} location={this.props.location} /> : null}
           <PromoPanel />
         </div>
       )

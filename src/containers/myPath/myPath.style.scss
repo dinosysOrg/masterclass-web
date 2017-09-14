@@ -1,5 +1,31 @@
 @import '../../assets/stylesheets/common';
 .mypath-page{
+    .selectInstrument{
+        &__button{
+            width: 100%;
+            background: transparent;
+            border-bottom: 1px solid #a3acbf;
+            text-align: left;
+            color:$yellow1;
+            &:after{
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+                    margin-left: 0.255em;
+                    position: absolute;
+                    right: 0px;
+                    top: 44%;
+                    vertical-align: 0.255em;
+                    content: "";
+                    border-top: 0.3em solid;
+                    border-right: 0.3em solid transparent;
+                    border-left: 0.3em solid transparent;
+            }
+        }
+        .dropdown-menu.show{
+            right: 0px;
+        }
+    }
     .colProcess {
         background-color: rgba(255, 255, 255, 0.05);
         height: 100%;
@@ -68,7 +94,7 @@
     .boxPath{
         background-color: #2e3235;
         &__title{
-            font-size: rem(24);
+            font-size: rem(20);
         }
         .tb-last-path{
             background-color: $yellow1;

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './myPath.style.css';
 import {Link} from 'react-router-dom';
 import * as Icon from 'react-icons/lib/fa/';
+import PropTypes from 'prop-types';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer} from 'recharts';
 import CircularProgressbar from 'react-circular-progressbar';
 
@@ -26,8 +27,28 @@ class PathPage extends Component {
       <div className="mypath-page py-5">
         <div className="container">
           <div className="row pb-4">
-            <div className="col"><h4>OVERALL PROGRESS</h4></div>
-            <div className="col text-right">select box is here</div>
+            <div className="col"><h4 className="title-page text-uppercase">{this.context.t('overall progress')}</h4></div>
+            <div className="col text-right">
+              <div className="row">
+                <div className="col pt-2">
+                  Selected Instrument:
+                </div>
+                <div className="col p-0">
+                  <div className="dropdown selectInstrument">
+                    <button className="btn dropdown-toggle selectInstrument__button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button className="dropdown-item" type="button">Action</button>
+                      <button className="dropdown-item" type="button">Another action</button>
+                      <button className="dropdown-item" type="button">Something else here</button>
+                    </div>
+                  </div>
+                  {/* Dropdow */}
+                </div>
+              </div>
+               
+            </div>
           </div>
           <div className="card-deck">
             <div className="col-md-4">
@@ -87,7 +108,7 @@ class PathPage extends Component {
             {/* End col */}
           </div>
           {/* End card */}
-          <h4 className="pt-5 pb-3">PATH ENROLLMENT</h4>
+          <h4 className="pt-5 pb-3 text-uppercase">{this.context.t('path enrollment')}</h4>
           <div className="boxPath">
             <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
             <table className="table w-100 tb-last-path">
@@ -167,5 +188,7 @@ class PathPage extends Component {
     );
   }
 }
-
+PathPage.contextTypes = {
+  t: PropTypes.func.isRequired,
+};
 export default PathPage;

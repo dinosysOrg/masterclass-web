@@ -13,7 +13,6 @@ class FullVideoCatalog extends Component {
    */
   constructor() {
     super();
-
     this.state = {
       searchText: '',
     };
@@ -27,7 +26,7 @@ class FullVideoCatalog extends Component {
   checkAuthorized() {
     if (this.props.location.pathname === '/') {
       return (
-        <div className="row">
+        <div className="row mb-4">
           <div className="col-md-4">
             <form>
               <input type="text" value={this.state.searchText} placeholder="Refined Search" onChange={this._handleChange} />
@@ -55,12 +54,12 @@ class FullVideoCatalog extends Component {
    */
   checkDataPopular() {
     return (
-      <div className="popularPath">
-        <div className="container mb-4">
-          <h3 className="mb-3 popularPath__title">{this.props.title} PATH</h3>
+      <div className="pathRow mb-5 mt-5">
+        <div className="container">
+          <h3 className="mb-3 pathRow__title">{this.props.title} PATH</h3>
           {this.checkAuthorized()}
         </div>
-        <VideoSlide data={this.props.data}/>
+        <VideoSlide slideShow={this.props.slideShow} data={this.props.data}/>
       </div>
     );
   }
