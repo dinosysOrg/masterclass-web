@@ -27,7 +27,7 @@ class VideoPlayer extends Component {
       currentTime: 0,
       currentSpeed: 1,
       volume: 100,
-      currentLayout: 3,
+      currentLayout: 0,
       didInitTimeEvent: false
     };
 
@@ -49,7 +49,7 @@ class VideoPlayer extends Component {
     ];
   }
   componentWillMount() {
-    //this.setState({currentLayout: this.props.payload.userReducer.userInfo.layout_id});
+    this.setState({currentLayout: this.props.payload.userReducer.userInfo.layout_id});
   }
 
   componentDidMount() {
