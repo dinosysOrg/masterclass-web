@@ -26,8 +26,28 @@ class PathPage extends Component {
       <div className="mypath-page py-5">
         <div className="container">
           <div className="row pb-4">
-            <div className="col"><h4>OVERALL PROGRESS</h4></div>
-            <div className="col text-right">select box is here</div>
+            <div className="col"><h4 className="title-page">OVERALL PROGRESS</h4></div>
+            <div className="col text-right">
+              <div className="row">
+                <div className="col pt-2">
+                  Selected Instrument:
+                </div>
+                <div className="col p-0">
+                  <div className="dropdown selectInstrument">
+                    <button className="btn dropdown-toggle selectInstrument__button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropdown
+                    </button>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <button className="dropdown-item" type="button">Action</button>
+                      <button className="dropdown-item" type="button">Another action</button>
+                      <button className="dropdown-item" type="button">Something else here</button>
+                    </div>
+                  </div>
+                  {/* Dropdow */}
+                </div>
+              </div>
+               
+            </div>
           </div>
           <div className="card-deck">
             <div className="col-md-4">

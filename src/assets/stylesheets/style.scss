@@ -8,7 +8,6 @@
 @import "videoplayer";
 *{color: $cl-primary; font-family: $f-regular;}
 body{background-color: #1e2124;}
-
 .bg_red{background-color: red;}
 .bg_blue{background-color: blue;}
 .bg_yellow{background-color: yellow;}
@@ -29,7 +28,6 @@ body{background-color: #1e2124;}
 .col-pagecontent{
     border-left: 2px solid #707070;
 }
-
 .CircularProgressbar {
     width: 100%;
   }
@@ -38,11 +36,9 @@ body{background-color: #1e2124;}
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease 0s;
   }
-  
   .CircularProgressbar .CircularProgressbar-trail {
     stroke: #000;
   }
-  
   .CircularProgressbar .CircularProgressbar-text {
     fill: #fff;
     font-size: 20px;
@@ -52,4 +48,15 @@ body{background-color: #1e2124;}
   .iframe-video{
       border: 0px;
       width: 100%;
+  }
+  .discovery{
+      &__title{
+          font-size: rem(20);
+      }
+  }
+  .pathRow{
+      &__title{
+          font-size: rem(30);
+          color: $yellow1
+      }
   }
