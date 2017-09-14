@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import PromoPanel from '../../components/shared/promo_panel';
 import formatDataResponse from '../../configs/data.config';
+import VideoPanel from '../../components/shared/video_panel';
 import PropTypes from 'prop-types';
 import './browse.style.css';
 
@@ -18,22 +19,16 @@ class Browse extends Component {
     if (browsePath.recommend.length === 0) {
       return (
         <div className="container">
-          <PromoPanel />
-            {browsePath.popular.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('popular')} data={formatDataResponse(browsePath.popular)} location={this.props.location} /> : null}
-            {browsePath.latest.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('lastest')} data={formatDataResponse(browsePath.latest)} location={this.props.location} /> : null}
-            {browsePath.guitar.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('guitar')} data={formatDataResponse(browsePath.guitar)} location={this.props.location} /> : null}
-            {browsePath.vocals.length !== 0 ? <FullVideoCatalog slideShow={3} title={this.context.t('vocals')} data={formatDataResponse(browsePath.vocals)} location={this.props.location} /> : null}
-          <PromoPanel />
+          <PromoPanel location={this.props.location} {...this.props}/>
+            <VideoPanel data={browsePath} slideShow={3} location={this.props.location} />
+          <PromoPanel location={this.props.location} {...this.props}/>
         </div>
       )
     } else {
       return (
         <div className="container">
-          {browsePath.recommend.length !== 0 ? <FullVideoCatalog title={this.context.t('recommend')} data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
-          {browsePath.popular.length !== 0 ? <FullVideoCatalog title={this.context.t('popular')} data={formatDataResponse(browsePath.popular)} location={this.props.location} /> : null}
-          {browsePath.latest.length !== 0 ? <FullVideoCatalog title={this.context.t('lastest')} data={formatDataResponse(browsePath.latest)} location={this.props.location} /> : null}
-          {browsePath.guitar.length !== 0 ? <FullVideoCatalog title={this.context.t('guitar')} data={formatDataResponse(browsePath.guitar)} location={this.props.location} /> : null}
-          {browsePath.vocals.length !== 0 ? <FullVideoCatalog title={this.context.t('vocals')} data={formatDataResponse(browsePath.vocals)} location={this.props.location} /> : null}
+          {browsePath.recommend.length !== 0 ? <FullVideoCatalog slideShow={4} title={this.context.t('recommend')} data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
+          <VideoPanel data={browsePath} slideShow={4} location={this.props.location} />
         </div>
       )
     }

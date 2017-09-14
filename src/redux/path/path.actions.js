@@ -21,6 +21,17 @@ export function fetchBrowsePath() {
 };
 
 /**
+ * An action creator - search started
+ * @return {Object} action - with type SEARCH_PATH_REQUEST
+ */
+export function searchPath(pathName) {
+  return {
+    type: types.SEARCH_PATH_REQUEST,
+    payload: pathName
+  };
+};
+
+/**
  * An action creator - fetching finished
  * @param {Object} path - the path object receive from api
  * @return {Object} action - with type FETCH_PATH_SUCCESS & data is the received path
