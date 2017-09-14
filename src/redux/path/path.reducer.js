@@ -18,10 +18,15 @@ const path = (state = initPathState, action) => {
     return {
       ...state,
     };
+  case types.SEARCH_PATH_REQUEST:
+    return {
+      ...state,
+    };
   case types.FETCH_PATH_SUCCESS:
     return {
       ...state,
       paths: {
+        search: action.payload.search || [],
         recommend: action.payload.recommend || [],
         popular: action.payload.popular || [],
         latest: action.payload.latest || [],

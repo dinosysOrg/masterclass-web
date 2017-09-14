@@ -10,7 +10,7 @@ import storeConfig from './configs/storage.config';
 import I18n from 'redux-i18n';
 import {translations} from './localization/';
 import {NProgress} from 'redux-nprogress';
-import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus, SyllabusDetail} from './containers';
+import {Home, Browse, Profile, DashBoard, Overview, MyPath, Syllabus, SyllabusDetail, Quiz, ViewAll} from './containers';
 import $ from 'jquery';
 window.jQuery = $
 require('bootstrap')
@@ -78,9 +78,11 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={() => this.checkRedirectBrowse(Home)} />
             <Route key="/Browse" path="/Browse" render={() => this.checkAuthenticate(Browse)} />
+            <Route key="/ViewAll" path="/ViewAll" render={() => this.checkRedirectBrowse(ViewAll)} />            
             <Route key="/Profile" path="/Profile" render={() => this.checkAuthenticate(Profile)} />
             <Route key="/Dashboard" path="/Dashboard" render={() => this.checkAuthenticate(DashBoard)} />
             <Route key="/MyPath" path="/MyPath" render={() => this.checkAuthenticate(MyPath)} />
+            <Route key="/Quiz" path="/Quiz" render={() => this.checkAuthenticate(Quiz)} />            
             <Route exact key="/Overview" path="/Path/:path_Id/" component={Overview}/>
             <Route exact key="/Syllabus" path="/Path/:path_Id/Syllabus" render={() => this.checkAuthenticate(Syllabus)} />
             <Route key="/SyllabusDetail" path="/Path/:path_Id/Syllabus/:syllabus_Id" render={() => this.checkAuthenticate(SyllabusDetail)} />

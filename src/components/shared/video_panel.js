@@ -1,22 +1,22 @@
 import React from 'react';
+import formatDataResponse from '../../configs/data.config';
+import PropTypes from 'prop-types';
+import FullVideoCatalog from '../../components/shared/full_video_catalog';
 
-import Panel from './panel';
+ export default class VideoPanel extends React.Component {
+  render () {
+    let data = this.props.data;
+    return (
+      <div>
+        {data.popular.length !== 0 ? <FullVideoCatalog slideShow={this.props.slideShow} title={this.context.t('popular')} data={formatDataResponse(data.popular)} location={this.props.location} /> : null}
+        {data.latest.length !== 0 ? <FullVideoCatalog slideShow={this.props.slideShow} title={this.context.t('lastest')} data={formatDataResponse(data.latest)} location={this.props.location} /> : null}
+        {data.guitar.length !== 0 ? <FullVideoCatalog slideShow={this.props.slideShow} title={this.context.t('guitar')} data={formatDataResponse(data.guitar)} location={this.props.location} /> : null}
+        {data.vocals.length !== 0 ? <FullVideoCatalog slideShow={this.props.slideShow} title={this.context.t('vocals')} data={formatDataResponse(data.vocals)} location={this.props.location} /> : null}
+      </div>
+    )
+  }
+}
 
-export default ({title, videoList}) => {
-  return (
-    <Panel title={title}>
-      <ul className="row">
-        {videoList.map((object, index) =>
-          <li key={index} className="col s4">
-            <div>
-              <img src="http://via.placeholder.com/300x150?text=>" alt="video thumbnail" />
-              <p>{object.name}</p>
-              <p>{object.level.name} {object.instrument.name}</p>
-              <p>{object.teacher.name === null ? 'Default' : object.teacher.name}</p>
-            </div>
-          </li>
-        )}
-      </ul>
-    </Panel>
-  );
+VideoPanel.contextTypes = {
+  t: PropTypes.func.isRequired,
 };
