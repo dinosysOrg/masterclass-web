@@ -91,6 +91,9 @@
       display: inline-block;
       width: 21.65%;
     }
+    &__first, &__second, &__third, &__fourth {
+      position: relative;
+    }
   }
   &__five {
     &__first {
