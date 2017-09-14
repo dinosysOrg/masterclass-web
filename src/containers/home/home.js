@@ -7,12 +7,12 @@ import './home.style.css';
 import formatDataResponse from '../../configs/data.config';
 import PropTypes from 'prop-types';
 let settingSlide = {
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 5,
   slidesToScroll: 1,
-  centerMode: true,
-  focusOnSelect: true,
+  centerMode: false,
+  focusOnSelect: false,
 }
 /**
  * HomePage of project
