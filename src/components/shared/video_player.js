@@ -62,15 +62,20 @@ class VideoPlayer extends Component {
     document.removeEventListener("keydown", this._closePopUp.bind(this));
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.settingOpened || this.state.angleOpened) {
       this.refs.settingPopup.focus();
     }
     if (!this.state.didInitTimeEvent) {
+      this.setState({didInitTimeEvent: true});
       let video = document.getElementsByTagName("video")[0];
       video.addEventListener("timeupdate", this._updateTime.bind(this));
-      this.setState({didInitTimeEvent: true});
     }
+    if (prevState.currentLayout !== this.state.currentLayout) {
+      let video = document.getElementsByTagName("video")[0];
+      video.addEventListener("timeupdate", this._updateTime.bind(this));
+    }
+    
   }
 
   handleBackwardClick(e) {
