@@ -175,7 +175,7 @@ const saveQuizEpic = (action$, store) =>
 const putUserLayoutEpic = (action$, store) => 
     action$.ofType(types.PUT_USER_LAYOUT)
       .mergeMap((data) => 
-      concat$(
+        concat$(
           of(store.dispatch(beginTask())),
           ajax.put(`${putUserLayout}`, data.payload, storeConfig.setHeader())
             .map(() => actions.fetchUserInfoRequest())

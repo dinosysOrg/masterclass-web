@@ -318,7 +318,6 @@ export function putUserLayout(data) {
  * @return {Object}
 */
 export function putUserLayoutSuccess(json) {
-  console.log(json);
   return {
     type: types.PUT_USER_LAYOUT_SUCCESS,
   };
@@ -330,7 +329,6 @@ export function putUserLayoutSuccess(json) {
  * @return {Object}
 */
 export function putUserLayoutFailure(error) {
-  console.log(error);
   return {
     type: types.PUT_USER_LAYOUT_FAILURE,
     payload: error,
