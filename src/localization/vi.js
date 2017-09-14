@@ -8,5 +8,7 @@ export default {
   'lastest': 'LASTEST',
   'recommend': 'RECOMMEND',
   'vocals': 'VOCALS',
-  'guitar': 'GUITAR',  
+  'guitar': 'GUITAR',
+  'overall progress': 'Tiến độ',
+  'path enrollment': 'Lịch sử học',
 };

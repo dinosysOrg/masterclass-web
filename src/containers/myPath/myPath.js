@@ -26,7 +26,7 @@ class PathPage extends Component {
       <div className="mypath-page py-5">
         <div className="container">
           <div className="row pb-4">
-            <div className="col"><h4 className="title-page">OVERALL PROGRESS</h4></div>
+            <div className="col"><h4 className="title-page text-uppercase">{this.context.t('overall progress')}</h4></div>
             <div className="col text-right">
               <div className="row">
                 <div className="col pt-2">
@@ -107,7 +107,7 @@ class PathPage extends Component {
             {/* End col */}
           </div>
           {/* End card */}
-          <h4 className="pt-5 pb-3">PATH ENROLLMENT</h4>
+          <h4 className="pt-5 pb-3 text-uppercase">{this.context.t('path enrollment')}</h4>
           <div className="boxPath">
             <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
             <table className="table w-100 tb-last-path">
@@ -187,5 +187,10 @@ class PathPage extends Component {
     );
   }
 }
+
+PathPage.contextTypes = {
+  t: React.PropTypes.func.isRequired,
+};
+
 
 export default PathPage;

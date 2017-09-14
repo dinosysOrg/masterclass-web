@@ -8,5 +8,7 @@ export default {
   'lastest': 'LASTEST',
   'recommend': 'RECOMMEND',
   'vocals': 'VOCALS',
-  'guitar': 'GUITAR',  
+  'guitar': 'GUITAR',
+  'overall progress': 'overall progress',
+  'path enrollment': 'path enrollment',
 };
