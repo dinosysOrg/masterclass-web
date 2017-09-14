@@ -13,7 +13,7 @@ export default class PromoPanel extends React.Component {
 
   render() {
     return (
-      <div className="discovery my-5">
+      <div className="discovery container my-5">
         <div className="row">
           <div className="col col-md-9">
             <h3 className="discovery__title pl-5 text-uppercase">

@@ -57,7 +57,7 @@ class FullVideoCatalog extends Component {
           <h3 className="mb-3 pathRow__title">{this.props.title} PATH</h3>
           {this.checkAuthorized()}
         </div>
-        <VideoSlide slideShow={this.props.slideShow} data={this.props.data}/>
+        <VideoSlide settingSlide={this.props.settingSlide} data={this.props.data}/>
       </div>
     );
   }
