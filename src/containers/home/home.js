@@ -6,7 +6,14 @@ import $ from 'jquery';
 import './home.style.css';
 import formatDataResponse from '../../configs/data.config';
 import PropTypes from 'prop-types';
-
+let settingSlide = {
+  infinite: false,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  centerMode: false,
+  focusOnSelect: false,
+}
 /**
  * HomePage of project
  */
@@ -24,7 +31,7 @@ class HomePage extends Component {
     if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
       let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
       return (
-        <FullVideoCatalog slideShow={5} title={this.context.t('popular')} data={data} location={this.props.location}/>
+        <FullVideoCatalog settingSlide={settingSlide} title={this.context.t('popular')} data={data} location={this.props.location}/>
       )
     } else {
       return null;

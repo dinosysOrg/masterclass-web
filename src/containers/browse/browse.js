@@ -7,6 +7,14 @@ import VideoPanel from '../../components/shared/video_panel';
 import PropTypes from 'prop-types';
 import './browse.style.css';
 
+let settingSlide = {
+  infinite: false,
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  centerMode: false,
+  focusOnSelect: false,
+}
 /**
  * Browse of project
  */
@@ -18,17 +26,17 @@ class Browse extends Component {
   checkRecommend(browsePath) {
     if (browsePath.recommend.length === 0) {
       return (
-        <div className="container">
+        <div className="container-fluid">
           <PromoPanel location={this.props.location} {...this.props}/>
-            <VideoPanel data={browsePath} slideShow={3} location={this.props.location} />
+            <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
           <PromoPanel location={this.props.location} {...this.props}/>
         </div>
       )
     } else {
       return (
-        <div className="container">
-          {browsePath.recommend.length !== 0 ? <FullVideoCatalog slideShow={4} title={this.context.t('recommend')} data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
-          <VideoPanel data={browsePath} slideShow={4} location={this.props.location} />
+        <div className="container-fluid">
+          {browsePath.recommend.length !== 0 ? <FullVideoCatalog settingSlide={settingSlide} title={this.context.t('recommend')} data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
+          <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
         </div>
       )
     }
