@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
+import PropTypes from 'prop-types';
 
 /*
 Video Player Component
@@ -59,7 +60,9 @@ class VideoPlayer extends Component {
 
   componentWillUnmount() {
     let video = document.getElementsByTagName("video")[0];
-    video.removeEventListener("timeupdate", this._updateTime.bind(this));
+    if (video) {
+      video.removeEventListener("timeupdate", this._updateTime.bind(this));
+    }
     document.removeEventListener("keydown", this._closePopUp.bind(this));
   }
 
@@ -70,13 +73,16 @@ class VideoPlayer extends Component {
     if (!this.state.didInitTimeEvent) {
       this.setState({didInitTimeEvent: true});
       let video = document.getElementsByTagName("video")[0];
-      video.addEventListener("timeupdate", this._updateTime.bind(this));
+      if (video) {
+        video.addEventListener("timeupdate", this._updateTime.bind(this));
+      }
     }
     if (prevState.currentLayout !== this.state.currentLayout) {
       let video = document.getElementsByTagName("video")[0];
-      video.addEventListener("timeupdate", this._updateTime.bind(this));
+      if (video) {
+        video.addEventListener("timeupdate", this._updateTime.bind(this));
+      }
     }
-    
   }
 
   handleBackwardClick(e) {
@@ -427,7 +433,7 @@ class VideoPlayer extends Component {
     } else {
       return (
         <div>
-          This Lesson Currently Have No Video Available
+          {this.context.t('lesson no video')}
         </div>
       )
     }
@@ -449,6 +455,10 @@ const mapDispatchToProps = dispatch => {
   return {
     userAction: bindActionCreators(userAction, dispatch)
   };
+};
+
+VideoPlayer.contextTypes = {
+  t: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);
