@@ -18,7 +18,6 @@ class OverviewNoLoginPage extends Component {
     $(this).parent().find(".iconList").removeClass('.iconList').removeClass("active");
   });
   }
-
   /**
    * @return {Component} - the rendered component
    */
@@ -49,13 +48,13 @@ class OverviewNoLoginPage extends Component {
               </ul>
             </div>
           </div>
-          <div className="row pb-5">
+          <div className="row pb-5 pt-5">
             <div className="col">
               <h4 className="title-overview pb-1">SYLLABUS</h4>
                 <div id="accordion" className="syllabusList" role="tablist">
                   {
                     pathOverview.syllabuses.map((data, index) => 
-                      <Syllabus key={index} {...data} />
+                      <Syllabus showModal={true} initAction={this.props.initAction} key={index} {...data} />
                     )
                   }
                 </div> 

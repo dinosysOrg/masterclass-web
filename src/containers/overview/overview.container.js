@@ -6,6 +6,7 @@ import OverviewNoLogin from './overviewNoLogin';
 import {Sidebar} from '../../components';
 import {bindActionCreators} from 'redux';
 import * as pathAction from '../../redux/path/path.actions';
+import * as initAction from '../../redux/init/init.action';
 import {Loading} from '../../components';
 /**
  * OverviewContainer of project
@@ -56,6 +57,7 @@ const mapStateToProps = (rootState) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
+    initAction: bindActionCreators(initAction, dispatch),
     pathAction: bindActionCreators(pathAction, dispatch),
   };
 };
