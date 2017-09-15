@@ -1,11 +1,10 @@
 import {combineEpics} from 'redux-observable';
-import {getBrowsePath, loginRequestEpic, signupRequestEpic, signOutEpic, fbRequestEpic,
+import {getBrowsePath, loginRequestEpic, signupRequestEpic, fbRequestEpic,
   myPathRequestEpic, changeEnEpic, changeViEpic, getUserInfoRequestEpic, getQuizRequestEpic, saveQuizEpic, putUserInfoRequestEpic, getHomePath, putUserLayoutEpic, searchPath} from '../redux';
 export default combineEpics(
   loginRequestEpic,
   getBrowsePath,
   signupRequestEpic,
-  signOutEpic,
   fbRequestEpic,
   myPathRequestEpic,
   changeEnEpic,

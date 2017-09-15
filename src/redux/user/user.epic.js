@@ -7,7 +7,6 @@ import * as actionInit from '../init/init.action';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import storeConfig from '../../configs/storage.config';
-import {push} from 'react-router-redux';
 import {beginTask, endTask} from 'redux-nprogress';
 
 /**
@@ -76,25 +75,11 @@ const loginRequestEpic = (action$, store) =>
         ajax.post(loginAPI, data.payload)
           .mergeMap((json) =>
             of(actions.loginRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.data.name, json.response.data.id, json.response.data.layout_id))
           )
           .catch((error) => of(actions.loginRequestFailure(error))),
         of(store.dispatch(endTask())),
       )
     );
-/**
- * action sign out
- * @param {any} action$
- * @param {any} store
- * @return {Object}
-*/
-const signOutEpic = (action$, store) =>
-  action$.ofType(types.SIGN_OUT)
-    .do(() => {
-      storeConfig.clearUserLocal();
-      store.dispatch(push('/'));
-    })
-    .ignoreElements();
 /**
  * action sign up request
  * @param {any} action$
@@ -126,7 +111,6 @@ const fbRequestEpic = (action$, store) =>
         ajax.post(`${loginFB}?access_token=${data.payload}`)
           .mergeMap((json) =>
             of(actions.fbRequestSuccess(json), actionInit.hideModal())
-              .do(storeConfig.setUserLocal(json.xhr, json.response.name, json.response.id, json.response.data.layout_id))
           )
           .catch((error) => of(actions.fbRequestFailure(error.xhr.response.errors))),
         of(store.dispatch(endTask())),
@@ -180,7 +164,6 @@ const putUserLayoutEpic = (action$, store) =>
           ajax.put(`${putUserLayout}`, data.payload, storeConfig.setHeader())
             .mergeMap(() => 
               of(actions.putUserLayoutSuccess())
-              .do(storeConfig.changeLayoutID(store))
             )
             .catch((error) => of(actions.putUserLayoutFailure(error))),
           of(store.dispatch(endTask())),
@@ -190,7 +173,6 @@ const putUserLayoutEpic = (action$, store) =>
 export {
   myPathRequestEpic,
   loginRequestEpic,
-  signOutEpic,
   signupRequestEpic,
   fbRequestEpic,
   getUserInfoRequestEpic,
