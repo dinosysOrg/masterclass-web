@@ -5,6 +5,8 @@ import syllabusJson from "../../spec/mockdata/syllabus.json";
  * An action creator - fetching started
  * @return {Object} action - with type FETCH_SYLLABUS_REQUEST
  */
+
+ //Payload will be removed when API is available
 export function fetchSyllabus() {
   return {
     type: types.FETCH_SYLLABUS_REQUEST,

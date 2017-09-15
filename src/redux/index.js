@@ -6,7 +6,7 @@ import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
 import {getBrowsePath, getHomePath, searchPath} from './path/path.epic';
 import syllabusReducer from './syllabus/syllabus.reducers';
-import {getSyllabusDetail} from './syllabus/syllabus.epic'
+import {getSyllabusDetailEpic} from './syllabus/syllabus.epic'
 
 export {
   pathReducer,
@@ -27,5 +27,5 @@ export {
   getHomePath,
   putUserLayoutEpic,
   searchPath,
-  getSyllabusDetail,
+  getSyllabusDetailEpic,
 };

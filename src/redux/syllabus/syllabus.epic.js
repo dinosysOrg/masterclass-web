@@ -14,7 +14,7 @@ import { beginTask, endTask } from "redux-nprogress";
  * @param {Object} store - action stream
  * @return {Object} action stream
  */
-const getSyllabusDetail = (action$, store) =>
+const getSyllabusDetailEpic = (action$, store) =>
   action$.ofType(types.FETCH_SYLLABUS_REQUEST)
   .mergeMap(data =>
     concat$(
@@ -27,5 +27,5 @@ const getSyllabusDetail = (action$, store) =>
     )
   );
 export {
-  getSyllabusDetail,
+  getSyllabusDetailEpic,
 };
