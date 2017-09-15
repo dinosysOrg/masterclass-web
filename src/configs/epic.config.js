@@ -5,7 +5,6 @@ export default combineEpics(
   loginRequestEpic,
   getBrowsePath,
   signupRequestEpic,
-  signOutEpic,
   fbRequestEpic,
   myPathRequestEpic,
   changeEnEpic,
