@@ -19,6 +19,7 @@ export function loginRequestSuccess(json) {
   const userName = json.response.data.name;
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
+    response: json,
     payload: {userName},
   };
 }
@@ -117,6 +118,7 @@ export function fbRequestSuccess(json) {
   const userName = json.response.name;
   return {
     type: types.LOGIN_FB_REQUEST_SUCCESS,
+    response: json,
     payload: {userName},
   };
 }
@@ -317,7 +319,7 @@ export function putUserLayout(data) {
  * @param {Object} data
  * @return {Object}
 */
-export function putUserLayoutSuccess(json) {
+export function putUserLayoutSuccess() {
   return {
     type: types.PUT_USER_LAYOUT_SUCCESS,
   };
