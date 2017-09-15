@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import VideoSlide from './video_slide';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  * Full Video Catalog
@@ -31,7 +32,7 @@ class FullVideoCatalog extends Component {
           <div className="col-md-4">
           </div>
           <div className="col-md-8 text-right popularPath__viewall">
-            <Link to="/ViewAll">View all paths</Link>
+            <Link to="/ViewAll">{this.context.t('view all path')}</Link>
           </div>
         </div>
       )
@@ -71,5 +72,9 @@ class FullVideoCatalog extends Component {
     );
   }
 }
+
+FullVideoCatalog.contextTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 export default FullVideoCatalog;

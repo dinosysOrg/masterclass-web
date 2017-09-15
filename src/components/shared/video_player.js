@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
+import PropTypes from 'prop-types';
 
 /*
 Video Player Component
@@ -59,7 +60,9 @@ class VideoPlayer extends Component {
 
   componentWillUnmount() {
     let video = document.getElementsByTagName("video")[0];
-    video.removeEventListener("timeupdate", this._updateTime.bind(this));
+    if (video) {
+      video.removeEventListener("timeupdate", this._updateTime.bind(this));
+    }
     document.removeEventListener("keydown", this._closePopUp.bind(this));
   }
 
@@ -70,13 +73,16 @@ class VideoPlayer extends Component {
     if (!this.state.didInitTimeEvent) {
       this.setState({didInitTimeEvent: true});
       let video = document.getElementsByTagName("video")[0];
-      video.addEventListener("timeupdate", this._updateTime.bind(this));
+      if (video) {
+        video.addEventListener("timeupdate", this._updateTime.bind(this));
+      }
     }
     if (prevState.currentLayout !== this.state.currentLayout) {
       let video = document.getElementsByTagName("video")[0];
-      video.addEventListener("timeupdate", this._updateTime.bind(this));
+      if (video) {
+        video.addEventListener("timeupdate", this._updateTime.bind(this));
+      }
     }
-    
   }
 
   handleBackwardClick(e) {
@@ -156,13 +162,26 @@ class VideoPlayer extends Component {
     this.setState({ playing: false });
   }
 
-  _closePopUp() {
-    this.setState({
-      settingOpened: false,
-      volumeOpened: false,
-      fullScreen: false,
-      angleOpened: false
-    });
+  seekVideo(e) {
+    let offset = e.target.getBoundingClientRect().left,
+        left = e.clientX - offset,
+        width = e.target.clientWidth,
+        progress = left / width,
+        time = progress * this.refs.videoContent.getDuration();
+    console.log(time)
+    this.refs.videoContent.handleSeekVideo(time);
+    this.setState({progress: progress * 100});
+  }
+
+  _closePopUp(e) {
+    if (e.keyCode === 27) {
+      this.setState({
+        settingOpened: false,
+        volumeOpened: false,
+        fullScreen: false,
+        angleOpened: false
+      });
+    }
   }
 
   _closeSettingPopup() {
@@ -207,17 +226,21 @@ class VideoPlayer extends Component {
   }
 
   _renderImage() {
-    return this.layoutImage.map((value, index) => {
-      return (
+    let videos = this.props.videos,
+        videosAmount = videos.length >= 4 ? 5 : videos.length,
+        images = [];
+    for (let i = 0; i < videosAmount; i++) {
+      images.push(
         <div
-          key={index}
+          key={i}
           className="video-player__setting__item"
-          onClick={this.selectLayout.bind(this, index)}
+          onClick={this.selectLayout.bind(this, i)}
         >
-          <img src={value} alt="Layout" />
+          <img src={this.layoutImage[i]} alt="Layout" />
         </div>
       );
-    });
+    }
+    return images;
   }
 
   _renderAngle() {
@@ -299,109 +322,126 @@ class VideoPlayer extends Component {
     return date.toISOString().substr(11, 8);
   }
 
-  render() {
-    let className = this.state.fullScreen
+  _renderPlayer() {
+    if (this.props.videos.length > 0) {
+      let className = this.state.fullScreen
       ? "video-player fullscreen"
       : "video-player";
-    return (
-      <div className={className}>
-        <div className="content-wrapper">
-          <VideoContent
-            ref="videoContent"
-            layoutID={this.state.currentLayout}
-            onVideoEnded={this.handleOnVideoEnded.bind(this)}
-            openAngleSelector={this.openAngleSelector.bind(this)}
-          />
-          {this._renderSetting()}
-          <div className="video-player__controls clearfix">
-            <div className="progress">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{ width: this.state.progress + "%" }}
-                aria-valuenow={this.state.progress}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              />
-            </div>
-            <div className="float-left">
-              <ul className="video-player__controls__left">
-                <li
-                  className="nav-item"
-                  onClick={this.handleBackwardClick.bind(this)}
-                >
-                  <Icon.FaBackward size={20} fill="#fff" />
-                </li>
-                {this.state.playing ? (
+      return (
+        <div className={className}>
+          <div className="content-wrapper">
+            <VideoContent
+              ref="videoContent"
+              layoutID={this.state.currentLayout}
+              onVideoEnded={this.handleOnVideoEnded.bind(this)}
+              openAngleSelector={this.openAngleSelector.bind(this)}
+              videos={this.props.videos}
+            />
+            {this._renderSetting()}
+            <div className="video-player__controls clearfix">
+              <div onClick={this.seekVideo.bind(this)}>
+                <div className="progress">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    style={{ width: this.state.progress + "%" }}
+                    aria-valuenow={this.state.progress}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  />
+                </div>
+              </div>
+              <div className="float-left">
+                <ul className="video-player__controls__left">
                   <li
                     className="nav-item"
-                    onClick={this.handlePauseClick.bind(this)}
+                    onClick={this.handleBackwardClick.bind(this)}
                   >
-                    <Icon.FaPause size={20} fill="#fff" />
+                    <Icon.FaBackward size={20} fill="#fff" />
                   </li>
-                ) : (
+                  {this.state.playing ? (
+                    <li
+                      className="nav-item"
+                      onClick={this.handlePauseClick.bind(this)}
+                    >
+                      <Icon.FaPause size={20} fill="#fff" />
+                    </li>
+                  ) : (
+                    <li
+                      className="nav-item"
+                      onClick={this.handlePlayClick.bind(this)}
+                    >
+                      <Icon.FaPlay size={20} fill="#fff" />
+                    </li>
+                  )}
                   <li
                     className="nav-item"
-                    onClick={this.handlePlayClick.bind(this)}
+                    onClick={this.handleForwardClick.bind(this)}
                   >
-                    <Icon.FaPlay size={20} fill="#fff" />
+                    <Icon.FaForward size={20} fill="#fff" />
                   </li>
-                )}
-                <li
-                  className="nav-item"
-                  onClick={this.handleForwardClick.bind(this)}
-                >
-                  <Icon.FaForward size={20} fill="#fff" />
-                </li>
-                <li
-                  className="nav-item"
-                  onClick={this.openVolumeControl.bind(this)}
-                >
-                  <Icon.FaVolumeUp size={20} fill="#fff" />
-                </li>
-                {this._renderVolume()}
-                <li className="nav-item">
-                  <span className="video-player__timestamp">
-                    {this._renderTime()}
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className="float-right">
-              <ul className="video-player__controls__right">
-                {this._renderSettingIcon()}
-                <li className="nav-item dropup">
-                  <a
-                    href=""
-                    className="dropdown-toggle"
-                    data-toggle="dropdown"
-                  >
-                    {this.state.currentSpeed + "x"}
-                  </a>
-                  <ul className="dropdown-menu">
-                    {this._generateSpeedMultipliers()}
-                  </ul>
-                </li>
-                {this.state.fullScreen ? (
                   <li
                     className="nav-item"
-                    onClick={this._closePopUp.bind(this)}
+                    onClick={this.openVolumeControl.bind(this)}
                   >
-                    <Icon.FaCompress size={20} color="#fff" />
+                    <Icon.FaVolumeUp size={20} fill="#fff" />
                   </li>
-                ) : (
-                  <li
-                    className="nav-item"
-                    onClick={this.handleFullscreen.bind(this)}
-                  >
-                    <Icon.FaArrowsAlt size={20} color="#fff" />
+                  {this._renderVolume()}
+                  <li className="nav-item">
+                    <span className="video-player__timestamp">
+                      {this._renderTime()}
+                    </span>
                   </li>
-                )}
-              </ul>
+                </ul>
+              </div>
+              <div className="float-right">
+                <ul className="video-player__controls__right">
+                  {this._renderSettingIcon()}
+                  <li className="nav-item dropup">
+                    <a
+                      href=""
+                      className="dropdown-toggle"
+                      data-toggle="dropdown"
+                    >
+                      {this.state.currentSpeed + "x"}
+                    </a>
+                    <ul className="dropdown-menu">
+                      {this._generateSpeedMultipliers()}
+                    </ul>
+                  </li>
+                  {this.state.fullScreen ? (
+                    <li
+                      className="nav-item"
+                      onClick={this._closePopUp.bind(this)}
+                    >
+                      <Icon.FaCompress size={20} color="#fff" />
+                    </li>
+                  ) : (
+                    <li
+                      className="nav-item"
+                      onClick={this.handleFullscreen.bind(this)}
+                    >
+                      <Icon.FaArrowsAlt size={20} color="#fff" />
+                    </li>
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      );
+    } else {
+      return (
+        <div>
+          {this.context.t('lesson no video')}
+        </div>
+      )
+    }
+  }
+
+  render() {
+    return (
+      this._renderPlayer()
     );
   }
 }
@@ -415,6 +455,10 @@ const mapDispatchToProps = dispatch => {
   return {
     userAction: bindActionCreators(userAction, dispatch)
   };
+};
+
+VideoPlayer.contextTypes = {
+  t: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);

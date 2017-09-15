@@ -11,4 +11,6 @@ export default {
   'guitar': 'GUITAR',
   'overall progress': 'overall progress',
   'path enrollment': 'path enrollment',
+  'lesson no video': 'This lesson currently has no video available',
+  'view all path': 'View all paths'
 };

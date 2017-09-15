@@ -11,4 +11,6 @@ export default {
   'guitar': 'GUITAR',
   'overall progress': 'Tiến độ',
   'path enrollment': 'Lịch sử học',
+  'lesson no video': 'Bài học này hiện chưa có video',
+  'view all path': 'Xem tất cả'
 };
