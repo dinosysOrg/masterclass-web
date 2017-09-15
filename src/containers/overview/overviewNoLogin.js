@@ -23,10 +23,8 @@ class OverviewNoLoginPage extends Component {
    * @return {Component} - the rendered component
    */
   render() {
-    console.log(this.props)
     let {pathOverview} = this.props.payload.pathReducer;
     let data = formatDataMyPath(pathOverview);
-    console.log(data)
     return (
       <div className="overview-page">
         <div className="container">

@@ -79,7 +79,6 @@ export function fetchOverviewPathSuccess(data) {
  * @return {Object} action - with type FETCH_BROWSE_PATH
  */
 export function fetchOverviewPathFailed(error) {
-  console.log(error)
   return {
     type: types.FETCH_OVERVIEW_FAILED,
     payload: error
