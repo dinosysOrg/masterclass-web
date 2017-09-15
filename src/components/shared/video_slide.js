@@ -70,7 +70,7 @@ class videoSlide extends React.Component {
               className={`slideWrapper ${this.checkActiveSlide(index)}`}
               onClick={this.onClickSlide.bind(this, data, index)}
             >
-              <div className="slideBox">
+              <div className="slideBox cursorMouse">
                 <div className="slideBox__img"><img alt="video slide" src={data.imgSrc}/></div>
                 <div className="slideBox__info">
                   <h3 className="slideBox__title">{data.title}</h3>
