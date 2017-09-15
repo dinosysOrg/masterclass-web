@@ -156,6 +156,16 @@ class VideoPlayer extends Component {
     this.setState({ playing: false });
   }
 
+  seekVideo(e) {
+    let offset = e.target.getBoundingClientRect().left,
+        left = e.clientX - offset,
+        width = e.target.clientWidth,
+        progress = left / width,
+        time = progress * this.refs.videoContent.getDuration();
+    this.refs.videoContent.handleSeekVideo(time);
+    this.setState({progress: progress * 100});
+  }
+
   _closePopUp(e) {
     if (e.keyCode === 27) {
       this.setState({
@@ -322,7 +332,7 @@ class VideoPlayer extends Component {
             />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
-              <div className="progress">
+              <div className="progress" onClick={this.seekVideo.bind(this)}>
                 <div
                   className="progress-bar"
                   role="progressbar"

@@ -72,6 +72,18 @@ class VideoContent extends Component {
     });
   }
 
+  handleSeekVideo(time) {
+    let refs = this.refs;
+    Object.keys(refs).forEach(function(key) {
+      let obj = refs[key];
+      obj.currentTime = time;
+    });
+  }
+
+  getDuration() {
+    return this.refs.firstVid.duration;
+  }
+
   _renderContent() {
     switch (this.props.layoutID) {
       case 0: {
