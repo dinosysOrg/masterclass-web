@@ -84,7 +84,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
           </div>
@@ -99,7 +99,7 @@ class VideoContent extends Component {
                 ref="firstVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__two__second">
@@ -109,7 +109,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
           </div>
@@ -124,7 +124,7 @@ class VideoContent extends Component {
                 ref="firstVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__three__second">
@@ -133,7 +133,7 @@ class VideoContent extends Component {
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__three__third">
@@ -143,7 +143,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
           </div>
@@ -159,7 +159,7 @@ class VideoContent extends Component {
                   ref="firstVid"
                   onClick={this.props.openAngleSelector}
                 >
-                  <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                  <source src={this.props.videos[0].url} />
                 </video>
               </div>
               <div className="video-player__four__left-block">
@@ -169,7 +169,7 @@ class VideoContent extends Component {
                     ref="secondVid"
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                    <source src={this.props.videos[0].url} />
                   </video>
                 </div>
                 <div className="video-player__four__third">
@@ -178,7 +178,7 @@ class VideoContent extends Component {
                     ref="thirdVid"
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                    <source src={this.props.videos[0].url} />
                   </video>
                 </div>
                 <div className="video-player__four__fourth">
@@ -188,7 +188,7 @@ class VideoContent extends Component {
                     onEnded={this.props.onVideoEnded}
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                    <source src={this.props.videos[0].url} />
                   </video>
                 </div>
               </div>
@@ -205,7 +205,7 @@ class VideoContent extends Component {
                 ref="firstVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__five__second">
@@ -214,7 +214,7 @@ class VideoContent extends Component {
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__five__third">
@@ -223,7 +223,7 @@ class VideoContent extends Component {
                 ref="thirdVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
             <div className="video-player__five__fourth">
@@ -233,7 +233,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src="http://techslides.com/demos/sample-videos/small.webm" />
+                <source src={this.props.videos[0].url} />
               </video>
             </div>
           </div>

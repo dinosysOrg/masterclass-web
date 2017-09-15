@@ -311,6 +311,7 @@ class VideoPlayer extends Component {
             layoutID={this.state.currentLayout}
             onVideoEnded={this.handleOnVideoEnded.bind(this)}
             openAngleSelector={this.openAngleSelector.bind(this)}
+            videos={this.props.videos}
           />
           {this._renderSetting()}
           <div className="video-player__controls clearfix">
