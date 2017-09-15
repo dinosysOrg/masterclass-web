@@ -1,5 +1,5 @@
 import React from 'react';
-import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis} from 'recharts';
+import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import * as Icon from 'react-icons/lib/fa/';
 import storageConfig from '../../configs/storage.config';
 import {Link} from 'react-router-dom';
@@ -26,6 +26,7 @@ export default (props) => {
               <PolarGrid gridType="circle" />
               <Legend />
               <PolarAngleAxis fill="#fff" dataKey="subject" />
+              <PolarRadiusAxis tickCount={6} domain={[0, 150]}/>
             </RadarChart>
           </div>
         </div>

@@ -80,7 +80,7 @@ class OverviewNoLoginPage extends Component {
                     <PolarGrid gridType="circle" />
                     <Legend/>
                     <PolarAngleAxis fill="#fff" dataKey="subject" />
-                    <PolarRadiusAxis angle={50} domain={[0, 150]}/>
+                    <PolarRadiusAxis tickCount={6} domain={[0, 150]}/>
                   </RadarChart>
                 </ResponsiveContainer>
               </div>
