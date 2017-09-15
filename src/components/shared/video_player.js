@@ -156,13 +156,15 @@ class VideoPlayer extends Component {
     this.setState({ playing: false });
   }
 
-  _closePopUp() {
-    this.setState({
-      settingOpened: false,
-      volumeOpened: false,
-      fullScreen: false,
-      angleOpened: false
-    });
+  _closePopUp(e) {
+    if (e.keyCode === 27) {
+      this.setState({
+        settingOpened: false,
+        volumeOpened: false,
+        fullScreen: false,
+        angleOpened: false
+      });
+    }
   }
 
   _closeSettingPopup() {

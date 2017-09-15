@@ -5,6 +5,7 @@ import SyllabusDetail from './syllabusDetail';
 import {bindActionCreators} from 'redux';
 import * as syllabusAction from '../../redux/syllabus/syllabus.action';
 import {Loading} from '../../components';
+import * as _ from 'lodash';
 /**
  * SyllabusDetailContainer of project
  */
@@ -21,7 +22,7 @@ class SyllabusDetailContainer extends Component {
    * @return {html} The template of ProfileContainer class
    */
   checkLoading() {
-    if (this.props.payload.nprogress.tasks === 0) {
+    if (!_.isEmpty(this.props.payload.syllabusReducer)) {
       return (
         <SyllabusDetail {...this.props}/>
       );
