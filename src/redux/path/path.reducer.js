@@ -39,6 +39,11 @@ const path = (state = initPathState, action) => {
       ...state,
       error: action.payload,
     };
+  case types.FETCH_OVERVIEW_SUCCESS:
+    return {
+      ...state,
+      pathOverview: action.payload,
+    };
   default:
     return state;
   }

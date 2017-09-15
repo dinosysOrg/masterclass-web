@@ -60,8 +60,27 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
       of(store.dispatch(endTask())),
     )
   );
+  /**
+   * This epic defines the whole operation of fetching path from server
+   * include 3 phases: start fetching, fetching success of fetching failed
+   * @param {Object} action$ - action stream
+   * @param {Object} store - action stream
+   * @return {Object} action stream
+   */
+  const overviewPath = (action$, store) =>
+  action$.ofType(types.FETCH_OVERVIEW_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        ajax.get(`${getPathAPI}/${data.payload}`)
+          .map((json) => actions.fetchOverviewPathSuccess(json.response))
+          .catch((error) => of(actions.fetchOverviewPathFailed(error))),
+        of(store.dispatch(endTask())),
+      )
+    );
 export {
   getBrowsePath,
   getHomePath,
   searchPath,
+  overviewPath,
 };

@@ -4,7 +4,7 @@ import {loginRequestEpic, signupRequestEpic, fbRequestEpic, myPathRequestEpic, g
   getQuizRequestEpic, saveQuizEpic, putUserInfoRequestEpic, putUserLayoutEpic} from './user/user.epic';
 import {changeEnEpic, changeViEpic} from './init/init.epic';
 import pathReducer from './path/path.reducer';
-import {getBrowsePath, getHomePath, searchPath} from './path/path.epic';
+import {getBrowsePath, getHomePath, searchPath, overviewPath} from './path/path.epic';
 import syllabusReducer from './syllabus/syllabus.reducers';
 import {getSyllabusDetailEpic} from './syllabus/syllabus.epic'
 
@@ -28,4 +28,5 @@ export {
   putUserLayoutEpic,
   searchPath,
   getSyllabusDetailEpic,
+  overviewPath
 };

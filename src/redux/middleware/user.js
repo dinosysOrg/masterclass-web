@@ -1,7 +1,5 @@
 import * as types from '../user/user.types';
-import * as initAction from '../init/init.action';
 import storeConfig from '../../configs/storage.config';
-import {push} from 'react-router-redux';
 export const userMiddleWare = store => next => action => {
   if(action.type === types.SIGN_OUT){
     storeConfig.clearUserLocal();

@@ -4,12 +4,20 @@ import {withRouter} from 'react-router-dom';
 import Overview from './overview';
 import OverviewNoLogin from './overviewNoLogin';
 import {Sidebar} from '../../components';
+import {bindActionCreators} from 'redux';
+import * as pathAction from '../../redux/path/path.actions';
+import {Loading} from '../../components';
 /**
  * OverviewContainer of project
  */
 class OverviewContainer extends Component {
+  componentWillMount() {
+    let {path_Id} = this.props.match.params;
+    this.props.pathAction.fetchOverviewPath(Number(path_Id))
+  }
   checklogin() {
     const {loginStatus} = this.props.payload.userReducer;
+    let {tasks} = this.props.payload.nprogress;
     if (loginStatus) {
       return (
         <div className="container">
@@ -22,13 +30,13 @@ class OverviewContainer extends Component {
                 <Sidebar {...this.props} />
               </div>
               <div className="col-md-9 col-pagecontent pb-5">
-                <Overview {...this.props}/>
+                {tasks === 0 && this.props.payload.pathReducer.pathOverview !== undefined ? <Overview {...this.props}/> : <Loading/>}
               </div>
             </div>
         </div>
     );
     } else {
-      return (<OverviewNoLogin />);
+      return  tasks === 0 && this.props.payload.pathReducer.pathOverview !== undefined ? <OverviewNoLogin {...this.props} /> : <Loading/>
     }
   }
   /**
@@ -46,4 +54,10 @@ const mapStateToProps = (rootState) => {
     payload: rootState,
   };
 };
-export default withRouter(connect(mapStateToProps)(OverviewContainer));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    pathAction: bindActionCreators(pathAction, dispatch),
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OverviewContainer));

@@ -54,3 +54,33 @@ export function fetchPathFailed(error) {
     payload: error,
   };
 };
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_BROWSE_PATH
+ */
+export function fetchOverviewPath(id) {
+  return {
+    type: types.FETCH_OVERVIEW_REQUEST,
+    payload: id
+  };
+};
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_BROWSE_PATH
+ */
+export function fetchOverviewPathSuccess(data) {
+  return {
+    type: types.FETCH_OVERVIEW_SUCCESS,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_BROWSE_PATH
+ */
+export function fetchOverviewPathFailed(error) {
+  return {
+    type: types.FETCH_OVERVIEW_FAILED,
+    payload: error
+  };
+};

@@ -13,7 +13,14 @@ body{background-color: #1e2124;}
 .bg_yellow{background-color: yellow;}
 .recharts-text{fill: #fff;}
 .recharts-wrapper{margin: auto}
-.recharts-polar-radius-axis-line, .recharts-polar-radius-axis-tick-value {stroke: $yellow1;}
+.recharts-polar-grid-concentric-circle{
+    fill: #a0a0a0;
+    fill-opacity: 0.1;
+    stroke: #a0a0a0;
+    stroke-opacity: 0.6;
+}
+.recharts-polar-radius-axis-line{stroke: transparent;}
+.recharts-polar-radius-axis-tick-value {font-size: 0px;}
 .recharts-polar-angle-axis-tick{font-size: 12px;}
 .cursorMouse{cursor:pointer;}
 .pageTitle{
