@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
-import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import PromoPanel from '../../components/shared/promo_panel';
-import formatDataResponse from '../../configs/data.config';
 import VideoPanel from '../../components/shared/video_panel';
 import PropTypes from 'prop-types';
 import './browse.style.css';
@@ -35,7 +33,6 @@ class Browse extends Component {
     } else {
       return (
         <div className="container-fluid">
-          {browsePath.recommend.length !== 0 ? <FullVideoCatalog settingSlide={settingSlide} title={this.context.t('recommend')} data={formatDataResponse(browsePath.recommend)} location={this.props.location} /> : null}
           <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
         </div>
       )

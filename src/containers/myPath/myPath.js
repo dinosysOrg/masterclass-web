@@ -3,7 +3,7 @@ import './myPath.style.css';
 import {Link} from 'react-router-dom';
 import * as Icon from 'react-icons/lib/fa/';
 import PropTypes from 'prop-types';
-import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer} from 'recharts';
+import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis} from 'recharts';
 import CircularProgressbar from 'react-circular-progressbar';
 
 let data = [
@@ -100,6 +100,7 @@ class PathPage extends Component {
                       <PolarGrid gridType="circle" />
                       <Legend/>
                       <PolarAngleAxis fill="#fff" dataKey="subject" />
+                      <PolarRadiusAxis tickCount={6} domain={[0, 150]}/>
                     </RadarChart>
                   </ResponsiveContainer>
                 </div>

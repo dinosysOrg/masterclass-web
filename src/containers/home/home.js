@@ -4,7 +4,7 @@ import HowItWorks from '../../components/shared/how_it_works';
 import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import $ from 'jquery';
 import './home.style.css';
-import formatDataResponse from '../../configs/data.config';
+import {formatArrayData} from '../../configs/data.config';
 import PropTypes from 'prop-types';
 let settingSlide = {
   infinite: false,
@@ -29,7 +29,7 @@ class HomePage extends Component {
   }
    renderFullVideoCatalog() {
     if(this.props.payload.pathReducer.hasOwnProperty('paths') && this.props.payload.pathReducer.paths.popular.length !== 0) {
-      let data = formatDataResponse(this.props.payload.pathReducer.paths.popular);
+      let data = formatArrayData(this.props.payload.pathReducer.paths.popular);
       return (
         <FullVideoCatalog settingSlide={settingSlide} title={this.context.t('popular')} data={data} location={this.props.location}/>
       )
