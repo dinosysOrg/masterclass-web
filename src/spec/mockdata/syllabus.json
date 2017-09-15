@@ -63,6 +63,36 @@
                 "created_at": "2017-09-13T07:12:01.968Z",
                 "updated_at": "2017-09-13T07:12:01.968Z",
                 "time": 213
+            },
+            {
+                "id": 11,
+                "uploader_id": 9,
+                "name": "Syllabus video_2",
+                "video_type": "syllabus",
+                "url": "http://techslides.com/demos/sample-videos/small.webm",
+                "created_at": "2017-09-13T07:12:01.968Z",
+                "updated_at": "2017-09-13T07:12:01.968Z",
+                "time": 213
+            },
+            {
+                "id": 11,
+                "uploader_id": 9,
+                "name": "Syllabus video_2",
+                "video_type": "syllabus",
+                "url": "http://techslides.com/demos/sample-videos/small.webm",
+                "created_at": "2017-09-13T07:12:01.968Z",
+                "updated_at": "2017-09-13T07:12:01.968Z",
+                "time": 213
+            },
+            {
+                "id": 11,
+                "uploader_id": 9,
+                "name": "Syllabus video_2",
+                "video_type": "syllabus",
+                "url": "http://techslides.com/demos/sample-videos/small.webm",
+                "created_at": "2017-09-13T07:12:01.968Z",
+                "updated_at": "2017-09-13T07:12:01.968Z",
+                "time": 213
             }
         ],
         "sheets": [

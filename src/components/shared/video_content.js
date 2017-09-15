@@ -109,7 +109,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[1].url} />
               </video>
             </div>
           </div>
@@ -133,7 +133,7 @@ class VideoContent extends Component {
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[1].url} />
               </video>
             </div>
             <div className="video-player__three__third">
@@ -143,7 +143,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[2].url} />
               </video>
             </div>
           </div>
@@ -169,7 +169,7 @@ class VideoContent extends Component {
                     ref="secondVid"
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src={this.props.videos[0].url} />
+                    <source src={this.props.videos[1].url} />
                   </video>
                 </div>
                 <div className="video-player__four__third">
@@ -178,7 +178,7 @@ class VideoContent extends Component {
                     ref="thirdVid"
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src={this.props.videos[0].url} />
+                    <source src={this.props.videos[2].url} />
                   </video>
                 </div>
                 <div className="video-player__four__fourth">
@@ -188,7 +188,7 @@ class VideoContent extends Component {
                     onEnded={this.props.onVideoEnded}
                     onClick={this.props.openAngleSelector}
                   >
-                    <source src={this.props.videos[0].url} />
+                    <source src={this.props.videos[3].url} />
                   </video>
                 </div>
               </div>
@@ -214,7 +214,7 @@ class VideoContent extends Component {
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[1].url} />
               </video>
             </div>
             <div className="video-player__five__third">
@@ -223,7 +223,7 @@ class VideoContent extends Component {
                 ref="thirdVid"
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[2].url} />
               </video>
             </div>
             <div className="video-player__five__fourth">
@@ -233,7 +233,7 @@ class VideoContent extends Component {
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
               >
-                <source src={this.props.videos[0].url} />
+                <source src={this.props.videos[3].url} />
               </video>
             </div>
           </div>
