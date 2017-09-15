@@ -2,6 +2,7 @@ import React from 'react';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis} from 'recharts';
 import * as Icon from 'react-icons/lib/fa/';
 import storageConfig from '../../configs/storage.config';
+import {Link} from 'react-router-dom';
 
 export default (props) => {
   return (
@@ -14,7 +15,7 @@ export default (props) => {
             <div className="slideDetail__author">{props.instructor}</div>
             <p>{props.description}</p>
             <div className="list-inline">
-              <button type="button" className="btn btn-primary text-uppercase"><Icon.FaAlignLeft size={16} fill="#000" /> View path</button>
+              <Link to={`/Path/${props.id}`} className="btn btn-primary text-uppercase"><Icon.FaAlignLeft size={16} fill="#000" /> View path</Link>
               <button type="button" className="btn btn-second text-uppercase ml-3"><Icon.FaPlusCircle size={18} fill="#000" /> ADD to my path</button>
             </div>
           </div>

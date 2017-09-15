@@ -11,6 +11,7 @@ class Siderbar extends Component {
   */
   checkSidebar() {
     const {path} = this.props.match;
+    const {path_Id} = this.props.match.params;
     if (path === '/Profile') {
       return (
         <div className="sidebar">
@@ -25,8 +26,8 @@ class Siderbar extends Component {
       return (
         <div className="sidebar">
           <ul className="nav nav-pills flex-column">
-            <li className={`nav-item ${path === '/Path/:path_Id/' ? 'active' : null}`}><Link to="/Path/10">OVERVIEW</Link></li>
-            <li className={`nav-item ${path === '/Path/:path_Id/Syllabus' ? 'active' : null}`}><Link to="/Path/10/Syllabus">SYLLABUS</Link></li>
+            <li className={`nav-item ${path === '/Path/:path_Id/' ? 'active' : null}`}><Link to={`/Path/${path_Id}`}>OVERVIEW</Link></li>
+            <li className={`nav-item ${path === '/Path/:path_Id/Syllabus' ? 'active' : null}`}><Link to={`/Path/${path_Id}/Syllabus`}>SYLLABUS</Link></li>
             <li className="nav-item"><a href="">MATERIALS</a></li>
             <li className="nav-item"><a href="">PRATIVE</a></li>
             <li className="nav-item"><a href="">TUNNER</a></li>
