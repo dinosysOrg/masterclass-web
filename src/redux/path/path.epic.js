@@ -6,7 +6,6 @@ import {getPathAPI} from './path.api';
 import {concat as concat$} from 'rxjs/observable/concat';
 import {of} from 'rxjs/observable/of';
 import {beginTask, endTask} from 'redux-nprogress';
-import storeConfig from '../../configs/storage.config';
 /**
  * This epic defines the whole operation of fetching path from server
  * include 3 phases: start fetching, fetching success of fetching failed

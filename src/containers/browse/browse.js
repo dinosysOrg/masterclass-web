@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
-import FullVideoCatalog from '../../components/shared/full_video_catalog';
 import PromoPanel from '../../components/shared/promo_panel';
-import {formatArrayData} from '../../configs/data.config';
 import VideoPanel from '../../components/shared/video_panel';
 import PropTypes from 'prop-types';
 import './browse.style.css';

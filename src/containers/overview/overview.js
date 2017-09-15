@@ -6,8 +6,6 @@ import {formatDataMyPath} from '../../configs/data.config';
  * OverviewPage
  */
 class OverviewPage extends Component {
-  componentDidMount() {
-  }
   /**
    * @return {Component} - the rendered component
    */
