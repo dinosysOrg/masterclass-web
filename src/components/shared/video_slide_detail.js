@@ -2,7 +2,7 @@ import React from 'react';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import * as Icon from 'react-icons/lib/fa/';
 import storageConfig from '../../configs/storage.config';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 
 export default (props) => {
   return (

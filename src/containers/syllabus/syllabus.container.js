@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router';
 import Syllabus from './syllabus';
 import {Sidebar} from '../../components';
 import {bindActionCreators} from 'redux';
@@ -11,7 +11,7 @@ import {Loading} from '../../components';
  */
 class SyllabusContainer extends Component {
   componentWillMount() {
-    let {path_Id} = this.props.match.params;
+    let {path_Id} = this.props.params;
     this.props.pathAction.fetchOverviewPath(Number(path_Id))
   }
   /**

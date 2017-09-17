@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import VideoSlide from './video_slide';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 
 /**

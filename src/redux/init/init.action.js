@@ -57,3 +57,13 @@ export function changeLanguageVI() {
     type: types.CHANGELANGUAGE_TO_VI,
   };
 }
+/**
+ * Redirect.
+ * @return {Object} response
+ */
+export function redirect(location) {
+  return {
+    type: types.REDIRECT,
+    payload: location
+  };
+}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Browse from './browse';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as pathAction from '../../redux/path/path.actions';
 import * as initAction from '../../redux/init/init.action';

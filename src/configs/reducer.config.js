@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 import {userReducer, initReducer, pathReducer, syllabusReducer} from '../redux';
 import {reducer as reduxFormReducer} from 'redux-form';
-import {routerReducer} from 'react-router-redux';
+import {routerReducer} from 'react-router-redux'
 import {i18nState} from 'redux-i18n';
 import {nprogress} from 'redux-nprogress';
 
 const rootReducer = combineReducers({
   nprogress,
-  router: routerReducer,
+  routing: routerReducer,
   form: reduxFormReducer,
   i18nState,
   userReducer,
