@@ -21,7 +21,7 @@ export const userMiddleWare = store => next => action => {
   if(action.type === initTypes.REDIRECT){
     store.dispatch(push(`${action.payload}`));
   }
-  if(action.type === userTypes.LOGIN_REQUEST_SUCCESS || action.type === userTypes.SIGNUP_REQUEST_SUCCESS){
+  if(action.type === userTypes.LOGIN_REQUEST_SUCCESS || action.type === userTypes.SIGNUP_REQUEST_SUCCESS || action.type === userTypes.LOGIN_FB_REQUEST_SUCCESS){
     store.dispatch(push('/Browse'));
   }
   return next(action);
