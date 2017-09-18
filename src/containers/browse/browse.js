@@ -22,23 +22,14 @@ class Browse extends Component {
    * @return {html} html code 
    */
   checkRecommend(browsePath) {
-    if (browsePath.recommend.length === 0) {
-      return (
-        <div className="container-fluid">
-          <PromoPanel location={this.props.location} {...this.props}/>
-            <Search {...this.props} />
-            <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
-          <PromoPanel location={this.props.location} {...this.props}/>
-        </div>
-      )
-    } else {
-      return (
-        <div className="container-fluid">
+    return (
+      <div className="container-fluid">
+        <PromoPanel location={this.props.location} {...this.props}/>
           <Search {...this.props} />
           <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
-        </div>
-      )
-    }
+        <PromoPanel location={this.props.location} {...this.props}/>
+      </div>
+    )
   }
   /**
    * check loading status

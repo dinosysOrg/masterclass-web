@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './syllabusDetail.style.css';
 import VideoPlayer from '../../components/shared/video_player';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 import * as _ from 'lodash';
 /**
  * SyllabusPage
@@ -13,7 +13,7 @@ class SyllabusDetail extends Component {
    */
   checkLoading() {
     let syllabusReducer = this.props.payload.syllabusReducer;
-    let {path_Id} = this.props.match.params;
+    let {path_Id} = this.props.params;
     if (!_.isEmpty(syllabusReducer)) {
       return (
         <div className="syllabusDetail-page">
