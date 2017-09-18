@@ -165,7 +165,7 @@ class VideoPlayer extends Component {
   seekVideo(e) {
     let offset = e.target.getBoundingClientRect().left,
         left = e.clientX - offset,
-        width = e.target.clientWidth,
+        width = document.getElementsByClassName('progress')[0].clientWidth,
         progress = left / width,
         time = progress * this.refs.videoContent.getDuration();
     this.refs.videoContent.handleSeekVideo(time);
@@ -338,17 +338,15 @@ class VideoPlayer extends Component {
             />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
-              <div onClick={this.seekVideo.bind(this)}>
-                <div className="progress">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: this.state.progress + "%" }}
-                    aria-valuenow={this.state.progress}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  />
-                </div>
+              <div className="progress" onClick={this.seekVideo.bind(this)}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: this.state.progress + "%" }}
+                  aria-valuenow={this.state.progress}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                />
               </div>
               <div className="float-left">
                 <ul className="video-player__controls__left">
