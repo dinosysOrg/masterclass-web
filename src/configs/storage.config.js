@@ -43,14 +43,16 @@ exports.getUserLocal = () => {
 exports.setHeader = () => {
   if (typeof localStorage !== 'undefined' && localStorage) {
     let userLocal = JSON.parse(localStorage.getItem('userLocal'));
-    return {
-      'access-token': userLocal.token,
-      'client': userLocal.client,
-      'expiry': userLocal.expiry,
-      'token-type': userLocal.tokenType,
-      'uid': userLocal.uid,
-      'Content-Type': 'application/json',
-    };
+    if (userLocal) {
+      return {
+        'access-token': userLocal.token,
+        'client': userLocal.client,
+        'expiry': userLocal.expiry,
+        'token-type': userLocal.tokenType,
+        'uid': userLocal.uid,
+        'Content-Type': 'application/json',
+      };
+    } else return null;
   }
 };
 

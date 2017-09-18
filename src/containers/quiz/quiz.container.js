@@ -3,6 +3,7 @@ import Quiz from './quiz';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
+import * as initAction from '../../redux/init/init.action';
 import {Loading, QuizLoading} from '../../components';
 import {withRouter} from 'react-router';
 /**
@@ -52,6 +53,7 @@ const mapStateToProps = (rootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     userAction: bindActionCreators(userAction, dispatch),
+    initAction: bindActionCreators(initAction, dispatch),    
   };
 };
 
