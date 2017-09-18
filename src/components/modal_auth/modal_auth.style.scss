@@ -1,5 +1,9 @@
+@import '../../assets/stylesheets/common';
 .ReactModal__Content {
   z-index: 200;
+  .link-sigup{
+    color: #FBDD10;
+  }
   .label-error {
     color: red;
     margin-bottom: 10px;
@@ -16,7 +20,7 @@
     transform: scaleX(1);
     width: 55%;
     left: 0px !important;
-    top: 15% !important;
+    top: 10% !important;
     bottom: initial !important;
     right: 0px !important;
     margin: auto;
@@ -69,8 +73,9 @@
     border-bottom: none;
     bottom: -1px;
     position: relative;
+    color:#000;
     list-style: none;
-    background: #999;
+    background: #FBDD10;
     min-width: 120px;
     padding: 12px 15px;
     cursor: pointer;
