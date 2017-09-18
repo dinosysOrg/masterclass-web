@@ -44,6 +44,14 @@ const path = (state = initPathState, action) => {
       ...state,
       pathOverview: action.payload,
     };
+  case types.SEARCH_PATH_SUCCESS:
+    return {
+      ...state,
+      paths: {
+        ...state.paths,
+        ...Object.assign({}, action.payload),
+      }
+    };
   default:
     return state;
   }
