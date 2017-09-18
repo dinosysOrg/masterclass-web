@@ -3,13 +3,12 @@ import {compose, createStore, applyMiddleware} from 'redux';
 import {createEpicMiddleware} from 'redux-observable';
 import reducer from './reducer.config';
 import initEpic from './epic.config';
-import createHistory from 'history/createBrowserHistory';
-import {routerMiddleware} from 'react-router-redux';
 import {nprogressMiddleware} from 'redux-nprogress';
 import {userMiddleWare} from '../redux/middleware/user';
-const history = createHistory();
-const routerReduxMiddleware = routerMiddleware(history);
+import {routerMiddleware} from 'react-router-redux'
+import {browserHistory} from 'react-router';
 const epicMiddleware = createEpicMiddleware(initEpic);
+const reactRouterMiddleware = routerMiddleware(browserHistory);
 /**
  * config store redux
  * @param {Object} initialState
@@ -24,8 +23,8 @@ function configureStore(initialState) {
       applyMiddleware(
         userMiddleWare,
         nprogressMiddleware(),
-        routerReduxMiddleware,
         epicMiddleware,
+        reactRouterMiddleware,
       )
     )
   );

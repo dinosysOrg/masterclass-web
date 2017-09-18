@@ -39,6 +39,11 @@ export default function init(state = initialState, action) {
     return {
       ...state,
     };
+  case types.REDIRECT:
+    return {
+      ...state,
+      location: action.payload,
+    }
   default:
     return state;
   }

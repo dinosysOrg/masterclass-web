@@ -168,7 +168,6 @@ class VideoPlayer extends Component {
         width = e.target.clientWidth,
         progress = left / width,
         time = progress * this.refs.videoContent.getDuration();
-    console.log(time)
     this.refs.videoContent.handleSeekVideo(time);
     this.setState({progress: progress * 100});
   }

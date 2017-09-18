@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router';
 import './menu.style.css';
 /**
  * Main menu of header
