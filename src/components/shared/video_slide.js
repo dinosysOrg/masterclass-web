@@ -88,9 +88,9 @@ class videoSlide extends React.Component {
           )}
         </Slick>
         <CSSTransitionGroup
-        transitionName="transitionAnimation"
-        transitionEnterTimeout={200}
-        transitionLeaveTimeout={200}>
+          transitionName="transitionAnimation"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
           {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail slideDetailStatus={()=>this.checkSlideDetail()} {...this.state.slideDetail} /> : null}
         </CSSTransitionGroup>
       </div>
