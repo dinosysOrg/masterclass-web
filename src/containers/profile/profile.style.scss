@@ -1,3 +1,20 @@
+@import '../../assets/stylesheets/common';
 .profile-page {
-
+    .col-form-label{
+        color: #707070 ;
+        font-size: rem(14);
+    }
+    select{
+        width: 70%;
+        background-color: transparent;
+        border: 0px;
+        border-bottom: 1px solid #fff;
+        border-radius: 0px;
+        color: #fff;
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+    input{
+        width: 70%;
+    }
 }
