@@ -1,3 +1,12 @@
-.syllabus-page{
-  
+.syllabus-page {
+}
+.syllabus-tool {
+  .syllabus-note,
+  .syllabus-sheet,
+  .syllabus-exercise {
+    display: inline-block;
+  }
+  .syllabus-sheet {
+    margin: 0 70px;
+  }
 }

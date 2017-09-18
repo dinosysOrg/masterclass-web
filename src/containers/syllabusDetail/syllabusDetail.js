@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './syllabusDetail.style.css';
 import VideoPlayer from '../../components/shared/video_player';
+import SyllabusDetailTool from './syllabusDetail_tools';
 import * as _ from 'lodash';
 /**
  * SyllabusPage
@@ -28,6 +29,9 @@ class SyllabusDetail extends Component {
             </div>
             <div className="video-box">
               <VideoPlayer videos={syllabusReducer.syllabus.videos}/>
+            </div>
+            <div className="tool-box">
+              <SyllabusDetailTool />
             </div>
           </div>
         </div>
