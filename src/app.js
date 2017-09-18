@@ -35,6 +35,9 @@ class App extends React.Component {
       this.props.userAction.checkAuth(dataUser);
     }
   }
+  componentDidUpdate() {
+    window.scrollTo(0,0)
+  }
   /**
   * @return {html}
   * check loading fuc
@@ -88,7 +91,6 @@ class App extends React.Component {
             <Route key="/SyllabusDetail" path="/Path/:path_Id/Syllabus/:syllabus_Id" render={() => this.checkAuthenticate(SyllabusDetail)} />
           </Switch>
           <Footer/>
-          {this.checkLoading()}
         </div>
       </I18n >
     );
