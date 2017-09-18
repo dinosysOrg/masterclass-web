@@ -90,6 +90,7 @@ $f-light: Montserrat-Light;
   background: -ms-linear-gradient(102deg, #FFEB00, #fbdd10); /* IE10+ */
 }
 @mixin gradientBlue(){
+  background: linear-gradient(to right, #1959ff, #7f00ff); /* IE10+ */
   background: -moz-linear-gradient(to right, #1959ff, #7f00ff); /* FF3.6+ */
   background: -webkit-linear-gradient(to right, #1959ff, #7f00ff); /* Chrome10+,Safari5.1+ */
   background: -o-linear-gradient(to right, #1959ff, #7f00ff); /* Opera 11.10+ */

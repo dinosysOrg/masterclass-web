@@ -12,3 +12,14 @@
   background-color: #fff;
   color: #000;
 }
+.btn-login-fb{
+  padding: rem(15) rem(45);
+  font-size: rem(15);
+  color: #fff;
+  @include gradientBlue();
+}
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none;
+    box-shadow:none;
+}
