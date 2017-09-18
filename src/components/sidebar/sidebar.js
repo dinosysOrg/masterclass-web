@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './sidebar.style.css';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 /**
  * Siderbar of project
  */
@@ -10,8 +10,8 @@ class Siderbar extends Component {
    * @return {html} The template of menu class
   */
   checkSidebar() {
-    const {path} = this.props.match;
-    const {path_Id} = this.props.match.params;
+    const path = this.props.location.pathname;
+    const {path_Id} = this.props.params;
     if (path === '/Profile') {
       return (
         <div className="sidebar">

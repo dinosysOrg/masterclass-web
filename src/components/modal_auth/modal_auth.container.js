@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ModalAuth from './modal_auth';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
 import * as initAction from '../../redux/init/init.action';

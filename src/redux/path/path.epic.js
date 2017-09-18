@@ -7,6 +7,7 @@ import {concat as concat$} from 'rxjs/observable/concat';
 import * as actionInit from '../init/init.action';
 import {of} from 'rxjs/observable/of';
 import {beginTask, endTask} from 'redux-nprogress';
+import storeConfig from '../../configs/storage.config';
 /**
  * This epic defines the whole operation of fetching path from server
  * include 3 phases: start fetching, fetching success of fetching failed
@@ -19,7 +20,7 @@ const getBrowsePath = (action$, store) =>
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.get(`${getPathAPI}?type=browse`)
+        ajax.get(`${getPathAPI}?type=browse`, storeConfig.setHeader())
           .map((json) => actions.fetchPathSuccess(json.response))
           .catch((error) => of(actions.fetchPathFailed(error))),
         of(store.dispatch(endTask())),

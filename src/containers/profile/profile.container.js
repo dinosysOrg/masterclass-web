@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
 import {Loading, Sidebar} from '../../components';
-import {withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router';
 /**
  * ProfileContainer of project
  */

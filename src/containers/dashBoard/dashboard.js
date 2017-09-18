@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 
 import VideoPanel from '../../components/shared/video_panel';
 import PathProgressSummary from '../../components/shared/path_progress_summary';

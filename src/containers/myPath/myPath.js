@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './myPath.style.css';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router';
 import * as Icon from 'react-icons/lib/fa/';
 import PropTypes from 'prop-types';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis} from 'recharts';
