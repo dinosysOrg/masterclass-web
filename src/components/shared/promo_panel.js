@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-
+import PropTypes from 'prop-types';
 export default class PromoPanel extends React.Component {
   /**
   * render Header
@@ -10,7 +10,27 @@ export default class PromoPanel extends React.Component {
     e.preventDefault();
     this.props.initAction.showModal('modalAuth');
   }
-
+  renderButtonPromo(){
+    if (this.props.location.pathname === "/ViewAll") {
+      return (
+        <div className="col col-md-3 text-center">
+          <button onClick={this.handleModalLogin.bind(this)} className="btn btn-primary">{this.context.t('sign_up_now')}</button>
+        </div>
+      );
+    } else if (this.props.payload.pathReducer.paths.recommend.length !== 0) {
+      return(
+        <div className="col col-md-3 text-center">
+          <Link to="/Quiz" className="btn btn-primary">{this.context.t('take_quiz_again')}</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="col col-md-3 text-center">
+          <Link to="/Quiz" className="btn btn-primary">{this.context.t('discovery_now')}</Link>
+        </div>
+      )
+    }
+  }
   render() {
     return (
       <div className="discovery container my-5">
@@ -20,17 +40,13 @@ export default class PromoPanel extends React.Component {
               Discovery your own personal music path by<br/> filling out a quick form
             </h3>
           </div>
-          {
-            this.props.location.pathname === "/ViewAll" ? 
-            <div className="col col-md-3 text-center">
-              <button onClick={this.handleModalLogin.bind(this)} className="btn btn-primary">SignUp Now</button>
-            </div> :
-            <div className="col col-md-3 text-center">
-              <Link to="/Quiz" className="btn btn-primary">Discovery Now</Link>
-            </div>
-          }
+          {this.renderButtonPromo()}
         </div>
       </div>
     );
   }
+};
+
+PromoPanel.contextTypes = {
+  t: PropTypes.func.isRequired,
 };

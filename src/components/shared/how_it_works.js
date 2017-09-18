@@ -11,7 +11,7 @@ export default () => {
           </div>
           <div className="col">
             <div className="video">
-              <iframe title="iframe-video" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
+              <iframe title="iframe-video" allowFullScreen="allowFullScreen" frameBorder="0" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
             </div>
           </div>
         </div>

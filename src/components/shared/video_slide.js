@@ -1,6 +1,7 @@
 import React from 'react';
 import Slick from 'react-slick';
 import SlideDetail from './video_slide_detail';
+import { CSSTransitionGroup } from 'react-transition-group';
 /**
  * Video Slide Catalog
  */
@@ -36,11 +37,16 @@ class videoSlide extends React.Component {
   * @return {html}
   */
   checkActiveSlide(index) {
-    if (index === this.state.slideSelect) {
+    if (index === this.state.slideSelect && this.state.slideSelectStatus) {
       return 'slide-selected';
-    } else if (this.state.slideSelectStatus) {
+    } else if (this.state.slideSelectStatus && this.state.slideSelectStatus) {
       return 'slide-unselect';
     } else return null;
+  }
+  checkSlideDetail() {
+    this.setState({
+      slideSelectStatus: !this.state.slideSelectStatus,
+    });
   }
   /**
   * renderDetail slide
@@ -81,7 +87,12 @@ class videoSlide extends React.Component {
             </div>
           )}
         </Slick>
-        {this.state.slideDetail ? <SlideDetail {...this.state.slideDetail} /> : null}
+        <CSSTransitionGroup
+          transitionName="transitionAnimation"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
+          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail slideDetailStatus={()=>this.checkSlideDetail()} {...this.state.slideDetail} /> : null}
+        </CSSTransitionGroup>
       </div>
     );
   }

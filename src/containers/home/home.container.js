@@ -5,6 +5,7 @@ import {withRouter} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as userAction from '../../redux/user/user.action';
 import * as pathAction from '../../redux/path/path.actions';
+import {Loading} from '../../components';
 /**
  * HomePageContainer of project
  */
@@ -13,17 +14,25 @@ class HomePageContainer extends Component {
    * render HomePageContainer template
    * @return {html} The template of HomePageContainer class
    */
+  checkLoading() {
+    if(this.props.payload.nprogress.tasks === 0) {
+      return(
+        <HomePage {...this.props}/>
+      );
+    } else {
+      return(
+        <Loading/>
+      );
+    }
+  }
   render() {
-    return <HomePage {...this.props}/>;
+    return this.checkLoading()
   }
   /**
- * componentDidMount of HomePageContainer
+ * componentWillMount
  */
-  componentDidMount() {
-    // this.props.userAction.fetchUser();
-    if(!this.props.payload.pathReducer.hasOwnProperty('paths')) {
-      this.props.pathAction.fetchHomePath();
-    }
+  componentWillMount() {
+    this.props.pathAction.fetchHomePath();
   }
 }
 const mapStateToProps = (rootState) => {

@@ -30,7 +30,26 @@ export function searchPath(pathName) {
     payload: pathName
   };
 };
-
+/**
+ * An action creator - search started
+ * @return {Object} action - with type SEARCH_PATH_REQUEST
+ */
+export function searchPathSuccess(path) {
+  return {
+    type: types.SEARCH_PATH_SUCCESS,
+    payload: path
+  };
+};
+/**
+ * An action creator - search started
+ * @return {Object} action - with type SEARCH_PATH_REQUEST
+ */
+export function searchPathFailed(error) {
+  return {
+    type: types.SEARCH_PATH_FAILED,
+    payload: error
+  };
+};
 /**
  * An action creator - fetching finished
  * @param {Object} path - the path object receive from api
