@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-
 import PromoPanel from '../../components/shared/promo_panel';
 import VideoPanel from '../../components/shared/video_panel';
 import PropTypes from 'prop-types';
+import Search from '../../components/shared/search';
 import './browse.style.css';
 
 let settingSlide = {
@@ -26,6 +26,7 @@ class Browse extends Component {
       return (
         <div className="container-fluid">
           <PromoPanel location={this.props.location} {...this.props}/>
+            <Search {...this.props} />
             <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
           <PromoPanel location={this.props.location} {...this.props}/>
         </div>
@@ -33,6 +34,7 @@ class Browse extends Component {
     } else {
       return (
         <div className="container-fluid">
+          <Search {...this.props} />
           <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
         </div>
       )

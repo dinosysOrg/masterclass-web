@@ -10,18 +10,6 @@ import PropTypes from 'prop-types';
  */
 class FullVideoCatalog extends Component {
   /**
-   * Represent "Full Video Catalog" component
-   * @constructor
-   */
-  constructor() {
-    super();
-    this.state = {
-      searchText: '',
-    };
-
-    this._handleChange = this._handleChange.bind(this);
-  }
-  /**
    * Handle Input Change
    * @param {Event} e - the event object
    */
@@ -37,16 +25,6 @@ class FullVideoCatalog extends Component {
         </div>
       )
     } else return null;
-  }
-  /**
-   * Check data popular
-   */
-  /**
-   * Handle Input Change
-   * @param {Event} e - the event object
-   */
-  _handleChange(e) {
-    this.setState({searchText: e.target.value});
   }
   /**
    * Check data popular

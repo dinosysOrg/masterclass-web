@@ -15,7 +15,7 @@ export default (props) => {
             <p className="mb-0 syllabusList__time mt-1">{props.time}</p>
           </div>
         </div>
-        <a data-toggle="collapse" href={`#collapse${props.id}`} aria-expanded="false" aria-controls={`collapse${props.id}`} className="iconList"/>
+        <div data-toggle="collapse" href={`#collapse${props.id}`} aria-expanded="false" aria-controls={`collapse${props.id}`} className="iconList"/>
       </div>
       <div id={`collapse${props.id}`} className="collapse" role="tabpanel" aria-labelledby={`heading${props.id}`} data-parent="#accordion">
         <div className="card-body">
