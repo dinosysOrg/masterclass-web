@@ -23,6 +23,7 @@
     "react-scripts": "1.0.12",
     "react-slick": "^0.15.4",
     "react-tabs": "^1.1.0",
+    "react-transition-group": "1.x",
     "recharts": "^1.0.0-alpha.4",
     "redux": "^3.7.0",
     "redux-devtools-extension": "^2.13.2",
