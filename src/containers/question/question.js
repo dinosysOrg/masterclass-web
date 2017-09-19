@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import QuestionText from './question_text';
 import QuestionVideo from './question_video';
+import QuestionSelect from './question_select';
 class Question extends Component {
-  constructor() {
-    super();
-    this.state = {
-      descriptionText: '',
-      questionType: 0,
-    };
+  
+  _renderQuestion() {
+    const {question_type} = this.props.params;
+    switch(question_type) {
+      case undefined:
+        return <QuestionSelect {...this.props}/>
+      case 'record': 
+        return <div>TO BE IMPLEMENTED</div>
+      case 'upload':
+        return <QuestionVideo/>
+      case 'write': 
+        return <QuestionText/>
+      default:
+        return null;
+    }
   }
 
-  _handleDescriptionChange(e) {
-    this.setState({descriptionText: e.target.value});
+  selectType(id) {
+    this.setState({questionType: id});
   }
 
   render() {
     return (
       <div>
-        <div className="question__title font-weight-bold">
-          Submit your question
-        </div>
-        <div className="question__description">
-          <input className="description-input" type="text" 
-            value={this.state.searchText} 
-            placeholder="Type a short description for your question"
-            onChange={this._handleDescriptionChange.bind(this)}/>
-        </div>
-        <QuestionVideo />
+        {this._renderQuestion()}
       </div>
     )
   }

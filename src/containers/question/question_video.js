@@ -4,9 +4,15 @@ class QuestionVideo extends Component {
   constructor() {
     super();
     this.state = {
-      video: null
+      video: null,
+      descriptionText: '',
     };
   }
+
+  _handleDescriptionChange(e) {
+    this.setState({descriptionText: e.target.value});
+  }
+
 
   _handleSubmit() {
     //TODO
@@ -25,6 +31,15 @@ class QuestionVideo extends Component {
     let disabled = this.state.video ? false : true;
     return (
       <div className="question-video">
+        <div className="question__title font-weight-bold">
+          Submit your question
+        </div>
+        <div className="question__description">
+          <input className="description-input" type="text" 
+            value={this.state.searchText} 
+            placeholder="Type a short description for your question"
+            onChange={this._handleDescriptionChange.bind(this)}/>
+        </div>
         <div className="question-video__content mb-4">
           <button
             className="btn btn-fb btn-primary rounded-0 btn-login-fb"

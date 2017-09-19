@@ -6,7 +6,12 @@ class QuestionText extends Component {
     super();
     this.state = {
       contentText: '',
+      descriptionText: '',
     }
+  }
+
+  _handleDescriptionChange(e) {
+    this.setState({descriptionText: e.target.value});
   }
 
   _handleContentChange(e) {
@@ -26,6 +31,15 @@ class QuestionText extends Component {
     let remain = maxLength - this.state.contentText.length;
     return (
       <div className="question-text">
+        <div className="question__title font-weight-bold">
+          Submit your question
+        </div>
+        <div className="question__description">
+          <input className="description-input" type="text" 
+            value={this.state.searchText} 
+            placeholder="Type a short description for your question"
+            onChange={this._handleDescriptionChange.bind(this)}/>
+        </div>
         <div className="question-text__content">
           <textarea ref="content" 
             className="content-input" rows="12"

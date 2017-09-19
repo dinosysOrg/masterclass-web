@@ -22,6 +22,7 @@ ReactDOM.render(
         <Route path="/Path/:path_Id/Syllabus" component={Syllabus} />
         <Route path="/Path/:path_Id/Syllabus/:syllabus_Id" component={SyllabusDetail} />
         <Route path="/Path/:path_Id/QA" component={Question} />
+        <Route path="/Path/:path_Id/QA/:question_type" component={Question} />
         <Route component={Authenticate} >
           <Route path="/Browse" component={Browse} />
           <Route path="/Profile" component={Profile} />

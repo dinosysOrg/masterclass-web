@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import {Sidebar} from '../../components';
-import {Loading} from '../../components';
 import Question from './question';
 import './question.style.css';
 /**
@@ -14,7 +13,6 @@ class QuestionContainer extends Component {
    * @return { Component } - the component
    */
   render() {
-    let {tasks} = this.props.payload.nprogress;
     return (
         <div className="container">
           <div className="pageTitle">
@@ -26,7 +24,7 @@ class QuestionContainer extends Component {
               <Sidebar {...this.props} />
             </div>
             <div className="col-md-9 col-pagecontent pb-5 pl-5 pt-5">
-              <Question/>
+              <Question {...this.props}/>
             </div>
           </div>
       </div>
