@@ -1,4 +1,19 @@
-.syllabus-page {
+@import '../../assets/stylesheets/common';
+.syllabusDetail-page{
+  .video-box{
+      &__backLink{
+          color: $yellow1;
+      }
+      &__list{
+          li{
+              padding: 0px rem(25);
+              a{color: #f6f6f6}
+              &:last-child{
+                  padding: 0px;
+              }
+          }
+      }
+    }
 }
 .syllabus-tool {
   .syllabus-note,

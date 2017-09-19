@@ -4,6 +4,7 @@ import * as types from './path.types';
 import * as actions from './path.actions';
 import {getPathAPI} from './path.api';
 import {concat as concat$} from 'rxjs/observable/concat';
+import * as actionInit from '../init/init.action';
 import {of} from 'rxjs/observable/of';
 import {beginTask, endTask} from 'redux-nprogress';
 import storeConfig from '../../configs/storage.config';
@@ -54,11 +55,11 @@ const searchPath = (action$, store) =>
 action$.ofType(types.SEARCH_PATH_REQUEST)
   .mergeMap((data) =>
     concat$(
-      of(store.dispatch(beginTask())),
+      of(actionInit.showLoading()),
       ajax.get(`${getPathAPI}?type=search&path_name=${data.payload}`)
-        .map((json) => actions.fetchPathSuccess(json.response))
-        .catch((error) => of(actions.fetchPathFailed(error))),
-      of(store.dispatch(endTask())),
+        .map((json) => actions.searchPathSuccess(json.response))
+        .catch((error) => of(actions.searchPathFailed(error))),
+      of(actionInit.hideLoading()),
     )
   );
   /**

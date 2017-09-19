@@ -33,6 +33,9 @@ class App extends React.Component {
       this.props.userAction.checkAuth(dataUser);
     }
   }
+  componentDidUpdate() {
+    window.scrollTo(0,0)
+  }
   /**
   * @return {html}
   * check loading fuc
@@ -63,7 +66,6 @@ class App extends React.Component {
           <Header/>
           {this.props.children}
           <Footer/>
-          {this.checkLoading()}
         </div>
       </I18n>
     );

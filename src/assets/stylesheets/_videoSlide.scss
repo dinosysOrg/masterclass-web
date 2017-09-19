@@ -304,6 +304,8 @@ $slick-opacity-not-active: 0.5 !default;
     margin: rem(5) 0px;
     width: 100%;
     padding: rem(50) 0px;
+    padding-top: rem(70);
+    position: relative;
     // height: 500px;
     background-size: cover;
     &__title{
@@ -320,7 +322,13 @@ $slick-opacity-not-active: 0.5 !default;
       margin-bottom: rem(40);
     }
     &__colRight{
+      min-height: rem(420);
       background-color: rgba(0, 0, 0, 0.5);
     }
-  
+    .btn-dropdown-slide{
+        position: absolute;
+        left: 50%;
+        top: 3%;
+        transform: translate(0%, -50%);
+    }
   }

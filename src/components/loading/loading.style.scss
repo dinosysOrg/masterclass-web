@@ -19,16 +19,8 @@
   border: 5px solid transparent;
   border-radius: 50%;
   background-color: transparent;
-  margin-top: 150px;
-  margin-bottom: 150px;
-  
-  // &:hover {
-  //   border-color: rgba(210, 210, 210, .5);
-  // }
-  
-  // &:hover:before {
-  //   background-color: rgba(210, 210, 210, .4);
-  // }
+  margin-top: 35vh;
+  margin-bottom: 35vh;
   
   &:before {
     position: absolute;
@@ -56,5 +48,13 @@
     border-radius: 200px 0 0 0;
     background:  linear-gradient(95deg, #ffeb00, #fbdd10);
     animation: loadingMini .9s linear infinite;
+  }
+}
+
+.browse-page{
+  .loading-small {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transform: scale(0.5);
   }
 }

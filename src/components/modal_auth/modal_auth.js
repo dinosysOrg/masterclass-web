@@ -86,7 +86,7 @@ class Modal extends Component {
       return (
         <div className="tabContent">
           Alredy have an account.{' '}
-          <a onClick={() => this.onChangeTab(1)} href="">Log in</a>
+          <a className="link-sigup" onClick={() => this.onChangeTab(1)} href="">Log in</a>
           <SignUpForm {...this.props} onSubmit={(values)=> this.onSubmitRegister(values)}/>
         </div>
       );
@@ -121,15 +121,16 @@ class Modal extends Component {
           </TabPanel>
           <TabPanel>
             <div className="tabContent">
-              No account yet? <a onClick={() => this.onChangeTab(0)} href="">Sign up</a>
+              No account yet? <a className="link-sigup" onClick={() => this.onChangeTab(0)} href="">Sign up</a>
               <LoginForm {...this.props} onSubmit={(values)=> this.onSubmitLogin(values)} />
               <div className="lineModal" />
-              <h5>SIGN UP WITH FACEBOOK</h5>
+              <h5>Login with Facebook</h5>
               <FacebookLogin
+                textButton="LINK TO FACEBOOK ACCOUNT"
                 appId="1977674025820465"
                 fields="name,email,picture"
                 callback={this.responseFacebook}
-                cssClass="btn btn-fb btn-primary rounded-0"
+                cssClass="btn btn-fb btn-primary rounded-0 btn-login-fb"
               />
             </div>
           </TabPanel>

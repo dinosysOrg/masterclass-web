@@ -12,5 +12,8 @@ export default {
   'overall progress': 'Tiến độ',
   'path enrollment': 'Lịch sử học',
   'lesson no video': 'Bài học này hiện chưa có video',
-  'view all path': 'Xem tất cả'
+  'view all path': 'Xem tất cả',
+  'sign_up_now': 'Đăng Ký Đi M',
+  'take_quiz_again': 'Làm Quiz Lại Đi M',
+  'discovery_now': 'Khám Phá Đi M'
 };

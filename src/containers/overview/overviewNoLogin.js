@@ -32,7 +32,7 @@ class OverviewNoLoginPage extends Component {
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
           </div>
           <div className="video-box-demo">
-            <iframe title="video" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
+            <iframe title="video" allowFullScreen="allowFullScreen" frameBorder="0" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
           </div>
           <div className="row pt-4">
             <div className="col">
@@ -74,8 +74,7 @@ class OverviewNoLoginPage extends Component {
               <div className="chartBox mt-4">
                 <ResponsiveContainer>
                   <RadarChart cy="47%" data={data.skill}>
-                    <Radar name="My skill" dataKey="A" stroke="#fff" fill="#fff" fillOpacity={0.5}/>
-                    <Radar name="My skill" dataKey="B" stroke="#ff4d04" fill="#ff4d04" fillOpacity={0.6}/>
+                    <Radar name="Path Skill" dataKey="A" stroke="#fff" fill="#fff" fillOpacity={0.5}/>
                     <PolarGrid gridType="circle" />
                     <Legend/>
                     <PolarAngleAxis fill="#fff" dataKey="subject" />
