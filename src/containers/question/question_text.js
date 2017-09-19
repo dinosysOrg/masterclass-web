@@ -18,6 +18,15 @@ class QuestionText extends Component {
     this.setState({contentText: e.target.value});
   }
 
+  _handleSubmit() {
+    //TODO
+  }
+
+  _handleCancel() {
+    //TODO
+  }
+
+
   render() {
     let remain = maxLength - this.state.contentText.length;
     return (
@@ -41,8 +50,10 @@ class QuestionText extends Component {
           <span className="question-text__remain">{remain}</span>
         </div>
         <div className="question-text__button">
-          <button type="button" className="btn btn-primary text-uppercase">SUBMIT</button>
-          <button type="button" className="btn btn-second text-uppercase">CANCEL</button>
+          <button type="button" className="btn btn-primary text-uppercase"
+            onClick={this._handleSubmit.bind(this)}>SUBMIT</button>
+          <button type="button" className="btn btn-second text-uppercase"
+            onClick={this._handleCancel.bind(this)}>CANCEL</button>
         </div>
       </div>
     );

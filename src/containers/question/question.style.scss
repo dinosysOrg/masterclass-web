@@ -17,6 +17,7 @@
   &__button {
     button {
       margin-right: 15px;
+      font-size: rem(14);
     }
   }
   &__remain {
@@ -25,5 +26,37 @@
     position: absolute;
     bottom: 8px;
     right: 0;
+  }
+}
+.question-video {
+  &__description {
+    margin-bottom: 80px;
+    input {
+      width: 40%;
+      font-size: rem(14);
+    }
+  }
+  &__content {
+    position: relative;
+    height: 0;
+    padding-bottom: 60%;
+    background-color: #000000;
+    overflow: hidden;
+    button {
+      font-size: rem(14);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    input {
+      font-size: rem(10);
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
   }
 }
