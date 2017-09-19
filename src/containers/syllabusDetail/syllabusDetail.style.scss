@@ -1,25 +1,33 @@
 @import '../../assets/stylesheets/common';
-.syllabusDetail-page{
-  .video-box{
-      &__backLink{
-          color: $yellow1;
-      }
-      &__list{
-          li{
-              padding: 0px rem(25);
-              a{color: #f6f6f6}
-              &:last-child{
-                  padding: 0px;
-              }
-          }
+.syllabusDetail-page {
+  .video-box {
+    &__backLink {
+      color: $yellow1;
+    }
+    &__list {
+      li {
+        padding: 0px rem(25);
+        a {
+          color: #f6f6f6;
+        }
+        &:last-child {
+          padding: 0px;
+        }
       }
     }
+  }
 }
 .syllabus-tool {
+  padding: 0 70px;
   .syllabus-note,
   .syllabus-sheet,
   .syllabus-exercise {
     display: inline-block;
+    text-align: center;
+    span {
+      display: block;
+      margin-bottom: 20px;
+    }
   }
   .syllabus-sheet {
     margin: 0 70px;
