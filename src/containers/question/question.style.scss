@@ -1,5 +1,6 @@
 @import '../../assets/stylesheets/common';
-.question-text {
+
+.question {
   &__description {
     margin-bottom: 80px;
     input {
@@ -7,6 +8,8 @@
       font-size: rem(14);
     }
   }
+}
+.question-text {
   &__content {
     position: relative;
     margin-bottom: 30px;
@@ -29,13 +32,6 @@
   }
 }
 .question-video {
-  &__description {
-    margin-bottom: 80px;
-    input {
-      width: 40%;
-      font-size: rem(14);
-    }
-  }
   &__content {
     position: relative;
     height: 0;
