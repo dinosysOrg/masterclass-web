@@ -14,6 +14,8 @@ class SyllabusDetail extends Component {
   checkLoading() {
     let syllabusReducer = this.props.payload.syllabusReducer;
     let {path_Id} = this.props.params;
+    let nextSyllabus = this.props.payload.syllabusReducer.nextSyllabus;
+    let prevSyllabus = this.props.payload.syllabusReducer.prevSyllabus;
     if (!_.isEmpty(syllabusReducer)) {
       return (
         <div className="syllabusDetail-page">
@@ -27,8 +29,8 @@ class SyllabusDetail extends Component {
                 <div className="col"><Link className="video-box__backLink" to={`/Path/${path_Id}/Syllabus`}>Back to path syllabus</Link></div>
                 <div className="col text-right">
                   <ul className="list-inline video-box__list">
-                    <li className="list-inline-item"><Link to={`/Path/${path_Id}/Syllabus`}>Previous lesson</Link></li>
-                    <li className="list-inline-item"><Link to={`/Path/${path_Id}/Syllabus`}>Next lesson</Link></li>
+                    <li className="list-inline-item"><Link to={`/Path/${prevSyllabus}/Syllabus`}>Previous lesson</Link></li>
+                    <li className="list-inline-item"><Link to={`/Path/${nextSyllabus}/Syllabus`}>Next lesson</Link></li>
                   </ul>
                 </div>
               </div>

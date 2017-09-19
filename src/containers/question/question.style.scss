@@ -1,0 +1,29 @@
+@import '../../assets/stylesheets/common';
+.question-text {
+  &__description {
+    margin-bottom: 80px;
+    input {
+      width: 40%;
+      font-size: rem(14);
+    }
+  }
+  &__content {
+    position: relative;
+    margin-bottom: 30px;
+    textarea {
+      font-size: rem(14);
+    }
+  }
+  &__button {
+    button {
+      margin-right: 15px;
+    }
+  }
+  &__remain {
+    font-size: rem(14);
+    color: #cfd6e5;
+    position: absolute;
+    bottom: 8px;
+    right: 0;
+  }
+}
