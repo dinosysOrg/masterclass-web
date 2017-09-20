@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'masterclass';
+    src:  url('../../assets/fonts/masterclass.eot?owptb4');
+    src:  url('../../assets/fonts/masterclass.eot?owptb4#iefix') format('embedded-opentype'),
+      url('../../assets/fonts/masterclass.ttf?owptb4') format('truetype'),
+      url('../../assets/fonts/masterclass.woff?owptb4') format('woff'),
+      url('../../assets/fonts/masterclass.svg?owptb4#masterclass') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'masterclass' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-assignment:before {
+    content: "\e900";
+  }
+  .icon-backward:before {
+    content: "\e901";
+  }
+  .icon-calendar:before {
+    content: "\e902";
+  }
+  .icon-card:before {
+    content: "\e903";
+  }
+  .icon-chart:before {
+    content: "\e904";
+  }
+  .icon-computer:before {
+    content: "\e905";
+  }
+  .icon-customize:before {
+    content: "\e906";
+  }
+  .icon-discussion:before {
+    content: "\e907";
+  }
+  .icon-document:before {
+    content: "\e908";
+  }
+  .icon-down:before {
+    content: "\e909";
+  }
+  .icon-email:before {
+    content: "\e90a";
+  }
+  .icon-exercise:before {
+    content: "\e90b";
+  }
+  .icon-favorite:before {
+    content: "\e90c";
+  }
+  .icon-forward:before {
+    content: "\e90d";
+  }
+  .icon-graduation:before {
+    content: "\e90e";
+  }
+  .icon-guitar:before {
+    content: "\e90f";
+  }
+  .icon-headphone:before {
+    content: "\e910";
+  }
+  .icon-iPad:before {
+    content: "\e911";
+  }
+  .icon-left:before {
+    content: "\e912";
+  }
+  .icon-lessonNote:before {
+    content: "\e913";
+  }
+  .icon-location:before {
+    content: "\e914";
+  }
+  .icon-loopBack10s:before {
+    content: "\e915";
+  }
+  .icon-micRecord:before {
+    content: "\e916";
+  }
+  .icon-musicNote:before {
+    content: "\e917";
+  }
+  .icon-musicSheet:before {
+    content: "\e918";
+  }
+  .icon-mute:before {
+    content: "\e919";
+  }
+  .icon-pause:before {
+    content: "\e91a";
+  }
+  .icon-phone:before {
+    content: "\e91b";
+  }
+  .icon-phone2:before {
+    content: "\e91c";
+  }
+  .icon-piano:before {
+    content: "\e91d";
+  }
+  .icon-play:before {
+    content: "\e91e";
+  }
+  .icon-profile:before {
+    content: "\e91f";
+  }
+  .icon-rate:before {
+    content: "\e920";
+  }
+  .icon-record:before {
+    content: "\e921";
+  }
+  .icon-right:before {
+    content: "\e922";
+  }
+  .icon-search:before {
+    content: "\e923";
+  }
+  .icon-send:before {
+    content: "\e924";
+  }
+  .icon-settings:before {
+    content: "\e925";
+  }
+  .icon-stop:before {
+    content: "\e926";
+  }
+  .icon-trophy:before {
+    content: "\e927";
+  }
+  .icon-up:before {
+    content: "\e928";
+  }
+  .icon-uploadLesson:before {
+    content: "\e929";
+  }
+  .icon-videoUpload:before {
+    content: "\e92a";
+  }
+  .icon-volumn:before {
+    content: "\e92b";
+  }
+  .icon-volumn2:before {
+    content: "\e92c";
+  }
+  .icon-volumn3:before {
+    content: "\e92d";
+  }
+  .icon-webcamRecord:before {
+    content: "\e92e";
+  }

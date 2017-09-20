@@ -1,5 +1,8 @@
 @import '../../assets/stylesheets/common';
 .mypath-page{
+    .container-fluid{
+        width: 95%;
+    }
     .selectInstrument{
         &__button{
             width: 100%;
