@@ -3,15 +3,21 @@
   li{
     margin: rem(7) 0px;
     a{
+      border-radius: 3px;
       display: block;
       padding: rem(10);
       padding-left: rem(20);
       font-size: rem(14);
       color: #fff;
       &:hover{
+        border-radius: 3px;
         background-color: $yellow1;
         color:#222;
         text-decoration: none;
+        transition: ease-in 0.25s;
+        -moz-transition: ease-in 0.25s; 
+        -webkit-transition: ease-in 0.25s;
+        -o-transition: ease-in 0.25s;
       }
     }
     &.active{
