@@ -9,4 +9,5 @@ import SyllabusDetail from './syllabusDetail/syllabusDetail.container';
 import Authenticate from './authenticate/authenticate.container';
 import NonAuthenticate from './non_authenticate/non_authenticate.container';
 import ViewAll from './viewall/viewall';
-export {Home, Browse, Profile, Quiz, Overview, MyPath, Syllabus, SyllabusDetail, ViewAll, Authenticate, NonAuthenticate};
+import Question from './question/question.container';
+export {Home, Browse, Profile, Quiz, Overview, MyPath, Syllabus, SyllabusDetail, ViewAll, Authenticate, NonAuthenticate, Question};

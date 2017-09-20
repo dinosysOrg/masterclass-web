@@ -19,6 +19,8 @@ const syllabus = (state = initialState, action) => {
       ...state,
       syllabus: action.payload.syllabus,
       path: action.payload.path,
+      nextSyllabus: action.payload.next_syllabus,
+      prevSyllabus: action.payload.previous_syllabus,
     };
   case types.FETCH_SYLLABUS_FAILURE:
     return {

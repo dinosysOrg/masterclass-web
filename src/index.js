@@ -6,7 +6,7 @@ import configureStore from './configs/store.config';
 import {Router, browserHistory, Route} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux'
 import registerServiceWorker from './registerServiceWorker';
-import {Home, Browse, Profile, Overview, MyPath, Syllabus, SyllabusDetail, Quiz, ViewAll, Authenticate, NonAuthenticate} from './containers';
+import {Home, Browse, Profile, Overview, MyPath, Syllabus, SyllabusDetail, Quiz, ViewAll, Authenticate, NonAuthenticate, Question} from './containers';
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -21,6 +21,8 @@ ReactDOM.render(
         <Route path="/Path/:path_Id" component={Overview} />
         <Route path="/Path/:path_Id/Syllabus" component={Syllabus} />
         <Route path="/Path/:path_Id/Syllabus/:syllabus_Id" component={SyllabusDetail} />
+        <Route path="/Path/:path_Id/QA" component={Question} />
+        <Route path="/Path/:path_Id/QA/:question_type" component={Question} />
         <Route component={Authenticate} >
           <Route path="/Browse" component={Browse} />
           <Route path="/Profile" component={Profile} />
