@@ -43,11 +43,11 @@ class QuestionVideo extends Component {
         <div className="question-video__content mb-4">
           <button
             className="btn btn-fb btn-primary rounded-0 btn-login-fb"
-            onClick={this._handleBrowse.bind(this)}
           >
             BROWSE VIDEO FILE
           </button>
-          <input type="file" accept='video/*'/>
+          <input type="file" accept='video/*'
+            onChange={this._handleBrowse.bind(this)}/>
         </div>
         <div className="question-text__button">
           <button
