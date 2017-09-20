@@ -58,16 +58,28 @@
 }
 .record-wrapper {
   background-image: linear-gradient(to right, #fee902, #eb7d15);
+  background-image: -moz-linear-gradient(to right, #fee902, #eb7d15);
+  background-image: -webkit-linear-gradient(to right, #fee902, #eb7d15);
+  background-image: -o-linear-gradient(to right, #fee902, #eb7d15);
+  background-image: -ms-linear-gradient(to right, #fee902, #eb7d15);
   padding: 50px 43.9375px;
 }
 
 .video-wrapper {
   background-image: linear-gradient(to right, #ff8611, #ff008f);
+  background-image: -moz-linear-gradient(to right, #ff8611, #ff008f);
+  background-image: -webkit-linear-gradient(to right, #ff8611, #ff008f);
+  background-image: -o-linear-gradient(to right, #ff8611, #ff008f);
+  background-image: -ms-linear-gradient(to right, #ff8611, #ff008f);
   padding: 50px 41.242px;
 }
 
 .text-wrapper {
   background-image: linear-gradient(to right, #ff028d, #5600ff);
+  background-image: -moz-linear-gradient(to right, #ff028d, #5600ff);
+  background-image: -webkit-linear-gradient(to right, #ff028d, #5600ff);
+  background-image: -o-linear-gradient(to right, #ff028d, #5600ff);
+  background-image: -ms-linear-gradient(to right, #ff028d, #5600ff);
   padding: 50px 55.953px;
 }
 
