@@ -31,8 +31,7 @@ class QuizLoading extends Component {
           </div>
         </div>
         <p>
-          Stay tuned while we find your personalized music learning path among our video library. You can always come back to this form to refill if
-          you want to change your path.
+          Stay tuned while we find your personalized music learning path among <br/> our video library. You can always come back to this form to refill if you <br/> want to change your path.
         </p>
       </div>
     );

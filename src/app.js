@@ -34,7 +34,9 @@ class App extends React.Component {
     }
   }
   componentDidUpdate() {
-    window.scrollTo(0,0)
+    if (this.props.location.pathname !== '/Quiz' && this.props.location.pathname !== '/Profile') {
+      window.scrollTo(0,0)
+    }
   }
   /**
   * @return {html}

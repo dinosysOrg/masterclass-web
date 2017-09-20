@@ -16,7 +16,6 @@ class SyllabusDetailContainer extends Component {
   componentWillMount() {
     this.props.syllabusAction.fetchSyllabus();
   }
-
    /**
    * Call api before loading component
    * @return {html} The template of ProfileContainer class
