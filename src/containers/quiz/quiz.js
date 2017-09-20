@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import * as _ from 'lodash';
 import QuizForm from './quiz_form';
 import './quiz.style.css';
 
@@ -11,11 +12,13 @@ class Quiz extends Component {
    * @param {any} values
    */
   onSubmit(values) {
-    const quizMethod = Object.keys(values)
-      .filter((value) => value.startsWith('quizMethod'))
-      .map((value) => parseInt(value.split('_')[1], 10));
-    const data = Object.assign({}, {instrument_id: parseInt(values.quizInstruments, 10)},
-      {level_id: parseInt(values.quizLevelRadio, 10)}, {learning_method_ids: quizMethod});
+    let splitData = _.pickBy(values, (value) => value === true);
+    let checkboxArray = [];
+    _.map(splitData, (key, id)=>{
+      let value = _.trimStart(id, 'quizCheckbox_')
+      checkboxArray.push(parseInt(value, 10))
+    })
+    const data = Object.assign({},{instrument_id: parseInt(values.quizInstruments, 10)},{level_id: parseInt(values.quizLevelRadio, 10)},{learning_method_ids: checkboxArray});
     this.props.userAction.saveQuizRequest(data);
   }
   /**
@@ -26,7 +29,7 @@ class Quiz extends Component {
     return (
       <div className="quiz-page">
         <div className="container">
-          <h3 className="text-center">Choose one answer in each of the following question to find your own path of learning music. </h3>
+          <h3 className="text-center quiz-page__title">Choose one answer in each of the following question to find your own<br/> path of learning music. </h3>
           <QuizForm {...this.props} onSubmit={(values)=>this.onSubmit(values)} />
         </div>
       </div>

@@ -24,15 +24,29 @@ class QuizContainer extends Component {
     const {quiz, quizLoading} = this.props.payload.userReducer;
     const loading = this.props.payload.nprogress.tasks;
     if (loading === 0 && quiz && !quizLoading) {
+      const quizInstruments = quiz.my_quiz ? String(quiz.my_quiz.instrument_id) : '1'
+      const quizLevelRadio = quiz.my_quiz ? String(quiz.my_quiz.level_id) : '1'
+      const formValue = {
+          initialValues: {
+            quizInstruments, quizLevelRadio,
+          },
+      };
+      if (quiz.my_quiz.learning_method_ids.length !== 0 ) {
+        const newOj = {}
+        quiz.my_quiz.learning_method_ids.map((id, index) => 
+            newOj[`quizCheckbox_${id}`] = true
+        )
+        Object.assign(formValue.initialValues, newOj)
+      }
       return (
-        <Quiz {...this.props}/>
+        <Quiz {...formValue} {...this.props}/>
       );
     }
     if (loading === 0 && quizLoading) {
       return (
         <QuizLoading {...this.props}/>
       );
-    } else return (<Loading></Loading>);
+    } else return (<Loading/>);
   }
   /**
    * render QuizContainer template

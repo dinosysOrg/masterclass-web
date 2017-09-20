@@ -1,0 +1,43 @@
+@import '../../assets/stylesheets/common';
+.quiz-page{
+    padding: rem(60) 0px;
+    &__title{
+        font-size: rem(30);
+        line-height: rem(40);
+        font-family: $f-medium;
+        margin-bottom: rem(20);
+    }
+    .formQuiz{
+        p{
+            padding: rem(20) 0px;
+        }
+        .quizList{
+            margin-left: rem(35)
+        }
+        .custom-radio{
+            .custom-control-description-quiz{display: block}
+            .custom-control-input ~ .instrument-block .custom-control-description-quiz{
+                border: 2px solid $yellow1;
+                width: 100px;
+                height: 100px;
+                border-radius: 50px;
+                margin-bottom: rem(10);
+                position: relative;
+                .iconInstruments {
+                    position: absolute;
+                    fill: #fff;
+                    top: 46%;
+                    left: 46%;
+                    transform: translate(-46%, -46%);
+                }
+            }
+            .custom-control-input:checked ~ .instrument-block .custom-control-description-quiz {
+                background-color: $yellow1;
+                .iconInstruments {
+                    position: absolute;
+                    fill: #000;
+                }
+            }
+        }
+    }
+}
