@@ -28,3 +28,7 @@
   opacity: 0.4;
   background-color: $yellow1;
 }
+
+.btn-save-record {
+  @include gradientOrange();
+}
