@@ -10,4 +10,5 @@ import Authenticate from './authenticate/authenticate.container';
 import NonAuthenticate from './non_authenticate/non_authenticate.container';
 import ViewAll from './viewall/viewall';
 import Question from './question/question.container';
-export {Home, Browse, Profile, Quiz, Overview, MyPath, Syllabus, SyllabusDetail, ViewAll, Authenticate, NonAuthenticate, Question};
+import Practice from './practice/practice.container';
+export {Home, Browse, Profile, Quiz, Overview, MyPath, Syllabus, SyllabusDetail, ViewAll, Authenticate, NonAuthenticate, Question, Practice};

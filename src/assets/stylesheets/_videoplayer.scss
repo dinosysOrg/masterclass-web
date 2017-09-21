@@ -7,7 +7,7 @@
   padding: 55px 50px 30px 50px;
   position: relative;
   &.fullscreen {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
@@ -39,6 +39,30 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      &.angle-active {
+        &:hover {
+          &:before {
+            font-family: masterclass;
+            content: '\e92e';
+            color: #fbdd10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: rem(40);
+            transform: translate(-50%, -50%);
+          }
+          &:after {
+            content: 'Choose video angle';
+            color: #fbdd10;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            font-size: rem(14);
+          }
+        }
+      }
     }
   }
   &__two {
@@ -55,6 +79,33 @@
       top: 50%;
       transform: translateY(-50%);
       width: 48%;
+    }
+    &__first,
+    &__second {
+      &.angle-active {
+        &:hover {
+          &:before {
+            font-family: masterclass;
+            content: '\e92e';
+            color: #fbdd10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: rem(40);
+            transform: translate(-50%, -50%);
+          }
+          &:after {
+            content: 'Choose video angle';
+            color: #fbdd10;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            font-size: rem(14);
+          }
+        }
+      }
     }
   }
   &__three {
@@ -78,6 +129,34 @@
       right: 0;
       bottom: 25px;
     }
+    &__first,
+    &__second,
+    &__third {
+      &.angle-active {
+        &:hover {
+          &:before {
+            font-family: masterclass;
+            content: '\e92e';
+            color: #fbdd10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: rem(40);
+            transform: translate(-50%, -50%);
+          }
+          &:after {
+            content: 'Choose video angle';
+            color: #fbdd10;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            font-size: rem(14);
+          }
+        }
+      }
+    }
   }
   &__four {
     &__center {
@@ -94,6 +173,30 @@
     }
     &__first, &__second, &__third, &__fourth {
       position: relative;
+      &.angle-active {
+        &:hover {
+          &:before {
+            font-family: masterclass;
+            content: '\e92e';
+            color: #fbdd10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: rem(40);
+            transform: translate(-50%, -50%);
+          }
+          &:after {
+            content: 'Choose video angle';
+            color: #fbdd10;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            font-size: rem(14);
+          }
+        }
+      }
     }
   }
   &__five {
@@ -121,10 +224,36 @@
       bottom: 25px;
       right: 17.5%;
     }
+    &__first, &__second, &__third, &__fourth {
+      &.angle-active {
+        &:hover {
+          &:before {
+            font-family: masterclass;
+            content: '\e92e';
+            color: #fbdd10;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: rem(40);
+            transform: translate(-50%, -50%);
+          }
+          &:after {
+            content: 'Choose video angle';
+            color: #fbdd10;
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            font-size: rem(14);
+          }
+        }
+      }
+    }
   }
   &__controls {
     .progress {
-      height: 3px;
+      height: 6px;
       background-color: #707070;
       margin-bottom: 10px;
       width: 100%;
@@ -150,7 +279,8 @@
         list-style: none;
         vertical-align: baseline;
         display: inline-block;
-        &:first-child{
+        .setting,
+        .setting-opened {
           margin-right: 35px;
         }
         div {
@@ -220,7 +350,7 @@
   &__setting {
     overflow: auto;
     white-space:nowrap;
-    padding: 45px 20px 20px 40px;
+    padding: 30px 20px 20px 30px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 18px 15px 0 rgba(0, 0, 0, 0.5);
@@ -237,6 +367,10 @@
       max-width:20%;
       max-height:100%;
       img {
+        max-width:100%;
+        max-height:100%;
+      }
+      video {
         max-width:100%;
         max-height:100%;
       }
@@ -280,28 +414,6 @@
   &__timestamp {
     position: relative;
     top: 2px;
-  }
-  .video-active {
-    &::before {
-      font-family: FontAwesome;
-      content: '\f03d';
-      color: #fbdd10;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: rem(40);
-      transform: translate(-50%, -50%);
-    }
-    &::after {
-      content: 'Choose video angle';
-      color: #fbdd10;
-      position: absolute;
-      top: 70%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      font-size: rem(14);
-    }
   }
 }
 

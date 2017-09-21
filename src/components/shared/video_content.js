@@ -85,11 +85,12 @@ class VideoContent extends Component {
   }
 
   _renderContent() {
+    let angleControlClass = this.props.angleControl ? ' angle-active': '';
     switch (this.props.layoutID) {
       case 0: {
         return (
           <div className="video-player__one">
-            <div className="video-player__one__first">
+            <div className={'video-player__one__first' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="firstVid"
@@ -105,7 +106,7 @@ class VideoContent extends Component {
       case 1: {
         return (
           <div className="video-player__two">
-            <div className="video-player__two__first">
+            <div className={'video-player__two__first' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="firstVid"
@@ -114,7 +115,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[0].url} />
               </video>
             </div>
-            <div className="video-player__two__second">
+            <div className={'video-player__two__second' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="secondVid"
@@ -130,7 +131,7 @@ class VideoContent extends Component {
       case 2: {
         return (
           <div className="video-player__three">
-            <div className="video-player__three__first">
+            <div className={'video-player__three__first' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="firstVid"
@@ -139,7 +140,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[0].url} />
               </video>
             </div>
-            <div className="video-player__three__second">
+            <div className={'video-player__three__second' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="secondVid"
@@ -148,7 +149,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[1].url} />
               </video>
             </div>
-            <div className="video-player__three__third">
+            <div className={'video-player__three__third' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="thirdVid"
@@ -165,7 +166,7 @@ class VideoContent extends Component {
         return (
           <div className="video-player__four">
             <div className="video-player__four__center">
-              <div className="video-player__four__first">
+              <div className={'video-player__four__first' + angleControlClass}>
                 <video
                   tabIndex={-1}
                   ref="firstVid"
@@ -175,7 +176,7 @@ class VideoContent extends Component {
                 </video>
               </div>
               <div className="video-player__four__left-block">
-                <div className="video-player__four__second">
+                <div className={'video-player__four__second' + angleControlClass}>
                   <video
                     tabIndex={-1}
                     ref="secondVid"
@@ -184,7 +185,7 @@ class VideoContent extends Component {
                     <source src={this.props.videos[1].url} />
                   </video>
                 </div>
-                <div className="video-player__four__third">
+                <div className={'video-player__four__third' + angleControlClass}>
                   <video
                     tabIndex={-1}
                     ref="thirdVid"
@@ -193,7 +194,7 @@ class VideoContent extends Component {
                     <source src={this.props.videos[2].url} />
                   </video>
                 </div>
-                <div className="video-player__four__fourth">
+                <div className={'video-player__four__fourth' + angleControlClass}>
                   <video
                     tabIndex={-1}
                     ref="fourthVid"
@@ -211,7 +212,7 @@ class VideoContent extends Component {
       case 4: {
         return (
           <div className="video-player__five">
-            <div className="video-player__five__first">
+            <div className={'video-player__five__first' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="firstVid"
@@ -220,7 +221,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[0].url} />
               </video>
             </div>
-            <div className="video-player__five__second">
+            <div className={'video-player__five__second' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="secondVid"
@@ -229,7 +230,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[1].url} />
               </video>
             </div>
-            <div className="video-player__five__third">
+            <div className={'video-player__five__third' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="thirdVid"
@@ -238,7 +239,7 @@ class VideoContent extends Component {
                 <source src={this.props.videos[2].url} />
               </video>
             </div>
-            <div className="video-player__five__fourth">
+            <div className={'video-player__five__fourth' + angleControlClass}>
               <video
                 tabIndex={-1}
                 ref="fourthVid"
