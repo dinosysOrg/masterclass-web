@@ -103,3 +103,106 @@ export function fetchOverviewPathFailed(error) {
     payload: error
   };
 };
+/**
+ * An action creator - fetchInstrument
+ */
+export function fetchInstrument() {
+  return {
+    type: types.FETCH_INSTRUMENT_REQUEST,
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchInstrumentSuccess(data) {
+  return {
+    type: types.FETCH_INSTRUMENT_SUCCESS,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchInstrumentFailed(error) {
+  return {
+    type: types.FETCH_INSTRUMENT_FAILED,
+    payload: error
+  };
+};
+/**
+ * An action creator - fetchInstrument
+ */
+export function fetchMyCourses() {
+  return {
+    type: types.FETCH_COURSES_REQUEST,
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchMyCoursesSuccess(data) {
+  return {
+    type: types.FETCH_COURSES_SUCCESS,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchMyCoursesFailed(error) {
+  return {
+    type: types.FETCH_COURSES_FAILED,
+    payload: error
+  };
+};
+/**
+ * An action creator - subscribePathRequest
+ */
+export function subscribePathRequest(id) {
+  return {
+    type: types.SUBSCRIBE_PATH_REQUEST,
+    payload: id
+  };
+};
+/**
+ * An action creator - subscribePathSuccess
+ */
+export function subscribePathSuccess() {
+  return {
+    type: types.SUBSCRIBE_PATH_SUCCESS,
+  };
+};
+/**
+ * An action creator - subscribePathFailed
+ */
+export function subscribePathFailed(error) {
+  return {
+    type: types.SUBSCRIBE_PATH_FAILED,
+    payload: error
+  };
+};
+/**
+ * An action creator - unsubscribePathRequest
+ */
+export function unsubscribePathRequest(id) {
+  return {
+    type: types.UNSUBSCRIBE_PATH_REQUEST,
+    payload: id
+  };
+};
+/**
+ * An action creator - unsubscribePathSuccess
+ */
+export function unsubscribePathSuccess() {
+  return {
+    type: types.UNSUBSCRIBE_PATH_SUCCESS,
+  };
+};
+/**
+ * An action creator - unsubscribePathSuccess
+ */
+export function unsubscribePathFailed(error) {
+  return {
+    type: types.UNSUBSCRIBE_PATH_FAILED,
+  };
+};

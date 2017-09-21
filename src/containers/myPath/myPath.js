@@ -5,6 +5,7 @@ import * as Icon from 'react-icons/lib/fa/';
 import PropTypes from 'prop-types';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis} from 'recharts';
 import CircularProgressbar from 'react-circular-progressbar';
+import * as _ from 'lodash';
 
 let data = [
   { subject: 'Skill 1', A: 120, B: 110, fullMark: 150 },
@@ -19,10 +20,49 @@ let data = [
  * PathPage
  */
 class PathPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      instrumentSelect: 'Guitar',
+      slideSelect: '',
+      slideSelectStatus: false,
+      slideDetail: '',
+      myCourses: {}
+    };
+  }
+  componentWillMount() {
+    this.setState({
+      myCourses: this.props.payload.pathReducer.myCourses
+    })
+  }
+  // function handleInstrument
+  handleInstrument(id, name) {
+    this.setState({	instrumentSelect: name }, () => {
+      // console.log(id)
+    });
+  }
+  // function handleRemovePath
+  handleRemovePath(id, key) {
+    let data = this.state.myCourses.courses;
+    _.pullAt(data, [key])
+    this.setState({
+      myCourses: {courses: data}
+    })
+    this.props.pathAction.unsubscribePathRequest(id)
+  }
+  // function renderButtonLink
+  renderButtonLink(id, percent, key) {
+    if (percent === 0) {
+      return <div onClick={()=>this.handleRemovePath(id, key)} className="cursorMouse">Remove from my path</div>
+    } else {
+      return <Link to={`/Path/${id}`}>Continue learning</Link>
+    }
+  }
   /**
-   * @return {Component} - the rendered component
-   */
+  * @return {Component} - the rendered component
+  */
   render() {
+    const {listInstrument} = this.props.payload.pathReducer
     return (
       <div className="mypath-page py-5">
         <div className="container">
@@ -36,18 +76,19 @@ class PathPage extends Component {
                 <div className="col p-0">
                   <div className="dropdown selectInstrument">
                     <button className="btn dropdown-toggle selectInstrument__button" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
+                      {this.state.instrumentSelect}
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <button className="dropdown-item" type="button">Action</button>
-                      <button className="dropdown-item" type="button">Another action</button>
-                      <button className="dropdown-item" type="button">Something else here</button>
+                      {
+                        listInstrument.entries.map((data, key) => 
+                          <button key={key} className="dropdown-item" onClick={()=>this.handleInstrument(data.id, data.name)} type="button">{data.name}</button>
+                        )
+                      }
                     </div>
                   </div>
                   {/* Dropdow */}
                 </div>
               </div>
-               
             </div>
           </div>
           <div className="card-deck">
@@ -139,40 +180,21 @@ class PathPage extends Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td>Continue learning</td>
-                </tr>
+                {
+                  this.state.myCourses.courses.map((data, key) => 
+                    <tr key={key}>
+                      <td>{data.course.name}</td>
+                      <td>{data.percent_completed}%</td>
+                      <td>
+                        {this.renderButtonLink(data.course.id, data.percent_completed, key)}
+                      </td>
+                    </tr>
+                  )
+                }
               </tbody>
             </table>
             {/* End table */}
-            <nav aria-label="Page navigation example" className="pb-1">
+            {/* <nav aria-label="Page navigation example" className="pb-1">
               <ul className="pagination justify-content-center">
                 <li className="page-item active"><a className="page-link" href="">1</a></li>
                 <li className="page-item"><a className="page-link" href="">2</a></li>
@@ -180,7 +202,7 @@ class PathPage extends Component {
                 <li className="page-item"><a className="page-link" href="">4</a></li>
                 <li className="page-item"><a className="page-link" href="">5</a></li>
               </ul>
-            </nav>
+            </nav> */}
             {/* navigation */}
           </div>
 
