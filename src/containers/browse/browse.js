@@ -26,7 +26,7 @@ class Browse extends Component {
       <div className="container-fluid">
         <PromoPanel location={this.props.location} {...this.props}/>
           <Search {...this.props} />
-          <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} />
+          <VideoPanel data={browsePath} settingSlide={settingSlide} location={this.props.location} pathAction={this.props.pathAction} />
         <PromoPanel location={this.props.location} {...this.props}/>
       </div>
     )

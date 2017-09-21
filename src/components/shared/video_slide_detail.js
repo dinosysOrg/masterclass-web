@@ -17,7 +17,7 @@ export default (props) => {
             <p>{props.description}</p>
             <div className="list-inline">
               <Link to={`/Path/${props.id}`} className="btn btn-primary text-uppercase"><Icon.FaAlignLeft size={16} fill="#000" /> View path</Link>
-              {storageConfig.getUserLocal() ? <button type="button" className="btn btn-second text-uppercase ml-3"><Icon.FaPlusCircle size={18} fill="#000" /> ADD to my path</button> : null }
+              {storageConfig.getUserLocal() ? <button type="button" onClick={props.handleSub.bind(this, props.id)} className="btn btn-second text-uppercase ml-3 cursorMouse"><Icon.FaPlusCircle size={18} fill="#000" /> ADD to my path</button> : null }
             </div>
           </div>
           <div className="col slideDetail__colRight">

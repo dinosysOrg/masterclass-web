@@ -60,6 +60,9 @@ class videoSlide extends React.Component {
       );
     } else return null;
   }
+  handleSub(id) {
+    this.props.pathAction.subscribePathRequest(id)
+  }
   /**
    * render slide
    * @return {html} The template of HomePage class
@@ -91,7 +94,7 @@ class videoSlide extends React.Component {
           transitionName="transitionAnimation"
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}>
-          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail slideDetailStatus={()=>this.checkSlideDetail()} {...this.state.slideDetail} /> : null}
+          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail handleSub={this.handleSub.bind(this)} slideDetailStatus={()=>this.checkSlideDetail()} {...this.state.slideDetail} /> : null}
         </CSSTransitionGroup>
       </div>
     );

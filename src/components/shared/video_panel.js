@@ -8,11 +8,11 @@ import FullVideoCatalog from '../../components/shared/full_video_catalog';
     let data = this.props.data;
     return (
       <div>
-        {data.recommend.length !== 0 ? <FullVideoCatalog settingSlide={this.props.settingSlide} title={this.context.t('recommend')} data={formatArrayData(data.recommend)} location={this.props.location} /> : null}        
-        {data.popular.length !== 0 ? <FullVideoCatalog settingSlide={this.props.settingSlide} title={this.context.t('popular')} data={formatArrayData(data.popular)} location={this.props.location} /> : null}
-        {data.latest.length !== 0 ? <FullVideoCatalog settingSlide={this.props.settingSlide} title={this.context.t('lastest')} data={formatArrayData(data.latest)} location={this.props.location} /> : null}
-        {data.guitar.length !== 0 ? <FullVideoCatalog settingSlide={this.props.settingSlide} title={this.context.t('guitar')} data={formatArrayData(data.guitar)} location={this.props.location} /> : null}
-        {data.vocals.length !== 0 ? <FullVideoCatalog settingSlide={this.props.settingSlide} title={this.context.t('vocals')} data={formatArrayData(data.vocals)} location={this.props.location} /> : null}
+        {data.recommend.length !== 0 ? <FullVideoCatalog pathAction={this.props.pathAction} settingSlide={this.props.settingSlide} title={this.context.t('recommend')} data={formatArrayData(data.recommend)} location={this.props.location} /> : null}        
+        {data.popular.length !== 0 ? <FullVideoCatalog pathAction={this.props.pathAction} settingSlide={this.props.settingSlide} title={this.context.t('popular')} data={formatArrayData(data.popular)} location={this.props.location} /> : null}
+        {data.latest.length !== 0 ? <FullVideoCatalog pathAction={this.props.pathAction} settingSlide={this.props.settingSlide} title={this.context.t('lastest')} data={formatArrayData(data.latest)} location={this.props.location} /> : null}
+        {data.guitar.length !== 0 ? <FullVideoCatalog pathAction={this.props.pathAction} settingSlide={this.props.settingSlide} title={this.context.t('guitar')} data={formatArrayData(data.guitar)} location={this.props.location} /> : null}
+        {data.vocals.length !== 0 ? <FullVideoCatalog pathAction={this.props.pathAction} settingSlide={this.props.settingSlide} title={this.context.t('vocals')} data={formatArrayData(data.vocals)} location={this.props.location} /> : null}
       </div>
     )
   }
