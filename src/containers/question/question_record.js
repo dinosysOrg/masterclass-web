@@ -89,6 +89,7 @@ class QuestionRecord extends Component {
 
   _renderRecordingState() {
     if (this.state.recording) {
+      let recordingText = this.state.pause ? 'Pause' : 'Recording';
       return (
         <div>
           <div className="question-webcam">
@@ -98,7 +99,7 @@ class QuestionRecord extends Component {
           </div>
           <div className="question-recording">
             <span className="question-recording__circle mr-1"></span>
-            <span className="question-recording__text">Recording</span>
+            <span className="question-recording__text">{recordingText}</span>
           </div>
           <div className="question-recording-btn text-right">
             {this._renderPauseButton()}
