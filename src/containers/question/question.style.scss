@@ -35,7 +35,7 @@
   &__content {
     position: relative;
     height: 0;
-    padding-bottom: 60%;
+    padding-bottom: 75%;
     background-color: #000000;
     overflow: hidden;
     button {
@@ -55,7 +55,80 @@
       opacity: 0;
     }
   }
+  &__button {
+    button {
+      margin-right: 15px;
+      font-size: rem(14);
+    }
+  }
 }
+
+.question-record {
+  &__button {
+    button {
+      margin-right: 15px;
+      font-size: rem(14);
+    }
+  }
+  &__content {
+    position: relative;
+    height: 0;
+    padding-bottom: 73.75%;
+    background-color: #000000;
+    overflow: hidden;
+    button {
+      font-size: rem(14);
+    }
+    .btn-start-record {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .question-recording {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 14px;
+      &__circle {
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &__text {
+        vertical-align: middle;
+      }
+    }
+    .question-recording-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      button {
+        display: block;
+        float: right;
+        clear: both;
+      }
+    }
+  }
+}
+.question-webcam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  video {
+    width: 100% !important;
+    margin: auto;
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg);
+    -moz-transform:rotateY(180deg);
+  }
+}
+
 .record-wrapper {
   background-image: linear-gradient(to right, #fee902, #eb7d15);
   background-image: -moz-linear-gradient(to right, #fee902, #eb7d15);

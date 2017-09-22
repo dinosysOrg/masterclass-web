@@ -2,7 +2,7 @@
   padding: rem(12) rem(25);
   border: 0px;
   font-size: rem(15);
-  border-radius: 0px;
+  border-radius: 3px;
 }
 .btn-primary, a.btn-primary{
   background-color: $yellow1;
@@ -27,4 +27,8 @@
 .btn-primary:disabled {
   opacity: 0.4;
   background-color: $yellow1;
+}
+
+.btn-save-record {
+  @include gradientOrange();
 }

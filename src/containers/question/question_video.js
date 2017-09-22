@@ -49,7 +49,7 @@ class QuestionVideo extends Component {
           <input type="file" accept='video/*'
             onChange={this._handleBrowse.bind(this)}/>
         </div>
-        <div className="question-text__button">
+        <div className="question-video__button">
           <button
             type="button"
             disabled={disabled}

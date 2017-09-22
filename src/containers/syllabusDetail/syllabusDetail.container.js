@@ -14,7 +14,7 @@ class SyllabusDetailContainer extends Component {
    * componentDidMount of SyllabusDetailContainer
    */
   componentWillMount() {
-    this.props.syllabusAction.fetchSyllabus();
+    this.props.syllabusAction.fetchSyllabus(this.props.params);
   }
    /**
    * Call api before loading component
