@@ -126,7 +126,7 @@
     .progress {
       height: 3px;
       background-color: #707070;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       width: 100%;
       .progress-bar {
         background-color: #fbdd10;
@@ -139,8 +139,11 @@
       li {
         margin-right: 25px;
         list-style: none;
-        vertical-align: baseline;
+        vertical-align: middle;
         display: inline-block;
+      }
+      &.volume {
+        width: 20px;
       }
     }
     &__right {
@@ -148,13 +151,17 @@
         margin-left: 25px;
         font-weight: 600;
         list-style: none;
-        vertical-align: baseline;
+        vertical-align: middle;
         display: inline-block;
         &:first-child{
           margin-right: 35px;
         }
         div {
           margin-left: 5px;
+        }
+        &.fullscreen {
+          position: relative;
+          top: -4px;
         }
       }
       .dropdown-toggle {
@@ -200,7 +207,7 @@
       .dropup {
         a {
           position: relative;
-          top: 2px;
+          top: -2px;
         }
         ul {
           padding: 0;
@@ -246,6 +253,7 @@
     display: inline-block;
     margin-right: 25px;
     border-bottom: none;
+    line-height: 0px;
     &__slider {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -279,7 +287,7 @@
   }
   &__timestamp {
     position: relative;
-    top: 2px;
+    top: -2px;
   }
   .video-active {
     &::before {

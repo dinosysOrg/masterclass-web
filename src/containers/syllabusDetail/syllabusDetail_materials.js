@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../components/shared/icon';
 
-class SyllabusDetailTools extends Component {
+class SyllabusDetailMaterials extends Component {
   _downloadNote() {
     //WAIT API
   }
@@ -39,8 +39,8 @@ class SyllabusDetailTools extends Component {
   }
 }
 
-SyllabusDetailTools.contextTypes = {
+SyllabusDetailMaterials.contextTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default SyllabusDetailTools;
+export default SyllabusDetailMaterials;

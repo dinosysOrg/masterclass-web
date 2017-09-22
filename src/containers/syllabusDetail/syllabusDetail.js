@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './syllabusDetail.style.css';
 import VideoPlayer from '../../components/shared/video_player';
-import SyllabusDetailTool from './syllabusDetail_tools';
+import SyllabusDetailMaterials from './syllabusDetail_materials';
 import {Link} from 'react-router';
 import * as _ from 'lodash';
 /**
@@ -38,7 +38,7 @@ class SyllabusDetail extends Component {
               <VideoPlayer videos={syllabusReducer.syllabus.videos}/>
             </div>
             <div className="tool-box">
-              <SyllabusDetailTool />
+              <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus}/>
             </div>
           </div>
         </div>

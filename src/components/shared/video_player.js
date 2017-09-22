@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
 import PropTypes from 'prop-types';
+import IconMC from './icon';
 
 /*
 Video Player Component
@@ -30,7 +31,8 @@ class VideoPlayer extends Component {
       currentSpeed: 1,
       volume: 100,
       currentLayout: 0,
-      didInitTimeEvent: false
+      didInitTimeEvent: false,
+      volumeIcon: 'volumn',
     };
 
     this.layoutImage = [
@@ -49,6 +51,8 @@ class VideoPlayer extends Component {
       "https://cdn.shutterstock.com/shutterstock/videos/1135024/thumb/1.jpg",
       "http://www.ipextv.tv/wp-content/uploads/2017/07/carousel-image1.jpg"
     ];
+
+    this.volumeIcon = 'volumn';
   }
   componentWillMount() {
     this.setState({currentLayout: storageConfig.getUserLocal().layout_id});
@@ -115,6 +119,15 @@ class VideoPlayer extends Component {
     e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = e.target.value;
+    if (value > 66) {
+      this.volumeIcon = 'volumn';
+    } else if (value > 33) {
+      this.volumeIcon = 'volumn2'
+    } else if (value > 1) {
+      this.volumeIcon = 'volumn3';
+    } else {
+      this.volumeIcon = 'mute';
+    }
     this.setState({ volume: value });
     videoContent.handleChangeVolume(value);
   }
@@ -288,6 +301,7 @@ class VideoPlayer extends Component {
     return this.state.volumeOpened ? (
       <li className="video-player__volume">
         <input
+          ref="volume"
           className="video-player__volume__slider"
           type="range"
           min="0"
@@ -305,12 +319,12 @@ class VideoPlayer extends Component {
         className="nav-item setting-opened"
         onClick={this.handleSettingClick.bind(this)}
       >
-        <Icon.FaCog size={20} fill="#fbdd10" />
+        <IconMC name="settings" size={20} color="#fbdd10" />
         <div>Choose Screen Layout</div>
       </li>
     ) : (
       <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-        <Icon.FaCog size={20} fill="#fff" />
+        <IconMC name="settings" size={20}/>
       </li>
     );
   }
@@ -354,34 +368,34 @@ class VideoPlayer extends Component {
                     className="nav-item"
                     onClick={this.handleBackwardClick.bind(this)}
                   >
-                    <Icon.FaBackward size={20} fill="#fff" />
+                    <IconMC name="loopBack10s" size={20}/>
                   </li>
                   {this.state.playing ? (
                     <li
                       className="nav-item"
                       onClick={this.handlePauseClick.bind(this)}
                     >
-                      <Icon.FaPause size={20} fill="#fff" />
+                      <IconMC name="pause" size={20}/>
                     </li>
                   ) : (
                     <li
                       className="nav-item"
                       onClick={this.handlePlayClick.bind(this)}
                     >
-                      <Icon.FaPlay size={20} fill="#fff" />
+                      <IconMC name="play" size={20}/>
                     </li>
                   )}
                   <li
                     className="nav-item"
                     onClick={this.handleForwardClick.bind(this)}
                   >
-                    <Icon.FaForward size={20} fill="#fff" />
+                    <IconMC name="loopBack10s" size={20}/>
                   </li>
                   <li
-                    className="nav-item"
+                    className="nav-item volume"
                     onClick={this.openVolumeControl.bind(this)}
                   >
-                    <Icon.FaVolumeUp size={20} fill="#fff" />
+                    <IconMC name={this.volumeIcon} size={20}/>
                   </li>
                   {this._renderVolume()}
                   <li className="nav-item">
@@ -408,14 +422,14 @@ class VideoPlayer extends Component {
                   </li>
                   {this.state.fullScreen ? (
                     <li
-                      className="nav-item"
+                      className="nav-item fullscreen"
                       onClick={this._closePopUp.bind(this)}
                     >
                       <Icon.FaCompress size={20} color="#fff" />
                     </li>
                   ) : (
                     <li
-                      className="nav-item"
+                      className="nav-item fullscreen"
                       onClick={this.handleFullscreen.bind(this)}
                     >
                       <Icon.FaArrowsAlt size={20} color="#fff" />
