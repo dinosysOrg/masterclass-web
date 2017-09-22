@@ -15,7 +15,8 @@ class QuestionRecord extends Component {
       recordVideo: null,
       src: null,
       uploadSuccess: null,
-      uploading: false
+      uploading: false,
+      disabled: false,
     };
   }
 
@@ -40,14 +41,24 @@ class QuestionRecord extends Component {
   }
 
   requestUserMedia() {
-    captureUserMedia((stream) => {
+    this.captureUserMedia((stream) => {
       this.setState({ src: window.URL.createObjectURL(stream) });
     });
   }
 
+  captureUserMedia(callback) {
+    let params = { audio: true, video: true };
+    navigator.getUserMedia(params, callback, (error) => {
+      if (error.name === 'DevicesNotFoundError') {
+        alert("You can't use this feature because you don't have a webcam installed");
+        this.setState({disabled: true});
+      }
+    });
+  };
+
   _handleStartRecord() {
     this.setState({recording: true});
-    captureUserMedia((stream) => {
+    this.captureUserMedia((stream) => {
       this.setState({recordVideo: RecordRTC(stream, { type: 'video' })});
       this.state.recordVideo.startRecording();
     });
@@ -112,7 +123,8 @@ class QuestionRecord extends Component {
     } else {
       return (
         <button className="btn btn-primary rounded-0 btn-login-fb btn-start-record"
-          onClick={this._handleStartRecord.bind(this)}>
+          onClick={this._handleStartRecord.bind(this)}
+          disabled={this.state.disabled}>
           START RECORDING VIDEO
         </button>
       );
@@ -156,13 +168,5 @@ class QuestionRecord extends Component {
     );
   }
 }
-
-function captureUserMedia(callback) {
-  let params = { audio: true, video: true };
-
-  navigator.getUserMedia(params, callback, (error) => {
-    alert(JSON.stringify(error));
-  });
-};
 
 export default QuestionRecord;
