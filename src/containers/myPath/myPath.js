@@ -20,20 +20,15 @@ let data = [
  * PathPage
  */
 class PathPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       instrumentSelect: 'Guitar',
       slideSelect: '',
       slideSelectStatus: false,
       slideDetail: '',
-      myCourses: {}
-    };
-  }
-  componentWillMount() {
-    this.setState({
       myCourses: this.props.payload.pathReducer.myCourses
-    })
+    };
   }
   // function handleInstrument
   handleInstrument(id, name) {
@@ -63,6 +58,7 @@ class PathPage extends Component {
   */
   render() {
     const {listInstrument} = this.props.payload.pathReducer
+    console.log(this.state)
     return (
       <div className="mypath-page py-5">
         <div className="container">
