@@ -25,6 +25,7 @@
     "react-tabs": "^1.1.0",
     "react-transition-group": "1.x",
     "recharts": "^1.0.0-alpha.4",
+    "recordrtc": "^5.4.2",
     "redux": "^3.7.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-form": "^7.0.3",

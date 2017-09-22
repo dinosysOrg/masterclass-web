@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import QuestionText from './question_text';
 import QuestionVideo from './question_video';
 import QuestionSelect from './question_select';
+import QuestionRecord from './question_record';
 class Question extends Component {
   
   _renderQuestion() {
@@ -10,7 +11,7 @@ class Question extends Component {
       case undefined:
         return <QuestionSelect {...this.props}/>
       case 'record': 
-        return <div>TO BE IMPLEMENTED</div>
+        return <QuestionRecord/>
       case 'upload':
         return <QuestionVideo/>
       case 'write': 
