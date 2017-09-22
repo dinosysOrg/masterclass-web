@@ -58,7 +58,6 @@ class PathPage extends Component {
   */
   render() {
     const {listInstrument} = this.props.payload.pathReducer
-    console.log(this.state)
     return (
       <div className="mypath-page py-5">
         <div className="container">
