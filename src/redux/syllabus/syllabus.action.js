@@ -1,5 +1,4 @@
 import * as types from "./syllabus.types";
-import syllabusJson from "../../spec/mockdata/syllabus.json";
 
 /**
  * An action creator - fetching started
@@ -7,10 +6,10 @@ import syllabusJson from "../../spec/mockdata/syllabus.json";
  */
 
  //Payload will be removed when API is available
-export function fetchSyllabus() {
+export function fetchSyllabus(payload) {
   return {
     type: types.FETCH_SYLLABUS_REQUEST,
-    payload: syllabusJson
+    payload: payload,
   };
 }
 /**
