@@ -23,7 +23,6 @@ class MyPathPageContainer extends Component {
     } else {
       return (
         <MyPathPage
-          {...this.state}
           {...this.props}
         />
       )
