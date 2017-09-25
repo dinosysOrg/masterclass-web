@@ -5,7 +5,7 @@
     &--after-open {
       position: absolute;
       transform: none;
-      top: 25% !important;
+      top: 15% !important;
     }
     overflow: visible !important;
   }
@@ -41,6 +41,12 @@
       top:0;
       left: 0;
       height: 0;
+      .video-player__controls {
+        position: absolute;
+        width: 100%;
+        bottom: 35px;
+        padding-top: 20px;
+      }
     }
   }
 }

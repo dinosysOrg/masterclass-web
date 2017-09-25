@@ -7,25 +7,37 @@
   padding: 55px 50px 30px 50px;
   position: relative;
   &.fullscreen {
-    position: absolute;
-    top: 0;
+    width: 100%;
+    background-color: #000000;
+    transform: none;
+    position: fixed;
+    margin: auto;
+    top:0;
     left: 0;
-    bottom: 0;
     right: 0;
-    margin: 0;
-    z-index: 1000;
+    bottom: 0;
+    z-index: 99999;
     .content-wrapper {
       position: absolute;
       width: 100%;
       top: 50%;
       left: 50%;
+      padding: 0 50px;
       transform: translate(-50%, -50%);
+      background-color: #000000;
+    }
+    .video-player__controls {
+      position: absolute;
+      width: 100%;
+      bottom: 35px;
+      padding-right: 100px;
+      background-color: #000000;
     }
   }
   &__one, &__two, &__three, &__four, &__five {
     position: relative;
     height: 0;
-    padding-bottom: 40%;
+    padding-bottom: 60%;
     video {
       display: block;
       width: 100%;
@@ -35,7 +47,7 @@
   &__one {
     &__first {
       position: absolute;
-      width: 60%;
+      width: 100%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -71,14 +83,14 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 48%;
+      width: 49%;
     }
     &__second {
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 48%;
+      width: 49%;
     }
     &__first,
     &__second {
@@ -112,22 +124,25 @@
     &__first {
       position: absolute;
       z-index: 100;
-      top: 0px;
+      top: 30%;
       left: 30px;
       width: 25%;
+      transform: translateY(-50%);
       border: solid 2px #000000;
     }
     &__second {
       position: absolute;
-      width: 48%;
+      width: 49%;
       left: 0;
-      bottom: 25px;
+      top: 60%;
+      transform: translateY(-50%);
     }
     &__third {
       position: absolute;
-      width: 48%;
+      width: 49%;
       right: 0;
-      bottom: 25px;
+      top: 60%;
+      transform: translateY(-50%);
     }
     &__first,
     &__second,
@@ -161,15 +176,18 @@
   &__four {
     &__center {
       text-align: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
     }
     &__first {
       display: inline-block;
-      width: 65%;
+      width: 70%;
     }
     &__left-block {
       margin-left: 10px;
       display: inline-block;
-      width: 21.65%;
+      width: 23.33%;
     }
     &__first, &__second, &__third, &__fourth {
       position: relative;
@@ -203,26 +221,26 @@
     &__first {
       position: absolute;
       top: 0;
-      left: 17.5%;
-      width: 32%;
+      left: 0;
+      width: 49.5%;
     }
     &__second {
       position: absolute;
-      width: 32%;
+      width: 49.5%;
       top: 0;
-      right: 17.5%;
+      right: 0;
     }
     &__third {
       position: absolute;
-      width: 32%;
+      width: 49.5%;
       bottom: 25px;
-      left: 17.5%;
+      left: 0;
     }
     &__fourth {
       position: absolute;
-      width: 32%;
+      width: 49.5%;
       bottom: 25px;
-      right: 17.5%;
+      right: 0;
     }
     &__first, &__second, &__third, &__fourth {
       &.angle-active {

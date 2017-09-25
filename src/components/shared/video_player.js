@@ -54,6 +54,10 @@ class VideoPlayer extends Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this._closePopUp.bind(this));
+    document.addEventListener('webkitfullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('mozfullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('fullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('MSFullscreenChange', this._exitHandler.bind(this), false);
   }
 
   componentWillUnmount() {
@@ -147,9 +151,21 @@ class VideoPlayer extends Component {
 
   handleFullscreen() {
     if (!this.state.fullScreen) {
-      this.setState({ fullScreen: true });
-    } else {
-      this.setState({ fullScreen: false });
+      let el = document.documentElement,
+          rfs = el.requestFullscreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+            || el.msRequestFullscreen 
+        ;
+
+        rfs.call(el);
+    }
+  }
+  
+  _exitHandler() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement !== null)
+    {
+          this.setState({fullScreen: !this.state.fullScreen});
     }
   }
 
