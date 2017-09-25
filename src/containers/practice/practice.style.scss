@@ -41,11 +41,16 @@
       top:0;
       left: 0;
       height: 0;
+      .content-wrapper {
+        padding: 0;
+      }
       .video-player__controls {
         position: absolute;
         width: 100%;
         bottom: 35px;
         padding-top: 20px;
+        padding-right: 50px;
+        padding-left: 50px;
       }
     }
   }
