@@ -1,0 +1,22 @@
+@import '../../assets/stylesheets/common';
+.material-page{
+    .circleProcess{
+        width: 55%;
+        margin: auto;
+        .CircularProgressbar .CircularProgressbar-text{
+            font-size: rem(16);
+        }
+    }
+    .listMaterial{
+        a{
+            color: #fff;
+            text-decoration: none;
+            &:hover{
+                color: $yellow1;
+            }
+        }
+        li{
+            margin: rem(25) rem(40)
+        }
+    }
+}
