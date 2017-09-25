@@ -1,16 +1,27 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-import * as Icon from 'react-icons/lib/fa/';
+// import * as Icon from 'react-icons/lib/fa/';
+import Icon from '../../components/shared/icon'
 
 /**
 * Modal of project
 */
 class QuizForm extends React.Component {
+  checkIcon(name) {
+    if (name === 'Guitar') {
+      return 'guitar'
+    } else if (name === 'Pinano') {
+      return 'piano'
+    } else if (name === 'Vocals') {
+      return 'micRecord'
+    }
+  }
   /**
    * render QuizForm
    * @return {html} The template of QuizForm class
    */
   render() {
+    console.log(this.props.payload.userReducer.quiz)
     const {handleSubmit} = this.props;
     const {quiz} = this.props.payload.userReducer;
     return (
@@ -24,7 +35,7 @@ class QuizForm extends React.Component {
                   component="input" type="radio" value={String(quizInstruments.id)}/>
                   <span className="instrument-block text-center">
                     <span className="custom-control-description-quiz">
-                      <Icon.FaMusic className="iconInstruments" size={35} fill="#fff" />
+                      <Icon name={`${this.checkIcon(quizInstruments.name)} iconInstruments`} size={35} fill="#fff" />
                     </span>
                     <span className="custom-control-description-txt">{quizInstruments.name}</span>
                   </span>
