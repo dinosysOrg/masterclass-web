@@ -288,6 +288,7 @@
         list-style: none;
         vertical-align: baseline;
         display: inline-block;
+        cursor: pointer;
       }
     }
     &__right {
@@ -297,6 +298,7 @@
         list-style: none;
         vertical-align: baseline;
         display: inline-block;
+        cursor: pointer;
         .setting,
         .setting-opened {
           margin-right: 35px;
@@ -432,6 +434,7 @@
   &__timestamp {
     position: relative;
     top: 2px;
+    cursor: default;
   }
 }
 

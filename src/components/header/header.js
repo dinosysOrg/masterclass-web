@@ -48,11 +48,12 @@ class Header extends Component {
     const {userAction} = this.props;
     const {lang} = this.props;
     if (loginStatus === true) {
+      let userName = userInfo.userName ? userInfo.userName : this.context.t('anonymous');
       return (
         <ul className="navbar-nav">
           {lang === 'en' ? <ListMenu className="nav-link-lang" onClick={this.changeLanguageToVi.bind(this)}>Vietnamese</ListMenu>
             : <ListMenu className="nav-link-lang" onClick={this.changeLanguageToEn.bind(this)}>English</ListMenu> }
-          <ListMenu>{this.context.t('Hello {name}!', {name: userInfo.userName})}</ListMenu>
+          <ListMenu>{this.context.t('Hello {name}!', {name: userName})}</ListMenu>
           <ListMenu onClick={userAction.signOut.bind(this)}>{this.context.t('Sign Out')}</ListMenu>
         </ul>
       );
