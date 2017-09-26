@@ -184,6 +184,8 @@ class VideoPlayer extends Component {
       this.setState({fullScreen: !this.state.fullScreen});
       return;
     }
+    this.setState({fullScreen: !this.state.fullScreen});
+    return;
   }
 
   selectLayout(id) {
