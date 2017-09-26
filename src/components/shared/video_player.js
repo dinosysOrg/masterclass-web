@@ -42,6 +42,10 @@ class VideoPlayer extends Component {
       IMG.default.layoutVideo4,
       IMG.default.layoutVideo5
     ];
+
+    this._closePopUp = this._closePopUp.bind(this);
+    this._fullscreenHandler = this._fullscreenHandler.bind(this);
+    this._updateTime = this._updateTime.bind(this);
     this.volumeIcon = 'volumn';
   }
   componentWillMount() {
@@ -56,19 +60,23 @@ class VideoPlayer extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this._closePopUp.bind(this));
-    document.addEventListener('webkitfullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('fullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this._exitHandler.bind(this), false);
+    document.addEventListener("keydown", this._closePopUp);
+    document.addEventListener('webkitfullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('mozfullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('fullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('MSFullscreenChange', this._fullscreenHandler, false);
   }
 
   componentWillUnmount() {
     let video = document.getElementsByTagName("video")[0];
     if (video) {
-      video.removeEventListener("timeupdate", this._updateTime.bind(this));
+      video.removeEventListener("timeupdate", this._updateTime);
     }
-    document.removeEventListener("keydown", this._closePopUp.bind(this));
+    document.removeEventListener("keydown", this._closePopUp);
+    document.removeEventListener('webkitfullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('mozfullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('fullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('MSFullscreenChange', this._fullscreenHandler, false);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -79,13 +87,13 @@ class VideoPlayer extends Component {
       this.setState({didInitTimeEvent: true});
       let video = document.getElementsByTagName("video")[0];
       if (video) {
-        video.addEventListener("timeupdate", this._updateTime.bind(this));
+        video.addEventListener("timeupdate", this._updateTime);
       }
     }
     if (prevState.currentLayout !== this.state.currentLayout) {
       let video = document.getElementsByTagName("video")[0];
       if (video) {
-        video.addEventListener("timeupdate", this._updateTime.bind(this));
+        video.addEventListener("timeupdate", this._updateTime);
       }
     }
   }
@@ -174,11 +182,17 @@ class VideoPlayer extends Component {
     }
   }
   
-  _exitHandler() {
-    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement !== null)
-    {
-          this.setState({fullScreen: !this.state.fullScreen});
+  _fullscreenHandler() {
+    let modal = document.getElementsByClassName('ReactModal__Overlay--after-open')[0];
+    if (modal && this.state.fullScreen) {
+      modal.classList.remove('fullscreen');
+      return this.setState({fullScreen: !this.state.fullScreen});
     }
+    if (modal && !this.state.fullscreen) {
+      modal.classList.add('fullscreen');
+      return this.setState({fullScreen: !this.state.fullScreen});
+    }
+    return this.setState({fullScreen: !this.state.fullScreen});
   }
 
   selectLayout(id) {
