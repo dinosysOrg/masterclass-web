@@ -162,7 +162,24 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
         .catch((error) => of(actions.fetchOverallProgressFailed(error))),
       )
     );
-
+    /**
+   * This epic defines the whole operation of fetching practice path from server
+   * include 3 phases: start fetching, fetching success of fetching failed
+   * @param {Object} action$ - action stream
+   * @param {Object} store - action stream
+   * @return {Object} action stream
+   */
+  const getPracticeEpic = (action$, store) =>
+  action$.ofType(types.FETCH_PRACTICE_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        ajax.get(`${getPathAPI}/${data.payload}/practices`, storeConfig.setHeader() )
+          .map((json) => actions.fetchPracticeSuccess(json.response))
+          .catch((error) => of(actions.fetchPracticeFailed(error))),
+        of(store.dispatch(endTask())),
+      )
+    );
 export {
   getBrowsePath,
   getHomePath,
@@ -172,5 +189,6 @@ export {
   fetchCourses,
   subscribePath,
   unsubscribePath,
-  fetchOverallPath
+  fetchOverallPath,
+  getPracticeEpic,
 };

@@ -3,22 +3,6 @@ import ReactModal from 'react-modal';
 import VideoPlayer from '../../components/shared/video_player';
 
 class PracticeVideoModal extends Component {
-  constructor() {
-    super();
-    
-    this.placeholderData = [
-        {
-          "id": 11,
-          "uploader_id": 9,
-          "name": "Syllabus video_2",
-          "video_type": "syllabus",
-          "url": "http://techslides.com/demos/sample-videos/small.webm",
-          "created_at": "2017-09-13T07:12:01.968Z",
-          "updated_at": "2017-09-13T07:12:01.968Z",
-          "time": 213
-      }
-    ]
-  }
   _checkModal() {
     const {modalName} = this.props.payload.initReducer;
     if (modalName === 'modalPracticeVideo') {
@@ -41,7 +25,7 @@ class PracticeVideoModal extends Component {
         contentLabel="Practice Modal"
         portalClassName="practice-video-modal"
       >
-        <VideoPlayer {...this.props} videos={this.placeholderData} layoutControl={false}/>
+        <VideoPlayer {...this.props} videos={this.props.video} layoutControl={false}/>
       </ReactModal>
     );
   }
