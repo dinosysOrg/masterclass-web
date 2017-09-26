@@ -130,7 +130,7 @@ class Modal extends Component {
                 appId="1977674025820465"
                 fields="name,email,picture"
                 callback={this.responseFacebook}
-                cssClass="btn btn-fb btn-primary rounded-0 btn-login-fb"
+                cssClass="btn btn-fb btn-primary rounded-0 btn-login-fb cursorMouse"
               />
             </div>
           </TabPanel>

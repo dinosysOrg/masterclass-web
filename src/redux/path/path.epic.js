@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './path.types';
 import * as actions from './path.actions';
-import {getPathAPI, getInstruments, getMyCourses} from './path.api';
+import {getPathAPI, getInstruments, getMyCourses, getOverallProgress} from './path.api';
 import {concat as concat$} from 'rxjs/observable/concat';
 import * as actionInit from '../init/init.action';
 import {of} from 'rxjs/observable/of';
@@ -134,7 +134,6 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
     );
   /**
   * This epic defines the whole operation of fetching path from server
-  * include 3 phases: start fetching, fetching success of fetching failed
   * @param {Object} action$ - action stream
   * @param {Object} store - action stream
   * @return {Object} action stream
@@ -148,6 +147,21 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
         .catch((error) => of(actions.unsubscribePathFailed(error))),
       )
     );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const fetchOverallPath = (action$) =>
+  action$.ofType(types.FETCH_OVERALL_PROGRESS_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        ajax.get(`${getOverallProgress}?instrument_id=${data.payload}`, storeConfig.setHeader())
+        .map((json) => actions.fetchOverallProgressSuccess(json.response))
+        .catch((error) => of(actions.fetchOverallProgressFailed(error))),
+      )
+    );
 
 export {
   getBrowsePath,
@@ -157,5 +171,6 @@ export {
   fetchInstrument,
   fetchCourses,
   subscribePath,
-  unsubscribePath
+  unsubscribePath,
+  fetchOverallPath
 };

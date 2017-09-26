@@ -32,14 +32,16 @@
     .colProcess {
         background-color: rgba(255, 255, 255, 0.05);
         height: 100%;
+        padding-right: 0px;
         &__circle{
             display: inline-block;
             vertical-align: middle;
-            width: 45%;
+            width: 40%;
         }
         &__title{
             display: inline-block;
             vertical-align: middle;
+            font-size: rem(15)
         }
     }
     .colSkill {

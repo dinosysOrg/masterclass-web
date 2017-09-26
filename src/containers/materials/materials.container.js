@@ -12,7 +12,6 @@ class MaterialsContainer extends Component {
   componentWillMount() {
   }
   checkLoading() {
-    console.log(this.props)
     return(
       <div className="container">
           <div className="pageTitle">

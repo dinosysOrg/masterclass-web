@@ -11,20 +11,22 @@ import {Loading} from '../../components';
 class MyPathPageContainer extends Component {
   componentWillMount() {
       this.props.pathAction.fetchInstrument();
+      this.props.pathAction.fetchOverallProgress(1)
       this.props.pathAction.fetchMyCourses();
+      
   }
   checkLoading() {
     const {showLoading} = this.props.payload.initReducer
-    const {listInstrument, myCourses} = this.props.payload.pathReducer
-    if ((showLoading === true) || (listInstrument === undefined && myCourses === undefined)) {
-      return (
-        <Loading/>
-      )
-    } else {
+    const {listInstrument, myCourses, overallProgress} = this.props.payload.pathReducer
+    if (!showLoading && listInstrument !== undefined && myCourses !== undefined && overallProgress !== undefined) {
       return (
         <MyPathPage
           {...this.props}
         />
+      )
+    } else {
+      return (
+        <Loading/>
       )
     }
   }

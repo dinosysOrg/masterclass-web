@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {coverSecondToMinutes} from '../../configs/data.config';
 
 export default (props) => {
   return (
@@ -12,7 +13,7 @@ export default (props) => {
           }
           <div className="media-body pr-5">
             <a className="syllabusList__title" data-toggle="collapse" href={`#collapse${props.id}`} aria-expanded="false" aria-controls={`collapse${props.id}`}>{props.title}</a>
-            <p className="mb-0 syllabusList__time mt-1">{props.time}</p>
+            <p className="mb-0 syllabusList__time mt-1">{coverSecondToMinutes(props.time)}</p>
           </div>
         </div>
         <div data-toggle="collapse" href={`#collapse${props.id}`} aria-expanded="false" aria-controls={`collapse${props.id}`} className="iconList"/>

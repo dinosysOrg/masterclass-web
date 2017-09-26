@@ -206,3 +206,30 @@ export function unsubscribePathFailed(error) {
     type: types.UNSUBSCRIBE_PATH_FAILED,
   };
 };
+/**
+ * An action creator - fetchInstrument
+ */
+export function fetchOverallProgress(id) {
+  return {
+    type: types.FETCH_OVERALL_PROGRESS_REQUEST,
+    payload: id
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchOverallProgressSuccess(data) {
+  return {
+    type: types.FETCH_OVERALL_PROGRESS_SUCCESS,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetchInstrumentSuccess
+ */
+export function fetchOverallProgressFailed(error) {
+  return {
+    type: types.FETCH_OVERALL_PROGRESS_FAILED,
+    payload: error
+  };
+};
