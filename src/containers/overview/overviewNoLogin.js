@@ -28,7 +28,7 @@ class OverviewNoLoginPage extends Component {
       <div className="overview-page">
         <div className="container">
           <div className="pageTitle">
-            <h2 className="pageTitle__title">PATH NAME</h2>
+            <h2 className="pageTitle__title">{pathOverview.name}</h2>
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
           </div>
           <div className="video-box-demo">
