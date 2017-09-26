@@ -41,7 +41,7 @@ class SignUpForm extends React.Component {
           <Field className="form-control" name="password_confirmation" component="input" required type="password" placeholder="Confirm Password" />
         </div>
         {signUpError ? <ul className="list-unstyled">{this.loginError()}</ul> : null}
-        <button className="btn btn-primary rounded-0" type="submit">Create Account</button>
+        <button className="btn btn-primary rounded-0 cursorMouse" type="submit">Create Account</button>
       </form>
     );
   }

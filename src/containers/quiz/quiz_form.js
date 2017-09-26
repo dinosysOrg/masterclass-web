@@ -29,7 +29,7 @@ class QuizForm extends React.Component {
           <div className="row pb-2">
             {quiz.instruments.map((quizInstruments, index) =>
               <div className="quizList" key={index}>
-                <label className="custom-control custom-radio">
+                <label className="custom-control custom-radio cursorMouse">
                 <Field className="custom-control-input" name="quizInstruments" id={`Intruments${index}`}
                   component="input" type="radio" value={String(quizInstruments.id)}/>
                   <span className="instrument-block text-center">
@@ -46,7 +46,7 @@ class QuizForm extends React.Component {
         <div className="row pb-2">
           {quiz.levels.map((quizLevel, index) =>
             <div key={index} className="quizList">
-              <label className="custom-control custom-radio">
+              <label className="custom-control custom-radio cursorMouse">
               <Field className="custom-control-input" name="quizLevelRadio" id={`quizLevelRadio${index}`}
                 component="input" type="radio" value={String(quizLevel.id)}/>
                 <span className="custom-control-indicator"></span>
@@ -59,7 +59,7 @@ class QuizForm extends React.Component {
         <div className="row pb-2">
           {quiz.learning_methods.map((quizMethod, index) => 
             <div key={index} className="quizList">
-              <label className="custom-control custom-checkbox">
+              <label className="custom-control custom-checkbox cursorMouse">
                 <Field type="checkbox" component="input" id={`quizCheckbox_${index+1}`} name={`quizCheckbox_${index+1}`} value={String(quizMethod.id)} className="custom-control-input"/>
                 <span className="custom-control-indicator"></span>
                 <span className="custom-control-description">{quizMethod.name}</span>
@@ -67,7 +67,7 @@ class QuizForm extends React.Component {
             </div>
           )}
         </div>
-        <div className="mt-4 ml-2"><button className="btn btn-primary px-5">FIND PATH</button></div>
+        <div className="mt-4 ml-2"><button className="btn btn-primary px-5 cursorMouse">FIND PATH</button></div>
       </form>
     );
   }

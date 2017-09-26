@@ -39,24 +39,6 @@ class App extends React.Component {
     }
   }
   /**
-  * @return {html}
-  * check loading fuc
-  */
-  checkLoading() {
-    if (this.props.payload.initReducer.showLoading) {
-      return (
-        <div className="loading-content">
-          <div className="loading-center">
-            <div className='sk-double-bounce'>
-              <div className='sk-child sk-double-bounce-1'/>
-              <div className='sk-child sk-double-bounce-2'/>
-            </div>
-          </div>
-        </div>
-      );
-    } else return null;
-  }
-  /**
    * render app
    * @return {html} The template of App class
    */

@@ -29,6 +29,7 @@ class videoSlide extends React.Component {
       slideDetailStatus: false,
       slideSelect: index,
       slideDetail: props,
+      hideAddPath: false,
     });
   }
   /**
@@ -59,6 +60,12 @@ class videoSlide extends React.Component {
         <SlideDetail {...data}></SlideDetail>
       );
     } else return null;
+  }
+  handleSub(id) {
+    this.setState({
+      hideAddPath: true
+    })
+    this.props.pathAction.subscribePathRequest(id)
   }
   /**
    * render slide
@@ -91,7 +98,7 @@ class videoSlide extends React.Component {
           transitionName="transitionAnimation"
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}>
-          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail slideDetailStatus={()=>this.checkSlideDetail()} {...this.state.slideDetail} /> : null}
+          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail handleSub={this.handleSub.bind(this)} slideDetailToggle={this.checkSlideDetail.bind(this)} {...this.state} /> : null}
         </CSSTransitionGroup>
       </div>
     );

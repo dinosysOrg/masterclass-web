@@ -32,6 +32,7 @@ const path = (state = initPathState, action) => {
         latest: action.payload.latest || [],
         guitar: action.payload.guitar || [],
         vocals: action.payload.vocals || [],
+        my_skills: action.payload.my_skills || [],
       },
     };
   case types.FETCH_PATH_FAILED:
@@ -52,6 +53,16 @@ const path = (state = initPathState, action) => {
         ...Object.assign({}, action.payload),
       }
     };
+  case types.FETCH_INSTRUMENT_SUCCESS:
+    return {
+      ...state,
+      listInstrument: action.payload
+    };
+  case types.FETCH_INSTRUMENT_FAILED:
+    return {
+      ...state,
+      error: action.payload,
+    };
   case types.FETCH_PRACTICE_SUCCESS:
     return {
       ...state,
@@ -65,6 +76,26 @@ const path = (state = initPathState, action) => {
     return {
       ...state,
       error: action.payload,
+    };
+  case types.FETCH_COURSES_SUCCESS:
+    return {
+      ...state,
+      myCourses: action.payload
+    };
+  case types.FETCH_COURSES_FAILED:
+    return {
+      ...state,
+      error: action.payload,
+    };
+  case types.FETCH_OVERALL_PROGRESS_REQUEST:
+    return {
+      ...state,
+      overallProgress: {},
+    };
+  case types.FETCH_OVERALL_PROGRESS_SUCCESS:
+    return {
+      ...state,
+      overallProgress: action.payload,
     };
   default:
     return state;

@@ -2,7 +2,7 @@ import 'rxjs';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import * as types from './path.types';
 import * as actions from './path.actions';
-import {getPathAPI} from './path.api';
+import {getPathAPI, getInstruments, getMyCourses, getOverallProgress} from './path.api';
 import {concat as concat$} from 'rxjs/observable/concat';
 import * as actionInit from '../init/init.action';
 import {of} from 'rxjs/observable/of';
@@ -77,7 +77,89 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
         ajax.get(`${getPathAPI}/${data.payload}`)
           .map((json) => actions.fetchOverviewPathSuccess(json.response))
           .catch((error) => of(actions.fetchOverviewPathFailed(error))),
+        of(store.dispatch(endTask( ))),
+      )
+    );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * include 3 phases: start fetching, fetching success of fetching failed
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const fetchInstrument = (action$, store) =>
+  action$.ofType(types.FETCH_INSTRUMENT_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        of(actionInit.showLoading()),
+        ajax.get(`${getInstruments}`)
+        .map((json) => actions.fetchInstrumentSuccess(json.response))
+        .catch((error) => of(actions.fetchInstrumentFailed(error))),
+      )
+    );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * include 3 phases: start fetching, fetching success of fetching failed
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const fetchCourses = (action$, store) =>
+  action$.ofType(types.FETCH_COURSES_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        ajax.get(`${getMyCourses}`, storeConfig.setHeader())
+        .map((json) => actions.fetchMyCoursesSuccess(json.response))
+        .catch((error) => of(actions.fetchMyCoursesFailed(error))),
+        of(actionInit.hideLoading()),
         of(store.dispatch(endTask())),
+      )
+    );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * include 3 phases: start fetching, fetching success of fetching failed
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const subscribePath = (action$) =>
+  action$.ofType(types.SUBSCRIBE_PATH_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        ajax.post(`${getPathAPI}/${data.payload}/subscribe`,{}, storeConfig.setHeader())
+        .map((json) => actions.subscribePathSuccess(json.response))
+        .catch((error) => of(actions.subscribePathFailed(error))),
+      )
+    );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const unsubscribePath = (action$) =>
+  action$.ofType(types.UNSUBSCRIBE_PATH_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        ajax.delete(`${getPathAPI}/${data.payload}/unsubscribe`, storeConfig.setHeader())
+        .map((json) => actions.unsubscribePathSuccess(json.response))
+        .catch((error) => of(actions.unsubscribePathFailed(error))),
+      )
+    );
+  /**
+  * This epic defines the whole operation of fetching path from server
+  * @param {Object} action$ - action stream
+  * @param {Object} store - action stream
+  * @return {Object} action stream
+  */
+  const fetchOverallPath = (action$) =>
+  action$.ofType(types.FETCH_OVERALL_PROGRESS_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        ajax.get(`${getOverallProgress}?instrument_id=${data.payload}`, storeConfig.setHeader())
+        .map((json) => actions.fetchOverallProgressSuccess(json.response))
+        .catch((error) => of(actions.fetchOverallProgressFailed(error))),
       )
     );
     /**
@@ -103,5 +185,10 @@ export {
   getHomePath,
   searchPath,
   overviewPath,
+  fetchInstrument,
+  fetchCourses,
+  subscribePath,
+  unsubscribePath,
+  fetchOverallPath,
   getPracticeEpic,
 };

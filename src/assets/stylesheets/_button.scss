@@ -19,11 +19,10 @@
   @include gradientBlue();
 }
 .btn:focus,.btn:active:focus,.btn.active:focus,
-.btn.focus,.btn:active.focus,.btn.active.focus {
+.btn.focus,.btn:active.focus,.btn.active.focus, .dropdown-item:focus{
     outline: none;
     box-shadow:none;
 }
-
 .btn-primary:disabled {
   opacity: 0.4;
   background-color: $yellow1;

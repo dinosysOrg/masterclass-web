@@ -22,7 +22,9 @@ class BrowseContainer extends Component {
    * @return {html} The template of ProfileContainer class
    */
   checkLoading() {
-    if (this.props.payload.nprogress.tasks === 0) {
+    const {paths} = this.props.payload.pathReducer;
+    const {tasks} = this.props.payload.nprogress;
+    if (tasks === 0 && paths !== undefined) {
       return (
         <Browse {...this.props} />
       );

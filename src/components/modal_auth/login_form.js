@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
           <Field className="form-control" name="password" component="input" required type="password" placeholder="Password" />
         </div>
         {loginError ? <div style={{marginBottom: 10, color: 'red'}}>{loginError}</div> : null}
-        <button className="btn btn-primary rounded-0" type="submit">Login</button>
+        <button className="btn btn-primary rounded-0 cursorMouse" type="submit">Login</button>
       </form>
     );
   }
