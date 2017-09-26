@@ -3,9 +3,6 @@ import ReactModal from 'react-modal';
 import VideoPlayer from '../../components/shared/video_player';
 
 class PracticeVideoModal extends Component {
-  constructor() {
-    super();
-  }
   _checkModal() {
     const {modalName} = this.props.payload.initReducer;
     if (modalName === 'modalPracticeVideo') {
