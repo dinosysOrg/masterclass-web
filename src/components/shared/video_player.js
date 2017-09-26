@@ -185,19 +185,14 @@ class VideoPlayer extends Component {
   _fullscreenHandler() {
     let modal = document.getElementsByClassName('ReactModal__Overlay--after-open')[0];
     if (modal && this.state.fullScreen) {
-      console.log('a');
       modal.classList.remove('fullscreen');
-      this.setState({fullScreen: !this.state.fullScreen});
-      return;
+      return this.setState({fullScreen: !this.state.fullScreen});
     }
     if (modal && !this.state.fullscreen) {
-      console.log('b');
       modal.classList.add('fullscreen');
-      this.setState({fullScreen: !this.state.fullScreen});
-      return;
+      return this.setState({fullScreen: !this.state.fullScreen});
     }
-    this.setState({fullScreen: !this.state.fullScreen});
-    return;
+    return this.setState({fullScreen: !this.state.fullScreen});
   }
 
   selectLayout(id) {
