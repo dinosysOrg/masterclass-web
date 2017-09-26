@@ -30,7 +30,7 @@ class Siderbar extends Component {
             <li className={`nav-item ${pathRoute === '/Path/:path_Id' ? 'active' : null}`}><Link to={`/Path/${path_Id}`}>OVERVIEW</Link></li>
             <li className={`nav-item ${pathRoute === '/Path/:path_Id/Syllabus' ? 'active' : null}`}><Link to={`/Path/${path_Id}/Syllabus`}>SYLLABUS</Link></li>
             <li className={`nav-item ${pathRoute === '/Path/:path_Id/Material' ? 'active' : null}`}><Link to={`/Path/${path_Id}/Material`}>MATERIALS</Link></li>
-            <li className="nav-item"><a href="">PRACTICE</a></li>
+            <li className={`nav-item ${pathRoute === '/Path/:path_Id/Practice' ? 'active' : null}`}><Link to={`/Path/${path_Id}/Practice`}>PRACTICE</Link></li>
             <li className={`nav-item ${pathRoute.includes('/Path/:path_Id/QA') ? 'active' : null}`}><Link to={`/Path/${path_Id}/QA`}>Q & A</Link></li>
           </ul>
         </div>

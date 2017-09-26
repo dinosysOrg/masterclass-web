@@ -35,7 +35,7 @@ class SyllabusDetail extends Component {
                   </ul>
                 </div>
               </div>
-              <VideoPlayer videos={syllabusReducer.syllabus.videos}/>
+              <VideoPlayer videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
             </div>
             <div className="tool-box">
               <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus}/>

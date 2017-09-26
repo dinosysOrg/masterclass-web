@@ -18,6 +18,8 @@ class QuestionRecord extends Component {
       uploading: false,
       disabled: false,
     };
+
+    this.mediaStream = [];
   }
 
   componentDidMount() {
@@ -32,6 +34,14 @@ class QuestionRecord extends Component {
     this.setState({descriptionText: e.target.value});
   }
 
+  componentWillUnmount() {
+    if (this.mediaStream) {
+      for (let i = 0; i < this.mediaStream.length; i++) {
+        this.mediaStream[i].stop();
+      }
+    }
+  }
+
   _handleSubmit() {
     //TODO
   }
@@ -41,14 +51,19 @@ class QuestionRecord extends Component {
   }
 
   requestUserMedia() {
-    this.captureUserMedia((stream) => {
-      this.setState({ src: window.URL.createObjectURL(stream) });
-    });
+    this.captureUserMedia();
   }
 
-  captureUserMedia(callback) {
+  captureUserMedia() {
     let params = { audio: true, video: true };
-    navigator.getUserMedia(params, callback, (error) => {
+    navigator.mediaDevices.getUserMedia(params).then((stream) => {
+      this.mediaStream.push(stream);
+      this.setState({ 
+        src: window.URL.createObjectURL(stream),
+        recordVideo: RecordRTC(stream, { type: 'video' }),
+      });
+      this.state.recordVideo.startRecording();
+    }).catch((error) => {
       if (error.name === 'DevicesNotFoundError') {
         alert("You can't use this feature because you don't have a webcam installed");
         this.setState({disabled: true});
@@ -57,17 +72,23 @@ class QuestionRecord extends Component {
   };
 
   _handleStartRecord() {
+    if(!hasGetUserMedia) {
+      alert("Your browser cannot stream from your webcam. Please switch to Chrome or Firefox.");
+      return;
+    }
+    this.captureUserMedia();
     this.setState({recording: true});
-    this.captureUserMedia((stream) => {
-      this.setState({recordVideo: RecordRTC(stream, { type: 'video' })});
-      this.state.recordVideo.startRecording();
-    });
   }
 
   _stopRecord() {
     this.state.recordVideo.stopRecording(()=>{
       let video = this.state.recordVideo.getBlob();
       this.setState({recording: false, video: video});
+      if (this.mediaStream) {
+        for (let i = 0; i < this.mediaStream.length; i++) {
+          this.mediaStream[i].stop();
+        }
+      }
     });
   }
 

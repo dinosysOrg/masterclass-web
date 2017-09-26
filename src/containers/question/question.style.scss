@@ -9,6 +9,7 @@
     }
   }
 }
+
 .question-text {
   &__content {
     position: relative;
@@ -161,4 +162,10 @@
 .video-wrapper {
   display: inline-block;
   border-radius: 50%;
+}
+
+.question-select {
+  .col {
+    text-decoration: none;
+  }
 }
