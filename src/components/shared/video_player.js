@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
 import PropTypes from 'prop-types';
+import IconMC from './icon';
 
 /*
 Video Player Component
@@ -30,7 +31,8 @@ class VideoPlayer extends Component {
       currentSpeed: 1,
       volume: 100,
       currentLayout: 0,
-      didInitTimeEvent: false
+      didInitTimeEvent: false,
+      volumeIcon: 'volumn',
     };
 
     this.layoutImage = [
@@ -40,22 +42,25 @@ class VideoPlayer extends Component {
       IMG.default.layoutVideo4,
       IMG.default.layoutVideo5
     ];
-
-    this.angleImage = [
-      "http://cdo.seymourduncan.com/blog/wp-content/uploads/The-Bonamassa-pickups-in-action.jpg",
-      "https://i1.wp.com/www.songwritingmagazine.co.uk/wp-content/uploads/guitar-tips-MAIN.jpg?resize=650%2C366",
-      "http://www.guitaradventures.com/wp-content/uploads/2014/01/9.jpg",
-      "http://wwwcmuseorg-lvzm5mr0z.stackpathdns.com/wp-content/uploads/2017/03/guitar_hurdles.jpg",
-      "https://cdn.shutterstock.com/shutterstock/videos/1135024/thumb/1.jpg",
-      "http://www.ipextv.tv/wp-content/uploads/2017/07/carousel-image1.jpg"
-    ];
+    this.volumeIcon = 'volumn';
   }
   componentWillMount() {
-    this.setState({currentLayout: storageConfig.getUserLocal().layout_id});
+    const route = this.props.route;
+    if (route) {
+      if (route.path === '/Path/:path_Id/Practice') {
+        this.setState({currentLayout: 0});
+      }
+    } else {
+      this.setState({currentLayout: storageConfig.getUserLocal().layout_id});
+    }
   }
 
   componentDidMount() {
     document.addEventListener("keydown", this._closePopUp.bind(this));
+    document.addEventListener('webkitfullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('mozfullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('fullscreenchange', this._exitHandler.bind(this), false);
+    document.addEventListener('MSFullscreenChange', this._exitHandler.bind(this), false);
   }
 
   componentWillUnmount() {
@@ -115,6 +120,15 @@ class VideoPlayer extends Component {
     e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = e.target.value;
+    if (value > 66) {
+      this.volumeIcon = 'volumn';
+    } else if (value > 33) {
+      this.volumeIcon = 'volumn2'
+    } else if (value > 1) {
+      this.volumeIcon = 'volumn3';
+    } else {
+      this.volumeIcon = 'mute';
+    }
     this.setState({ volume: value });
     videoContent.handleChangeVolume(value);
   }
@@ -134,8 +148,12 @@ class VideoPlayer extends Component {
 
   openAngleSelector(e) {
     e.preventDefault();
-    e.target.parentElement.classList.add("video-active");
-    this.setState({ angleOpened: !this.state.angleOpened });
+    if (this.props.layoutControl) {
+      e.target.classList.add("selected");
+      this.setState({ angleOpened: !this.state.angleOpened });
+    } else {
+      return;
+    }
   }
 
   openVolumeControl(e) {
@@ -145,7 +163,21 @@ class VideoPlayer extends Component {
 
   handleFullscreen() {
     if (!this.state.fullScreen) {
-      this.setState({ fullScreen: true });
+      let el = document.documentElement,
+          rfs = el.requestFullscreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+            || el.msRequestFullscreen 
+        ;
+
+        rfs.call(el);
+    }
+  }
+  
+  _exitHandler() {
+    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement !== null)
+    {
+          this.setState({fullScreen: !this.state.fullScreen});
     }
   }
 
@@ -154,8 +186,11 @@ class VideoPlayer extends Component {
     this.props.userAction.putUserLayout({layout_id: id});
   }
 
-  selectVideo() {
-    //TODO
+  selectVideo(e) {
+    let targetSrc = e.target.currentSrc,
+        newSrc = targetSrc.substr(0, targetSrc.length - 4),
+        selectedVideo = document.getElementsByClassName('selected')[0];
+    selectedVideo.src = newSrc;
   }
 
   handleOnVideoEnded() {
@@ -178,7 +213,7 @@ class VideoPlayer extends Component {
         settingOpened: false,
         volumeOpened: false,
         fullScreen: false,
-        angleOpened: false
+        angleOpened: false,
       });
     }
   }
@@ -189,10 +224,22 @@ class VideoPlayer extends Component {
     }
   }
 
+  _closeFullScreen() {
+    if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+    if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+    if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    }
+  }
+
   _closeAnglePopup() {
-    let videoWrapper = document.getElementsByClassName("video-active")[0];
-    if (videoWrapper) {
-      videoWrapper.classList.remove("video-active");
+    let video = document.getElementsByClassName("selected")[0];
+    if (video) {
+      video.classList.remove("selected");
     }
     if (this.state.angleOpened) {
       this.setState({ angleOpened: false });
@@ -243,14 +290,17 @@ class VideoPlayer extends Component {
   }
 
   _renderAngle() {
-    return this.angleImage.map((value, index) => {
+    return this.props.videos.map((item, index) => {
       return (
         <div
           key={index}
           className="video-player__setting__item"
           onClick={this.selectVideo.bind(this)}
+          preload="metadata"
         >
-          <img src={value} alt="Angle" />
+          <video>
+            <source src={item.url+'#t=0'}/>
+          </video>
         </div>
       );
     });
@@ -288,6 +338,7 @@ class VideoPlayer extends Component {
     return this.state.volumeOpened ? (
       <li className="video-player__volume">
         <input
+          ref="volume"
           className="video-player__volume__slider"
           type="range"
           min="0"
@@ -300,19 +351,24 @@ class VideoPlayer extends Component {
   }
 
   _renderSettingIcon() {
-    return this.state.settingOpened ? (
-      <li
-        className="nav-item setting-opened"
-        onClick={this.handleSettingClick.bind(this)}
-      >
-        <Icon.FaCog size={20} fill="#fbdd10" />
-        <div>Choose Screen Layout</div>
-      </li>
-    ) : (
-      <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
-        <Icon.FaCog size={20} fill="#fff" />
-      </li>
-    );
+    if (this.props.layoutControl)
+    {
+      return this.state.settingOpened ? (
+        <li
+          className="nav-item setting-opened"
+          onClick={this.handleSettingClick.bind(this)}
+        >
+          <IconMC name="settings" size={20} color="#fbdd10" />
+          <div>Choose Screen Layout</div>
+        </li>
+      ) : (
+        <li className="nav-item" onClick={this.handleSettingClick.bind(this)}>
+          <IconMC name="settings" size={20}/>
+        </li>
+      );
+    } else {
+      return null;
+    }
   }
 
   _renderTime() {
@@ -324,8 +380,8 @@ class VideoPlayer extends Component {
   _renderPlayer() {
     if (this.props.videos.length > 0) {
       let className = this.state.fullScreen
-      ? "video-player fullscreen"
-      : "video-player";
+      ? "video-player clearfix fullscreen"
+      : "video-player clearfix";
       return (
         <div className={className}>
           <div className="content-wrapper">
@@ -335,6 +391,7 @@ class VideoPlayer extends Component {
               onVideoEnded={this.handleOnVideoEnded.bind(this)}
               openAngleSelector={this.openAngleSelector.bind(this)}
               videos={this.props.videos}
+              angleControl={this.props.layoutControl}
             />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
@@ -354,34 +411,34 @@ class VideoPlayer extends Component {
                     className="nav-item"
                     onClick={this.handleBackwardClick.bind(this)}
                   >
-                    <Icon.FaBackward size={20} fill="#fff" />
+                    <IconMC name="loopBack10s" size={20}/>
                   </li>
                   {this.state.playing ? (
                     <li
                       className="nav-item"
                       onClick={this.handlePauseClick.bind(this)}
                     >
-                      <Icon.FaPause size={20} fill="#fff" />
+                      <IconMC name="pause" size={20}/>
                     </li>
                   ) : (
                     <li
                       className="nav-item"
                       onClick={this.handlePlayClick.bind(this)}
                     >
-                      <Icon.FaPlay size={20} fill="#fff" />
+                      <IconMC name="play" size={20}/>
                     </li>
                   )}
                   <li
                     className="nav-item"
                     onClick={this.handleForwardClick.bind(this)}
                   >
-                    <Icon.FaForward size={20} fill="#fff" />
+                    <IconMC name="loopBack10s" size={20}/>
                   </li>
                   <li
-                    className="nav-item"
+                    className="nav-item volume"
                     onClick={this.openVolumeControl.bind(this)}
                   >
-                    <Icon.FaVolumeUp size={20} fill="#fff" />
+                    <IconMC name={this.volumeIcon} size={20}/>
                   </li>
                   {this._renderVolume()}
                   <li className="nav-item">
@@ -409,13 +466,13 @@ class VideoPlayer extends Component {
                   {this.state.fullScreen ? (
                     <li
                       className="nav-item"
-                      onClick={this._closePopUp.bind(this)}
+                      onClick={this._closeFullScreen.bind(this)}
                     >
                       <Icon.FaCompress size={20} color="#fff" />
                     </li>
                   ) : (
                     <li
-                      className="nav-item"
+                      className="nav-item fullscreen"
                       onClick={this.handleFullscreen.bind(this)}
                     >
                       <Icon.FaArrowsAlt size={20} color="#fff" />

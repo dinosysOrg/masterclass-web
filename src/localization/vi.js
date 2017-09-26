@@ -15,5 +15,6 @@ export default {
   'view all path': 'Xem tất cả',
   'sign_up_now': 'Đăng Ký Đi M',
   'take_quiz_again': 'Làm Quiz Lại Đi M',
-  'discovery_now': 'Khám Phá Đi M'
+  'discovery_now': 'Khám Phá Đi M',
+  'anonymous': 'Không tên',
 };

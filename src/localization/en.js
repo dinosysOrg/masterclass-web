@@ -15,5 +15,6 @@ export default {
   'view all path': 'View all paths',
   'sign_up_now': 'SIGN UP NOW',
   'take_quiz_again': 'TAKE QUIZ AGAIN',
-  'discovery_now': 'DISCOVER NOW'
+  'discovery_now': 'DISCOVER NOW',
+  'anonymous': 'Anonymous',
 };

@@ -21,6 +21,7 @@ class QuizForm extends React.Component {
    * @return {html} The template of QuizForm class
    */
   render() {
+    console.log(this.props.payload.userReducer.quiz)
     const {handleSubmit} = this.props;
     const {quiz} = this.props.payload.userReducer;
     return (

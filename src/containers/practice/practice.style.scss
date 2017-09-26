@@ -1,0 +1,57 @@
+.practice-video-modal {
+  width: 100vw;
+  height: 100vh;
+  .ReactModal__Content {
+    &--after-open {
+      position: absolute;
+      transform: none;
+      top: 15% !important;
+    }
+    overflow: visible !important;
+  }
+  .video-player {
+    padding: 0;
+    &__one {
+      padding-bottom: 60%;
+      &__first {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+        background-color: #000000;
+        video {
+          object-fit: contain;
+        }
+      }
+    }
+    &__controls {
+      padding: 0 20px;
+      background-color: #000000;
+    }
+    &.fullscreen {
+      width: 100%;
+      background-color: #000000;
+      transform: none;
+      position: fixed;
+      margin: auto;
+      top:0;
+      left: 0;
+      height: 0;
+      .content-wrapper {
+        padding: 0;
+      }
+      .video-player__controls {
+        position: absolute;
+        width: 100%;
+        bottom: 35px;
+        padding-top: 20px;
+        padding-right: 50px;
+        padding-left: 50px;
+      }
+    }
+  }
+}
