@@ -18,7 +18,7 @@ class SyllabusDetailContainer extends Component {
   }
    /**
    * Call api before loading component
-   * @return {html} The template of ProfileContainer class
+   * @return {html} The template of SyllabusDetailContainer class
    */
   checkLoading() {
     if (!_.isEmpty(this.props.payload.syllabusReducer)) {

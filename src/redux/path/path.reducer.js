@@ -55,7 +55,11 @@ const path = (state = initPathState, action) => {
   case types.FETCH_PRACTICE_SUCCESS:
     return {
       ...state,
-      practices: action.payload.practices,
+      practice: {
+        practices: action.payload.practices,
+        level: action.payload.level,
+        instrument: action.payload.instrument
+      }  
     };
   case types.FETCH_PRACTICE_FAILED:
     return {
