@@ -9,6 +9,13 @@
     }
     overflow: visible !important;
   }
+  .ReactModal__Overlay {
+    &--after-open {
+      &.fullscreen{
+        background-color: rgba(0,0,0,1) !important;
+      }
+    }
+  }
   .video-player {
     padding: 0;
     &__one {

@@ -42,7 +42,7 @@ class VideoPlayer extends Component {
     ];
 
     this._closePopUp = this._closePopUp.bind(this);
-    this._exitHandler = this._exitHandler.bind(this);
+    this._fullscreenHandler = this._fullscreenHandler.bind(this);
     this._updateTime = this._updateTime.bind(this);
   }
   componentWillMount() {
@@ -58,10 +58,10 @@ class VideoPlayer extends Component {
 
   componentDidMount() {
     document.addEventListener("keydown", this._closePopUp);
-    document.addEventListener('webkitfullscreenchange', this._exitHandler, false);
-    document.addEventListener('mozfullscreenchange', this._exitHandler, false);
-    document.addEventListener('fullscreenchange', this._exitHandler, false);
-    document.addEventListener('MSFullscreenChange', this._exitHandler, false);
+    document.addEventListener('webkitfullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('mozfullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('fullscreenchange', this._fullscreenHandler, false);
+    document.addEventListener('MSFullscreenChange', this._fullscreenHandler, false);
   }
 
   componentWillUnmount() {
@@ -70,10 +70,10 @@ class VideoPlayer extends Component {
       video.removeEventListener("timeupdate", this._updateTime);
     }
     document.removeEventListener("keydown", this._closePopUp);
-    document.removeEventListener('webkitfullscreenchange', this._exitHandler, false);
-    document.removeEventListener('mozfullscreenchange', this._exitHandler, false);
-    document.removeEventListener('fullscreenchange', this._exitHandler, false);
-    document.removeEventListener('MSFullscreenChange', this._exitHandler, false);
+    document.removeEventListener('webkitfullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('mozfullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('fullscreenchange', this._fullscreenHandler, false);
+    document.removeEventListener('MSFullscreenChange', this._fullscreenHandler, false);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -170,10 +170,19 @@ class VideoPlayer extends Component {
     }
   }
   
-  _exitHandler() {
-    if (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement !== null)
-    {
-          this.setState({fullScreen: !this.state.fullScreen});
+  _fullscreenHandler() {
+    let modal = document.getElementsByClassName('ReactModal__Overlay--after-open')[0];
+    if (modal && this.state.fullScreen) {
+      console.log('a');
+      modal.classList.remove('fullscreen');
+      this.setState({fullScreen: !this.state.fullScreen});
+      return;
+    }
+    if (modal && !this.state.fullscreen) {
+      console.log('b');
+      modal.classList.add('fullscreen');
+      this.setState({fullScreen: !this.state.fullScreen});
+      return;
     }
   }
 
