@@ -40,6 +40,10 @@ class VideoPlayer extends Component {
       IMG.default.layoutVideo4,
       IMG.default.layoutVideo5
     ];
+
+    this._closePopUp = this._closePopUp.bind(this);
+    this._exitHandler = this._exitHandler.bind(this);
+    this._updateTime = this._updateTime.bind(this);
   }
   componentWillMount() {
     const route = this.props.route;
@@ -53,19 +57,23 @@ class VideoPlayer extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("keydown", this._closePopUp.bind(this));
-    document.addEventListener('webkitfullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('mozfullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('fullscreenchange', this._exitHandler.bind(this), false);
-    document.addEventListener('MSFullscreenChange', this._exitHandler.bind(this), false);
+    document.addEventListener("keydown", this._closePopUp);
+    document.addEventListener('webkitfullscreenchange', this._exitHandler, false);
+    document.addEventListener('mozfullscreenchange', this._exitHandler, false);
+    document.addEventListener('fullscreenchange', this._exitHandler, false);
+    document.addEventListener('MSFullscreenChange', this._exitHandler, false);
   }
 
   componentWillUnmount() {
     let video = document.getElementsByTagName("video")[0];
     if (video) {
-      video.removeEventListener("timeupdate", this._updateTime.bind(this));
+      video.removeEventListener("timeupdate", this._updateTime);
     }
-    document.removeEventListener("keydown", this._closePopUp.bind(this));
+    document.removeEventListener("keydown", this._closePopUp);
+    document.removeEventListener('webkitfullscreenchange', this._exitHandler, false);
+    document.removeEventListener('mozfullscreenchange', this._exitHandler, false);
+    document.removeEventListener('fullscreenchange', this._exitHandler, false);
+    document.removeEventListener('MSFullscreenChange', this._exitHandler, false);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,13 +84,13 @@ class VideoPlayer extends Component {
       this.setState({didInitTimeEvent: true});
       let video = document.getElementsByTagName("video")[0];
       if (video) {
-        video.addEventListener("timeupdate", this._updateTime.bind(this));
+        video.addEventListener("timeupdate", this._updateTime);
       }
     }
     if (prevState.currentLayout !== this.state.currentLayout) {
       let video = document.getElementsByTagName("video")[0];
       if (video) {
-        video.addEventListener("timeupdate", this._updateTime.bind(this));
+        video.addEventListener("timeupdate", this._updateTime);
       }
     }
   }

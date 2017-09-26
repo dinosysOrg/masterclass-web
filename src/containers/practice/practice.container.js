@@ -5,10 +5,18 @@ import {bindActionCreators} from 'redux';
 import {Sidebar} from '../../components';
 import Practice from './practice';
 import * as initAction from '../../redux/init/init.action';
+import * as pathAction from '../../redux/path/path.actions';
 /**
- * Question of project
+ * Practice of project
  */
 class PracticeContainer extends Component {
+  /**
+   * ComponentWillMount of the Component
+   */
+  componentWillMount() {
+    let {path_Id} = this.props.params;
+    this.props.pathAction.fetchPractice(Number(path_Id));
+  }
   /**
    * React rendering function
    * @return { Component } - the component
@@ -40,6 +48,7 @@ const mapStateToProps = (rootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     initAction: bindActionCreators(initAction, dispatch),
+    pathAction: bindActionCreators(pathAction, dispatch),
   };
 };
 

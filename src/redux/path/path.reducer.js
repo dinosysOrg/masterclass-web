@@ -52,6 +52,16 @@ const path = (state = initPathState, action) => {
         ...Object.assign({}, action.payload),
       }
     };
+  case types.FETCH_PRACTICE_SUCCESS:
+    return {
+      ...state,
+      practices: action.payload.practices,
+    };
+  case types.FETCH_PRACTICE_FAILED:
+    return {
+      ...state,
+      error: action.payload,
+    };
   default:
     return state;
   }

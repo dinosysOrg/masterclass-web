@@ -103,3 +103,33 @@ export function fetchOverviewPathFailed(error) {
     payload: error
   };
 };
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_PRACTICE_REQUEST
+ */
+export function fetchPractice(data) {
+  return {
+    type: types.FETCH_PRACTICE_REQUEST,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetching failed
+ * @return {Object} action - with type FETCH_PRACTICE_FAILED
+ */
+export function fetchPracticeFailed(error) {
+  return {
+    type: types.FETCH_PRACTICE_FAILED,
+    payload: error
+  };
+};
+/**
+ * An action creator - fetching success
+ * @return {Object} action - with type FETCH_PRACTICE_SUCCESS
+ */
+export function fetchPracticeSuccess(payload) {
+  return {
+    type: types.FETCH_PRACTICE_SUCCESS,
+    payload: payload
+  };
+};
