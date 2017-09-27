@@ -203,11 +203,10 @@ class VideoPlayer extends Component {
     this.props.userAction.putUserLayout({layout_id: id});
   }
 
-  selectVideo(e) {
-    let targetSrc = e.target.currentSrc,
-        newSrc = targetSrc.substr(0, targetSrc.length - 4),
+  selectVideo(url) {
+    let targetSrc = url,
         selectedVideo = document.getElementsByClassName('selected')[0];
-    selectedVideo.src = newSrc;
+    selectedVideo.src = targetSrc;
     this.refs.videoContent.handlePauseClick();
     this.refs.videoContent.handleSeekVideo(this.state.currentTime);
     this.setState({playing: false});
@@ -315,12 +314,9 @@ class VideoPlayer extends Component {
         <div
           key={index}
           className="video-player__setting__item"
-          onClick={this.selectVideo.bind(this)}
-          preload="metadata"
+          onClick={this.selectVideo.bind(this, item.url)}
         >
-          <video>
-            <source src={item.url+'#t=20'}/>
-          </video>
+         <img src="https://media.w3.org/2010/05/sintel/poster.png"/>
         </div>
       );
     });
