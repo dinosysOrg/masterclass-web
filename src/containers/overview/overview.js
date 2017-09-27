@@ -36,7 +36,7 @@ class OverviewPage extends Component {
           <div className="media">
               <img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/170x170"/> 
               <div className="media-body">
-                <h5 className="mt-0 teacher-name">Teacher Name{pathOverview.teacher.name}</h5>
+                <h5 className="mt-0 teacher-name">{pathOverview.teacher.name}</h5>
                 {pathOverview.teacher.bio}
               </div>
           </div>

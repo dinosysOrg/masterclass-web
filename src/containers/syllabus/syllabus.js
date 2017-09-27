@@ -27,7 +27,7 @@ class SyllabusPage extends Component {
         <div id="accordion" className="syllabusList" role="tablist">
           {
             syllabuses.map((data, index) => 
-              <Syllabus key={index} pathID={id} {...data} />
+              <Syllabus subscribed={this.props.payload.pathReducer.pathOverview.subscribed} key={index} pathID={id} {...data} />
             )
           }
         </div>

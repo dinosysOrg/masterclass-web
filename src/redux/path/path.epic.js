@@ -74,7 +74,7 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
     .mergeMap((data) =>
       concat$(
         of(store.dispatch(beginTask())),
-        ajax.get(`${getPathAPI}/${data.payload}`)
+        ajax.get(`${getPathAPI}/${data.payload}`, storeConfig.setHeader())
           .map((json) => actions.fetchOverviewPathSuccess(json.response))
           .catch((error) => of(actions.fetchOverviewPathFailed(error))),
         of(store.dispatch(endTask( ))),

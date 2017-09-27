@@ -21,7 +21,7 @@ class SyllabusContainer extends Component {
   render() {
     let {tasks} = this.props.payload.nprogress;
     return (
-      <div className="container">
+      <div className="container-content">
           <div className="pageTitle">
             <h2 className="pageTitle__title">SYLLABUS</h2>
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>

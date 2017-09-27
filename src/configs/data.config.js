@@ -38,7 +38,7 @@ function formatDataMyPath (data) {
 }
 
 function countPercent(x, y) {
-  return (x/y)*100
+  return Math.floor((x/y)*100)
 }
 
 function formatDataOverall(overallProgress) {

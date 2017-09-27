@@ -35,6 +35,9 @@ body{background-color: #1e2124;}
         font-size: rem(16);
     }
 }
+.linkUnderline:hover{
+    text-decoration: underline;
+}
 .col-pagecontent{
     border-left: 2px solid #707070;
 }
@@ -70,3 +73,21 @@ body{background-color: #1e2124;}
           color: $yellow1
       }
   }
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 90%; 
+    }
+    .container-content {
+        max-width: 91%; 
+        margin: auto;
+    }
+}
+@media (min-width: 1400px) {
+    .container-fluid, .container-content {
+        max-width: 1140px; 
+    }
+    .container{
+        max-width: 1140px; 
+    }
+}

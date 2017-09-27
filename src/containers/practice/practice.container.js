@@ -27,7 +27,7 @@ class PracticeContainer extends Component {
   checkLoading() {
     if (!_.isEmpty(this.props.payload.pathReducer)) {
       return (
-        <div className="container">
+        <div className="container-content">
           <div className="pageTitle">
             <h2 className="pageTitle__title">SYLLABUS</h2>
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>

@@ -8,6 +8,24 @@ import CircularProgressbar from 'react-circular-progressbar';
 import * as _ from 'lodash';
 import {Loading} from '../../components';
 import {formatDataOverall} from '../../configs/data.config';
+import Pagination from '../../components/pagination/pagination';
+
+let exampleItems = _.range(100, 120).map(i => { 
+  return { 
+    course: {
+      id: 1,
+      instrument_id: 2,
+      level_id: 2,  
+      name: 'Path_' + i,
+      teacher_id: 9,
+      available: true,
+      created_at: "2017-09-20T05:00:27.327Z",
+      updated_at: "2017-09-20T05:00:27.327Z",
+      description: "abc"
+    },
+    percent_completed: 21
+  }
+});
 
 /**
  * PathPage
@@ -18,7 +36,14 @@ class PathPage extends Component {
     this.state = {
       instrumentSelect: 'Guitar',
       myCourses: this.props.payload.pathReducer.myCourses,
+      dataMock: Object.assign(exampleItems, this.props.payload.pathReducer.myCourses.courses),
+      pageOfItems: []
     };
+  }
+  // function onChangePage
+  onChangePage(pageOfItems) {
+      // update state with new page of items
+      this.setState({ pageOfItems: pageOfItems });
   }
   // function handleInstrument
   handleInstrument(id, name) {
@@ -28,22 +53,49 @@ class PathPage extends Component {
   }
   // function handleRemovePath
   handleRemovePath(id, key) {
-    let data = this.state.myCourses.courses;
+    let data = this.state.pageOfItems;
     _.pullAt(data, [key])
     this.setState({
-      myCourses: {courses: data}
+      pageOfItems: data
     })
     this.props.pathAction.unsubscribePathRequest(id)
   }
   // function renderButtonLink
   renderButtonLink(id, percent, key) {
     if (percent === 0) {
-      return <div onClick={()=>this.handleRemovePath(id, key)} className="cursorMouse">Remove from my path</div>
+      return <div onClick={()=>this.handleRemovePath(id, key)} className="cursorMouse linkUnderline">Remove from my path</div>
     } else {
       return <Link to={`/Path/${id}`}>Continue learning</Link>
     }
   }
-
+  renderLastPath() {
+    const {last_course_visited} = this.state.myCourses;
+    if(last_course_visited.percent_completed !== 0) {
+      return(
+        <div>
+          <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
+          <table className="table w-100 tb-last-path">
+            <thead>
+              <tr>
+                <th>Path name</th>
+                <th>Progress</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="w-50"><Link to={`/Path/${last_course_visited.course.id}`}>{last_course_visited.course.name}</Link></td>
+                <td>{last_course_visited.percent_completed}%</td>
+                <td><Link to={`/Path/${last_course_visited.course.id}`}>Continue learning</Link></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )
+    } else {
+      return null
+    }
+  }
   checkLoading() {
     const {overallProgress} = this.props.payload.pathReducer;
     if (Object.keys(overallProgress).length >= 1){
@@ -114,7 +166,7 @@ class PathPage extends Component {
     const {listInstrument} = this.props.payload.pathReducer
     return (
       <div className="mypath-page py-5">
-        <div className="container">
+        <div className="container-content">
           <div className="row pb-4">
             <div className="col"><h4 className="title-page text-uppercase">{this.context.t('overall progress')}</h4></div>
             <div className="col text-right">
@@ -140,29 +192,11 @@ class PathPage extends Component {
               </div>
             </div>
           </div>
-
           {this.checkLoading()}
-
           {/* End card */}
           <h4 className="pt-5 pb-3 text-uppercase">{this.context.t('path enrollment')}</h4>
           <div className="boxPath">
-            <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
-            <table className="table w-100 tb-last-path">
-              <thead>
-                <tr>
-                  <th>Path name</th>
-                  <th>Progress</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Lorem Ipsum</td>
-                  <td>83%</td>
-                  <td><Link to="/Path/1">Continue learning</Link></td>
-                </tr>
-              </tbody>
-            </table>
+            {this.renderLastPath()}
             {/* End table */}
             <p className="pl-3 pt-1 mb-0 boxPath__title">All others</p>
             <table className="table w-100 tb-path">
@@ -175,9 +209,9 @@ class PathPage extends Component {
               </thead>
               <tbody>
                 {
-                  this.state.myCourses.courses.map((data, key) => 
+                  this.state.pageOfItems.map((data, key) =>
                     <tr key={key}>
-                      <td>{data.course.name}</td>
+                      <td className="w-50"><Link to={`/Path/${data.course.id}`}>{data.course.name}</Link></td>
                       <td>{data.percent_completed}%</td>
                       <td>
                         {this.renderButtonLink(data.course.id, data.percent_completed, key)}
@@ -188,16 +222,7 @@ class PathPage extends Component {
               </tbody>
             </table>
             {/* End table */}
-            {/* <nav aria-label="Page navigation example" className="pb-1">
-              <ul className="pagination justify-content-center">
-                <li className="page-item active"><a className="page-link" href="">1</a></li>
-                <li className="page-item"><a className="page-link" href="">2</a></li>
-                <li className="page-item"><a className="page-link" href="">3</a></li>
-                <li className="page-item"><a className="page-link" href="">4</a></li>
-                <li className="page-item"><a className="page-link" href="">5</a></li>
-              </ul>
-            </nav> */}
-            {/* navigation */}
+          <Pagination items={this.state.dataMock} onChangePage={this.onChangePage.bind(this)} />
           </div>
 
         </div>

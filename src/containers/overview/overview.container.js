@@ -16,12 +16,21 @@ class OverviewContainer extends Component {
     let {path_Id} = this.props.params;
     this.props.pathAction.fetchOverviewPath(Number(path_Id))
   }
+  checkSub() {
+    let {tasks} = this.props.payload.nprogress;
+    if(tasks === 0) {
+      return (<Overview {...this.props}/>)
+    } else {
+      return (<Loading/>)
+    }
+  }
   checklogin() {
     const {loginStatus} = this.props.payload.userReducer;
+    const {pathOverview} = this.props.payload.pathReducer;
     let {tasks} = this.props.payload.nprogress;
-    if (loginStatus) {
+    if (loginStatus && pathOverview !== undefined && pathOverview.subscribed === true) {
       return (
-        <div className="container">
+        <div className="container-content">
             <div className="pageTitle">
               <h2 className="pageTitle__title">PATH NAME</h2>
               <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
@@ -31,7 +40,7 @@ class OverviewContainer extends Component {
                 <Sidebar {...this.props} />
               </div>
               <div className="col-md-9 col-pagecontent pb-5">
-                {tasks === 0 && this.props.payload.pathReducer.pathOverview !== undefined ? <Overview {...this.props}/> : <Loading/>}
+                {this.checkSub()}
               </div>
             </div>
         </div>

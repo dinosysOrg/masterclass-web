@@ -4,6 +4,7 @@ import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContaine
 import Syllabus from '../../components/shared/syllabus';
 import $ from 'jquery';
 import {formatDataMyPath} from '../../configs/data.config';
+import storageConfig from '../../configs/storage.config';
 /**
  * OverviewPage
  */
@@ -12,11 +13,20 @@ class OverviewNoLoginPage extends Component {
    * 
    */
   componentDidMount() {
-  $('.collapse').on('shown.bs.collapse', function(){
-    $(this).parent().find(".iconList").removeClass('.iconList').addClass("active");
-  }).on('hidden.bs.collapse', function(){
-    $(this).parent().find(".iconList").removeClass('.iconList').removeClass("active");
-  });
+    $('.collapse').on('shown.bs.collapse', function(){
+      $(this).parent().find(".iconList").removeClass('.iconList').addClass("active");
+    }).on('hidden.bs.collapse', function(){
+      $(this).parent().find(".iconList").removeClass('.iconList').removeClass("active");
+    });
+  }
+  handleSub(id) {
+    this.props.pathAction.subscribePathRequest(id)
+    this.props.router.push('/MyPath')
+    // this.forceUpdate()
+    // if (pathOverview.subscribed) {
+    //   console.log('sadasdasd')
+    //   this.props.router.push('/MyPath')
+    // }
   }
   /**
    * @return {Component} - the rendered component
@@ -38,6 +48,7 @@ class OverviewNoLoginPage extends Component {
             <div className="col">
               <h4 className="title-overview pb-1">PATH DESCRIPTION</h4>
               <p>{pathOverview.description}</p>
+              {storageConfig.getUserLocal() ? <div className="text-center pt-3"><button onClick={()=>this.handleSub(pathOverview.id)} className="btn btn-primary cursorMouse text-uppercase">subscribe path</button></div> : null}
             </div>
             <div className="col">
               <h4 className="title-overview pb-1">OVERVIEW</h4>
