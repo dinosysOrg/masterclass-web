@@ -15,6 +15,7 @@ class SyllabusDetail extends Component {
         path_Id: path_Id,
         syllabus_Id: id
       };
+      this.refs.player.handlePauseClick();
       this.props.syllabusAction.fetchSyllabus(data);
     }
   }
@@ -45,7 +46,7 @@ class SyllabusDetail extends Component {
                   </ul>
                 </div>
               </div>
-              <VideoPlayer videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
+              <VideoPlayer ref="player" videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
             </div>
             <div className="tool-box">
               <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus} {...this.props}/>

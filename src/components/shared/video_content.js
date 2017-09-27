@@ -105,6 +105,7 @@ class VideoContent extends Component {
             <div className={'video-player__two__second' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="secondVid"
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
@@ -130,6 +131,7 @@ class VideoContent extends Component {
             <div className={'video-player__three__second' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
@@ -139,6 +141,7 @@ class VideoContent extends Component {
             <div className={'video-player__three__third' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="thirdVid"
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
@@ -166,6 +169,7 @@ class VideoContent extends Component {
                 <div className={'video-player__four__second' + angleControlClass}>
                   <video
                     tabIndex={-1}
+                    muted
                     ref="secondVid"
                     onClick={this.props.openAngleSelector}
                   >
@@ -175,6 +179,7 @@ class VideoContent extends Component {
                 <div className={'video-player__four__third' + angleControlClass}>
                   <video
                     tabIndex={-1}
+                    muted
                     ref="thirdVid"
                     onClick={this.props.openAngleSelector}
                   >
@@ -184,6 +189,7 @@ class VideoContent extends Component {
                 <div className={'video-player__four__fourth' + angleControlClass}>
                   <video
                     tabIndex={-1}
+                    muted
                     ref="fourthVid"
                     onEnded={this.props.onVideoEnded}
                     onClick={this.props.openAngleSelector}
@@ -211,6 +217,7 @@ class VideoContent extends Component {
             <div className={'video-player__five__second' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="secondVid"
                 onClick={this.props.openAngleSelector}
               >
@@ -220,6 +227,7 @@ class VideoContent extends Component {
             <div className={'video-player__five__third' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="thirdVid"
                 onClick={this.props.openAngleSelector}
               >
@@ -229,6 +237,7 @@ class VideoContent extends Component {
             <div className={'video-player__five__fourth' + angleControlClass}>
               <video
                 tabIndex={-1}
+                muted
                 ref="fourthVid"
                 onEnded={this.props.onVideoEnded}
                 onClick={this.props.openAngleSelector}
