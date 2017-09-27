@@ -4,6 +4,7 @@ import {withRouter} from 'react-router';
 import SyllabusDetail from './syllabusDetail';
 import {bindActionCreators} from 'redux';
 import * as syllabusAction from '../../redux/syllabus/syllabus.action';
+import * as pathAction from '../../redux/path/path.actions';
 import {Loading} from '../../components';
 import * as _ from 'lodash';
 /**
