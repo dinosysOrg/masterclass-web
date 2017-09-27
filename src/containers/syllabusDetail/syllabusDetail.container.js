@@ -50,7 +50,6 @@ const mapStateToProps = (rootState) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     syllabusAction: bindActionCreators(syllabusAction, dispatch),
-    
   };
 };
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SyllabusDetailContainer));
