@@ -8,6 +8,16 @@ import * as _ from 'lodash';
  * SyllabusPage
  */
 class SyllabusDetail extends Component {
+  _changeLesson(id) {
+    if (id) {
+      let {path_Id} = this.props.params,
+      data = {
+        path_Id: path_Id,
+        syllabus_Id: id
+      };
+      this.props.syllabusAction.fetchSyllabus(data);
+    }
+  }
   /**
    * check loading status
    * @return {html} html code 
@@ -30,15 +40,15 @@ class SyllabusDetail extends Component {
                 <div className="col"><Link className="video-box__backLink" to={`/Path/${path_Id}/Syllabus`}>Back to path syllabus</Link></div>
                 <div className="col text-right">
                   <ul className="list-inline video-box__list">
-                    <li className="list-inline-item"><Link to={`/Path/${prevSyllabus}/Syllabus`}>Previous lesson</Link></li>
-                    <li className="list-inline-item"><Link to={`/Path/${nextSyllabus}/Syllabus`}>Next lesson</Link></li>
+                    <li className="list-inline-item"><Link to={`/Path/${path_Id}/Syllabus/${prevSyllabus}`} onClick={this._changeLesson.bind(this, prevSyllabus)}>Previous lesson</Link></li>
+                    <li className="list-inline-item"><Link to={`/Path/${path_Id}/Syllabus/${nextSyllabus}`} onClick={this._changeLesson.bind(this, nextSyllabus)}>Next lesson</Link></li>
                   </ul>
                 </div>
               </div>
               <VideoPlayer videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
             </div>
             <div className="tool-box">
-              <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus}/>
+              <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus} {...this.props}/>
             </div>
           </div>
         </div>
