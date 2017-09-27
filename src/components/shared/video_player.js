@@ -316,7 +316,7 @@ class VideoPlayer extends Component {
           preload="metadata"
         >
           <video>
-            <source src={item.url+'#t=0'}/>
+            <source src={item.url+'#t=20'}/>
           </video>
         </div>
       );
