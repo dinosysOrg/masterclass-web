@@ -16,7 +16,7 @@ provide various screen layout to arrange them
 */
 
 const SPEED_MULTIPLIERS = [2, 1.5, 1, 0.5];
-
+let timeout;
 class VideoPlayer extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +46,8 @@ class VideoPlayer extends Component {
     this._closePopUp = this._closePopUp.bind(this);
     this._fullscreenHandler = this._fullscreenHandler.bind(this);
     this._updateTime = this._updateTime.bind(this);
+    this._showControls = this._showControls.bind(this);
+    this._hideControls = this._hideControls.bind(this);
     this.volumeIcon = 'volumn';
   }
   componentWillMount() {
@@ -95,37 +97,42 @@ class VideoPlayer extends Component {
       if (video) {
         video.addEventListener("timeupdate", this._updateTime);
       }
+      this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+    }
+    if (!this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      if (controls.style.visibility === "hidden") {
+        controls.style.visibility = "visible";
+      }
+      clearTimeout(timeout);
     }
   }
 
   handleBackwardClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
+    this.setState({ playing: false });
     videoContent.handleBackwardClick();
   }
 
   handlePlayClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
     this.setState({ playing: true });
     videoContent.handlePlayClick();
   }
 
   handlePauseClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
     this.setState({ playing: false });
     videoContent.handlePauseClick();
   }
 
   handleForwardClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
+    this.setState({ playing: false });
     videoContent.handleForwardClick();
   }
 
   handleChangeVolume(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = e.target.value;
     if (value > 66) {
@@ -142,7 +149,6 @@ class VideoPlayer extends Component {
   }
 
   handleChangeSpeed(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = parseFloat(e.target.textContent);
     this.setState({ currentSpeed: value });
@@ -150,12 +156,10 @@ class VideoPlayer extends Component {
   }
 
   handleSettingClick(e) {
-    e.preventDefault();
     this.setState({ settingOpened: !this.state.settingOpened });
   }
 
   openAngleSelector(e) {
-    e.preventDefault();
     if (this.props.layoutControl) {
       e.target.classList.add("selected");
       this.setState({ angleOpened: !this.state.angleOpened });
@@ -165,7 +169,6 @@ class VideoPlayer extends Component {
   }
 
   openVolumeControl(e) {
-    e.preventDefault();
     this.setState({ volumeOpened: !this.state.volumeOpened });
   }
 
@@ -177,7 +180,6 @@ class VideoPlayer extends Component {
             || el.mozRequestFullScreen
             || el.msRequestFullscreen 
         ;
-
         rfs.call(el);
     }
   }
@@ -197,6 +199,7 @@ class VideoPlayer extends Component {
 
   selectLayout(id) {
     this.setState({currentLayout: id, settingOpened: false});
+    this.handlePauseClick();
     this.props.userAction.putUserLayout({layout_id: id});
   }
 
@@ -391,13 +394,32 @@ class VideoPlayer extends Component {
     return date.toISOString().substr(11, 8);
   }
 
+  _showControls() {
+    if (this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      controls.style.visibility = "visible";
+      clearTimeout(timeout);
+    }
+  }
+
+  _hideControls() {
+    if (this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      timeout = setTimeout(() => {
+        controls.style.visibility = "hidden";
+      }, 2000);
+    }  
+  }
+
   _renderPlayer() {
     if (this.props.videos.length > 0) {
       let className = this.state.fullScreen
       ? "video-player clearfix fullscreen"
       : "video-player clearfix";
       return (
-        <div className={className}>
+        <div className={className} 
+          onMouseOver={this._showControls.bind(this)}
+          onMouseLeave={this._hideControls.bind(this)}>
           <div className="content-wrapper">
             <VideoContent
               ref="videoContent"
@@ -408,7 +430,7 @@ class VideoPlayer extends Component {
               angleControl={this.props.layoutControl}
             />
             {this._renderSetting()}
-            <div className="video-player__controls clearfix">
+            <div ref="controls" className="video-player__controls clearfix">
               <div className="progress" onClick={this.seekVideo.bind(this)}>
                 <div
                   className="progress-bar"
@@ -446,7 +468,7 @@ class VideoPlayer extends Component {
                     className="nav-item"
                     onClick={this.handleForwardClick.bind(this)}
                   >
-                    <IconMC name="loopBack10s" size={20}/>
+                    <IconMC name="loopForward10s" size={20}/>
                   </li>
                   <li
                     className="nav-item volume"
