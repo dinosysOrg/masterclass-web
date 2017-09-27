@@ -16,7 +16,7 @@ provide various screen layout to arrange them
 */
 
 const SPEED_MULTIPLIERS = [2, 1.5, 1, 0.5];
-let timeout;
+let controlsTimeout;
 class VideoPlayer extends Component {
   constructor(props) {
     super(props);
@@ -104,7 +104,7 @@ class VideoPlayer extends Component {
       if (controls.style.visibility === "hidden") {
         controls.style.visibility = "visible";
       }
-      clearTimeout(timeout);
+      clearTimeout(controlsTimeout);
     }
   }
 
@@ -208,6 +208,9 @@ class VideoPlayer extends Component {
         newSrc = targetSrc.substr(0, targetSrc.length - 4),
         selectedVideo = document.getElementsByClassName('selected')[0];
     selectedVideo.src = newSrc;
+    this.refs.videoContent.handlePauseClick();
+    this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+    this.setState({playing: false});
   }
 
   handleOnVideoEnded() {
@@ -398,14 +401,17 @@ class VideoPlayer extends Component {
     if (this.state.fullScreen) {
       let controls = document.getElementsByClassName("video-player__controls")[0];
       controls.style.visibility = "visible";
-      clearTimeout(timeout);
+      clearTimeout(controlsTimeout);
+      controlsTimeout = setTimeout(() => {
+        controls.style.visibility = "hidden";
+      }, 2000);
     }
   }
 
   _hideControls() {
     if (this.state.fullScreen) {
       let controls = document.getElementsByClassName("video-player__controls")[0];
-      timeout = setTimeout(() => {
+      controlsTimeout = setTimeout(() => {
         controls.style.visibility = "hidden";
       }, 2000);
     }  
@@ -417,7 +423,7 @@ class VideoPlayer extends Component {
       ? "video-player clearfix fullscreen"
       : "video-player clearfix";
       return (
-        <div className={className} 
+        <div ref="player" className={className} 
           onMouseOver={this._showControls.bind(this)}
           onMouseLeave={this._hideControls.bind(this)}>
           <div className="content-wrapper">
@@ -430,7 +436,7 @@ class VideoPlayer extends Component {
               angleControl={this.props.layoutControl}
             />
             {this._renderSetting()}
-            <div ref="controls" className="video-player__controls clearfix">
+            <div className="video-player__controls clearfix">
               <div className="progress" onClick={this.seekVideo.bind(this)}>
                 <div
                   className="progress-bar"
