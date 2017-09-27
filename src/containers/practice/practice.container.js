@@ -25,12 +25,13 @@ class PracticeContainer extends Component {
    * @return {html} The template of PracticeContainer class
    */
   checkLoading() {
+    const {practice} = this.props.payload.pathReducer;
     if (!_.isEmpty(this.props.payload.pathReducer)) {
       return (
         <div className="container-content">
           <div className="pageTitle">
-            <h2 className="pageTitle__title">SYLLABUS</h2>
-            <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
+            <h2 className="pageTitle__title">PRACTICE</h2>
+            <p className="pageTitle__sub text-uppercase">{practice.level.name} {practice.instrument.name} </p>
           </div>
           <div className="row card-group">
             <div className="col-md-3 col-sidebar pb-5">

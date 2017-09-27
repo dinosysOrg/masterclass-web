@@ -38,8 +38,8 @@ class OverviewNoLoginPage extends Component {
       <div className="overview-page">
         <div className="container">
           <div className="pageTitle">
-            <h2 className="pageTitle__title">PATH NAME</h2>
-            <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
+            <h2 className="pageTitle__title text-uppercase">{pathOverview.name}</h2>
+            <p className="pageTitle__sub text-uppercase">{pathOverview.level.name} {pathOverview.instrument.name}</p>
           </div>
           <div className="video-box-demo">
             <iframe title="video" allowFullScreen="allowFullScreen" frameBorder="0" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>

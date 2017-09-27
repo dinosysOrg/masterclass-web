@@ -15,7 +15,9 @@ class OverviewPage extends Component {
     return (
       <div className="overview-page">
         <div className="video-box">
-          <iframe title="video" allowFullScreen="allowFullScreen" frameBorder="0" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
+          <video className="videoPlay" controls>
+            <source src={pathOverview.overview_video.url} />
+          </video>
         </div>
         <div className="row pt-4">
           <div className="col">

@@ -32,8 +32,8 @@ class OverviewContainer extends Component {
       return (
         <div className="container-content">
             <div className="pageTitle">
-              <h2 className="pageTitle__title">PATH NAME</h2>
-              <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
+              <h2 className="pageTitle__title text-uppercase">{pathOverview.name}</h2>
+              <p className="pageTitle__sub text-uppercase">{pathOverview.level.name} {pathOverview.instrument.name}</p>
             </div>
             <div className="row card-group">
               <div className="col-md-3 col-sidebar pb-5">
