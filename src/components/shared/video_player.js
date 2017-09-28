@@ -108,6 +108,7 @@ class VideoPlayer extends Component {
         video.addEventListener("timeupdate", this._updateTime);
       }
       this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+      this.refs.videoContent.handleChangeSpeed(this.state.currentSpeed);
     }
     if (!this.state.fullScreen) {
       let controls = document.getElementsByClassName("video-player__controls")[0];
@@ -219,6 +220,7 @@ class VideoPlayer extends Component {
     selectedVideo.src = targetSrc;
     this.refs.videoContent.handlePauseClick();
     this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+    this.refs.videoContent.handleChangeSpeed(this.state.currentSpeed);
     this.setState({playing: false});
   }
 
