@@ -11,11 +11,15 @@ class SyllabusDetail extends Component {
   _changeLesson(id) {
     if (id) {
       let {path_Id} = this.props.params,
-      data = {
-        path_Id: path_Id,
-        syllabus_Id: id
-      };
-      this.props.syllabusAction.fetchSyllabus(data);
+          {syllabus_Id} = this.props.params,
+          data = {
+            path_Id: path_Id,
+            syllabus_Id: id
+          };
+      if (id !== syllabus_Id) {
+        this.refs.player.handlePauseClick();
+        this.props.syllabusAction.fetchSyllabus(data);
+      }
     }
   }
   /**
@@ -25,8 +29,9 @@ class SyllabusDetail extends Component {
   checkLoading() {
     let syllabusReducer = this.props.payload.syllabusReducer;
     let {path_Id} = this.props.params;
-    let nextSyllabus = this.props.payload.syllabusReducer.nextSyllabus;
-    let prevSyllabus = this.props.payload.syllabusReducer.prevSyllabus;
+    let {syllabus_Id} = this.props.params;
+    let nextSyllabus = this.props.payload.syllabusReducer.nextSyllabus ? this.props.payload.syllabusReducer.nextSyllabus : syllabus_Id;
+    let prevSyllabus = this.props.payload.syllabusReducer.prevSyllabus ? this.props.payload.syllabusReducer.prevSyllabus : syllabus_Id;
     if (!_.isEmpty(syllabusReducer)) {
       return (
         <div className="syllabusDetail-page">
@@ -45,7 +50,7 @@ class SyllabusDetail extends Component {
                   </ul>
                 </div>
               </div>
-              <VideoPlayer videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
+              <VideoPlayer ref="player" videos={syllabusReducer.syllabus.videos} layoutControl={true}/>
             </div>
             <div className="tool-box">
               <SyllabusDetailMaterials syllabus={this.props.payload.syllabusReducer.syllabus} {...this.props}/>

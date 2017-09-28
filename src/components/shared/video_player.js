@@ -8,7 +8,7 @@ import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
 import PropTypes from 'prop-types';
 import IconMC from './icon';
-
+import $ from 'jquery';
 /*
 Video Player Component
 This component provide controller for the videos and 
@@ -16,7 +16,7 @@ provide various screen layout to arrange them
 */
 
 const SPEED_MULTIPLIERS = [2, 1.5, 1, 0.5];
-
+let controlsTimeout;
 class VideoPlayer extends Component {
   constructor(props) {
     super(props);
@@ -43,10 +43,18 @@ class VideoPlayer extends Component {
       IMG.default.layoutVideo5
     ];
 
+    this.loadingGif = IMG.default.loadingGif;
+
     this._closePopUp = this._closePopUp.bind(this);
     this._fullscreenHandler = this._fullscreenHandler.bind(this);
     this._updateTime = this._updateTime.bind(this);
+    this._showControls = this._showControls.bind(this);
+    this._hideControls = this._hideControls.bind(this);
+    this._seekMouseUp = this._seekMouseUp.bind(this);
+    this._seekMouseMove = this._seekMouseMove.bind(this);
+
     this.volumeIcon = 'volumn';
+    this.seekDrag = false;
   }
   componentWillMount() {
     const route = this.props.route;
@@ -65,6 +73,8 @@ class VideoPlayer extends Component {
     document.addEventListener('mozfullscreenchange', this._fullscreenHandler, false);
     document.addEventListener('fullscreenchange', this._fullscreenHandler, false);
     document.addEventListener('MSFullscreenChange', this._fullscreenHandler, false);
+    document.addEventListener('mouseup', this._seekMouseUp);
+    document.addEventListener('mousemove', this._seekMouseMove);
   }
 
   componentWillUnmount() {
@@ -77,6 +87,8 @@ class VideoPlayer extends Component {
     document.removeEventListener('mozfullscreenchange', this._fullscreenHandler, false);
     document.removeEventListener('fullscreenchange', this._fullscreenHandler, false);
     document.removeEventListener('MSFullscreenChange', this._fullscreenHandler, false);
+    document.removeEventListener('mouseup', this._seekMouseUp);
+    document.removeEventListener('mousemove', this._seekMouseMove);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -95,37 +107,43 @@ class VideoPlayer extends Component {
       if (video) {
         video.addEventListener("timeupdate", this._updateTime);
       }
+      this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+      this.refs.videoContent.handleChangeSpeed(this.state.currentSpeed);
+    }
+    if (!this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      if (controls.style.visibility === "hidden") {
+        controls.style.visibility = "visible";
+      }
+      clearTimeout(controlsTimeout);
     }
   }
 
   handleBackwardClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
+    this.setState({ playing: false });
     videoContent.handleBackwardClick();
   }
 
   handlePlayClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
     this.setState({ playing: true });
     videoContent.handlePlayClick();
   }
 
   handlePauseClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
     this.setState({ playing: false });
     videoContent.handlePauseClick();
   }
 
   handleForwardClick(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent;
+    this.setState({ playing: false });
     videoContent.handleForwardClick();
   }
 
   handleChangeVolume(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = e.target.value;
     if (value > 66) {
@@ -142,7 +160,6 @@ class VideoPlayer extends Component {
   }
 
   handleChangeSpeed(e) {
-    e.preventDefault();
     let videoContent = this.refs.videoContent,
       value = parseFloat(e.target.textContent);
     this.setState({ currentSpeed: value });
@@ -150,12 +167,10 @@ class VideoPlayer extends Component {
   }
 
   handleSettingClick(e) {
-    e.preventDefault();
     this.setState({ settingOpened: !this.state.settingOpened });
   }
 
   openAngleSelector(e) {
-    e.preventDefault();
     if (this.props.layoutControl) {
       e.target.classList.add("selected");
       this.setState({ angleOpened: !this.state.angleOpened });
@@ -165,7 +180,6 @@ class VideoPlayer extends Component {
   }
 
   openVolumeControl(e) {
-    e.preventDefault();
     this.setState({ volumeOpened: !this.state.volumeOpened });
   }
 
@@ -177,7 +191,6 @@ class VideoPlayer extends Component {
             || el.mozRequestFullScreen
             || el.msRequestFullscreen 
         ;
-
         rfs.call(el);
     }
   }
@@ -197,26 +210,37 @@ class VideoPlayer extends Component {
 
   selectLayout(id) {
     this.setState({currentLayout: id, settingOpened: false});
+    this.handlePauseClick();
     this.props.userAction.putUserLayout({layout_id: id});
   }
 
-  selectVideo(e) {
-    let targetSrc = e.target.currentSrc,
-        newSrc = targetSrc.substr(0, targetSrc.length - 4),
+  selectVideo(url) {
+    let targetSrc = url,
         selectedVideo = document.getElementsByClassName('selected')[0];
-    selectedVideo.src = newSrc;
+    selectedVideo.src = targetSrc;
+    this.refs.videoContent.handlePauseClick();
+    this.refs.videoContent.handleSeekVideo(this.state.currentTime);
+    this.refs.videoContent.handleChangeSpeed(this.state.currentSpeed);
+    this.setState({playing: false});
   }
 
   handleOnVideoEnded() {
     this.setState({ playing: false });
   }
 
-  seekVideo(e) {
-    let offset = e.target.getBoundingClientRect().left,
-        left = e.clientX - offset,
-        width = document.getElementsByClassName('progress')[0].clientWidth,
-        progress = left / width,
-        time = progress * this.refs.videoContent.getDuration();
+  seekVideo(x) {
+    let seekBar = $('.progress'),
+        time,
+        position = x - seekBar.offset().left,
+        width = seekBar.width(),
+        progress = position / width;
+    if (progress > 1) {
+      progress = 1;
+    }
+    if (progress < 0) {
+      progress = 0;
+    }
+    time = progress * this.refs.videoContent.getDuration();
     this.refs.videoContent.handleSeekVideo(time);
     this.setState({progress: progress * 100});
   }
@@ -305,16 +329,21 @@ class VideoPlayer extends Component {
 
   _renderAngle() {
     return this.props.videos.map((item, index) => {
+      let angleIndex = 'angle' + index;
+      let image = <img ref={angleIndex} src={this.loadingGif} className="loading-angle"/>;
+      let downloadingImage = new Image();
+      downloadingImage.onload = (e) => {
+          this.refs[angleIndex].src = e.target.src;
+          this.refs[angleIndex].classList.remove("loading-angle");
+      };
+      downloadingImage.src = "https://media.w3.org/2010/05/sintel/poster.png";
       return (
         <div
           key={index}
           className="video-player__setting__item"
-          onClick={this.selectVideo.bind(this)}
-          preload="metadata"
+          onClick={this.selectVideo.bind(this, item.url)}
         >
-          <video>
-            <source src={item.url+'#t=0'}/>
-          </video>
+         {image}
         </div>
       );
     });
@@ -391,13 +420,53 @@ class VideoPlayer extends Component {
     return date.toISOString().substr(11, 8);
   }
 
+  _showControls() {
+    if (this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      controls.style.visibility = "visible";
+      clearTimeout(controlsTimeout);
+      controlsTimeout = setTimeout(() => {
+        controls.style.visibility = "hidden";
+      }, 2000);
+    }
+  }
+
+  _hideControls() {
+    if (this.state.fullScreen) {
+      let controls = document.getElementsByClassName("video-player__controls")[0];
+      controlsTimeout = setTimeout(() => {
+        controls.style.visibility = "hidden";
+      }, 2000);
+    }  
+  }
+
+  _seekMouseDown(e) {
+    this.seekDrag = true;
+    this.seekVideo(e.pageX);
+  }
+
+  _seekMouseUp(e) {
+    if (this.seekDrag) {
+      this.seekDrag = false;
+      this.seekVideo(e.pageX);
+    }
+  }
+
+  _seekMouseMove(e) {
+    if (this.seekDrag) {
+      this.seekVideo(e.pageX);
+    }
+  }
+
   _renderPlayer() {
     if (this.props.videos.length > 0) {
       let className = this.state.fullScreen
       ? "video-player clearfix fullscreen"
       : "video-player clearfix";
       return (
-        <div className={className}>
+        <div ref="player" className={className} 
+          onMouseOver={this._showControls.bind(this)}
+          onMouseLeave={this._hideControls.bind(this)}>
           <div className="content-wrapper">
             <VideoContent
               ref="videoContent"
@@ -409,7 +478,7 @@ class VideoPlayer extends Component {
             />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
-              <div className="progress" onClick={this.seekVideo.bind(this)}>
+              <div className="progress" onMouseDown={this._seekMouseDown.bind(this)}>
                 <div
                   className="progress-bar"
                   role="progressbar"
@@ -446,7 +515,7 @@ class VideoPlayer extends Component {
                     className="nav-item"
                     onClick={this.handleForwardClick.bind(this)}
                   >
-                    <IconMC name="loopBack10s" size={20}/>
+                    <IconMC name="loopForward10s" size={20}/>
                   </li>
                   <li
                     className="nav-item volume"

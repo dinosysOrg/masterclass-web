@@ -33,6 +33,10 @@
       padding-right: 100px;
       background-color: #000000;
     }
+    .video-player__setting {
+      bottom: 100px;
+      z-index: 100;
+    }
   }
   &__one, &__two, &__three, &__four, &__five {
     position: relative;
@@ -387,19 +391,15 @@
     bottom: 75px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    height: 205px;
+    height: 215px;
     &__item {
       display: inline-block;
-      margin: 10px;
+      margin: 25px 10px 10px 10px;
       max-width:20%;
       max-height:100%;
       img {
         max-width:100%;
-        max-height:100%;
-      }
-      video {
-        max-width:100%;
-        max-height:100%;
+        max-height: 150px;
       }
     }
   }
@@ -467,6 +467,9 @@
   }
 }
 
+.loading-angle {
+  padding: 10px 50px 10px 50px;
+}
 
 
 
