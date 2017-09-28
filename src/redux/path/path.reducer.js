@@ -40,6 +40,11 @@ const path = (state = initPathState, action) => {
       ...state,
       error: action.payload,
     };
+  case types.FETCH_OVERVIEW_REQUEST:
+    return {
+      ...state,
+      pathOverview: {},
+    };
   case types.FETCH_OVERVIEW_SUCCESS:
     return {
       ...state,
@@ -52,6 +57,11 @@ const path = (state = initPathState, action) => {
         ...state.paths,
         ...Object.assign({}, action.payload),
       }
+    };
+  case types.FETCH_INSTRUMENT_REQUEST:
+    return {
+      ...state,
+      listInstrument: {}
     };
   case types.FETCH_INSTRUMENT_SUCCESS:
     return {
@@ -77,9 +87,19 @@ const path = (state = initPathState, action) => {
       ...state,
       error: action.payload,
     };
+  case types.FETCH_COURSES_REQUEST:
+    return {
+      ...state,
+      fetchCoursesStatus: false,
+      myCourses: {
+        courses: [],
+        last_course_visited: []
+      }
+  }
   case types.FETCH_COURSES_SUCCESS:
     return {
       ...state,
+      fetchCoursesStatus: true,
       myCourses: action.payload
     };
   case types.FETCH_COURSES_FAILED:
@@ -90,11 +110,13 @@ const path = (state = initPathState, action) => {
   case types.FETCH_OVERALL_PROGRESS_REQUEST:
     return {
       ...state,
+      fetchOverrallProgress: false,
       overallProgress: {},
     };
   case types.FETCH_OVERALL_PROGRESS_SUCCESS:
     return {
       ...state,
+      fetchOverrallProgress: true,
       overallProgress: action.payload,
     };
   default:

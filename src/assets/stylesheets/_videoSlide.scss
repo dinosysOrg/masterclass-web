@@ -1,3 +1,10 @@
+// .slick-track{
+//     .slick-slide:first-child .slideBox{
+//         background-color: red;
+//         margin-left: 0px;
+//     }
+// }
+
 .slick-slider{
   img {
     max-width: 100%;
@@ -10,7 +17,7 @@
       margin: rem(15);
       &__title{
         margin-bottom: rem(2);
-        margin-top: rem(7);
+        margin-top: rem(8);
         font-size: rem(21);
       }
       &__level{
@@ -43,7 +50,24 @@
   }
 }
 
-
+.home-page {
+    @media (min-width: 1400px) {
+        .slick-slider .slick-prev {
+            left: 0px;
+        }
+        .slick-slider .slick-next {
+            right: 0px;
+        }
+    }
+}
+@media (min-width: 1400px) {
+    .slick-slider .slick-prev {
+        left: -50px;
+    }
+    .slick-slider .slick-next {
+        right: -50px;
+    }
+}
 /* Slider */
 .slick-slider {
   position: relative;
@@ -149,8 +173,8 @@ $slick-loader-path: "./" !default;
 $slick-arrow-color: white !default;
 $slick-dot-color: black !default;
 $slick-dot-color-active: $slick-dot-color !default;
-$slick-prev-character: "\f104" !default;
-$slick-next-character: "\f105" !default;
+$slick-prev-character: "\e912" !default;
+$slick-next-character: "\e922" !default;
 $slick-dot-character: "\2022" !default;
 $slick-dot-size: 6px !default;
 $slick-opacity-default: 0.75 !default;
@@ -194,18 +218,18 @@ $slick-opacity-not-active: 0.5 !default;
         opacity: $slick-opacity-not-active;
     }
     &:before {
-        font-family: FontAwesome;
-        font-size: 70px;
+        font-family: 'masterclass';
+        font-size: rem(45);
         line-height: 1;
         color: #fff;
         opacity: $slick-opacity-default;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        // -webkit-font-smoothing: antialiased;
+        // -moz-osx-font-smoothing: grayscale;
     }
 }
-
 .slick-prev {
     left: 0px;
+    top: 34%;
     [dir="rtl"] & {
         left: auto;
         right: 0px;
@@ -220,6 +244,7 @@ $slick-opacity-not-active: 0.5 !default;
 
 .slick-next {
     right: 0px;
+    top: 34%;
     [dir="rtl"] & {
         left: 0px;
         right: auto;
@@ -308,6 +333,7 @@ $slick-opacity-not-active: 0.5 !default;
     position: relative;
     // height: 500px;
     background-size: cover;
+    background-position: center;
     &__title{
       font-size: rem(37);
       margin-bottom: 0px;

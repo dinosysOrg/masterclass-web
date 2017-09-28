@@ -4,7 +4,6 @@ import storageConfig from '../../configs/storage.config';
 import {Link} from 'react-router';
 
 class syllabusComponent extends Component {
-
   checkSub(){
     const {showModal} = this.props
     if(showModal && !storageConfig.getUserLocal()){
@@ -34,9 +33,9 @@ class syllabusComponent extends Component {
             <p className="mb-0 syllabusList__time mt-1">{coverSecondToMinutes(this.props.time)}</p>
           </div>
         </div>
-        <div data-toggle="collapse" href={`#collapse${this.props.id}`} aria-expanded="false" aria-controls={`collapse${this.props.id}`} className="iconList"/>
+        <div data-toggle="collapse" href={`#collapse${this.props.id}`} aria-expanded="false" aria-controls={`collapse${this.props.id}`} className={`iconList ${this.props.title === 'Lesson 1' ? 'active' : null}`}/>
       </div>
-      <div id={`collapse${this.props.id}`} className="collapse" role="tabpanel" aria-labelledby={`heading${this.props.id}`} data-parent="#accordion">
+      <div id={`collapse${this.props.id}`} className={`collapse ${this.props.title === 'Lesson 1' ? 'show' : null}`} role="tabpanel" aria-labelledby={`heading${this.props.id}`} data-parent="#accordion">
         <div className="card-body">
           {this.props.description}
         </div>

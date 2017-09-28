@@ -26,7 +26,7 @@ class PracticeContainer extends Component {
    */
   checkLoading() {
     const {practice} = this.props.payload.pathReducer;
-    if (!_.isEmpty(this.props.payload.pathReducer)) {
+    if (!_.isEmpty(this.props.payload.pathReducer) && !_.isEmpty(practice)) {
       return (
         <div className="container-content">
           <div className="pageTitle">
@@ -38,11 +38,15 @@ class PracticeContainer extends Component {
               <Sidebar {...this.props} />
             </div>
             <div className="col-md-9 col-pagecontent pb-5 pl-5 pt-5">
-               {_.isEmpty(this.props.payload.pathReducer.practice) ? <Loading/> : <Practice {...this.props}/>}
+              <Practice {...this.props}/>
             </div>
           </div>
         </div>
       );
+    } else {
+      return (
+        <Loading/>
+      )
     }
   }
 

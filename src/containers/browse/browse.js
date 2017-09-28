@@ -22,7 +22,7 @@ class Browse extends Component {
    */
   checkRecommend() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid w-100 pl-0 pr-0">
         <PromoPanel {...this.props}/>
           <Search {...this.props} />
           <VideoPanel {...this.props} settingSlide={settingSlide}/>

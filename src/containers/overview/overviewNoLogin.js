@@ -22,11 +22,6 @@ class OverviewNoLoginPage extends Component {
   handleSub(id) {
     this.props.pathAction.subscribePathRequest(id)
     this.props.router.push('/MyPath')
-    // this.forceUpdate()
-    // if (pathOverview.subscribed) {
-    //   console.log('sadasdasd')
-    //   this.props.router.push('/MyPath')
-    // }
   }
   /**
    * @return {Component} - the rendered component
@@ -77,7 +72,7 @@ class OverviewNoLoginPage extends Component {
                 <div className="media">
                     <img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/150x150"/> 
                     <div className="media-body">
-                      <h5 className="mt-0 teacher-name">Teacher Name{pathOverview.teacher.name}</h5>
+                      <h5 className="mt-0 teacher-name">{pathOverview.teacher.name}</h5>
                       {pathOverview.teacher.bio}
                     </div>
                 </div>

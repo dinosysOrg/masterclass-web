@@ -21,7 +21,8 @@ class SyllabusDetailContainer extends Component {
    * @return {html} The template of SyllabusDetailContainer class
    */
   checkLoading() {
-    if (!_.isEmpty(this.props.payload.syllabusReducer)) {
+    const {path} = this.props.payload.syllabusReducer
+    if (!_.isEmpty(this.props.payload.syllabusReducer) && !_.isEmpty(path)) {
       return (
         <SyllabusDetail {...this.props}/>
       );

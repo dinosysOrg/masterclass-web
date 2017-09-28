@@ -9,46 +9,41 @@ import * as _ from 'lodash';
 import {Loading} from '../../components';
 import {formatDataOverall} from '../../configs/data.config';
 import Pagination from '../../components/pagination/pagination';
-
-let exampleItems = _.range(100, 120).map(i => { 
-  return { 
-    course: {
-      id: 1,
-      instrument_id: 2,
-      level_id: 2,  
-      name: 'Path_' + i,
-      teacher_id: 9,
-      available: true,
-      created_at: "2017-09-20T05:00:27.327Z",
-      updated_at: "2017-09-20T05:00:27.327Z",
-      description: "abc"
-    },
-    percent_completed: 21
-  }
-});
-
 /**
  * PathPage
  */
 class PathPage extends Component {
   constructor(props) {
     super(props);
+    const {overallProgress} = this.props.payload.pathReducer
+    const overall = formatDataOverall(overallProgress)
     this.state = {
       instrumentSelect: 'Guitar',
       myCourses: this.props.payload.pathReducer.myCourses,
-      dataMock: Object.assign(exampleItems, this.props.payload.pathReducer.myCourses.courses),
-      pageOfItems: []
+      dataMock: this.props.payload.pathReducer.myCourses.courses,
+      pageOfItems: [],
+      overall: overall
     };
   }
-  // function onChangePage
+  // componentWillReceiveProps(nextProps) {
+  //   console.log(nextProps)
+  //   const {fetchCoursesStatus, fetchOverrallProgress} = nextProps.payload.pathReducer
+  //   if (fetchCoursesStatus && fetchOverrallProgress){
+  //     this.setState({
+  //       myCourses: nextProps.payload.pathReducer.myCourses,
+  //       dataMock: nextProps.payload.pathReducer.myCourses.courses,
+  //     })
+  //   }
+  // }
   onChangePage(pageOfItems) {
       // update state with new page of items
       this.setState({ pageOfItems: pageOfItems });
   }
   // function handleInstrument
   handleInstrument(id, name) {
-    this.setState({	instrumentSelect: name }, () => {
+    this.setState({instrumentSelect: name}, () => {
       this.props.pathAction.fetchOverallProgress(id)
+      this.props.pathAction.fetchMyCourses(id)
     });
   }
   // function handleRemovePath
@@ -70,7 +65,7 @@ class PathPage extends Component {
   }
   renderLastPath() {
     const {last_course_visited} = this.state.myCourses;
-    if(last_course_visited.percent_completed !== 0) {
+    if(last_course_visited.length !== 0) {
       return(
         <div>
           <p className="p-3 mb-0 boxPath__title">Continue where you left</p>
@@ -97,19 +92,18 @@ class PathPage extends Component {
     }
   }
   checkLoading() {
-    const {overallProgress} = this.props.payload.pathReducer;
-    if (Object.keys(overallProgress).length >= 1){
-      const overall = formatDataOverall(overallProgress)
+    const overalData = this.state.overall
+    if (Object.keys(overalData).length >= 1){
       return(
         <div className="card-deck">
           <div className="col-md-4">
             <div className="colAwards p-3">
               <div className="card-group">
-                <div className="card colAwards__hours">{overall.housrPractice}</div>
+                <div className="card colAwards__hours">{overalData.housrPractice}</div>
                 <div className="card colAwards__colRight pb-4">HOURS<br/>OF PRACTICE</div>
               </div>
               <div className="card-group">
-                <div className="card colAwards__hours">{overall.totalAwards}</div>
+                <div className="card colAwards__hours">{overalData.totalAwards}</div>
                 <div className="card colAwards__colRight">
                   <h5 className="mt-2">AWARDS<br/>EARNED</h5>
                   <ul className="colAwards__list mt-2">
@@ -128,7 +122,7 @@ class PathPage extends Component {
           <div className="col-md-3">
             <div className="colProcess py-3 pl-2">
               {
-                overall.todalProgresses.map((items, index) => 
+                overalData.todalProgresses.map((items, index) => 
                   <div key={index} className="mt-4">
                     <div className="colProcess__circle"><CircularProgressbar percentage={items.percent} initialAnimation={true}/></div>
                     <div className="colProcess__title pl-2">{items.completed}/{items.total} {items.name}<span className="d-block">{items.status}</span></div>
@@ -142,7 +136,7 @@ class PathPage extends Component {
             <div className="colSkill p-3">
               <div className="chart">
                 <ResponsiveContainer>
-                  <RadarChart cy="42%" data={overall.mySkills}>
+                  <RadarChart cy="42%" data={overalData.mySkills}>
                     <Radar name="Instrument skill" dataKey="instrument_level" stroke="#fff" fill="#fff" fillOpacity={0.4}/>
                     <Radar name="My skill" dataKey="user_level" stroke="#ff4d04" fill="#ff4d04" fillOpacity={0.6}/>
                     <PolarGrid gridType="circle" />
@@ -181,7 +175,7 @@ class PathPage extends Component {
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
                       {
-                        listInstrument.entries.map((data, key) => 
+                        listInstrument.instruments.map((data, key) => 
                           <button key={key} className="dropdown-item cursorMouse" onClick={()=>this.handleInstrument(data.id, data.name)} type="button">{data.name}</button>
                         )
                       }

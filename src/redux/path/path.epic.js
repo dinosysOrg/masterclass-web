@@ -91,9 +91,8 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
   action$.ofType(types.FETCH_INSTRUMENT_REQUEST)
     .mergeMap((data) =>
       concat$(
-        of(store.dispatch(beginTask())),
         of(actionInit.showLoading()),
-        ajax.get(`${getInstruments}`)
+        ajax.get(`${getInstruments}`, storeConfig.setHeader())
         .map((json) => actions.fetchInstrumentSuccess(json.response))
         .catch((error) => of(actions.fetchInstrumentFailed(error))),
       )
@@ -109,11 +108,10 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
   action$.ofType(types.FETCH_COURSES_REQUEST)
     .mergeMap((data) =>
       concat$(
-        ajax.get(`${getMyCourses}`, storeConfig.setHeader())
+        ajax.get(`${getMyCourses}?instrument_id=${data.payload}`, storeConfig.setHeader())
         .map((json) => actions.fetchMyCoursesSuccess(json.response))
         .catch((error) => of(actions.fetchMyCoursesFailed(error))),
         of(actionInit.hideLoading()),
-        of(store.dispatch(endTask())),
       )
     );
   /**

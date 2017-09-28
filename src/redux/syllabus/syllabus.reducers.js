@@ -13,6 +13,8 @@ const syllabus = (state = initialState, action) => {
   case types.FETCH_SYLLABUS_REQUEST:
     return {
       ...state,
+      syllabus: {},
+      path: {},
     };
   case types.FETCH_SYLLABUS_SUCCESS:
     return {

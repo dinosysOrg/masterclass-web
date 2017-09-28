@@ -132,9 +132,10 @@ export function fetchInstrumentFailed(error) {
 /**
  * An action creator - fetchInstrument
  */
-export function fetchMyCourses() {
+export function fetchMyCourses(data) {
   return {
     type: types.FETCH_COURSES_REQUEST,
+    payload: data
   };
 };
 /**

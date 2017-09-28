@@ -11,11 +11,11 @@ class OverviewPage extends Component {
    */
   render() {
     let {pathOverview} = this.props.payload.pathReducer;
-    let data = formatDataMyPath(pathOverview);
+  let data = formatDataMyPath(pathOverview, pathOverview.my_skills);
     return (
       <div className="overview-page">
         <div className="video-box">
-          <video className="videoPlay" controls>
+          <video className="videoPlay w-100" controls>
             <source src={pathOverview.overview_video.url} />
           </video>
         </div>

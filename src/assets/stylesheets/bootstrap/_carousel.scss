@@ -73,7 +73,8 @@
   display: flex; // 1. allow flex styles
   align-items: center; // 2. vertically center contents
   justify-content: center; // 3. horizontally center contents
-  width: $carousel-control-width;
+  // width: $carousel-control-width;
+  width: 8%;
   color: $carousel-control-color;
   text-align: center;
   opacity: $carousel-control-opacity;
@@ -105,10 +106,10 @@
   background-size: 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: $carousel-control-prev-icon-bg;
+  // background-image: $carousel-control-prev-icon-bg;
 }
 .carousel-control-next-icon {
-  background-image: $carousel-control-next-icon-bg;
+  // background-image: $carousel-control-next-icon-bg;
 }
 
 
