@@ -8,7 +8,7 @@ import * as userAction from "../../redux/user/user.action";
 import storageConfig from "../../configs/storage.config";
 import PropTypes from 'prop-types';
 import IconMC from './icon';
-
+import $ from 'jquery';
 /*
 Video Player Component
 This component provide controller for the videos and 
@@ -50,7 +50,11 @@ class VideoPlayer extends Component {
     this._updateTime = this._updateTime.bind(this);
     this._showControls = this._showControls.bind(this);
     this._hideControls = this._hideControls.bind(this);
+    this._seekMouseUp = this._seekMouseUp.bind(this);
+    this._seekMouseMove = this._seekMouseMove.bind(this);
+
     this.volumeIcon = 'volumn';
+    this.seekDrag = false;
   }
   componentWillMount() {
     const route = this.props.route;
@@ -69,6 +73,8 @@ class VideoPlayer extends Component {
     document.addEventListener('mozfullscreenchange', this._fullscreenHandler, false);
     document.addEventListener('fullscreenchange', this._fullscreenHandler, false);
     document.addEventListener('MSFullscreenChange', this._fullscreenHandler, false);
+    document.addEventListener('mouseup', this._seekMouseUp);
+    document.addEventListener('mousemove', this._seekMouseMove);
   }
 
   componentWillUnmount() {
@@ -81,6 +87,8 @@ class VideoPlayer extends Component {
     document.removeEventListener('mozfullscreenchange', this._fullscreenHandler, false);
     document.removeEventListener('fullscreenchange', this._fullscreenHandler, false);
     document.removeEventListener('MSFullscreenChange', this._fullscreenHandler, false);
+    document.removeEventListener('mouseup', this._seekMouseUp);
+    document.removeEventListener('mousemove', this._seekMouseMove);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -218,12 +226,19 @@ class VideoPlayer extends Component {
     this.setState({ playing: false });
   }
 
-  seekVideo(e) {
-    let offset = e.target.getBoundingClientRect().left,
-        left = e.clientX - offset,
-        width = document.getElementsByClassName('progress')[0].clientWidth,
-        progress = left / width,
-        time = progress * this.refs.videoContent.getDuration();
+  seekVideo(x) {
+    let seekBar = $('.progress'),
+        time,
+        position = x - seekBar.offset().left,
+        width = seekBar.width(),
+        progress = position / width;
+    if (progress > 1) {
+      progress = 1;
+    }
+    if (progress < 0) {
+      progress = 0;
+    }
+    time = progress * this.refs.videoContent.getDuration();
     this.refs.videoContent.handleSeekVideo(time);
     this.setState({progress: progress * 100});
   }
@@ -423,6 +438,24 @@ class VideoPlayer extends Component {
     }  
   }
 
+  _seekMouseDown(e) {
+    this.seekDrag = true;
+    this.seekVideo(e.pageX);
+  }
+
+  _seekMouseUp(e) {
+    if (this.seekDrag) {
+      this.seekDrag = false;
+      this.seekVideo(e.pageX);
+    }
+  }
+
+  _seekMouseMove(e) {
+    if (this.seekDrag) {
+      this.seekVideo(e.pageX);
+    }
+  }
+
   _renderPlayer() {
     if (this.props.videos.length > 0) {
       let className = this.state.fullScreen
@@ -443,7 +476,7 @@ class VideoPlayer extends Component {
             />
             {this._renderSetting()}
             <div className="video-player__controls clearfix">
-              <div className="progress" onClick={this.seekVideo.bind(this)}>
+              <div className="progress" onMouseDown={this._seekMouseDown.bind(this)}>
                 <div
                   className="progress-bar"
                   role="progressbar"
