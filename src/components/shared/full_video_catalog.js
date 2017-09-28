@@ -10,31 +10,24 @@ import PropTypes from 'prop-types';
  */
 class FullVideoCatalog extends Component {
   /**
-   * Handle Input Change
-   * @param {Event} e - the event object
-   */
-  checkAuthorized() {
-    if (this.props.location.pathname === '/') {
-      return (
-        <div className="row mb-4">
-          <div className="col-md-4">
-          </div>
-          <div className="col-md-8 text-right popularPath__viewall">
-            <Link to="/ViewAll">{this.context.t('view all path')}</Link>
-          </div>
-        </div>
-      )
-    } else return null;
-  }
-  /**
    * Check data popular
    */
   checkDataPopular() {
     return (
       <div className="pathRow mb-5 mt-5">
         <div className="container">
-          <h3 className="mb-3 pathRow__title">{this.props.title} PATH</h3>
-          {this.checkAuthorized()}
+          <div className="row mb-3">
+            <div className="col"><h3 className="pathRow__title">{this.props.title} PATH</h3></div>
+            {
+              this.props.location.pathname === '/' ? 
+              <div className="col text-right">
+                <div className="popularPath__viewall">
+                  <Link to="/ViewAll">{this.context.t('view all path')}</Link>
+                </div>
+              </div>
+              : null
+            }
+          </div>
         </div>
         <VideoSlide {...this.props} settingSlide={this.props.settingSlide} data={this.props.data}/>
       </div>

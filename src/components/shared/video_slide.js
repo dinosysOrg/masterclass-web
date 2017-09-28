@@ -67,6 +67,12 @@ class videoSlide extends React.Component {
     })
     this.props.pathAction.subscribePathRequest(id)
   }
+  removeSub(id) {
+    this.setState({
+      hideAddPath: false
+    })
+    this.props.pathAction.unsubscribePathRequest(id)
+  }
   /**
    * render slide
    * @return {html} The template of HomePage class
@@ -84,7 +90,7 @@ class videoSlide extends React.Component {
               onClick={this.onClickSlide.bind(this, data, index)}
             >
               <div className="slideBox cursorMouse">
-                <div className="slideBox__img"><img alt="video slide" src={data.imgSrc}/></div>
+                <div className="slideBox__img"><img className="img-fluid" alt="video slide" src={data.imgSrc}/></div>
                 <div className="slideBox__info">
                   <h3 className="slideBox__title">{data.title}</h3>
                   <div className="slideBox__level">{data.level}</div>
@@ -98,7 +104,7 @@ class videoSlide extends React.Component {
           transitionName="transitionAnimation"
           transitionEnterTimeout={200}
           transitionLeaveTimeout={200}>
-          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail handleSub={this.handleSub.bind(this)} slideDetailToggle={this.checkSlideDetail.bind(this)} {...this.state} /> : null}
+          {this.state.slideDetail && this.state.slideSelectStatus ? <SlideDetail removeSub={this.removeSub.bind(this)} handleSub={this.handleSub.bind(this)} slideDetailToggle={this.checkSlideDetail.bind(this)} {...this.state} /> : null}
         </CSSTransitionGroup>
       </div>
     );

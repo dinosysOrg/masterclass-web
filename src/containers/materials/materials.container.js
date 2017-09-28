@@ -13,7 +13,7 @@ class MaterialsContainer extends Component {
   }
   checkLoading() {
     return(
-      <div className="container">
+      <div className="container-content">
           <div className="pageTitle">
             <h2 className="pageTitle__title">MATERIALS</h2>
             <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>

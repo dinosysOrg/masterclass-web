@@ -1,5 +1,15 @@
 import * as _ from 'lodash';
+import * as IMG from '../assets/images';
 
+function checkImg(data) {
+  if (data.name.includes('Vocals') === true) {
+    return IMG.default.vocalImg
+  } else if (data.name.includes('Guitar') === true) {
+    return IMG.default.guitarImg
+  } else if (data.name.includes('Piano') === true) {
+    return IMG.default.pianoImg
+  }
+}
 function formatData(data, myskill) {
   let skill = _.map(data.instrument.instrument_skills, function(intrumentSkill){
     return _.extend(intrumentSkill, _.find(data.path_skills, { id: intrumentSkill.id }))
@@ -15,13 +25,14 @@ function formatData(data, myskill) {
       full: skillItem.instrument_level
     }
   })
+  let IMG = checkImg(data)
   return {
     id: data.id,
     title: data.name,
     description: data.description,
     level: `${data.level.name} ${data.instrument.name}`,
     instructor: data.teacher.name,
-    imgSrc: 'https://allwallpapers.info/wp-content/uploads/2016/05/8081-playing-the-guitar-1920x1080-music-wallpaper.jpeg',
+    imgSrc: IMG,
     skill: skillWithUser
   }
 }
@@ -33,12 +44,12 @@ function formatArrayData (data, myskills) {
   return dataReformat;
 }
 
-function formatDataMyPath (data) {
-  return formatData(data);
+function formatDataMyPath (data, myskills) {
+  return formatData(data, myskills);
 }
 
 function countPercent(x, y) {
-  return (x/y)*100
+  return Math.floor((x/y)*100)
 }
 
 function formatDataOverall(overallProgress) {
@@ -81,8 +92,8 @@ function coverSecondToMinutes(data) {
   let divisor_for_minutes = data % (60 * 60);
   let minutes = Math.floor(divisor_for_minutes / 60);
   let divisor_for_seconds = divisor_for_minutes % 60;
-  let seconds = Math.ceil(divisor_for_seconds) === 0 ? '00' : Math.ceil(divisor_for_seconds);
-  return `${minutes}:${seconds}`;
+  let formattedSecond = ("0" + Math.ceil(divisor_for_seconds)).slice(-2);
+  return `${minutes}:${formattedSecond}`;
 }
 
 export {

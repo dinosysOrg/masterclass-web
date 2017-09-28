@@ -75,7 +75,7 @@ class Header extends Component {
     return (
       <div>
         <header className="header">
-          <div className="container">
+          <div className="container-fluid">
             <nav className="navbar navbar-expand-md">
               <a className="navbar-brand header__logo" href="/">
                 <img className="img-fluid" src={IMG.default.logo} alt=""/>

@@ -4,7 +4,6 @@ import {withRouter} from 'react-router';
 import SyllabusDetail from './syllabusDetail';
 import {bindActionCreators} from 'redux';
 import * as syllabusAction from '../../redux/syllabus/syllabus.action';
-import * as pathAction from '../../redux/path/path.actions';
 import {Loading} from '../../components';
 import * as _ from 'lodash';
 /**
@@ -22,7 +21,8 @@ class SyllabusDetailContainer extends Component {
    * @return {html} The template of SyllabusDetailContainer class
    */
   checkLoading() {
-    if (!_.isEmpty(this.props.payload.syllabusReducer)) {
+    const {path} = this.props.payload.syllabusReducer
+    if (!_.isEmpty(this.props.payload.syllabusReducer) && !_.isEmpty(path)) {
       return (
         <SyllabusDetail {...this.props}/>
       );

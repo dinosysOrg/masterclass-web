@@ -31,7 +31,7 @@ class QuizContainer extends Component {
             quizInstruments, quizLevelRadio,
           },
       };
-      if (quiz.my_quiz.learning_method_ids.length !== 0 ) {
+      if (quiz.my_quiz !== undefined) {
         const newOj = {}
         quiz.my_quiz.learning_method_ids.map((id, index) => 
             newOj[`quizCheckbox_${id}`] = true

@@ -18,7 +18,7 @@ class Siderbar extends Component {
         <div className="sidebar">
           <ul className="nav nav-pills flex-column">
             <li className="nav-item text-uppercase active"><a href="">General Information</a></li>
-            <li className="nav-item text-uppercase"><a href="">Settings</a></li>
+            {/* <li className="nav-item text-uppercase"><a href="">Settings</a></li> */}
           </ul>
         </div>
       );

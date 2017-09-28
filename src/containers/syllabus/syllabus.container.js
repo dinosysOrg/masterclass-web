@@ -20,22 +20,28 @@ class SyllabusContainer extends Component {
    */
   render() {
     let {tasks} = this.props.payload.nprogress;
-    return (
-      <div className="container">
-          <div className="pageTitle">
-            <h2 className="pageTitle__title">SYLLABUS</h2>
-            <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
-          </div>
-          <div className="row card-group">
-            <div className="col-md-3 col-sidebar pb-5">
-              <Sidebar {...this.props} />
+    const {pathOverview} = this.props.payload.pathReducer;
+    if(tasks === 0 && pathOverview) {
+      return (
+        <div className="container-content">
+            <div className="pageTitle">
+              <h2 className="pageTitle__title">SYLLABUS</h2>
+              <p className="pageTitle__sub text-uppercase">{pathOverview.level.name} {pathOverview.instrument.name}</p>
             </div>
-            <div className="col-md-9 col-pagecontent pb-5">
-              {tasks === 0 && this.props.payload.pathReducer.pathOverview !== undefined ? <Syllabus {...this.props}/> : <Loading/>}
+            <div className="row card-group">
+              <div className="col-md-3 col-sidebar pb-5">
+                <Sidebar {...this.props} />
+              </div>
+              <div className="col-md-9 col-pagecontent pb-5">
+                 <Syllabus {...this.props}/> 
+              </div>
             </div>
-          </div>
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return (<Loading/>)
+    }
+
   }
 }
 const mapStateToProps = (rootState) => {

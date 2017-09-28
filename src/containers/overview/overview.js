@@ -11,11 +11,13 @@ class OverviewPage extends Component {
    */
   render() {
     let {pathOverview} = this.props.payload.pathReducer;
-    let data = formatDataMyPath(pathOverview);
+  let data = formatDataMyPath(pathOverview, pathOverview.my_skills);
     return (
       <div className="overview-page">
         <div className="video-box">
-          <iframe title="video" allowFullScreen="allowFullScreen" frameBorder="0" className="iframe-video" src="https://www.youtube.com/embed/gyWUazuJBak?rel=0&amp;showinfo=0"></iframe>
+          <video className="videoPlay w-100" controls>
+            <source src={pathOverview.overview_video.url} />
+          </video>
         </div>
         <div className="row pt-4">
           <div className="col">
@@ -36,7 +38,7 @@ class OverviewPage extends Component {
           <div className="media">
               <img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/170x170"/> 
               <div className="media-body">
-                <h5 className="mt-0 teacher-name">Teacher Name{pathOverview.teacher.name}</h5>
+                <h5 className="mt-0 teacher-name">{pathOverview.teacher.name}</h5>
                 {pathOverview.teacher.bio}
               </div>
           </div>

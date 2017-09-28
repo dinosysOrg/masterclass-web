@@ -14,10 +14,10 @@ class QuestionContainer extends Component {
    */
   render() {
     return (
-        <div className="container">
+        <div className="container-content">
           <div className="pageTitle">
-            <h2 className="pageTitle__title">SYLLABUS</h2>
-            <p className="pageTitle__sub">LEVEL + INSTRUMENT</p>
+            <h2 className="pageTitle__title">Q&A</h2>
+            <p className="pageTitle__sub" style={{opacity: 0}}>LEVEL + INSTRUMENT</p>
           </div>
           <div className="row card-group">
             <div className="col-md-3 col-sidebar pb-5">
