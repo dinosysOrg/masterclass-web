@@ -27,20 +27,26 @@ class QuizForm extends React.Component {
       <form className="formQuiz" onSubmit={handleSubmit}>
         <p>1. Choose your preferred instrument:</p>
           <div className="row pb-2">
-            {quiz.instruments.map((quizInstruments, index) =>
-              <div className="quizList" key={index}>
-                <label className="custom-control custom-radio cursorMouse">
-                <Field className="custom-control-input" name="quizInstruments" id={`Intruments${index}`}
-                  component="input" type="radio" value={String(quizInstruments.id)}/>
-                  <span className="instrument-block text-center">
-                    <span className="custom-control-description-quiz">
-                      <Icon name={`${this.checkIcon(quizInstruments.name)} iconInstruments`} size={35} fill="#fff" />
-                    </span>
-                    <span className="custom-control-description-txt">{quizInstruments.name}</span>
-                  </span>
-                </label>
-              </div>
-            )}
+            {
+              quiz.instruments.map(function(quizInstruments, index) {
+                if(quizInstruments.id !== 4) {
+                  return(
+                    <div className="quizList" key={index}>
+                      <label className="custom-control custom-radio cursorMouse">
+                      <Field className="custom-control-input" name="quizInstruments" id={`Intruments${index}`}
+                        component="input" type="radio" value={String(quizInstruments.id)}/>
+                        <span className="instrument-block text-center">
+                          <span className="custom-control-description-quiz">
+                            <Icon name={`${this.checkIcon(quizInstruments.name)} iconInstruments`} size={35} fill="#fff" />
+                          </span>
+                          <span className="custom-control-description-txt">{quizInstruments.name}</span>
+                        </span>
+                      </label>
+                    </div>
+                  )
+                }
+              }.bind(this))
+            }
           </div>
         <p>2. Choose your level (optional):</p>
         <div className="row pb-2">
