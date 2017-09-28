@@ -35,7 +35,7 @@ class SyllabusDetail extends Component {
     if (!_.isEmpty(syllabusReducer)) {
       return (
         <div className="syllabusDetail-page">
-          <div className="container">
+          <div className="container-content">
             <div className="pageTitle">
               <h2 className="pageTitle__title">{syllabusReducer.syllabus.title}</h2>
               <p className="pageTitle__sub">{syllabusReducer.path.level.name}  {syllabusReducer.path.instrument.name}</p>

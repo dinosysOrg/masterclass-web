@@ -15,7 +15,7 @@ class MainMenu extends Component {
     if (loginStatus) {
       return (
         <div className="main-menu">
-          <div className="container">
+          <div className="container-fluid">
             <ul className="nav nav-main-menu">
               <li className={`nav-item ${pathname === '/Browse' ? 'active' : null}`}>
                 <Link className="nav-link text-uppercase" to="/Browse">Browse</Link>

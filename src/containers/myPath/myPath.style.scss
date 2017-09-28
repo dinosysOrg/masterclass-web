@@ -147,22 +147,25 @@
                 }
             }
         }
-        .pagination{
-            li{
-                a.page-link{
-                    background: transparent;
-                    color: #fff;
-                    border: 0px;
-                    font-size: rem(17);
-                    &:hover{
-                        text-decoration: underline;
-                    }
-                }
-                &.active{
-                    a.page-link{
-                        text-decoration: underline;
-                    }
-                }
+    }
+}
+.paginationPage{
+    li{
+        a.page-link{
+            background: transparent;
+            color: #fff;
+            border: 0px;
+            font-size: rem(17);
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        &.active{
+            a.page-link{
+                text-decoration: underline;
+                background: transparent;
+                border-radius: 0px;
+                color: $yellow1;
             }
         }
     }

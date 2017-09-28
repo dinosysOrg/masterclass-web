@@ -6,5 +6,8 @@ export default {
   layoutVideo4: require('./layout_4.png'),
   layoutVideo5: require('./layout_5.png'),
   loadingGif: require('./imageLoading.gif'),
+  guitarImg: require('./guitar_img.jpg'),
+  pianoImg: require('./piano_img.jpeg'),
+  vocalImg: require('./vocal_img.jpeg'),
 };
 

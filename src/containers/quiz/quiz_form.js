@@ -10,7 +10,7 @@ class QuizForm extends React.Component {
   checkIcon(name) {
     if (name === 'Guitar') {
       return 'guitar'
-    } else if (name === 'Pinano') {
+    } else if (name === 'Piano') {
       return 'piano'
     } else if (name === 'Vocals') {
       return 'micRecord'

@@ -11,7 +11,11 @@ class videoSlideDetail extends React.Component {
           <Icon.FaPlusCircle size={18} fill="#000" /> ADD to my path
         </button>
       )
-    } else return null
+    } else return (
+      <button type="button" onClick={this.props.removeSub.bind(this, id)} className="btn btn-second btn-danger text-uppercase ml-3 cursorMouse">
+        <Icon.FaTrash size={18} fill="#000" /> Remove from my path
+      </button>
+    )
   }
   render() {
     const {slideDetail} = this.props
@@ -19,7 +23,7 @@ class videoSlideDetail extends React.Component {
     <div className="slideDetail" style={{backgroundImage: `url(${slideDetail.imgSrc})`}}>
       <div className="container">
         <div className="row">
-          <div onClick={()=> this.props.slideDetailToggle()} className="btn-dropdown-slide cursorMouse"><Icon.FaAngleUp size={57}/></div>
+          {/* <div onClick={()=> this.props.slideDetailToggle()} className="btn-dropdown-slide cursorMouse"><Icon.FaAngleUp size={57}/></div> */}
           <div className="col slideDetail__colLeft">
             <div className="slideDetail__title">{slideDetail.title}</div>
             <div className="slideDetail__level">{slideDetail.level}</div>
