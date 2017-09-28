@@ -16,9 +16,19 @@ class PathPage extends Component {
   constructor(props) {
     super(props);
     const {overallProgress} = this.props.payload.pathReducer
+    const {name} = this.props.payload.pathReducer.myCourses.courses[0].course
     const overall = formatDataOverall(overallProgress)
+    function checkInstrument(name) {
+      if (name.includes('Guitar') === true) {
+        return 'Guitar'
+      } else if (name.includes('Piano') === true) {
+        return 'Piano'
+      } else if (name.includes('Vocal') === true) {
+        return 'Vocal'
+      }
+    }
     this.state = {
-      instrumentSelect: 'Guitar',
+      instrumentSelect: checkInstrument(name),
       myCourses: this.props.payload.pathReducer.myCourses,
       dataMock: this.props.payload.pathReducer.myCourses.courses,
       pageOfItems: [],
@@ -41,10 +51,12 @@ class PathPage extends Component {
   }
   // function handleInstrument
   handleInstrument(id, name) {
-    this.setState({instrumentSelect: name}, () => {
-      this.props.pathAction.fetchOverallProgress(id)
-      this.props.pathAction.fetchMyCourses(id)
-    });
+    this.props.pathAction.fetchOverallProgress(id)
+    this.props.pathAction.fetchMyCourses(id)
+    // this.setState({instrumentSelect: name}, () => {
+    //   this.props.pathAction.fetchOverallProgress(id)
+    //   this.props.pathAction.fetchMyCourses(id)
+    // });
   }
   // function handleRemovePath
   handleRemovePath(id, key) {
