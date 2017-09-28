@@ -75,6 +75,9 @@ class VideoPlayer extends Component {
     document.addEventListener('MSFullscreenChange', this._fullscreenHandler, false);
     document.addEventListener('mouseup', this._seekMouseUp);
     document.addEventListener('mousemove', this._seekMouseMove);
+    $("video").on("contextmenu",function(e){
+        return false;
+    });
   }
 
   componentWillUnmount() {
@@ -109,6 +112,9 @@ class VideoPlayer extends Component {
       }
       this.refs.videoContent.handleSeekVideo(this.state.currentTime);
       this.refs.videoContent.handleChangeSpeed(this.state.currentSpeed);
+      $("video").on("contextmenu",function(e){
+          return false;
+      });
     }
     if (!this.state.fullScreen) {
       let controls = document.getElementsByClassName("video-player__controls")[0];
@@ -336,7 +342,7 @@ class VideoPlayer extends Component {
           this.refs[angleIndex].src = e.target.src;
           this.refs[angleIndex].classList.remove("loading-angle");
       };
-      downloadingImage.src = "https://media.w3.org/2010/05/sintel/poster.png";
+      downloadingImage.src = "https://i.imgur.com/bHR4viW.jpg";
       return (
         <div
           key={index}
