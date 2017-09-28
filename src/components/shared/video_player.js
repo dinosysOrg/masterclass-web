@@ -43,6 +43,8 @@ class VideoPlayer extends Component {
       IMG.default.layoutVideo5
     ];
 
+    this.loadingGif = IMG.default.loadingGif;
+
     this._closePopUp = this._closePopUp.bind(this);
     this._fullscreenHandler = this._fullscreenHandler.bind(this);
     this._updateTime = this._updateTime.bind(this);
@@ -310,13 +312,21 @@ class VideoPlayer extends Component {
 
   _renderAngle() {
     return this.props.videos.map((item, index) => {
+      let angleIndex = 'angle' + index;
+      let image = <img ref={angleIndex} src={this.loadingGif} className="loading-angle"/>;
+      let downloadingImage = new Image();
+      downloadingImage.onload = (e) => {
+          this.refs[angleIndex].src = e.target.src;
+          this.refs[angleIndex].classList.remove("loading-angle");
+      };
+      downloadingImage.src = "https://media.w3.org/2010/05/sintel/poster.png";
       return (
         <div
           key={index}
           className="video-player__setting__item"
           onClick={this.selectVideo.bind(this, item.url)}
         >
-         <img src="https://media.w3.org/2010/05/sintel/poster.png"/>
+         {image}
         </div>
       );
     });
