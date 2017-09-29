@@ -8,15 +8,15 @@ class syllabusComponent extends Component {
     const {showModal} = this.props
     if(showModal && !storageConfig.getUserLocal()){
       return(
-        <a className="cursorMouse" onClick={()=>this.props.initAction.showModal('modalAuth')} ><img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/80x80"/></a> 
+        <a className="cursorMouse" onClick={()=>this.props.initAction.showModal('modalAuth')} ><img className="d-flex mr-3" alt="images teacher" src="https://via.placeholder.com/80x80"/></a> 
       )
     } else if(storageConfig.getUserLocal() && this.props.subscribed) {
       return( 
-        <Link to={`/Path/${this.props.pathID}/Syllabus/${this.props.id}`}><img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/80x80"/></Link>
+        <Link to={`/Path/${this.props.pathID}/Syllabus/${this.props.id}`}><img className="d-flex mr-3" alt="images teacher" src="https://via.placeholder.com/80x80"/></Link>
       )
     } else{
       return( 
-        <a className="cursorMouse" onClick={()=> alert('Please subscribe this path !')}><img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/80x80"/></a> 
+        <a className="cursorMouse" onClick={()=> alert('Please subscribe this path !')}><img className="d-flex mr-3" alt="images teacher" src="https://via.placeholder.com/80x80"/></a> 
       )
     }
   }
