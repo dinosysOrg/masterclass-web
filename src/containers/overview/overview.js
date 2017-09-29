@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './overview.style.css';
 import {Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, ResponsiveContainer, PolarRadiusAxis} from 'recharts';
 import {formatDataMyPath} from '../../configs/data.config';
+import VideoPlayer from '../../components/shared/video_player';
 /**
  * OverviewPage
  */
@@ -11,13 +12,14 @@ class OverviewPage extends Component {
    */
   render() {
     let {pathOverview} = this.props.payload.pathReducer;
-  let data = formatDataMyPath(pathOverview, pathOverview.my_skills);
+    let data = formatDataMyPath(pathOverview, pathOverview.my_skills);
+    let video = {
+      url: pathOverview.overview_video.url
+    }
     return (
       <div className="overview-page">
         <div className="video-box">
-          <video className="videoPlay w-100" controls>
-            <source src={pathOverview.overview_video.url} />
-          </video>
+          <VideoPlayer videos={[video]} layoutControl={false} route={this.props.route}/>
         </div>
         <div className="row pt-4">
           <div className="col">
