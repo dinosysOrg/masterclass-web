@@ -29,8 +29,10 @@
     .video-player__controls {
       position: absolute;
       width: 100%;
-      bottom: 35px;
-      padding-right: 100px;
+      bottom: 0;
+      left:0;
+      width: 100%;
+      padding:10px 30px 30px 30px;
       background-color: #000000;
     }
     .video-player__setting {

@@ -6,7 +6,7 @@ import DoneCount from './done_count';
 export default () => {
   return (
     <Panel title="STRUMMING | BEGINNER GUITAR | MR.JONNY">
-      <img src="http://via.placeholder.com/918x358?text=^*^" alt="Path's banner" />
+      <img src="https://via.placeholder.com/918x358?text=^*^" alt="Path's banner" />
       <ul>
         <li>
           <h4>7.5</h4>

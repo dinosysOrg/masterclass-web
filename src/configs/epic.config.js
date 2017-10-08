@@ -4,7 +4,7 @@ import {getBrowsePath, loginRequestEpic, signupRequestEpic, fbRequestEpic,
   getQuizRequestEpic, saveQuizEpic, putUserInfoRequestEpic, getHomePath, 
   putUserLayoutEpic, searchPath, overviewPath, getSyllabusDetailEpic, 
   fetchInstrument, fetchCourses, subscribePath, unsubscribePath, 
-  fetchOverallPath, getPracticeEpic} from '../redux';
+  fetchOverallPath, getPracticeEpic, getSheetEpic} from '../redux';
 export default combineEpics(
   loginRequestEpic,
   getBrowsePath,
@@ -28,4 +28,5 @@ export default combineEpics(
   unsubscribePath,
   fetchOverallPath,
   getPracticeEpic,
+  getSheetEpic,
 );

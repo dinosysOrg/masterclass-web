@@ -37,7 +37,7 @@ class PracticeVideoSlide extends Component {
         data = practices.map((item, index)=>{
       return {
         title: item.name,
-        imgSrc: 'http://cdn.mos.cms.futurecdn.net/b4e64eedd98062459a9fefb1f800ecdf-320-80.jpg',
+        imgSrc: 'https://cdn.mos.cms.futurecdn.net/b4e64eedd98062459a9fefb1f800ecdf-320-80.jpg',
         level: practiceInfo.level.name + ' ' + practiceInfo.instrument.name,
         instructor: item.uploader.first_name,
         url: item.url

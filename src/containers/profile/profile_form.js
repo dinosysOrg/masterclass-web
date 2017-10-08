@@ -14,7 +14,7 @@ class ProfileForm extends React.Component {
     return (
       <div>
         <div className="text-center mt-2 mb-5">
-          <img className="rounded-circle" alt="images teacher" src="http://via.placeholder.com/120x120"/>
+          <img className="rounded-circle" alt="images teacher" src="https://via.placeholder.com/120x120"/>
           <div className="mt-4"><button className="btn btn-primary">UPLOAD NEW PROFILE PICTURE</button></div>
         </div>
         <form className="mt-5" onSubmit={handleSubmit}>

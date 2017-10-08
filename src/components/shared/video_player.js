@@ -59,9 +59,7 @@ class VideoPlayer extends Component {
   componentWillMount() {
     const route = this.props.route;
     if (route) {
-      if (route.path === '/Path/:path_Id/Practice') {
-        this.setState({currentLayout: 0});
-      }
+      this.setState({currentLayout: 0});
     } else {
       this.setState({currentLayout: storageConfig.getUserLocal().layout_id});
     }

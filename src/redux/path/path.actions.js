@@ -264,3 +264,33 @@ export function fetchPracticeFailed(error) {
     payload: error
   };
 };
+/**
+ * An action creator - fetching started
+ * @return {Object} action - with type FETCH_SHEET_REQUEST
+ */
+export function fetchSheet(data) {
+  return {
+    type: types.FETCH_SHEET_REQUEST,
+    payload: data
+  };
+};
+/**
+ * An action creator - fetching success
+ * @return {Object} action - with type FETCH_SHEET_SUCCESS
+ */
+export function fetchSheetSuccess(payload) {
+  return {
+    type: types.FETCH_SHEET_SUCCESS,
+    payload: payload
+  };
+};
+/**
+ * An action creator - fetching failed
+ * @return {Object} action - with type FETCH_SHEET_FAILED
+ */
+export function fetchSheetFailed(error) {
+  return {
+    type: types.FETCH_SHEET_FAILED,
+    payload: error
+  };
+};

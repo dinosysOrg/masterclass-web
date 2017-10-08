@@ -1,18 +1,53 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../components/shared/icon';
+import _ from 'lodash';
 
 class SyllabusDetailMaterials extends Component {
-  _downloadNote() {
-    //WAIT API
+  componentWillReceiveProps(nextProps) {
+    let sheetURL = nextProps.payload.pathReducer.sheetURL;
+    if (sheetURL) {
+      if (!_.isEmpty(this.props.payload.pathReducer.sheetURL)) {
+        let link = document.createElement('a');
+        link.href = sheetURL.sheet_url;
+        link.download = 'file.pdf';
+        link.dispatchEvent(new MouseEvent('click'));
+      }
+    }
   }
 
-  _downloadSheet() {
-    //WAIT API
+  _downloadNote() {
+    let link = document.createElement('a');
+    link.href = this.props.syllabus.note_url;
+    link.download = 'file.pdf';
+    link.dispatchEvent(new MouseEvent('click'));
+  }
+
+  _downloadSheet(e) {
+    const {path_Id} = this.props.params;
+    const {syllabus_Id} = this.props.params;
+    let id = this.props.syllabus.sheet.id,
+        data = {
+          path_Id: path_Id,
+          syllabus_Id: syllabus_Id,
+          id: id
+        },
+        sheetURL = this.props.payload.pathReducer.sheetURL;
+    if (_.isEmpty(sheetURL)) {
+      this.props.pathAction.fetchSheet(data);
+    } else {
+      let link = document.createElement('a');
+      link.href = sheetURL.sheet_url;
+      link.download = 'file.pdf';
+      link.dispatchEvent(new MouseEvent('click'));
+    } 
   }
 
   _downloadExercise() {
-    //WAIT API
+    let link = document.createElement('a');
+    link.href = this.props.syllabus.exercises[0].url;
+    link.download = 'file.pdf';
+    link.dispatchEvent(new MouseEvent('click'));
   }
   render() {
     return (

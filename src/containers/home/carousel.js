@@ -8,7 +8,7 @@ const Carousel = (props) => (
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div className="carousel-inner" role="listbox">
-      <div className="carousel-item active" data-img="http://eskipaper.com/images/acoustic-guitar-wallpaper-2.jpg">
+      <div className="carousel-item active" data-img="https://zyzixun.net/data/out/1/2746089-acoustic-guitar-wallpapers.jpg">
         <div className="carousel-caption d-none d-md-block text-left ab-middle">
           <p>
             DISCOVER YOUR OWN <br/>

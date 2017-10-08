@@ -178,6 +178,24 @@ action$.ofType(types.SEARCH_PATH_REQUEST)
         of(store.dispatch(endTask())),
       )
     );
+    /**
+   * This epic defines the whole operation of fetching practice path from server
+   * include 3 phases: start fetching, fetching success of fetching failed
+   * @param {Object} action$ - action stream
+   * @param {Object} store - action stream
+   * @return {Object} action stream
+   */
+  const getSheetEpic = (action$, store) =>
+  action$.ofType(types.FETCH_SHEET_REQUEST)
+    .mergeMap((data) =>
+      concat$(
+        of(store.dispatch(beginTask())),
+        ajax.get(`${getPathAPI}/${data.payload.path_Id}/syllabuses/${data.payload.syllabus_Id}/sheets/${data.payload.id}/download`, storeConfig.setHeader() )
+          .map((json) => actions.fetchSheetSuccess(json.response))
+          .catch((error) => of(actions.fetchSheetFailed(error))),
+        of(store.dispatch(endTask())),
+      )
+    );
 export {
   getBrowsePath,
   getHomePath,
@@ -189,4 +207,5 @@ export {
   unsubscribePath,
   fetchOverallPath,
   getPracticeEpic,
+  getSheetEpic,
 };

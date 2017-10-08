@@ -119,6 +119,16 @@ const path = (state = initPathState, action) => {
       fetchOverrallProgress: true,
       overallProgress: action.payload,
     };
+  case types.FETCH_SHEET_SUCCESS:
+    return {
+      ...state,
+      sheetURL: action.payload,
+    };
+  case types.FETCH_SHEET_FAILED:
+    return {
+      ...state,
+      error: action.payload,
+    };
   default:
     return state;
   }

@@ -31,7 +31,7 @@ class MaterialsPage extends Component {
         <div className="teacher pt-3">
           <h5>TEACHERS</h5>
           <p>These teachers will answer your questions directly.</p>
-          <div className="mb-2"><img className="d-flex mr-3" alt="images teacher" src="http://via.placeholder.com/150x150"/></div>
+          <div className="mb-2"><img className="d-flex mr-3" alt="images teacher" src="https://via.placeholder.com/150x150"/></div>
           <p>Teacher name 1</p>
         </div>
         <div className="text-center mt-5 mb-5"><Link to={`/Path/${path_Id}/QA`} className="btn btn-primary">SUBMIT A QUESTION</Link></div>
